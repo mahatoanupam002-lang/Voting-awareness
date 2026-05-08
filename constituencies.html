@@ -6,12 +6,13 @@
 <meta name="description" content="Complete constituency-wise results for the 2026 West Bengal Assembly Election — 294 seats, winner names, margins, and district breakdown.">
 <meta property="og:title" content="The Bengal Reader — 2026 Constituency Results">
 <meta property="og:description" content="Who won where — all 294 West Bengal assembly seats, searchable and filterable by party, district, and margin.">
-<meta property="og:image" content="/og-parties.svg">
+<meta property="og:image" content="/og-constituencies.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Bengal Reader — 2026 Constituency Results">
 <meta name="twitter:description" content="294 seats · BJP 206 · TMC 80 · Searchable constituency tracker">
-<meta name="twitter:image" content="/og-parties.svg">
+<meta name="twitter:image" content="/og-constituencies.svg">
 <title>The Bengal Reader — 2026 Constituency Results</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -373,6 +374,44 @@ footer {
 footer a { color:rgba(244,241,234,.6); text-decoration:none; }
 footer a:hover { color:rgba(244,241,234,.9); }
 
+/* ── SEAT GRID ── */
+.seat-grid-section {
+  background:var(--paper-dark);
+  border-bottom:1px solid var(--paper-mid);
+  padding:20px 0 22px;
+}
+.seat-grid-head {
+  font-family:'JetBrains Mono',monospace; font-size:10px;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--ink-faint);
+  margin-bottom:14px;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; align-items:center;
+}
+.seat-legend { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.leg-item { display:flex; align-items:center; gap:5px; }
+.leg-swatch { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+.seat-grid {
+  display:grid;
+  grid-template-columns:repeat(42, 1fr);
+  gap:3px;
+}
+.seat-dot {
+  aspect-ratio:1;
+  border-radius:2px;
+  cursor:pointer;
+  transition:transform .12s, box-shadow .12s;
+  position:relative;
+}
+.seat-dot:hover { transform:scale(1.6); z-index:20; box-shadow:0 2px 10px rgba(0,0,0,.4); }
+.seat-tip {
+  position:fixed; z-index:500;
+  background:var(--ink); color:var(--paper);
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  padding:10px 14px; line-height:1.65;
+  pointer-events:none; display:none;
+  border-left:3px solid var(--bjp);
+  max-width:240px; box-shadow:0 4px 20px rgba(0,0,0,.4);
+}
+
 /* ── RESPONSIVE ── */
 @media(max-width:700px) {
   .container { padding:0 16px; }
@@ -399,6 +438,7 @@ footer a:hover { color:rgba(244,241,234,.9); }
       <a href="/parties" class="site-nav-link">Party Compass</a>
       <a href="/constituencies" class="site-nav-link active">2026 Results</a>
       <a href="/demonetisation" class="site-nav-link">Demonetisation</a>
+      <a href="/accountability" class="site-nav-link">100 Days</a>
     </div>
   </div>
 </nav>
@@ -447,6 +487,24 @@ footer a:hover { color:rgba(244,241,234,.9); }
     <p class="masthead-sub">Search, filter, and explore the constituency-level results from Bengal's most consequential election in a generation.</p>
   </div>
 </div>
+
+<!-- SEAT GRID -->
+<div class="seat-grid-section">
+  <div class="container">
+    <div class="seat-grid-head">
+      <span>294 Seats · Each square = one constituency · Click to filter table</span>
+      <span class="seat-legend">
+        <span class="leg-item"><span class="leg-swatch" style="background:var(--bjp)"></span>BJP 206</span>
+        <span class="leg-item"><span class="leg-swatch" style="background:var(--tmc)"></span>TMC 80</span>
+        <span class="leg-item"><span class="leg-swatch" style="background:var(--inc)"></span>INC 2</span>
+        <span class="leg-item"><span class="leg-swatch" style="background:var(--cpim)"></span>LF 1</span>
+        <span class="leg-item"><span class="leg-swatch" style="background:var(--ink-faint)"></span>Others</span>
+      </span>
+    </div>
+    <div class="seat-grid" id="seatGrid"></div>
+  </div>
+</div>
+<div class="seat-tip" id="seatTip"></div>
 
 <!-- CONTROLS BAR -->
 <div class="controls-bar" role="search">
@@ -622,7 +680,7 @@ const RESULTS = [
   {ac:18, name:"Malbazar",           district:"Jalpaiguri",       winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:19, name:"Rajganj",            district:"Jalpaiguri",       winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:20, name:"Jalpaiguri",         district:"Jalpaiguri",       winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:21, name:"Rajganj",            district:"Jalpaiguri",       winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:21, name:"Maynaguri",          district:"Jalpaiguri",       winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:22, name:"Matiali",            district:"Jalpaiguri",       winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
 
   // ── DARJEELING (7 seats) ──
@@ -704,18 +762,21 @@ const RESULTS = [
   {ac:88, name:"Sainthia",           district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
 
   // ── PASCHIM BURDWAN (4 seats) ──
-  {ac:89, name:"Asansol Uttar",      district:"Paschim Burdwan",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:90, name:"Asansol Dakshin",    district:"Paschim Burdwan",  winner:"Agnimitra Paul",     winParty:"BJP", loser:"",                    loseParty:"TMC", margin:40839, verified:true, notable:false, note:""},
-  {ac:91, name:"Raniganj",           district:"Paschim Burdwan",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:92, name:"Jamuria",            district:"Paschim Burdwan",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:89, name:"Barabani",           district:"Paschim Burdwan",  winner:"Arijit Roy",         winParty:"BJP", loser:"Bidhan Upadhyay",    loseParty:"TMC", margin:91200, verified:true,  notable:false, note:""},
+  {ac:90, name:"Asansol Uttar",      district:"Paschim Burdwan",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:91, name:"Asansol Dakshin",    district:"Paschim Burdwan",  winner:"Agnimitra Paul",     winParty:"BJP", loser:"",                    loseParty:"TMC", margin:40839, verified:true, notable:false, note:""},
+  {ac:92, name:"Raniganj",           district:"Paschim Burdwan",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:93, name:"Jamuria",            district:"Paschim Burdwan",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:94, name:"Durgapur Purba",     district:"Paschim Burdwan",  winner:"Chandra Sekhar Banerjee",winParty:"BJP",loser:"Pradip Mazumdar",  loseParty:"TMC", margin:30934, verified:true,  notable:false, note:""},
+  {ac:95, name:"Durgapur Paschim",   district:"Paschim Burdwan",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
 
   // ── PURBA BURDWAN (11 seats) ──
   {ac:93, name:"Kanksa",             district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:94, name:"Ausgram",            district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:95, name:"Manteswar",          district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:94, name:"Ausgram",            district:"Purba Burdwan",    winner:"Kalita Maji",        winParty:"BJP", loser:"Shyama Prasanna Lohar",loseParty:"TMC", margin:107692, verified:true, notable:false, note:""},
+  {ac:95, name:"Monteswar",          district:"Purba Burdwan",    winner:"Saikat Panja",       winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
   {ac:96, name:"Burdwan Uttar",      district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:97, name:"Burdwan Dakshin",    district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:98, name:"Raina",              district:"Purba Burdwan",    winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
+  {ac:98, name:"Raina",              district:"Purba Burdwan",    winner:"Subhash Patra",      winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
   {ac:99, name:"Jamalpur",           district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:100,name:"Memari",             district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:101,name:"Purbasthali Uttar",  district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
@@ -724,7 +785,7 @@ const RESULTS = [
 
   // ── HOOGHLY (18 seats) ──
   {ac:104,name:"Khanakul",           district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:105,name:"Arambag",            district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:105,name:"Arambag",            district:"Hooghly",          winner:"Madhusudan Bag",     winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
   {ac:106,name:"Goghat",             district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:107,name:"Haripal",            district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:108,name:"Dhaniakhali",        district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
@@ -732,15 +793,15 @@ const RESULTS = [
   {ac:110,name:"Chanditala",         district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:111,name:"Shrirampur",         district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:112,name:"Champdani",          district:"Hooghly",          winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:113,name:"Uttarpara",          district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:113,name:"Uttarpara",          district:"Hooghly",          winner:"Sirsanya Bandopadhyay",winParty:"TMC",loser:"Dipanjan Chakraborty",loseParty:"BJP", margin:9913, verified:true,  notable:false, note:""},
   {ac:114,name:"Shyampur",           district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:115,name:"Balagarh",           district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:116,name:"Pandua",             district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:117,name:"Chinsurah",          district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:118,name:"Hooghly-Chinsurah",  district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:119,name:"Chanditala",         district:"Hooghly",          winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
+  {ac:119,name:"Pursurah",           district:"Hooghly",          winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
   {ac:120,name:"Tarakeswar",         district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:121,name:"Pursurah",           district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:121,name:"Polba-Dadpur",       district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
 
   // ── HOWRAH (16 seats) ──
   {ac:122,name:"Uluberia Uttar",     district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
@@ -756,21 +817,24 @@ const RESULTS = [
   {ac:132,name:"Shibpur",            district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:133,name:"Howrah Madhya",      district:"Howrah",           winner:"Arup Roy",           winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
   {ac:134,name:"Howrah Dakshin",     district:"Howrah",           winner:"Nandita Choudhary",  winParty:"TMC", loser:"Shyamal Kumar Hati",  loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:135,name:"Bally",              district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:135,name:"Bally",              district:"Howrah",           winner:"Rana Chatterjee",    winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
   {ac:136,name:"Panchla",            district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:137,name:"Uluberia Paschim",   district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
 
   // ── KOLKATA (11 seats) ──
-  {ac:138,name:"Kasba",              district:"Kolkata",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:139,name:"Kolkata Port",       district:"Kolkata",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:140,name:"Ballygunge",         district:"Kolkata",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:141,name:"Rashbehari",         district:"Kolkata",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:142,name:"Tollygunge",         district:"Kolkata",          winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:143,name:"Entally",            district:"Kolkata",          winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:144,name:"Maniktala",          district:"Kolkata",          winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:145,name:"Jorasanko",          district:"Kolkata",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:146,name:"Shyampukur",         district:"Kolkata",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:138,name:"Kasba",              district:"Kolkata",          winner:"Ahmed Javed Khan",   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
+  {ac:139,name:"Kolkata Port",       district:"Kolkata",          winner:"Firhad Hakim",       winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
+  {ac:140,name:"Ballygunge",         district:"Kolkata",          winner:"Sobhandeb Chattopadhyay",winParty:"TMC",loser:"",               loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
+  {ac:141,name:"Rashbehari",         district:"Kolkata",          winner:"Swapan Dasgupta",    winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
+  {ac:142,name:"Tollygunge",         district:"Kolkata",          winner:"Papia Adhikary",     winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
+  {ac:143,name:"Entally",            district:"Kolkata",          winner:"Sandipan Saha",      winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
+  {ac:144,name:"Maniktala",          district:"Kolkata",          winner:"Tapas Roy",          winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
+  {ac:145,name:"Jorasanko",          district:"Kolkata",          winner:"Vijay Ojha",         winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
+  {ac:146,name:"Shyampukur",         district:"Kolkata",          winner:"Purnima Chakraborty",winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
   {ac:147,name:"Cossipore-Belgachia",district:"Kolkata",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:148,name:"Beleghata",          district:"Kolkata",          winner:"Kunal Ghosh",        winParty:"TMC", loser:"Partha Chaudhury",   loseParty:"BJP", margin:93757, verified:true,  notable:false, note:""},
+  {ac:149,name:"Jadavpur",           district:"Kolkata",          winner:"Sarbari Mukherjee",  winParty:"BJP", loser:"Debabrata Majumdar",  loseParty:"TMC", margin:25773, verified:true,  notable:false, note:""},
+  {ac:150,name:"Bidhannagar",        district:"North 24 Parganas",winner:"Sharadwat Mukherjee",winParty:"BJP", loser:"Sujit Bose",         loseParty:"TMC", margin:10750, verified:true,  notable:false, note:""},
   {ac:159,name:"Bhabanipur",         district:"Kolkata",          winner:"Suvendu Adhikari",   winParty:"BJP", loser:"Mamata Banerjee",     loseParty:"TMC", margin:15105, verified:true, notable:true,  note:"CM Mamata Banerjee loses home seat by 15,105 votes"},
 
   // ── NORTH 24 PARGANAS (33 seats) ──
@@ -858,12 +922,12 @@ const RESULTS = [
   {ac:222,name:"Narayangarh",        district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:223,name:"Sabang",             district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:224,name:"Kharagpur Sadar",    district:"Paschim Medinipur",winner:"Dilip Ghosh",        winParty:"BJP", loser:"Pradip Sarkar",       loseParty:"TMC", margin:30506, verified:true, notable:false, note:""},
-  {ac:225,name:"Nayagram",           district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:226,name:"Gopiballavpur",      district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:225,name:"Chandrakona",        district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:226,name:"Chandrakona Road",   district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
 
   // ── JHARGRAM (4 seats) ──
   {ac:227,name:"Jhargram",           district:"Jhargram",         winner:"LK Sau",             winParty:"BJP", loser:"",                    loseParty:"TMC", margin:38147, verified:true, notable:false, note:""},
-  {ac:228,name:"Sankrail",           district:"Jhargram",         winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
+  {ac:228,name:"Binpur",             district:"Jhargram",         winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:229,name:"Nayagram",           district:"Jhargram",         winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
   {ac:230,name:"Gopiballavpur",      district:"Jhargram",         winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
 
@@ -1045,10 +1109,49 @@ function renderDistricts() {
   }).join('');
 }
 
+// ── SEAT GRID ──
+function renderSeatGrid() {
+  const grid = document.getElementById('seatGrid');
+  const tip  = document.getElementById('seatTip');
+  const sorted = [...RESULTS].sort((a,b) => a.ac - b.ac);
+  const colorMap = {BJP:'var(--bjp)',TMC:'var(--tmc)',INC:'var(--inc)',LF:'var(--cpim)',CPIM:'var(--cpim)',ISF:'var(--isf)'};
+  grid.innerHTML = sorted.map(r => {
+    const col = colorMap[r.winParty] || 'var(--ink-faint)';
+    const op  = r.verified ? '1' : '0.6';
+    const esc = r.name.replace(/'/g, "\\'");
+    return `<div class="seat-dot" style="background:${col};opacity:${op}"
+      data-name="${r.name}" data-ac="${r.ac}" data-party="${r.winParty}"
+      data-winner="${r.winner || r.winParty + ' cand.'}"
+      data-margin="${r.margin ? r.margin.toLocaleString('en-IN') : ''}"
+      onclick="filterToSeat('${esc}')"></div>`;
+  }).join('');
+
+  grid.addEventListener('mouseover', e => {
+    const dot = e.target.closest('.seat-dot');
+    if (!dot) return;
+    tip.style.display = 'block';
+    tip.style.borderLeftColor = colorMap[dot.dataset.party] || 'var(--ink-faint)';
+    tip.innerHTML = `<strong>${dot.dataset.name}</strong> · AC&nbsp;${dot.dataset.ac}<br>${dot.dataset.party} · ${dot.dataset.winner}${dot.dataset.margin ? '<br>Margin: ' + dot.dataset.margin : ''}`;
+  });
+  grid.addEventListener('mousemove', e => {
+    const x = e.clientX + 16, y = e.clientY - 10;
+    tip.style.left = (x + 240 > window.innerWidth ? e.clientX - 256 : x) + 'px';
+    tip.style.top  = y + 'px';
+  });
+  grid.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+}
+
+function filterToSeat(name) {
+  document.getElementById('searchInput').value = name;
+  applyFilters();
+  document.querySelector('.controls-bar').scrollIntoView({behavior:'smooth'});
+}
+
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
   applyFilters();
   renderDistricts();
+  renderSeatGrid();
   const verified = RESULTS.filter(r => r.verified).length;
   document.getElementById('verifiedCount').textContent = verified;
 });
