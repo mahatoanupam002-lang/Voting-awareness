@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Documented corruption cases involving Bengal politicians — courts, agencies, accused, amounts. Updated continuously.">
+<meta property="og:title" content="Bengal Corruption Dossier — The Bengal Reader">
+<meta property="og:description" content="8 major cases. 20+ politicians charged. ₹20,000+ crore lost. Tracking every court, every accused, every verdict.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="/og-corruption.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bengal Corruption Dossier — The Bengal Reader">
+<meta name="twitter:description" content="Every documented Bengal corruption case: courts, accused, verdicts. Updated as news breaks.">
+<title>Bengal Corruption Dossier — The Bengal Reader</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0804;
+  --paper: #f5f0e8;
+  --aged: #e8e0cc;
+  --accent: #c0171b;
+  --bjp: #e8640a;
+  --gold: #b8860b;
+  --muted: #6b5f4e;
+  --tmc: #1a7a3c;
+  --cbi: #1565c0;
+  --ed: #7b1fa2;
+  --sc: #b8860b;
+}
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--paper); color:var(--ink);
+  font-family:'Crimson Pro',serif; font-size:18px; line-height:1.7;
+  overflow-x:hidden;
+}
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999; opacity:0.5;
+}
+
+/* ── NAV ── */
+.site-nav { background:#050403; border-bottom:1px solid rgba(255,255,255,0.06); padding:9px 0; position:relative; z-index:10000; }
+.site-nav-inner { max-width:1100px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+.site-nav-brand { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(245,240,232,0.35); }
+.site-nav-links { display:flex; flex-wrap:wrap; }
+.site-nav-link { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,240,232,0.45); text-decoration:none; padding:3px 14px; border-left:1px solid rgba(255,255,255,0.07); transition:color 0.2s; }
+.site-nav-link:first-child { border-left:none; }
+.site-nav-link:hover { color:rgba(245,240,232,0.9); }
+.site-nav-link.active { color:rgba(245,240,232,0.9); }
+
+/* ── MASTHEAD ── */
+.masthead { border-bottom:4px double var(--ink); padding:1.5rem 2rem 1rem; text-align:center; background:var(--paper); }
+.masthead-overline { font-family:'IBM Plex Mono',monospace; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); padding:0.3rem 0; margin-bottom:1rem; }
+.masthead h1 { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,6vw,5rem); font-weight:900; line-height:1.0; letter-spacing:-0.02em; text-transform:uppercase; }
+.masthead h1 em { font-style:italic; color:var(--accent); }
+.masthead-sub { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1rem,2.5vw,1.35rem); color:var(--muted); margin-top:0.5rem; }
+.masthead-meta { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; color:var(--muted); margin-top:1rem; border-top:1px solid var(--aged); padding-top:0.6rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
+
+/* ── STATS HERO ── */
+.stats-hero { background:var(--ink); color:var(--paper); padding:2.5rem 2rem; text-align:center; }
+.stats-grid { display:flex; justify-content:center; flex-wrap:wrap; max-width:800px; margin:0 auto; }
+.stat-cell { padding:1.2rem 2rem; border-right:1px solid rgba(255,255,255,0.1); }
+.stat-cell:last-child { border-right:none; }
+.stat-big { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; line-height:1; color:var(--accent); }
+.stat-label { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:#8a8070; margin-top:0.3rem; }
+.stats-disclaimer { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:#6a6050; margin-top:1.5rem; max-width:700px; margin-left:auto; margin-right:auto; }
+
+/* ── LAYOUT ── */
+.container { max-width:1100px; margin:0 auto; padding:0 2rem; }
+
+/* ── FILTER TABS ── */
+.filter-bar { border-bottom:1px solid var(--aged); background:var(--paper); padding:0 2rem; position:sticky; top:0; z-index:100; }
+.filter-inner { max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; gap:0; overflow-x:auto; }
+.filter-btn { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.75rem 1.2rem; border:none; background:none; cursor:pointer; color:var(--muted); border-bottom:2px solid transparent; white-space:nowrap; transition:color 0.2s, border-color 0.2s; }
+.filter-btn:hover { color:var(--ink); }
+.filter-btn.active { color:var(--accent); border-bottom-color:var(--accent); font-weight:500; }
+
+/* ── CASE COUNT ── */
+.case-count-bar { max-width:1100px; margin:2rem auto 0; padding:0 2rem; display:flex; justify-content:space-between; align-items:baseline; }
+.case-count-label { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); }
+
+/* ── CASE CARDS ── */
+#caseList { max-width:1100px; margin:0 auto; padding:0 2rem 4rem; }
+.case-card {
+  border:1px solid var(--aged); background:#fdfaf4;
+  margin:2rem 0; overflow:hidden;
+  transition:box-shadow 0.2s;
+}
+.case-card:hover { box-shadow:0 4px 24px rgba(10,8,4,0.1); }
+.case-card[hidden] { display:none; }
+
+.case-header { padding:1.2rem 1.5rem 1rem; border-bottom:1px solid var(--aged); display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap; }
+.case-header-left { flex:1; min-width:0; }
+.case-header-tags { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.5rem; }
+.case-name { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,3vw,1.9rem); font-weight:700; line-height:1.15; }
+.case-scale { font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:var(--muted); margin-top:0.3rem; letter-spacing:0.05em; }
+.case-header-right { text-align:right; flex-shrink:0; }
+.case-year { font-family:'Playfair Display',serif; font-size:2.5rem; font-weight:900; line-height:1; color:var(--aged); }
+
+.case-body { display:grid; grid-template-columns:1fr 320px; gap:0; }
+.case-main { padding:1.4rem 1.5rem; border-right:1px solid var(--aged); }
+.case-sidebar { padding:1.4rem 1.5rem; background:#f8f3eb; }
+
+.case-summary { font-family:'Crimson Pro',serif; font-size:1rem; line-height:1.65; color:#2a2018; margin-bottom:1.2rem; }
+
+.case-section-title { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; padding-bottom:0.3rem; border-bottom:1px solid var(--aged); }
+
+/* Accused list */
+.accused-list { list-style:none; }
+.accused-item { padding:0.55rem 0; border-bottom:1px solid var(--aged); display:flex; gap:0.6rem; align-items:flex-start; }
+.accused-item:last-child { border-bottom:none; }
+.accused-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:0.45rem; }
+.accused-dot.tmc { background:#1a7a3c; }
+.accused-dot.bjp { background:#e8640a; }
+.accused-dot.none { background:#8a7a6a; }
+.accused-dot.bsf { background:#1565c0; }
+.accused-info { flex:1; min-width:0; }
+.accused-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; }
+.accused-role { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:var(--muted); letter-spacing:0.05em; }
+.accused-detail { font-family:'Crimson Pro',serif; font-size:0.88rem; color:#4a3a2a; margin-top:0.2rem; line-height:1.45; }
+.accused-status-tag { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.52rem; letter-spacing:0.1em; text-transform:uppercase; padding:2px 6px; border-radius:2px; margin-left:0.4rem; white-space:nowrap; vertical-align:middle; }
+.tag-arrested  { background:rgba(192,23,27,0.1);  color:#c0171b; border:1px solid rgba(192,23,27,0.25); }
+.tag-bail      { background:rgba(180,83,9,0.1);   color:#b45309; border:1px solid rgba(180,83,9,0.25); }
+.tag-trial     { background:rgba(217,119,6,0.1);  color:#d97706; border:1px solid rgba(217,119,6,0.25); }
+.tag-convicted { background:rgba(192,23,27,0.15); color:#7f0e10; border:1px solid rgba(192,23,27,0.4); font-weight:500; }
+.tag-acquitted { background:rgba(22,101,52,0.1);  color:#166534; border:1px solid rgba(22,101,52,0.25); }
+.tag-absconding{ background:#1a1208; color:#e8c87a; border:1px solid rgba(184,134,11,0.4); }
+.tag-named     { background:rgba(107,95,78,0.1);  color:#6b5f4e; border:1px solid rgba(107,95,78,0.25); }
+.tag-deceased  { background:rgba(107,95,78,0.15); color:#4a3a2a; border:1px solid rgba(107,95,78,0.3); }
+
+/* Timeline */
+.timeline { list-style:none; }
+.tl-item { padding:0.45rem 0 0.45rem 1rem; border-left:2px solid var(--aged); position:relative; }
+.tl-item::before { content:''; position:absolute; left:-4px; top:0.7rem; width:6px; height:6px; border-radius:50%; background:var(--muted); }
+.tl-item:last-child { border-left-color:transparent; }
+.tl-date { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; color:var(--accent); }
+.tl-event { font-family:'Crimson Pro',serif; font-size:0.9rem; color:#3a2a18; line-height:1.4; }
+
+/* Agency tags */
+.agency-tag { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; padding:2px 7px; border-radius:2px; margin:2px; }
+.agency-cbi { background:rgba(21,101,192,0.12); color:#1565c0; border:1px solid rgba(21,101,192,0.3); }
+.agency-ed  { background:rgba(123,31,162,0.1); color:#7b1fa2; border:1px solid rgba(123,31,162,0.25); }
+.agency-sc  { background:rgba(184,134,11,0.12); color:#8a6200; border:1px solid rgba(184,134,11,0.3); }
+.agency-sfio{ background:rgba(22,101,52,0.1); color:#166534; border:1px solid rgba(22,101,52,0.25); }
+.agency-nhrc{ background:rgba(192,23,27,0.1); color:#c0171b; border:1px solid rgba(192,23,27,0.25); }
+
+/* Category & status badges */
+.cat-badge { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; padding:3px 8px; background:var(--aged); color:var(--muted); border:1px solid rgba(107,95,78,0.3); border-radius:2px; }
+.status-badge { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; padding:3px 9px; border-radius:2px; white-space:nowrap; font-weight:500; }
+.s-investigation { background:rgba(21,101,192,0.12); color:#1565c0; border:1px solid rgba(21,101,192,0.3); }
+.s-trial         { background:rgba(217,119,6,0.12);  color:#d97706; border:1px solid rgba(217,119,6,0.3); }
+.s-convicted     { background:rgba(192,23,27,0.1);   color:#c0171b; border:1px solid rgba(192,23,27,0.3); }
+.s-stalled       { background:rgba(107,95,78,0.12);  color:#6b5f4e; border:1px solid rgba(107,95,78,0.3); }
+.s-monitoring    { background:rgba(184,134,11,0.12); color:#8a6200; border:1px solid rgba(184,134,11,0.3); }
+
+.case-footer { padding:0.7rem 1.5rem; background:var(--aged); border-top:1px solid rgba(107,95,78,0.2); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:var(--muted); letter-spacing:0.05em; }
+
+/* ── METHODOLOGY ── */
+.method-box { background:var(--aged); border:1px solid rgba(107,95,78,0.3); padding:1.5rem; margin:3rem 0; }
+.method-box h4 { font-family:'IBM Plex Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; border-bottom:1px solid rgba(107,95,78,0.3); padding-bottom:0.5rem; }
+.method-box p { font-size:0.9rem; color:var(--muted); margin-bottom:0.6rem; line-height:1.6; }
+.method-box p:last-child { margin-bottom:0; }
+
+/* ── LEGAL DISCLAIMER ── */
+.legal-note { border-left:4px solid var(--muted); background:var(--aged); padding:1rem 1.5rem; margin:2.5rem 0; font-family:'IBM Plex Mono',monospace; font-size:0.62rem; color:var(--muted); line-height:1.6; letter-spacing:0.03em; }
+
+/* ── FOOTER ── */
+footer { background:#0a0804; color:#5a5040; padding:2rem; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; }
+footer a { color:#8a7a60; text-decoration:none; }
+
+.hr-ornate { border:none; border-top:1px solid var(--aged); margin:2.5rem 0; position:relative; }
+.hr-ornate::before { content:'◆'; position:absolute; top:-0.6rem; left:50%; transform:translateX(-50%); background:var(--paper); padding:0 0.5rem; color:var(--muted); font-size:0.7rem; }
+
+.fade-in { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:760px) {
+  .case-body { grid-template-columns:1fr; }
+  .case-main { border-right:none; border-bottom:1px solid var(--aged); }
+  .stat-cell { padding:0.9rem 1.2rem; }
+  .case-year { font-size:1.8rem; }
+  .filter-btn { padding:0.6rem 0.9rem; font-size:0.58rem; }
+}
+@media(max-width:480px) {
+  .case-header { flex-direction:column; }
+  .case-header-right { text-align:left; }
+}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav-inner">
+    <span class="site-nav-brand">The Bengal Reader</span>
+    <div class="site-nav-links">
+      <a href="/" class="site-nav-link">Voter Guide</a>
+      <a href="/parties" class="site-nav-link">Party Compass</a>
+      <a href="/constituencies" class="site-nav-link">2026 Results</a>
+      <a href="/demonetisation" class="site-nav-link">Demonetisation</a>
+      <a href="/accountability" class="site-nav-link">100 Days</a>
+      <a href="/corruption" class="site-nav-link active">Dossier</a>
+    </div>
+  </div>
+</nav>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-overline">Political Accountability · West Bengal · Court-Verified Records</div>
+  <h1>Bengal <em>Corruption</em> Dossier</h1>
+  <p class="masthead-sub">Every Documented Case. Every Named Accused. Every Court.</p>
+  <div class="masthead-meta">
+    <span>Sources: CBI · ED · Supreme Court · Calcutta HC · NHRC · SEBI</span>
+    <span>Cases: 8 tracked · Accused: 20+ named</span>
+    <span>Updated: May 2026</span>
+  </div>
+</header>
+
+<!-- STATS HERO -->
+<section class="stats-hero">
+  <div class="stats-grid">
+    <div class="stat-cell">
+      <div class="stat-big" id="totalCases">8</div>
+      <div class="stat-label">Cases Tracked</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">₹20,000<span style="font-size:1.5rem">cr+</span></div>
+      <div class="stat-label">Estimated Losses</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">20+</div>
+      <div class="stat-label">Politicians Named</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">3</div>
+      <div class="stat-label">Central Agencies</div>
+    </div>
+  </div>
+  <p class="stats-disclaimer">All figures are estimates from CBI/ED chargesheets, court records, and SEBI orders. Cases span 2008–2026. Some figures are under dispute in court.</p>
+</section>
+
+<!-- LEGAL DISCLAIMER -->
+<div class="container">
+  <div class="legal-note" style="margin-top:2rem;">
+    ⚖ LEGAL NOTE: All individuals listed below are accused or named in court/agency filings. Criminal charges are allegations unless a court has recorded a conviction. Bail does not imply innocence or guilt. This page reproduces publicly available court, agency, and media records only.
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-bar" role="tablist" aria-label="Filter cases by category">
+  <div class="filter-inner">
+    <button class="filter-btn active" data-filter="all" role="tab">All Cases (8)</button>
+    <button class="filter-btn" data-filter="ponzi" role="tab">Ponzi / Chit Fund</button>
+    <button class="filter-btn" data-filter="bribery" role="tab">Political Bribery</button>
+    <button class="filter-btn" data-filter="jobs" role="tab">Recruitment Fraud</button>
+    <button class="filter-btn" data-filter="trafficking" role="tab">Trafficking</button>
+    <button class="filter-btn" data-filter="mining" role="tab">Mining &amp; Resources</button>
+    <button class="filter-btn" data-filter="ration" role="tab">Food / Ration</button>
+    <button class="filter-btn" data-filter="violence" role="tab">Political Violence</button>
+  </div>
+</div>
+
+<div class="case-count-bar">
+  <span class="case-count-label" id="caseCountLabel">Showing 8 of 8 cases</span>
+  <span class="case-count-label" style="opacity:0.6">sorted chronologically by exposure date</span>
+</div>
+
+<!-- CASE LIST (rendered by JS) -->
+<div id="caseList"></div>
+
+<div class="container">
+  <div class="method-box fade-in">
+    <h4>How to Read This Dossier</h4>
+    <p><strong>Status definitions:</strong> <em>Investigation</em> — probe ongoing, no chargesheet yet. <em>Trial</em> — chargesheet filed, court hearings underway. <em>Convicted</em> — court has recorded a guilty verdict. <em>Court Monitoring</em> — Supreme Court or High Court directly supervising the case. <em>Stalled</em> — no significant progress for 12+ months.</p>
+    <p><strong>Agency abbreviations:</strong> CBI — Central Bureau of Investigation. ED — Enforcement Directorate (financial crimes, PMLA). SC — Supreme Court of India. SFIO — Serious Fraud Investigation Office. NHRC — National Human Rights Commission.</p>
+    <p><strong>Accused status:</strong> Arrested = taken into custody at some point. Bail = released on bail (case ongoing). Trial = charges framed, evidence being heard. Convicted = guilty verdict recorded. Absconding = evading arrest, look-out notice issued. Named = mentioned in FIR/chargesheet, not yet arrested.</p>
+    <p><strong>Sources:</strong> CBI chargesheets (public domain), ED press releases, Supreme Court and Calcutta HC orders, SEBI adjudication orders, NHRC reports, and reporting by The Hindu, Indian Express, Anandabazar Patrika, and Hindustan Times. Last verified: May 2026.</p>
+  </div>
+
+  <hr class="hr-ornate">
+
+  <div class="legal-note" style="font-size:0.58rem;">
+    TO ADD A NEW CASE: Open corruption-tracker.html and add a new object to the CASES array at the top of the &lt;script&gt; tag. Every field is documented in the array comments. The page renders automatically from the data — no HTML editing needed.
+  </div>
+</div>
+
+<footer>
+  <p>Sources: CBI · Enforcement Directorate · Supreme Court of India · Calcutta High Court · SEBI · NHRC · <a href="https://adrindia.org" target="_blank">ADR India</a></p>
+  <p style="margin-top:0.5rem;opacity:0.5;">This page reproduces publicly available court, agency, and investigative records. It is not legal advice. Status is updated as court orders and agency press releases are published.</p>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// CASES DATA ARRAY
+// To add a new case, copy the template below and add it to this array.
+//
+// TEMPLATE:
+// {
+//   id: 'unique-kebab-id',        // string, no spaces
+//   name: 'Full Case Name',        // string
+//   category: 'ponzi',            // ponzi | bribery | jobs | trafficking | mining | ration | violence
+//   yearExposed: 2022,            // number: year the case became public
+//   amount: '₹2,500 crore',       // string: estimated financial scale (or null)
+//   victims: '17 lakh investors', // string: who was harmed (or null)
+//   status: 'trial',              // investigation | trial | convicted | stalled | monitoring
+//   agencies: ['CBI','ED'],       // array of strings: CBI | ED | SC | SFIO | NHRC | SIT
+//   court: 'Calcutta HC',        // string
+//   accused: [
+//     {
+//       name: 'Full Name',
+//       role: 'Position / Title',
+//       party: 'TMC',             // TMC | BJP | CPIM | none | BSF
+//       status: 'bail',          // arrested | bail | trial | convicted | acquitted | absconding | named | deceased
+//       detail: 'Brief detail about their role or what was found'
+//     }
+//   ],
+//   timeline: [
+//     { date: '2013 Apr', event: 'Description of event' }
+//   ],
+//   summary: 'Multi-sentence summary of the case.',
+//   lastUpdated: '2026-05',       // YYYY-MM string
+// }
+// ─────────────────────────────────────────────────────────────────────────────
+
+const CASES = [
+
+  {
+    id: 'saradha',
+    name: 'Saradha Chit Fund Collapse',
+    category: 'ponzi',
+    yearExposed: 2013,
+    amount: '₹2,500 crore (official estimate)',
+    victims: '~17 lakh small investors, mostly rural Bengal',
+    status: 'trial',
+    agencies: ['CBI','ED','SFIO'],
+    court: 'CBI Special Court + Calcutta HC',
+    accused: [
+      { name:'Sudipta Sen', role:'Saradha Group founder', party:'none', status:'trial', detail:'Arrested April 2013 in Jammu after fleeing Kolkata. Wrote letter to CBI naming politicians. Chargesheeted; trial ongoing.' },
+      { name:'Madan Mitra', role:'TMC Transport Minister', party:'TMC', status:'bail', detail:'Arrested Nov 2014 by CBI; in custody ~14 months; granted bail Feb 2016. Trial ongoing.' },
+      { name:'Kunal Ghosh', role:'TMC Rajya Sabha MP', party:'TMC', status:'bail', detail:'Arrested Nov 2013; attempted suicide in jail; bail granted. Later rejoined TMC.' },
+      { name:'Srinjoy Bose', role:'TMC Rajya Sabha MP', party:'TMC', status:'bail', detail:'Arrested 2013; expelled from TMC. Chargesheeted by CBI.' },
+    ],
+    timeline: [
+      { date:'2008–12', event:'Saradha Group mobilises deposits from small investors across Bengal, Odisha, and North-East.' },
+      { date:'2013 Apr', event:'Saradha collapses; Sudipta Sen flees, arrested in Jammu–Kashmir. Investors lose savings.' },
+      { date:'2013 Nov', event:'CBI takes over from state SIT on Supreme Court order. Kunal Ghosh arrested.' },
+      { date:'2014 Nov', event:'Madan Mitra arrested by CBI.' },
+      { date:'2016 Feb', event:'Calcutta HC grants bail to Madan Mitra.' },
+      { date:'2017+', event:'CBI files multiple chargesheets naming politicians, Saradha agents, and company officials.' },
+      { date:'2025–26', event:'Trial ongoing in CBI Special Court. Multiple bail applications and HC challenges slow proceedings.' },
+    ],
+    summary: 'The Saradha Group collapsed in April 2013, wiping out the savings of an estimated 17 lakh small investors — mostly women and rural families across Bengal, Odisha, and Assam who had deposited money in chit-fund and real-estate schemes. The Supreme Court transferred the investigation to the CBI, which filed chargesheets naming TMC politicians as recipients of funds and political cover. The case remains in trial, slowed by repeated bail applications, HC stays, and the sheer volume of accused.',
+    lastUpdated: '2026-05',
+  },
+
+  {
+    id: 'rose-valley',
+    name: 'Rose Valley Ponzi Scheme',
+    category: 'ponzi',
+    yearExposed: 2015,
+    amount: '₹17,500 crore mobilised (ED estimate)',
+    victims: '~59 lakh investors across Eastern India',
+    status: 'trial',
+    agencies: ['CBI','ED','SFIO','SEBI'],
+    court: 'CBI Special Court + Calcutta HC',
+    accused: [
+      { name:'Gautam Kundu', role:'Rose Valley Group chairman', party:'none', status:'trial', detail:'Arrested by CBI 2015. Chargesheeted. Trial ongoing; has been granted interim bails.' },
+      { name:'Sudip Bandyopadhyay', role:'TMC Lok Sabha MP (Kolkata Uttar)', party:'TMC', status:'bail', detail:'Arrested by CBI January 2017 for allegedly facilitating Rose Valley operations. Bail granted by Calcutta HC.' },
+      { name:'Tapas Paul', role:'TMC Lok Sabha MP (Krishnanagar)', party:'TMC', status:'deceased', detail:'Named accused; arrested December 2016; died February 2018 while on bail. Case closed against him.' },
+    ],
+    timeline: [
+      { date:'~2007–13', event:'Rose Valley Group runs hotel, real-estate, and chit-fund schemes collecting deposits across Bengal, Odisha, Jharkhand.' },
+      { date:'2013–14', event:'SEBI issues cease-and-desist orders against Rose Valley; company defies them.' },
+      { date:'2015 Feb', event:'CBI arrests Gautam Kundu; ED attaches assets.' },
+      { date:'2016 Dec', event:'Tapas Paul (TMC MP) arrested by CBI.' },
+      { date:'2017 Jan', event:'Sudip Bandyopadhyay (TMC MP) arrested by CBI.' },
+      { date:'2018 Feb', event:'Tapas Paul dies of heart failure while on bail. Case against him closes.' },
+      { date:'2019–26', event:'Multiple chargesheets filed; trial in CBI Special Court ongoing. Asset recovery proceedings continue.' },
+    ],
+    summary: 'Rose Valley was one of India\'s largest Ponzi schemes by volume — the Enforcement Directorate estimated ₹17,500 crore mobilised from ~59 lakh investors across Eastern India. SEBI had repeatedly flagged the scheme as illegal, but state government intervention allegedly shielded it. CBI investigations named two sitting TMC Members of Parliament as accused. Asset recovery proceedings have yielded partial funds but the bulk of investor money remains unrecovered.',
+    lastUpdated: '2026-05',
+  },
+
+  {
+    id: 'narada',
+    name: 'Narada Sting Operation',
+    category: 'bribery',
+    yearExposed: 2016,
+    amount: 'Cash payments on tape (₹5 lakh–₹10 lakh per person)',
+    victims: 'Bengal electorate — systematic bribery of elected officials',
+    status: 'trial',
+    agencies: ['CBI'],
+    court: 'Calcutta HC (overseeing CBI trial court)',
+    accused: [
+      { name:'Firhad Hakim', role:'TMC Minister / Kolkata Mayor', party:'TMC', status:'bail', detail:'Caught on tape accepting cash. Arrested by CBI May 2021; Calcutta HC granted bail same day.' },
+      { name:'Madan Mitra', role:'TMC Minister', party:'TMC', status:'bail', detail:'Caught on tape. Arrested May 2021; bailed same day by HC.' },
+      { name:'Subrata Mukherjee', role:'TMC Minister (Panchayat)', party:'TMC', status:'deceased', detail:'Arrested May 2021. Died November 2021 of cardiac arrest while charges pending.' },
+      { name:'Sovan Chatterjee', role:'Kolkata Mayor (then TMC)', party:'none', status:'bail', detail:'Caught on tape; later left TMC; arrested May 2021; bail granted.' },
+      { name:'Iqbal Ahmed', role:'IPS Officer', party:'none', status:'bail', detail:'Caught on tape accepting cash; arrested; bail granted.' },
+    ],
+    timeline: [
+      { date:'2014', event:'Journalist Matthew Samuel poses as a business executive; secretly records 13 TMC leaders and an IPS officer accepting cash bribes.' },
+      { date:'2016 Mar', event:'Tapes released publicly days before Bengal assembly elections — roiling the campaign.' },
+      { date:'2017', event:'CBI registers FIR; Calcutta HC transfers investigation to CBI.' },
+      { date:'2021 May', event:'CBI arrests Firhad Hakim, Madan Mitra, Subrata Mukherjee, Sovan Chatterjee. Calcutta HC grants bail within hours amid political protests.' },
+      { date:'2021 Nov', event:'Subrata Mukherjee dies; case against him closes.' },
+      { date:'2022–26', event:'CBI trial proceeds at a slow pace; multiple HC applications by accused. No conviction as of May 2026.' },
+    ],
+    summary: 'In 2014, journalist Matthew Samuel of Mathew Communications conducted a sting in which he posed as a representative of a fictitious company seeking favours, and recorded 13 TMC leaders and an IPS officer accepting cash on camera. The tapes were released in March 2016, two weeks before the Bengal assembly election, causing national outrage. The CBI eventually filed a chargesheet and arrested several accused in May 2021 — but Calcutta HC granted bail the same day amid dramatic scenes of Chief Minister Mamata Banerjee staging a sit-in outside the CBI office. The trial has proceeded slowly since.',
+    lastUpdated: '2026-05',
+  },
+
+  {
+    id: 'ssc-scam',
+    name: 'SSC Recruitment Scam',
+    category: 'jobs',
+    yearExposed: 2022,
+    amount: 'Estimated ₹100 crore+ in bribes; 25,753 jobs sold',
+    victims: 'Qualified candidates who were bypassed; Bengal\'s school system',
+    status: 'monitoring',
+    agencies: ['CBI','ED','SC'],
+    court: 'Supreme Court of India (direct oversight) + Calcutta HC',
+    accused: [
+      { name:'Partha Chatterjee', role:'Education Minister, West Bengal', party:'TMC', status:'arrested', detail:'Arrested by ED 23 July 2022. Cash of ₹49.8 crore and 5 kg gold seized from homes of his close associate Arpita Mukherjee. Expelled from TMC.' },
+      { name:'Manik Bhattacharya', role:'SSC Board Chairman / TMC MLA (Palashpai)', party:'TMC', status:'bail', detail:'Arrested by CBI October 2022. Bail granted by Calcutta HC 2023. Trial ongoing.' },
+      { name:'Arpita Mukherjee', role:'TMC-linked businesswoman (Partha\'s associate)', party:'TMC', status:'bail', detail:'₹49.8 crore cash, 5.08 kg gold, and foreign currency seized from her two Kolkata homes. Key alleged money conduit.' },
+      { name:'Shanti Prasad Sinha', role:'School Education Dept adviser', party:'none', status:'bail', detail:'Named in CBI chargesheet; arrested; bail granted.' },
+    ],
+    timeline: [
+      { date:'2016', event:'WBSSC Group C/D and teacher recruitment process held across Bengal.' },
+      { date:'2021–22', event:'Calcutta HC receives petitions alleging OMR sheet manipulation and rank-list alteration.' },
+      { date:'2022 Jul', event:'Calcutta HC orders CBI probe. ED mounts parallel PMLA investigation.' },
+      { date:'2022 Jul 23', event:'Partha Chatterjee arrested by ED. ₹49.8 cr cash seized at Arpita Mukherjee\'s homes. Partha expelled from TMC.' },
+      { date:'2022 Oct', event:'Manik Bhattacharya (SSC chairman) arrested by CBI.' },
+      { date:'2024 Apr', event:'Supreme Court cancels all 25,753 tainted appointments — unprecedented blanket cancellation. Orders fresh recruitment.' },
+      { date:'2025–26', event:'Fresh recruitment underway under HC monitoring. Trial against accused ongoing. Asset recovery proceedings active.' },
+    ],
+    summary: 'West Bengal\'s most consequential corruption case by institutional damage. The School Service Commission\'s Group C/D and teacher recruitment processes were systematically rigged — OMR sheets altered, rank lists manipulated, unqualified candidates inserted in exchange for cash payments routed through the Education Minister and the SSC chairman. The Supreme Court in April 2024 took the extraordinary step of cancelling all 25,753 tainted appointments and ordering a fresh, court-monitored process. The cash seizures at Arpita Mukherjee\'s home — ₹49.8 crore stacked in bundles — became an iconic image of Bengal\'s governance failure.',
+    lastUpdated: '2026-05',
+  },
+
+  {
+    id: 'cattle-trafficking',
+    name: 'Cattle Trafficking Network',
+    category: 'trafficking',
+    yearExposed: 2021,
+    amount: 'Estimated hundreds of crores annually',
+    victims: 'BSF institutional integrity; Bangladesh border communities',
+    status: 'trial',
+    agencies: ['CBI','ED'],
+    court: 'CBI Special Court, Asansol + Calcutta HC',
+    accused: [
+      { name:'Anubrata Mondal ("Kesto")', role:'TMC Birbhum District President', party:'TMC', status:'bail', detail:'Arrested by CBI 11 August 2022. Spent 17 months in custody. Bail granted by Supreme Court December 2023. Trial ongoing.' },
+      { name:'Enamul Haq', role:'Cattle trader, key smuggling operator', party:'none', status:'trial', detail:'Arrested by BSF; identified as the central figure in the smuggling network at the India-Bangladesh border.' },
+      { name:'Sehgal Hossain', role:'BSF Sub-Inspector', party:'none', status:'convicted', detail:'Convicted by a special court for facilitating cattle smuggling; sentenced to imprisonment.' },
+      { name:'Sukanya Mondal', role:'Anubrata Mondal\'s daughter', party:'TMC', status:'bail', detail:'Arrested by ED in assets-linked probe. Bail granted.' },
+    ],
+    timeline: [
+      { date:'2015–20', event:'Systematic cattle smuggling network operates across the Murshidabad-Malda-Cooch Behar border belt into Bangladesh.' },
+      { date:'2021', event:'CBI opens investigation following BSF internal probe. Enamul Haq arrested.' },
+      { date:'2022 Aug 11', event:'Anubrata Mondal arrested by CBI — first arrest of a sitting senior TMC district chief.' },
+      { date:'2022–23', event:'ED arrests Sukanya Mondal (daughter). Multiple bank accounts and assets attached.' },
+      { date:'2023 Dec', event:'Supreme Court grants bail to Anubrata Mondal after 17 months in custody.' },
+      { date:'2024–26', event:'Trial proceeds; BSF officer convicted; chargesheet against Mondal being heard.' },
+    ],
+    summary: 'A decade-long organised cattle smuggling network operated at Bengal\'s border with Bangladesh, allegedly under the political protection of TMC\'s powerful Birbhum district chief Anubrata Mondal. BSF officers were bribed, cattle traders paid fixed tolls, and proceeds allegedly flowed upwards through the political hierarchy. The CBI\'s arrest of Mondal in August 2022 — who had been summoned nine times before and refused to appear — was a watershed moment. A BSF sub-inspector has been convicted; the trial against Mondal continues.',
+    lastUpdated: '2026-05',
+  },
+
+  {
+    id: 'coal-mafia',
+    name: 'Coal & Mining Mafia',
+    category: 'mining',
+    yearExposed: 2022,
+    amount: 'Estimated ₹1,300 crore+ (ED estimate of laundered proceeds)',
+    victims: 'Eastern Coalfields Ltd; public exchequer',
+    status: 'investigation',
+    agencies: ['CBI','ED'],
+    court: 'Calcutta HC + CBI Special Court',
+    accused: [
+      { name:'Vinay Mishra', role:'TMC IT Cell chief / Abhishek Banerjee\'s associate', party:'TMC', status:'absconding', detail:'Fled to Oman/Russia after CBI look-out notice. Indian diplomatic passport reportedly revoked. Has not appeared before investigators.' },
+      { name:'Anup Majee ("Lala")', role:'Coal trader, Bankura', party:'none', status:'bail', detail:'Key operator of illegal coal extraction from ECL mines. Arrested by CBI; bail granted. Assets attached by ED.' },
+      { name:'Abhijit Banerjee (Bapi)', role:'TMC-linked businessman, Howrah', party:'TMC', status:'bail', detail:'Arrested in money laundering probe; bail. Not the Nobel economist Abhijit Banerjee.' },
+    ],
+    timeline: [
+      { date:'2015–20', event:'Systematic illegal coal extraction from Eastern Coalfields Ltd mines in the Asansol–Raniganj belt. Coal sold in black market.' },
+      { date:'2020', event:'CBI begins probe after mining workers\' complaints and internal ECL report.' },
+      { date:'2021', event:'Anup Majee ("Lala") arrested. ED opens PMLA case, begins attaching properties.' },
+      { date:'2022', event:'CBI issues summons to Vinay Mishra. He flees to Oman, later reportedly to Russia. Look-out circular issued.' },
+      { date:'2023', event:'ED chargesheet filed naming Vinay Mishra as key accused. Assets worth hundreds of crores attached.' },
+      { date:'2024–26', event:'Vinay Mishra remains abroad. Trial of other accused ongoing. International red corner notice status unclear.' },
+    ],
+    summary: 'Large-scale illegal coal extraction from Eastern Coalfields Ltd mines in Bengal\'s Asansol–Raniganj belt fed a black-market supply chain worth hundreds of crores annually. The CBI linked the network to Vinay Mishra, a close associate of TMC MP Abhishek Banerjee who served as TMC\'s IT cell chief. Mishra fled India before he could be arrested — reportedly obtaining travel documents and leaving for Oman, then Russia — and remains the most prominent absconder in any Bengal corruption case. The ED has attached significant assets but the primary accused remains beyond reach.',
+    lastUpdated: '2026-05',
+  },
+
+  {
+    id: 'ration-scam',
+    name: 'Ration / PDS Distribution Scam',
+    category: 'ration',
+    yearExposed: 2023,
+    amount: 'Estimated ₹500–1,000 crore siphoned from PDS',
+    victims: 'BPL families dependent on subsidised ration across Bengal',
+    status: 'trial',
+    agencies: ['ED','CBI'],
+    court: 'Calcutta HC + ED Special Court',
+    accused: [
+      { name:'Jyoti Priya Mallick ("Bali Da")', role:'TMC Food & Civil Supplies Minister (2011–2022)', party:'TMC', status:'bail', detail:'Arrested by ED October 2023. Held in custody for several months; bail granted. Trial ongoing.' },
+      { name:'Bacchu Das', role:'TMC-linked ration dealer / close associate', party:'TMC', status:'bail', detail:'Arrested alongside Mallick; identified as a key operator in ration card and dealer-licence fraud.' },
+    ],
+    timeline: [
+      { date:'2011–22', event:'Jyoti Priya Mallick serves as Food & Civil Supplies Minister through two TMC terms.' },
+      { date:'2022', event:'ED begins PMLA probe into PDS dealer-licence allocation and fund diversion.' },
+      { date:'2023 Oct', event:'ED arrests Mallick and Bacchu Das. Bank accounts and properties attached.' },
+      { date:'2023–24', event:'Bail granted after several months in custody. ED chargesheet filed.' },
+      { date:'2024–26', event:'Trial ongoing. Mallick contends from the Habra constituency where he lost by 1,04,645 votes in the 2026 election.' },
+    ],
+    summary: 'The Public Distribution System — meant to deliver subsidised food grains to Bengal\'s 9+ crore ration card holders — was allegedly converted into a cash-generating operation during Jyoti Priya Mallick\'s 11-year tenure as Food Minister. Ration dealer licences were allegedly sold and renewed for cash, and grain allocations manipulated to divert funds. The ED arrested Mallick in October 2023 in what was one of the highest-profile ministerial arrests of the TMC era. The scale of the scam is disputed but ED estimates run into hundreds of crores. Mallick was defeated in the 2026 election by a margin of over one lakh votes.',
+    lastUpdated: '2026-05',
+  },
+
+  {
+    id: 'post-poll-violence-2021',
+    name: 'Post-Poll Violence 2021',
+    category: 'violence',
+    yearExposed: 2021,
+    amount: null,
+    victims: 'Documented: 16+ killed, hundreds displaced (NHRC report)',
+    status: 'monitoring',
+    agencies: ['CBI','NHRC','SC'],
+    court: 'Calcutta HC + Supreme Court of India',
+    accused: [
+      { name:'TMC local leaders (multiple districts)', role:'Various local TMC functionaries', party:'TMC', status:'named', detail:'NHRC and CBI reports name local TMC leaders in specific acts of violence, arson, and displacement in Cooch Behar, South 24 Parganas, Purba Medinipur, and Nadia.' },
+      { name:'BJP local workers (some incidents)', role:'Retaliatory violence in some areas', party:'BJP', status:'named', detail:'NHRC report also documents some incidents attributed to BJP workers, though TMC workers are the primary named accused.' },
+    ],
+    timeline: [
+      { date:'2021 May 2', event:'Bengal election result: TMC wins with 213/294. Within hours, widespread violence reported across the state.' },
+      { date:'2021 May', event:'NHRC constitutes inquiry committee; visits affected districts. Documents 16 deaths, over 100 cases of arson, hundreds of displaced persons.' },
+      { date:'2021 Jun', event:'Calcutta HC takes up PIL; orders CBI probe into a subset of 8 specific cases.' },
+      { date:'2021 Aug', event:'CBI begins investigating court-mandated cases.' },
+      { date:'2022–24', event:'CBI files chargesheets in some cases. Accused get bail. Trials proceed slowly.' },
+      { date:'2026 May', event:'New BJP government pledges full investigation and victim relief as one of its first stated priorities.' },
+    ],
+    summary: 'In the hours and days following TMC\'s 2021 assembly election victory, the National Human Rights Commission documented 16 confirmed deaths, widespread displacement, arson of homes, and sexual violence primarily targeting political opponents and their families. The NHRC report described a "complete breakdown of constitutional machinery." The Calcutta High Court ordered CBI probes into 8 specific cases. While some chargesheets have been filed, the pace of justice has been slow, bail has been routinely granted, and comprehensive accountability — including for higher-level direction of the violence — has not been established.',
+    lastUpdated: '2026-05',
+  },
+
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RENDER ENGINE — do not edit below unless changing the card design
+// ─────────────────────────────────────────────────────────────────────────────
+
+const CAT_LABELS = {
+  ponzi:'Ponzi / Chit Fund', bribery:'Political Bribery', jobs:'Recruitment Fraud',
+  trafficking:'Trafficking', mining:'Mining / Resources', ration:'Food / Ration', violence:'Political Violence'
+};
+
+const STATUS_CLASS = {
+  investigation:'s-investigation', trial:'s-trial', convicted:'s-convicted', stalled:'s-stalled', monitoring:'s-monitoring'
+};
+const STATUS_LABEL = {
+  investigation:'Investigation', trial:'Trial', convicted:'Convicted', stalled:'Stalled', monitoring:'Court Monitoring'
+};
+
+const AGENCY_CLASS = { CBI:'agency-cbi', ED:'agency-ed', SC:'agency-sc', SFIO:'agency-sfio', NHRC:'agency-nhrc', SIT:'agency-cbi' };
+const ACCUSED_STATUS_CLASS = {
+  arrested:'tag-arrested', bail:'tag-bail', trial:'tag-trial', convicted:'tag-convicted',
+  acquitted:'tag-acquitted', absconding:'tag-absconding', named:'tag-named', deceased:'tag-deceased'
+};
+const PARTY_DOT = { TMC:'tmc', BJP:'bjp', none:'none', BSF:'bsf' };
+
+function buildAccusedItem(a) {
+  const dot = PARTY_DOT[a.party] || 'none';
+  const stClass = ACCUSED_STATUS_CLASS[a.status] || 'tag-named';
+  return `<li class="accused-item">
+    <span class="accused-dot ${dot}"></span>
+    <div class="accused-info">
+      <div class="accused-name">${a.name}<span class="accused-status-tag ${stClass}">${a.status}</span></div>
+      <div class="accused-role">${a.role}${a.party !== 'none' ? ' · ' + a.party : ''}</div>
+      ${a.detail ? `<div class="accused-detail">${a.detail}</div>` : ''}
+    </div>
+  </li>`;
+}
+
+function buildTimelineItem(t) {
+  return `<li class="tl-item">
+    <div class="tl-date">${t.date}</div>
+    <div class="tl-event">${t.event}</div>
+  </li>`;
+}
+
+function buildCard(c) {
+  const agencyTags = c.agencies.map(a => `<span class="agency-tag ${AGENCY_CLASS[a]||'agency-cbi'}">${a}</span>`).join('');
+  const amountLine = c.amount ? `<div class="case-scale">Scale: ${c.amount}${c.victims ? ' · Victims: ' + c.victims : ''}</div>` : (c.victims ? `<div class="case-scale">Victims: ${c.victims}</div>` : '');
+  return `<div class="case-card fade-in" data-category="${c.category}" id="case-${c.id}">
+  <div class="case-header">
+    <div class="case-header-left">
+      <div class="case-header-tags">
+        <span class="cat-badge">${CAT_LABELS[c.category]||c.category}</span>
+        <span class="status-badge ${STATUS_CLASS[c.status]||'s-stalled'}">${STATUS_LABEL[c.status]||c.status}</span>
+        ${agencyTags}
+      </div>
+      <div class="case-name">${c.name}</div>
+      ${amountLine}
+    </div>
+    <div class="case-header-right">
+      <div class="case-year">${c.yearExposed}</div>
+    </div>
+  </div>
+  <div class="case-body">
+    <div class="case-main">
+      <p class="case-summary">${c.summary}</p>
+      <div class="case-section-title">Key Accused</div>
+      <ul class="accused-list">${c.accused.map(buildAccusedItem).join('')}</ul>
+    </div>
+    <div class="case-sidebar">
+      <div class="case-section-title">Timeline</div>
+      <ul class="timeline">${c.timeline.map(buildTimelineItem).join('')}</ul>
+    </div>
+  </div>
+  <div class="case-footer">
+    <span>Court: ${c.court}</span>
+    <span>Last updated: ${c.lastUpdated}</span>
+  </div>
+</div>`;
+}
+
+function render(filter) {
+  const filtered = filter === 'all' ? CASES : CASES.filter(c => c.category === filter);
+  document.getElementById('caseList').innerHTML = filtered.map(buildCard).join('');
+  document.getElementById('caseCountLabel').textContent = `Showing ${filtered.length} of ${CASES.length} cases`;
+  document.querySelectorAll('.case-card.fade-in').forEach(el => {
+    requestAnimationFrame(() => setTimeout(() => el.classList.add('visible'), 50));
+  });
+  observer.disconnect();
+  document.querySelectorAll('.fade-in:not(.case-card)').forEach(el => observer.observe(el));
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render(btn.dataset.filter);
+  });
+});
+
+// Fade observer
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold:0.06, rootMargin:'0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in:not(.case-card)').forEach(el => observer.observe(el));
+
+// Initial render
+render('all');
+</script>
+</body>
+</html>
