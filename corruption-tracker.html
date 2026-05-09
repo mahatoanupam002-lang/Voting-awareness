@@ -218,6 +218,77 @@ footer a { color:#8a7a60; text-decoration:none; }
   .case-header { flex-direction:column; }
   .case-header-right { text-align:left; }
 }
+
+/* ── LIVE NEWS FEED ── */
+.news-feed-wrap {
+  background:#0d0b09; color:var(--paper);
+  padding:1.6rem 0 2rem; border-bottom:2px solid #222;
+}
+.news-feed-top {
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:0.5rem; margin-bottom:1.2rem;
+}
+.news-feed-label {
+  font-family:'IBM Plex Mono',monospace; font-size:0.62rem;
+  letter-spacing:0.25em; text-transform:uppercase; color:var(--accent);
+  display:flex; align-items:center; gap:0.5rem;
+}
+.news-live-dot {
+  width:7px; height:7px; border-radius:50%; background:var(--accent);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.4; transform:scale(0.7); }
+}
+.news-refresh-status {
+  font-family:'IBM Plex Mono',monospace; font-size:0.58rem;
+  letter-spacing:0.1em; color:#5a5040;
+}
+.news-refresh-btn {
+  font-family:'IBM Plex Mono',monospace; font-size:0.58rem;
+  letter-spacing:0.12em; text-transform:uppercase;
+  background:none; border:1px solid #333; color:#6a6050;
+  padding:3px 10px; cursor:pointer; transition:all 0.2s;
+}
+.news-refresh-btn:hover { border-color:#888; color:#aaa; }
+.news-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  gap:1px; background:#1a1614;
+}
+.news-card {
+  background:#0d0b09; padding:1rem 1.2rem;
+  transition:background 0.2s; border:none;
+}
+.news-card:hover { background:#151210; }
+.news-card-case {
+  font-family:'IBM Plex Mono',monospace; font-size:0.55rem;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:0.4rem;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.news-card-title {
+  font-family:'Crimson Pro',serif; font-size:1rem; font-weight:600;
+  line-height:1.4; color:rgba(245,240,232,0.9); margin-bottom:0.5rem;
+}
+.news-card-title a {
+  color:inherit; text-decoration:none;
+}
+.news-card-title a:hover { text-decoration:underline; }
+.news-card-meta {
+  font-family:'IBM Plex Mono',monospace; font-size:0.55rem;
+  letter-spacing:0.08em; color:#5a5040;
+  display:flex; gap:0.7rem; flex-wrap:wrap;
+}
+.news-empty {
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+  color:#3a3028; text-align:center; padding:2rem;
+  letter-spacing:0.1em;
+}
+@media(max-width:600px) {
+  .news-grid { grid-template-columns:1fr; }
+}
 </style>
 </head>
 <body>
@@ -292,6 +363,25 @@ footer a { color:#8a7a60; text-decoration:none; }
     <table class="docket-table" id="docketTable">
       <tbody id="docketBody"></tbody>
     </table>
+  </div>
+</div>
+
+<!-- LIVE NEWS FEED -->
+<div class="news-feed-wrap" id="newsFeedSection">
+  <div class="container">
+    <div class="news-feed-top">
+      <div class="news-feed-label">
+        <span class="news-live-dot"></span>
+        Live News — auto-refreshes every 6 hours
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <span class="news-refresh-status" id="newsStatus">Loading…</span>
+        <button class="news-refresh-btn" onclick="refreshNews()">Refresh</button>
+      </div>
+    </div>
+    <div id="newsFeedContent">
+      <div class="news-empty">Fetching latest headlines…</div>
+    </div>
   </div>
 </div>
 
@@ -509,7 +599,93 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold:0.06, rootMargin:'0px 0px -40px 0px' });
 
-// ── Load data from JSON (auto-updated weekly by GitHub Actions) ───────────────
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function timeAgo(isoStr) {
+  if (!isoStr) return '';
+  const diff = Date.now() - new Date(isoStr).getTime();
+  const min = Math.floor(diff / 60000);
+  if (min < 2)  return 'just now';
+  if (min < 60) return `${min} min ago`;
+  const hr = Math.floor(min / 60);
+  if (hr < 24)  return `${hr}h ago`;
+  return `${Math.floor(hr / 24)}d ago`;
+}
+
+// ── Live news feed ────────────────────────────────────────────────────────────
+let NEWS_DATA = null;
+let newsRefreshTimer = null;
+
+function renderNewsFeed() {
+  const el = document.getElementById('newsFeedContent');
+  if (!el) return;
+
+  if (!NEWS_DATA || !NEWS_DATA.cases) {
+    el.innerHTML = '<div class="news-empty">No news data available.</div>';
+    return;
+  }
+
+  const nameMap = {};
+  CASES.forEach(c => { nameMap[c.id] = c.name; });
+
+  // Flatten all articles with case context
+  const all = [];
+  for (const [caseId, data] of Object.entries(NEWS_DATA.cases)) {
+    (data.articles || []).forEach(art => {
+      all.push({ ...art, caseId, caseName: nameMap[caseId] || caseId });
+    });
+  }
+
+  if (!all.length) {
+    el.innerHTML = '<div class="news-empty">No recent headlines found. Checks run every 6 hours.</div>';
+    return;
+  }
+
+  // Sort newest first, show up to 12
+  all.sort((a, b) => (b.pubDate || '').localeCompare(a.pubDate || ''));
+  const shown = all.slice(0, 12);
+
+  el.innerHTML = `<div class="news-grid">${shown.map(item => {
+    const titleHtml = item.url
+      ? `<a href="${escHtml(item.url)}" target="_blank" rel="noopener">${escHtml(item.title)}</a>`
+      : escHtml(item.title);
+    return `<div class="news-card">
+      <div class="news-card-case">${escHtml(item.caseName)}</div>
+      <div class="news-card-title">${titleHtml}</div>
+      <div class="news-card-meta">
+        <span>${escHtml(item.source || 'News')}</span>
+        <span>${item.pubDate || ''}</span>
+      </div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+async function refreshNews() {
+  const statusEl = document.getElementById('newsStatus');
+  if (statusEl) statusEl.textContent = 'Checking…';
+  try {
+    const res = await fetch('/data/news.json?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    NEWS_DATA = await res.json();
+    renderNewsFeed();
+    if (statusEl) statusEl.textContent = `Updated ${timeAgo(NEWS_DATA.generated)}`;
+  } catch(e) {
+    if (statusEl) statusEl.textContent = 'Feed unavailable';
+    const el = document.getElementById('newsFeedContent');
+    if (el && !NEWS_DATA) el.innerHTML = '<div class="news-empty">Live feed unavailable — check back soon.</div>';
+  }
+}
+
+// Auto-refresh news every 30 minutes (data itself updates every 6h via GitHub Actions)
+function scheduleNewsRefresh() {
+  clearTimeout(newsRefreshTimer);
+  newsRefreshTimer = setTimeout(() => { refreshNews(); scheduleNewsRefresh(); }, 30 * 60 * 1000);
+}
+
+// ── Main data loader ──────────────────────────────────────────────────────────
 async function loadData() {
   try {
     const [casesRes, metaRes] = await Promise.all([
@@ -520,9 +696,13 @@ async function loadData() {
     const meta = await metaRes.json();
     if (meta.autoChecked) {
       const el = document.getElementById('autoStatus');
-      if (el) el.textContent = `Auto-checked: ${meta.autoChecked}`;
+      if (el) {
+        const ts = meta.autoChecked.length > 10
+          ? `Checked ${timeAgo(meta.autoChecked)}`
+          : `Checked: ${meta.autoChecked}`;
+        el.textContent = ts;
+      }
     }
-    // Update filter tab count from live data
     const allBtn = document.getElementById('filterBtnAll');
     if (allBtn) allBtn.textContent = `All Cases (${CASES.length})`;
   } catch (e) {
@@ -536,6 +716,10 @@ async function loadData() {
   renderHearings();
   render('all');
   document.querySelectorAll('.fade-in:not(.case-card)').forEach(el => observer.observe(el));
+
+  // Load live news feed in parallel (non-blocking)
+  refreshNews();
+  scheduleNewsRefresh();
 }
 
 loadData();
