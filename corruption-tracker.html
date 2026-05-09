@@ -298,7 +298,7 @@ footer a { color:#8a7a60; text-decoration:none; }
 <!-- FILTER TABS -->
 <div class="filter-bar" role="tablist" aria-label="Filter cases by category">
   <div class="filter-inner">
-    <button class="filter-btn active" data-filter="all" role="tab">All Cases (8)</button>
+    <button class="filter-btn active" data-filter="all" role="tab" id="filterBtnAll">All Cases</button>
     <button class="filter-btn" data-filter="ponzi" role="tab">Ponzi / Chit Fund</button>
     <button class="filter-btn" data-filter="bribery" role="tab">Political Bribery</button>
     <button class="filter-btn" data-filter="jobs" role="tab">Recruitment Fraud</button>
@@ -494,9 +494,10 @@ function render(filter) {
   document.querySelectorAll('.fade-in:not(.case-card)').forEach(el => observer.observe(el));
 }
 
-// Filter buttons
+// Filter buttons — guarded: no-op until data is loaded
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
+    if (!CASES.length) return;
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     render(btn.dataset.filter);
@@ -521,6 +522,9 @@ async function loadData() {
       const el = document.getElementById('autoStatus');
       if (el) el.textContent = `Auto-checked: ${meta.autoChecked}`;
     }
+    // Update filter tab count from live data
+    const allBtn = document.getElementById('filterBtnAll');
+    if (allBtn) allBtn.textContent = `All Cases (${CASES.length})`;
   } catch (e) {
     document.getElementById('caseList').innerHTML = `
       <div style="text-align:center;padding:4rem 2rem;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--muted);">
