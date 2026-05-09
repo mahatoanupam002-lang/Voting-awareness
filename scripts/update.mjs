@@ -1,27 +1,22 @@
 /**
  * scripts/update.mjs
- * Weekly auto-update for The Bengal Reader.
- * Run by GitHub Actions every Sunday night.
+ * Auto-update for The Bengal Reader — runs every 6 hours via GitHub Actions.
  *
- * Sources checked:
- *   1. enforcement.gov.in — ED press releases (Bengal-filtered)
- *   2. Google News RSS — per-case keyword queries
- *   3. cbi.gov.in — CBI press releases (Bengal-filtered)
+ * Sources:
+ *   1. Google News RSS  — per-case keyword queries (primary)
+ *   2. enforcement.gov.in — ED press releases (Bengal-filtered)
+ *   3. cbi.gov.in       — CBI press releases (Bengal-filtered)
  *
- * What it does:
- *   - Adds timeline entries for confirmed new developments
- *   - Updates lastUpdated field on matched cases
- *   - Bumps meta.json autoChecked timestamp
- *   - Never deletes existing data — only appends
- *
- * To add a new case to auto-tracking: add its id and keywords to CASE_KEYWORDS below.
+ * Writes:
+ *   data/news.json  — rolling fresh headlines per case (overwritten every run)
+ *   data/cases.json — permanent timeline entries for significant developments
+ *   data/meta.json  — autoChecked timestamp
+ *   sitemap.xml     — lastmod dates kept current
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 // ── Keywords per case ─────────────────────────────────────────────────────────
-// Each array: first item is the primary Google News search query.
-// All items are checked against ED/CBI press release text.
 const CASE_KEYWORDS = {
   'saradha':              ['Saradha chit fund', 'Saradha scam court', 'Madan Mitra Saradha', 'Kunal Ghosh Saradha'],
   'rose-valley':          ['Rose Valley ponzi', 'Rose Valley court', 'Sudip Bandyopadhyay court'],
@@ -33,19 +28,27 @@ const CASE_KEYWORDS = {
   'post-poll-violence-2021': ['post poll violence Bengal 2021 CBI', 'Bengal violence 2021 court', 'NHRC Bengal 2021'],
 };
 
+// ── Step summary helper ───────────────────────────────────────────────────────
+const summaryLines = [];
+function summaryWrite(line) {
+  summaryLines.push(line);
+  console.log(line.replace(/[*#`_]/g, '').trim());
+}
+function flushSummary() {
+  const path = process.env.GITHUB_STEP_SUMMARY;
+  if (path) {
+    try { writeFileSync(path, summaryLines.join('\n') + '\n', { flag: 'a' }); } catch { /**/ }
+  }
+}
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function fmtMonthYear(d) {
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   return `${d.getFullYear()} ${months[d.getMonth()]}`;
 }
-
-function today() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-function thisMonth() {
-  return today().slice(0, 7);
-}
+function today()     { return new Date().toISOString().slice(0, 10); }
+function thisMonth() { return today().slice(0, 7); }
+function nowISO()    { return new Date().toISOString(); }
 
 async function safeFetch(url, opts = {}) {
   try {
@@ -72,12 +75,22 @@ async function fetchGoogleNews(query) {
   const rx = /<item>([\s\S]*?)<\/item>/g;
   let m;
   while ((m = rx.exec(xml)) !== null) {
-    const body = m[1];
+    const body  = m[1];
     const title = (/<title><!\[CDATA\[([\s\S]*?)\]\]>/.exec(body) || /<title>([\s\S]*?)<\/title>/.exec(body) || [])[1];
     const pub   = (/<pubDate>([\s\S]*?)<\/pubDate>/.exec(body) || [])[1];
+    const link  = (/<link>([\s\S]*?)<\/link>/.exec(body)  || [])[1];
+    const src   = (/<source[^>]*>([\s\S]*?)<\/source>/.exec(body) || [])[1];
     if (title && pub) {
       const date = new Date(pub);
-      if (!isNaN(date)) items.push({ title: title.replace(/<[^>]+>/g, '').trim(), date });
+      if (!isNaN(date)) {
+        items.push({
+          title:  title.replace(/<[^>]+>/g, '').trim(),
+          date,
+          pubDate: date.toISOString().slice(0, 10),
+          url:    (link || '').trim(),
+          source: (src  || 'Google News').replace(/<[^>]+>/g, '').trim(),
+        });
+      }
     }
   }
   return items;
@@ -89,7 +102,6 @@ async function fetchEDReleases() {
   if (!html) return [];
 
   const results = [];
-  // Extract links + text from the press releases list
   const rx = /href="([^"]*(?:press|release|attachment)[^"]*)"[^>]*>([\s\S]{10,300}?)<\/a>/gi;
   let m;
   while ((m = rx.exec(html)) !== null) {
@@ -118,108 +130,184 @@ async function fetchCBIReleases() {
   return results;
 }
 
-// ── Already-seen guard ────────────────────────────────────────────────────────
-// Returns true if this timeline entry (by URL or this-week fingerprint) was already added.
-function alreadySeen(timeline, sourceUrl, weekKey) {
-  return timeline.some(t =>
-    (sourceUrl && t.autoFrom === sourceUrl) ||
-    (t.autoAdded && t.autoAdded.slice(0, 7) === weekKey)
+// ── Dedup helpers ─────────────────────────────────────────────────────────────
+// For press releases: exact URL match
+function urlSeen(timeline, url) {
+  return url && timeline.some(t => t.autoFrom === url);
+}
+
+// For news: check if we already logged a news summary today
+function newsSummaryAddedToday(timeline) {
+  const t = today();
+  return timeline.some(e => e.autoAdded === t && e.source === 'Google News RSS');
+}
+
+// Check if a headline is novel vs what's already in the timeline this week
+function headlineIsFresh(timeline, title) {
+  const weekAgo = new Date(Date.now() - 7 * 86400_000).toISOString().slice(0, 10);
+  const fp = title.toLowerCase().slice(0, 50);
+  return !timeline.some(t =>
+    t.autoAdded >= weekAgo &&
+    t.event && t.event.toLowerCase().includes(fp)
   );
+}
+
+// ── Sitemap updater ───────────────────────────────────────────────────────────
+function updateSitemap(dateStr) {
+  const path = 'sitemap.xml';
+  if (!existsSync(path)) return;
+  try {
+    const xml = readFileSync(path, 'utf-8');
+    writeFileSync(path, xml.replace(/<lastmod>[^<]+<\/lastmod>/g, `<lastmod>${dateStr}</lastmod>`));
+  } catch (e) { console.warn('sitemap update failed:', e.message); }
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
+  const runDate = today();
+  const runISO  = nowISO();
+  summaryWrite(`# Bengal Reader — Auto-Update ${runISO}`);
+  summaryWrite('');
+
   const cases = JSON.parse(readFileSync('data/cases.json', 'utf-8'));
-  const meta  = JSON.parse(readFileSync('data/meta.json', 'utf-8'));
+  const meta  = JSON.parse(readFileSync('data/meta.json',  'utf-8'));
   const now   = new Date();
-  const cutoff = new Date(now - 8 * 86400_000); // 8 days ago
+  const cutoff24h = new Date(now - 24  * 3600_000);   // articles in last 24 h
+  const cutoff7d  = new Date(now - 7   * 86400_000);  // articles in last 7 d
 
-  let totalChanges = 0;
+  let timelineAdded = 0;
+  const errors = [];
 
-  // 1. ED press releases
-  console.log('\n── Fetching ED press releases…');
-  const edReleases = await fetchEDReleases();
-  console.log(`   Found ${edReleases.length} Bengal-relevant releases`);
+  // news.json accumulator — fresh every run
+  const newsFeed = {};
+  for (const c of cases) newsFeed[c.id] = { articles: [], count24h: 0, count7d: 0 };
+
+  // ── 1. ED press releases ──────────────────────────────────────────────────
+  summaryWrite('## Enforcement Directorate');
+  let edReleases = [];
+  try {
+    edReleases = await fetchEDReleases();
+    summaryWrite(`Found **${edReleases.length}** Bengal-relevant ED releases.`);
+  } catch (e) {
+    errors.push(`ED fetch: ${e.message}`);
+    summaryWrite(`⚠️ ED fetch failed: ${e.message}`);
+  }
   for (const c of cases) {
-    const kws = CASE_KEYWORDS[c.id] || [];
-    for (const r of edReleases) {
-      if (kws.some(kw => r.title.toLowerCase().includes(kw.toLowerCase().split(' ')[0]))) {
-        if (!alreadySeen(c.timeline, r.url, thisMonth())) {
-          c.timeline.push({
-            date: fmtMonthYear(now),
-            event: `ED: ${r.title}`,
-            autoAdded: today(),
-            autoFrom: r.url,
-            source: 'ED press release',
-          });
+    try {
+      const kws = CASE_KEYWORDS[c.id] || [];
+      for (const r of edReleases) {
+        const matchKw = kws.find(kw => r.title.toLowerCase().includes(kw.toLowerCase().split(' ')[0]));
+        if (matchKw && !urlSeen(c.timeline, r.url)) {
+          c.timeline.push({ date: fmtMonthYear(now), event: `ED: ${r.title}`, autoAdded: runDate, autoFrom: r.url, source: 'ED press release' });
           c.lastUpdated = thisMonth();
-          totalChanges++;
-          console.log(`   + ED → ${c.id}: ${r.title.slice(0, 60)}…`);
+          timelineAdded++;
+          summaryWrite(`- ✅ **${c.id}** (ED): ${r.title.slice(0, 70)}…`);
         }
       }
-    }
+    } catch (e) { errors.push(`ED match ${c.id}: ${e.message}`); }
   }
+  summaryWrite('');
 
-  // 2. CBI press releases
-  console.log('\n── Fetching CBI press releases…');
-  const cbiReleases = await fetchCBIReleases();
-  console.log(`   Found ${cbiReleases.length} Bengal-relevant releases`);
+  // ── 2. CBI press releases ─────────────────────────────────────────────────
+  summaryWrite('## Central Bureau of Investigation');
+  let cbiReleases = [];
+  try {
+    cbiReleases = await fetchCBIReleases();
+    summaryWrite(`Found **${cbiReleases.length}** Bengal-relevant CBI releases.`);
+  } catch (e) {
+    errors.push(`CBI fetch: ${e.message}`);
+    summaryWrite(`⚠️ CBI fetch failed: ${e.message}`);
+  }
   for (const c of cases) {
-    const kws = CASE_KEYWORDS[c.id] || [];
-    for (const r of cbiReleases) {
-      if (kws.some(kw => r.title.toLowerCase().includes(kw.toLowerCase().split(' ')[0]))) {
-        if (!alreadySeen(c.timeline, r.url, thisMonth())) {
-          c.timeline.push({
-            date: fmtMonthYear(now),
-            event: `CBI: ${r.title}`,
-            autoAdded: today(),
-            autoFrom: r.url,
-            source: 'CBI press release',
-          });
+    try {
+      const kws = CASE_KEYWORDS[c.id] || [];
+      for (const r of cbiReleases) {
+        const matchKw = kws.find(kw => r.title.toLowerCase().includes(kw.toLowerCase().split(' ')[0]));
+        if (matchKw && !urlSeen(c.timeline, r.url)) {
+          c.timeline.push({ date: fmtMonthYear(now), event: `CBI: ${r.title}`, autoAdded: runDate, autoFrom: r.url, source: 'CBI press release' });
           c.lastUpdated = thisMonth();
-          totalChanges++;
-          console.log(`   + CBI → ${c.id}: ${r.title.slice(0, 60)}…`);
+          timelineAdded++;
+          summaryWrite(`- ✅ **${c.id}** (CBI): ${r.title.slice(0, 70)}…`);
         }
       }
-    }
+    } catch (e) { errors.push(`CBI match ${c.id}: ${e.message}`); }
   }
+  summaryWrite('');
 
-  // 3. Google News RSS per case
-  console.log('\n── Fetching Google News per case…');
+  // ── 3. Google News RSS per case ───────────────────────────────────────────
+  summaryWrite('## Google News — per case');
   for (const c of cases) {
     const kws = CASE_KEYWORDS[c.id];
-    if (!kws) { console.log(`   skip ${c.id} (no keywords)`); continue; }
+    if (!kws) { summaryWrite(`- ⏭️ **${c.id}**: no keywords`); continue; }
 
-    const items = await fetchGoogleNews(kws[0]);
-    const recent = items.filter(n => n.date > cutoff);
+    try {
+      const items = await fetchGoogleNews(kws[0]);
 
-    if (recent.length >= 3 && !alreadySeen(c.timeline, null, thisMonth())) {
-      const headline = recent[0].title.slice(0, 120);
-      c.timeline.push({
-        date: fmtMonthYear(now),
-        event: `${recent.length} news reports this week. Latest: "${headline}"`,
-        autoAdded: today(),
-        source: 'Google News RSS',
-      });
-      c.lastUpdated = thisMonth();
-      totalChanges++;
-      console.log(`   + news → ${c.id}: ${recent.length} articles`);
-    } else {
-      console.log(`   · ${c.id}: ${recent.length} recent articles — no update`);
+      // Populate news feed (always fresh — latest 6 per case)
+      const sorted = items.sort((a, b) => b.date - a.date);
+      newsFeed[c.id].articles  = sorted.slice(0, 6).map(({ title, pubDate, url, source }) => ({ title, pubDate, url, source }));
+      newsFeed[c.id].count24h  = items.filter(n => n.date > cutoff24h).length;
+      newsFeed[c.id].count7d   = items.filter(n => n.date > cutoff7d).length;
+
+      // Add timeline entry if: 2+ articles in last 24 h AND headline is novel AND not already added today
+      const recent24h = items.filter(n => n.date > cutoff24h);
+      if (recent24h.length >= 2 && !newsSummaryAddedToday(c.timeline)) {
+        const top = recent24h[0];
+        if (headlineIsFresh(c.timeline, top.title)) {
+          c.timeline.push({
+            date:      fmtMonthYear(now),
+            event:     `${recent24h.length} news reports in last 24 h. Latest: "${top.title.slice(0, 110)}"`,
+            autoAdded: runDate,
+            source:    'Google News RSS',
+          });
+          c.lastUpdated = thisMonth();
+          timelineAdded++;
+          summaryWrite(`- ✅ **${c.id}**: ${recent24h.length} articles today — timeline entry added`);
+        } else {
+          summaryWrite(`- · **${c.id}**: ${recent24h.length} articles today — headline seen, skipping`);
+        }
+      } else {
+        summaryWrite(`- · **${c.id}**: ${recent24h.length} in 24 h / ${newsFeed[c.id].count7d} in 7 d`);
+      }
+    } catch (e) {
+      errors.push(`News ${c.id}: ${e.message}`);
+      summaryWrite(`- ⚠️ **${c.id}**: ${e.message}`);
     }
 
     await new Promise(r => setTimeout(r, 600)); // rate-limit politeness
   }
+  summaryWrite('');
 
-  // 4. Update meta
-  meta.autoChecked = today();
+  // ── 4. Write data files ───────────────────────────────────────────────────
+  meta.autoChecked = runISO;
 
-  // 5. Write files
+  const newsDoc = { generated: runISO, cases: newsFeed };
+
   writeFileSync('data/cases.json', JSON.stringify(cases, null, 2));
   writeFileSync('data/meta.json',  JSON.stringify(meta,  null, 2));
+  writeFileSync('data/news.json',  JSON.stringify(newsDoc, null, 2));
 
-  console.log(`\n✓ Done. ${totalChanges} timeline entries added. autoChecked: ${meta.autoChecked}`);
+  updateSitemap(runDate);
+
+  // ── 5. Summary footer ─────────────────────────────────────────────────────
+  summaryWrite('## Result');
+  summaryWrite(`- **${timelineAdded}** permanent timeline entries added`);
+  summaryWrite(`- \`data/news.json\` refreshed with latest headlines for all ${cases.length} cases`);
+  summaryWrite(`- \`meta.autoChecked\` → \`${runISO}\``);
+  if (errors.length) {
+    summaryWrite('\n### ⚠️ Non-fatal errors');
+    errors.forEach(e => summaryWrite(`- ${e}`));
+  } else {
+    summaryWrite('- No errors');
+  }
+
+  flushSummary();
   process.exit(0);
 }
 
-main().catch(err => { console.error('Update script failed:', err); process.exit(1); });
+main().catch(err => {
+  summaryWrite(`\n## ❌ Script crashed\n\`\`\`\n${err.stack}\n\`\`\``);
+  flushSummary();
+  console.error('Update script crashed:', err);
+  process.exit(1);
+});

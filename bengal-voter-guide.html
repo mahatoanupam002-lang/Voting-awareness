@@ -554,6 +554,85 @@ body::before {
 /* FOCUS STYLES */
 :focus-visible { outline:2px solid var(--saffron); outline-offset:3px; }
 
+/* ── SITE TOOLS GRID ── */
+@keyframes live-pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.35; transform:scale(.65); }
+}
+.tools-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:1px; background:var(--rule);
+  border:1px solid var(--rule);
+}
+.tool-card {
+  background:var(--paper); padding:26px 22px;
+  text-decoration:none; color:var(--ink);
+  display:flex; flex-direction:column; gap:0;
+  transition:background .18s;
+}
+[data-theme="dark"] .tool-card { background:var(--paper-dark); }
+.tool-card:hover { background:var(--paper-mid); }
+[data-theme="dark"] .tool-card:hover { background:var(--paper-mid); }
+.tool-card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
+.tool-icon { font-size:20px; line-height:1; }
+.tool-badge {
+  font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:.18em;
+  text-transform:uppercase; padding:2px 8px; border:1px solid;
+  display:flex; align-items:center; gap:5px; flex-shrink:0;
+}
+.tool-badge.live  { color:var(--red);    border-color:rgba(184,35,28,.3); }
+.tool-badge.data  { color:var(--green);  border-color:rgba(31,107,58,.3); }
+.tool-badge.guide { color:var(--saffron);border-color:rgba(217,119,6,.3); }
+.tool-badge.final { color:var(--ink-soft);border-color:var(--rule); }
+.tool-badge-dot {
+  width:5px; height:5px; border-radius:50%; background:currentColor;
+  animation:live-pulse 2s infinite;
+}
+.tool-title {
+  font-family:'Fraunces',serif; font-size:18px; font-weight:700;
+  line-height:1.2; margin-bottom:7px; color:var(--ink);
+}
+.tool-desc {
+  font-size:13px; color:var(--ink-soft); line-height:1.55; margin-bottom:14px; flex:1;
+}
+.tool-arrow {
+  font-family:'JetBrains Mono',monospace; font-size:9px;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-faint); margin-top:auto;
+}
+.tool-arrow::after { content:' →'; }
+@media(max-width:680px) {
+  .tools-grid { grid-template-columns:1fr; }
+}
+
+/* ── LIVE STATUS STRIP ── */
+.live-status-strip {
+  background:#0d0b09; border-bottom:1px solid #1e1b18;
+  padding:8px 0;
+}
+.live-status-inner {
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:8px;
+}
+.live-status-dot {
+  display:inline-block; width:6px; height:6px; border-radius:50%;
+  background:#c0171b; margin-right:7px;
+  animation:live-pulse 2s infinite; vertical-align:middle;
+}
+.live-status-text {
+  font-family:'JetBrains Mono',monospace; font-size:9px;
+  letter-spacing:.15em; text-transform:uppercase; color:#5a5040;
+}
+.live-status-text strong { color:#8a7060; }
+.live-day-badge {
+  font-family:'JetBrains Mono',monospace; font-size:9px;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:#e8640a; border:1px solid rgba(232,100,10,.25);
+  padding:2px 10px;
+}
+
 /* LOCAL STAKES */
 .stakes-grid {
   display:grid; grid-template-columns:repeat(4,1fr);
@@ -842,13 +921,24 @@ body::before {
   <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাংলা</button>
 </div>
 
+<!-- LIVE STATUS STRIP -->
+<div class="live-status-strip">
+  <div class="live-status-inner">
+    <div class="live-status-text">
+      <span class="live-status-dot"></span>
+      <strong>Auto-updating</strong> · Corruption tracker, MLA records &amp; news refreshed every 6 hours via GitHub Actions
+    </div>
+    <span class="live-day-badge" id="dayBadge">BJP Day 1</span>
+  </div>
+</div>
+
 <!-- 2026 RESULTS BANNER -->
 <div style="background:#0d0b09;border-bottom:2px solid #e8640a;padding:0;">
-  <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
     <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#e8640a;padding:10px 0 6px;">
       ⚡ Results — West Bengal Assembly Election 2026 · May 8, 2026
     </div>
-    <div style="display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.06);padding:12px 0;">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0;border-top:1px solid rgba(255,255,255,.06);padding:12px 0;">
       <div style="padding:8px 24px 8px 0;border-right:1px solid rgba(255,255,255,.08);margin-right:24px;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:#e8640a;">BJP 206</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#e8640a;opacity:.7;margin-top:2px;">45.84% · Two-Thirds Majority</div>
@@ -857,9 +947,13 @@ body::before {
         <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:rgba(244,241,234,.45);">TMC 80</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(244,241,234,.3);margin-top:2px;">41.08% · Opposition</div>
       </div>
-      <div style="flex:1;min-width:200px;padding:8px 0 8px 24px;margin-left:auto;border-left:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(244,241,234,.4);line-height:1.7;">
+      <div style="padding:8px 24px 8px 0;border-right:1px solid rgba(255,255,255,.08);margin-right:24px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:rgba(244,241,234,.25);">Others 8</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(244,241,234,.2);margin-top:2px;">CPIM 5 · INC 3</div>
+      </div>
+      <div style="flex:1;min-width:200px;padding:8px 0 8px 24px;margin-left:auto;border-left:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(244,241,234,.4);line-height:1.9;">
         Mamata Banerjee loses Bhabanipur · Suvendu Adhikari leads CM race<br>
-        15 years of TMC rule ended · The hand changed. Watch the new one.
+        15 years of TMC rule ended · <a href="/accountability" style="color:#e8640a;text-decoration:none;">Track BJP's 24 promises →</a>
       </div>
     </div>
   </div>
@@ -918,6 +1012,100 @@ body::before {
     </div>
   </div>
 </div>
+
+<!-- SITE TOOLS -->
+<section class="section-wrap" style="padding:56px 0;">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:40px;">
+      <div class="section-kicker">Data that updates automatically · every 6 hours</div>
+      <h2 class="section-title">Tools on <em>this site</em></h2>
+      <p class="section-sub">Court records, MLA affidavits, asset declarations, electoral bonds — all in one place. No login. No paywall. Updated around the clock.</p>
+    </div>
+    <div class="tools-grid reveal">
+
+      <a href="/corruption" class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-icon">⚡</span>
+          <span class="tool-badge live"><span class="tool-badge-dot"></span>Live</span>
+        </div>
+        <div class="tool-title">Bengal Corruption Dossier</div>
+        <p class="tool-desc">8 major cases — Saradha, SSC scam, cattle trafficking, coal mafia and more. Includes a live news feed refreshed every 6 hours, court hearing calendar, and named accused with bail status.</p>
+        <span class="tool-arrow">Open dossier</span>
+      </a>
+
+      <a href="/accountability" class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-icon">✅</span>
+          <span class="tool-badge live"><span class="tool-badge-dot"></span>Live</span>
+        </div>
+        <div class="tool-title">BJP 100-Day Accountability</div>
+        <p class="tool-desc">BJP won a two-thirds majority on May 8, 2026. We're tracking 24 of their biggest pledges — anti-syndicate action, Narada CBI transfer, PMAY backlogs, Metro Phase IV — against what's actually happening.</p>
+        <span class="tool-arrow">Track promises</span>
+      </a>
+
+      <a href="/assets" class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-icon">📈</span>
+          <span class="tool-badge data">Data</span>
+        </div>
+        <div class="tool-title">MLA Wealth Growth 2021→2026</div>
+        <p class="tool-desc">39 MLAs' declared assets compared across the two election cycles. Who grew 300% on a politician's salary? Spotlights on Partha Chatterjee (₹49.8 cr seized) and other extreme cases.</p>
+        <span class="tool-arrow">See the numbers</span>
+      </a>
+
+      <a href="/mlas" class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-icon">🔍</span>
+          <span class="tool-badge data">Data</span>
+        </div>
+        <div class="tool-title">MLA Criminal Records</div>
+        <p class="tool-desc">Every Bengal MLA's declared criminal cases from their 2026 affidavit. Searchable and filterable by party, district, and case type — sourced directly from ECI filings.</p>
+        <span class="tool-arrow">Search records</span>
+      </a>
+
+      <a href="/bonds" class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-icon">💰</span>
+          <span class="tool-badge data">Data</span>
+        </div>
+        <div class="tool-title">Electoral Bonds Money Trail</div>
+        <p class="tool-desc">₹1,609 crore in electoral bonds — who bought them, which parties received the money, and how much came from companies with pending government cases. Supreme Court disclosure data.</p>
+        <span class="tool-arrow">Follow the money</span>
+      </a>
+
+      <a href="/constituencies" class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-icon">🗳️</span>
+          <span class="tool-badge final">Final</span>
+        </div>
+        <div class="tool-title">2026 Constituency Results</div>
+        <p class="tool-desc">All 294 seats — winner, party, margin, vote share. Filter by party or district. Includes the Bhabanipur result, Nandigram rematch, and every key swing seat.</p>
+        <span class="tool-arrow">Browse results</span>
+      </a>
+
+      <a href="/parties" class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-icon">⚖️</span>
+          <span class="tool-badge guide">Guide</span>
+        </div>
+        <div class="tool-title">Party Compass</div>
+        <p class="tool-desc">Radar chart comparing BJP, TMC, CPIM, INC, and ISF across 8 policy dimensions — welfare, education, law &amp; order, anti-corruption — against what Bengal actually needs.</p>
+        <span class="tool-arrow">Compare parties</span>
+      </a>
+
+      <a href="/demonetisation" class="tool-card">
+        <div class="tool-card-top">
+          <span class="tool-icon">🏦</span>
+          <span class="tool-badge guide">Analysis</span>
+        </div>
+        <div class="tool-title">Demonetisation: What Happened</div>
+        <p class="tool-desc">A data-driven look at demonetisation's economic impact on West Bengal — employment, cash circulation, informal sector, and the seven-year aftermath. With citations.</p>
+        <span class="tool-arrow">Read the analysis</span>
+      </a>
+
+    </div>
+  </div>
+</section>
 
 <!-- THESIS -->
 <section class="thesis">
@@ -1018,7 +1206,7 @@ body::before {
     <button class="audience-tab active" role="tab" aria-selected="true" aria-controls="audience-voter" onclick="setAudience('voter',this)">For the Voter</button>
     <button class="audience-tab" role="tab" aria-selected="false" aria-controls="audience-reader" onclick="setAudience('reader',this)">For the Reader</button>
     <button class="audience-tab" role="tab" aria-selected="false" aria-controls="audience-researcher" onclick="setAudience('researcher',this)">For the Researcher</button>
-    <a href="political-parties-comparison.html" class="audience-tab" style="text-decoration:none;border-left:2px solid var(--rule);font-style:normal;">⇢ Party Compass</a>
+    <a href="/parties" class="audience-tab" style="text-decoration:none;border-left:2px solid var(--rule);font-style:normal;">⇢ Party Compass</a>
   </div>
 </nav>
 
@@ -1053,15 +1241,15 @@ body::before {
 
       <div class="era-card tmc reveal">
         <div class="era-stripe"></div>
-        <div class="era-period">2011 — present</div>
+        <div class="era-period">2011 — 2026</div>
         <h3 class="era-name">The Green Turn</h3>
         <p class="era-tagline">The same muscle, with new ambitions.</p>
         <hr class="era-rule">
         <p class="era-mechanism">
-          When TMC won, people expected the machine to be torn down. Instead, it got a new coat of paint. Without a unifying ideology, control curdled into extraction — sand, stone, land, contracts. The <span class="gloss" data-tip="Local networks controlling construction materials, land deals, and contracts under political protection">syndicate</span> took the place of the cadre. Welfare transfers bought loyalty from above; the block boss enforced it from below.
+          When TMC won, people expected the machine to be torn down. Instead, it got a new coat of paint. Without a unifying ideology, control curdled into extraction — sand, stone, land, contracts. The <span class="gloss" data-tip="Local networks controlling construction materials, land deals, and contracts under political protection">syndicate</span> took the place of the cadre. Welfare transfers bought loyalty from above; the block boss enforced it from below. SSC scam, cattle trafficking, ration fraud — the corruption cases piled up. On May 8, 2026, 15 years ended.
         </p>
         <ul class="era-stats">
-          <li><span>Years in power</span><strong>15+</strong></li>
+          <li><span>Years in power</span><strong>15</strong></li>
           <li><span>Organising principle</span><strong>Syndicate</strong></li>
           <li><span>Local enforcer</span><strong>Block boss</strong></li>
         </ul>
@@ -1069,17 +1257,17 @@ body::before {
 
       <div class="era-card bjp reveal">
         <div class="era-stripe"></div>
-        <div class="era-period">2019 — present</div>
-        <h3 class="era-name">The Saffron Lateral</h3>
-        <p class="era-tagline">Imported the very culture it claimed to fight.</p>
+        <div class="era-period">2026 — present</div>
+        <h3 class="era-name">The Saffron Government</h3>
+        <p class="era-tagline">The machine changes hands. Will it change?</p>
         <hr class="era-rule">
         <p class="era-mechanism">
-          The BJP had a problem: it needed village-level organisation fast, and couldn't grow it from scratch. So it went shopping. Turncoats from TMC and CPI(M) became candidates and district presidents overnight. Many a voter who switched for "change" ended up re-electing the same panchayat strongman — this time in saffron.
+          On May 8, 2026, BJP won 206 of 294 seats — a two-thirds supermajority — ending 15 years of TMC rule. They got there partly through mass defections: turncoats from TMC and CPI(M) became BJP candidates and district presidents overnight. Now they hold complete legislative power. The question the previous eras all failed to answer now falls to them: will the machine be dismantled, or just repainted?
         </p>
         <ul class="era-stats">
-          <li><span>Lok Sabha seats (2019)</span><strong>18</strong></li>
-          <li><span>Organising principle</span><strong>Defection</strong></li>
-          <li><span>Local enforcer</span><strong>Turncoat</strong></li>
+          <li><span>Assembly seats (2026)</span><strong>206</strong></li>
+          <li><span>Vote share</span><strong>45.84%</strong></li>
+          <li><span>Organising principle</span><strong>TBD</strong></li>
         </ul>
       </div>
     </div>
@@ -1091,8 +1279,8 @@ body::before {
   <div class="container">
     <div class="section-header reveal">
       <div class="section-kicker">Bengal's political history at a glance</div>
-      <h2 class="section-title">Forty years of <em>power in motion</em></h2>
-      <p class="section-sub">The flag changes at the top. The structure at the bottom barely moves.</p>
+      <h2 class="section-title">Half a century of <em>power in motion</em></h2>
+      <p class="section-sub">1977 to 2026. Three ruling parties. The flag changes at the top. The structure at the bottom barely moves.</p>
     </div>
 
     <div class="timeline">
@@ -1152,10 +1340,19 @@ body::before {
 
       <div class="tl-event reveal">
         <div class="tl-left"><span class="tl-year">2026</span></div>
-        <div class="tl-center"><div class="tl-dot future"></div></div>
+        <div class="tl-center"><div class="tl-dot bjp"></div></div>
         <div class="tl-right">
-          <div class="tl-title">You vote</div>
-          <div class="tl-desc">The next Assembly election. The pattern above is not destiny — it's context. What you do with it is up to you.</div>
+          <div class="tl-title" style="color:var(--saffron)">BJP wins a historic supermajority</div>
+          <div class="tl-desc">206 of 294 seats on 45.84% of the vote. Mamata Banerjee loses her own Bhabanipur seat. 15 years of TMC rule ends on May 8, 2026. BJP now holds a two-thirds majority — enough to pass any law, amend the state constitution, appoint any official, with zero opposition votes needed. Every unkept promise is now a choice, not a constraint.</div>
+        </div>
+      </div>
+
+      <div class="tl-event reveal">
+        <div class="tl-left"><span class="tl-year">Now</span></div>
+        <div class="tl-center"><div class="tl-dot" style="background:var(--saffron);box-shadow:0 0 0 3px rgba(217,119,6,.2)"></div></div>
+        <div class="tl-right">
+          <div class="tl-title">The accountability period begins</div>
+          <div class="tl-desc">The pattern above is not destiny — it's context. The same structural question that applied to every previous government now applies to this one. Watch what happens at the panchayat level, not just in Kolkata. The hand changed. Watch what the new hand does.</div>
         </div>
       </div>
     </div>
@@ -1919,6 +2116,14 @@ function shareWhatsApp() {
   const text = 'Know who you\'re voting for. A guide to Bengal\'s power structures — before you vote in 2026: ' + location.href;
   window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
 }
+
+// BJP Day counter — days since swearing-in May 8 2026
+(function() {
+  const swear = new Date('2026-05-08T00:00:00+05:30');
+  const days = Math.max(1, Math.floor((Date.now() - swear.getTime()) / 86400000) + 1);
+  const badge = document.getElementById('dayBadge');
+  if (badge) badge.textContent = 'BJP Day ' + days;
+})();
 
 // Reading time (runs after DOM is ready since script is at bottom)
 (function() {
