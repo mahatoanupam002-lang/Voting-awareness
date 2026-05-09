@@ -1495,16 +1495,9 @@ footer a:hover { color:var(--paper); }
 </footer>
 
 <script>
-/* ── DATA ── */
-const PARTIES = {
-  tmc:  { name:'TMC',  color:'#1a7a3c', scores:[4,8,4,6,3,2,3,4] },
-  bjp:  { name:'BJP',  color:'#e8640a', scores:[8,6,6,6,7,5,6,7] },
-  cpim: { name:'CPIM', color:'#c0171b', scores:[3,6,7,6,5,5,6,4] },
-  inc:  { name:'INC',  color:'#1565c0', scores:[6,6,6,6,5,4,6,6] },
-  isf:  { name:'ISF',  color:'#6b3fa0', scores:[3,6,4,5,4,6,4,4] },
-  bengal:{ name:"Bengal's Need", color:'#b8860b', scores:[9,8,9,8,9,10,9,10] }
-};
-const DIMS = ['Industry','Welfare','Education','Healthcare','Law & Order','Anti-Corrupt','Women Safety','Employment'];
+/* ── DATA (loaded from /data/parties.json) ── */
+let PARTIES = {};
+let DIMS = [];
 
 /* ── THEME ── */
 const themeBtn = document.getElementById('themeBtn');
@@ -1710,10 +1703,19 @@ const needsObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('#needs').forEach(el => needsObserver.observe(el));
 
 /* ── INIT ── */
-document.addEventListener('DOMContentLoaded', () => {
+async function loadData() {
+  try {
+    const d = await fetch('/data/parties.json').then(r => r.json());
+    PARTIES = d.parties;
+    DIMS = d.dims;
+  } catch(e) {
+    console.error('Failed to load parties data:', e);
+    return;
+  }
   initRadar();
   renderComparison();
-});
+}
+document.addEventListener('DOMContentLoaded', loadData);
 </script>
 </body>
 </html>

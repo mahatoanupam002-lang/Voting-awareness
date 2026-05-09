@@ -33,9 +33,9 @@ jobs:
         run: |
           git config user.name  "Bengal Reader Bot"
           git config user.email "bot@bengal-reader.app"
-          git add data/
+          git add data/ sitemap.xml
           if git diff --staged --quiet; then
-            echo "✓ No case data changes this week"
+            echo "✓ No data changes this week"
           else
             CHANGES=$(git diff --staged --stat | tail -1)
             git commit -m "auto: weekly data refresh $(date -u +%Y-%m-%d) — ${CHANGES}"

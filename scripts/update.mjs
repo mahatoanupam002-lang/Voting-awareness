@@ -12,16 +12,15 @@
  *   - Adds timeline entries for confirmed new developments
  *   - Updates lastUpdated field on matched cases
  *   - Bumps meta.json autoChecked timestamp
+ *   - Updates sitemap.xml lastmod dates
  *   - Never deletes existing data — only appends
  *
  * To add a new case to auto-tracking: add its id and keywords to CASE_KEYWORDS below.
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 // ── Keywords per case ─────────────────────────────────────────────────────────
-// Each array: first item is the primary Google News search query.
-// All items are checked against ED/CBI press release text.
 const CASE_KEYWORDS = {
   'saradha':              ['Saradha chit fund', 'Saradha scam court', 'Madan Mitra Saradha', 'Kunal Ghosh Saradha'],
   'rose-valley':          ['Rose Valley ponzi', 'Rose Valley court', 'Sudip Bandyopadhyay court'],
@@ -32,6 +31,21 @@ const CASE_KEYWORDS = {
   'ration-scam':          ['Jyoti Priya Mallick court', 'ration scam Bengal ED', 'PDS scam Bengal'],
   'post-poll-violence-2021': ['post poll violence Bengal 2021 CBI', 'Bengal violence 2021 court', 'NHRC Bengal 2021'],
 };
+
+// ── Step summary helper ───────────────────────────────────────────────────────
+const summaryLines = [];
+function summaryWrite(line) {
+  summaryLines.push(line);
+  console.log(line.replace(/[*#`]/g, '').trim());
+}
+function flushSummary() {
+  const path = process.env.GITHUB_STEP_SUMMARY;
+  if (path) {
+    try {
+      writeFileSync(path, summaryLines.join('\n') + '\n', { flag: 'a' });
+    } catch { /* non-fatal */ }
+  }
+}
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function fmtMonthYear(d) {
@@ -89,7 +103,6 @@ async function fetchEDReleases() {
   if (!html) return [];
 
   const results = [];
-  // Extract links + text from the press releases list
   const rx = /href="([^"]*(?:press|release|attachment)[^"]*)"[^>]*>([\s\S]{10,300}?)<\/a>/gi;
   let m;
   while ((m = rx.exec(html)) !== null) {
@@ -119,7 +132,6 @@ async function fetchCBIReleases() {
 }
 
 // ── Already-seen guard ────────────────────────────────────────────────────────
-// Returns true if this timeline entry (by URL or this-week fingerprint) was already added.
 function alreadySeen(timeline, sourceUrl, weekKey) {
   return timeline.some(t =>
     (sourceUrl && t.autoFrom === sourceUrl) ||
@@ -127,99 +139,150 @@ function alreadySeen(timeline, sourceUrl, weekKey) {
   );
 }
 
+// ── Sitemap lastmod updater ───────────────────────────────────────────────────
+function updateSitemap(dateStr) {
+  const sitemapPath = 'sitemap.xml';
+  if (!existsSync(sitemapPath)) return;
+  try {
+    const xml = readFileSync(sitemapPath, 'utf-8');
+    const updated = xml.replace(/<lastmod>[^<]+<\/lastmod>/g, `<lastmod>${dateStr}</lastmod>`);
+    writeFileSync(sitemapPath, updated);
+  } catch (e) {
+    console.warn('  sitemap update failed:', e.message);
+  }
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
+  const runDate = today();
+  summaryWrite(`# Bengal Reader — Weekly Update ${runDate}`);
+  summaryWrite('');
+
   const cases = JSON.parse(readFileSync('data/cases.json', 'utf-8'));
-  const meta  = JSON.parse(readFileSync('data/meta.json', 'utf-8'));
+  const meta  = JSON.parse(readFileSync('data/meta.json',  'utf-8'));
   const now   = new Date();
-  const cutoff = new Date(now - 8 * 86400_000); // 8 days ago
+  const cutoff = new Date(now - 8 * 86400_000);
 
   let totalChanges = 0;
+  const updatedCases = [];
+  const errors = [];
 
   // 1. ED press releases
-  console.log('\n── Fetching ED press releases…');
-  const edReleases = await fetchEDReleases();
-  console.log(`   Found ${edReleases.length} Bengal-relevant releases`);
+  summaryWrite('## Enforcement Directorate');
+  let edReleases = [];
+  try {
+    edReleases = await fetchEDReleases();
+    summaryWrite(`Found **${edReleases.length}** Bengal-relevant ED releases.`);
+  } catch (e) {
+    errors.push(`ED fetch failed: ${e.message}`);
+    summaryWrite(`⚠️ ED fetch failed: ${e.message}`);
+  }
   for (const c of cases) {
-    const kws = CASE_KEYWORDS[c.id] || [];
-    for (const r of edReleases) {
-      if (kws.some(kw => r.title.toLowerCase().includes(kw.toLowerCase().split(' ')[0]))) {
-        if (!alreadySeen(c.timeline, r.url, thisMonth())) {
-          c.timeline.push({
-            date: fmtMonthYear(now),
-            event: `ED: ${r.title}`,
-            autoAdded: today(),
-            autoFrom: r.url,
-            source: 'ED press release',
-          });
-          c.lastUpdated = thisMonth();
-          totalChanges++;
-          console.log(`   + ED → ${c.id}: ${r.title.slice(0, 60)}…`);
+    try {
+      const kws = CASE_KEYWORDS[c.id] || [];
+      for (const r of edReleases) {
+        if (kws.some(kw => r.title.toLowerCase().includes(kw.toLowerCase().split(' ')[0]))) {
+          if (!alreadySeen(c.timeline, r.url, thisMonth())) {
+            c.timeline.push({ date: fmtMonthYear(now), event: `ED: ${r.title}`, autoAdded: runDate, autoFrom: r.url, source: 'ED press release' });
+            c.lastUpdated = thisMonth();
+            totalChanges++;
+            updatedCases.push(c.id);
+            summaryWrite(`- ✅ **${c.id}**: ${r.title.slice(0, 80)}…`);
+          }
         }
       }
+    } catch (e) {
+      errors.push(`ED match error for ${c.id}: ${e.message}`);
     }
   }
+  summaryWrite('');
 
   // 2. CBI press releases
-  console.log('\n── Fetching CBI press releases…');
-  const cbiReleases = await fetchCBIReleases();
-  console.log(`   Found ${cbiReleases.length} Bengal-relevant releases`);
+  summaryWrite('## Central Bureau of Investigation');
+  let cbiReleases = [];
+  try {
+    cbiReleases = await fetchCBIReleases();
+    summaryWrite(`Found **${cbiReleases.length}** Bengal-relevant CBI releases.`);
+  } catch (e) {
+    errors.push(`CBI fetch failed: ${e.message}`);
+    summaryWrite(`⚠️ CBI fetch failed: ${e.message}`);
+  }
   for (const c of cases) {
-    const kws = CASE_KEYWORDS[c.id] || [];
-    for (const r of cbiReleases) {
-      if (kws.some(kw => r.title.toLowerCase().includes(kw.toLowerCase().split(' ')[0]))) {
-        if (!alreadySeen(c.timeline, r.url, thisMonth())) {
-          c.timeline.push({
-            date: fmtMonthYear(now),
-            event: `CBI: ${r.title}`,
-            autoAdded: today(),
-            autoFrom: r.url,
-            source: 'CBI press release',
-          });
-          c.lastUpdated = thisMonth();
-          totalChanges++;
-          console.log(`   + CBI → ${c.id}: ${r.title.slice(0, 60)}…`);
+    try {
+      const kws = CASE_KEYWORDS[c.id] || [];
+      for (const r of cbiReleases) {
+        if (kws.some(kw => r.title.toLowerCase().includes(kw.toLowerCase().split(' ')[0]))) {
+          if (!alreadySeen(c.timeline, r.url, thisMonth())) {
+            c.timeline.push({ date: fmtMonthYear(now), event: `CBI: ${r.title}`, autoAdded: runDate, autoFrom: r.url, source: 'CBI press release' });
+            c.lastUpdated = thisMonth();
+            totalChanges++;
+            updatedCases.push(c.id);
+            summaryWrite(`- ✅ **${c.id}**: ${r.title.slice(0, 80)}…`);
+          }
         }
       }
+    } catch (e) {
+      errors.push(`CBI match error for ${c.id}: ${e.message}`);
     }
   }
+  summaryWrite('');
 
   // 3. Google News RSS per case
-  console.log('\n── Fetching Google News per case…');
+  summaryWrite('## Google News (per case)');
   for (const c of cases) {
     const kws = CASE_KEYWORDS[c.id];
-    if (!kws) { console.log(`   skip ${c.id} (no keywords)`); continue; }
+    if (!kws) { summaryWrite(`- ⏭️ **${c.id}**: no keywords — skipped`); continue; }
 
-    const items = await fetchGoogleNews(kws[0]);
-    const recent = items.filter(n => n.date > cutoff);
+    try {
+      const items = await fetchGoogleNews(kws[0]);
+      const recent = items.filter(n => n.date > cutoff);
 
-    if (recent.length >= 3 && !alreadySeen(c.timeline, null, thisMonth())) {
-      const headline = recent[0].title.slice(0, 120);
-      c.timeline.push({
-        date: fmtMonthYear(now),
-        event: `${recent.length} news reports this week. Latest: "${headline}"`,
-        autoAdded: today(),
-        source: 'Google News RSS',
-      });
-      c.lastUpdated = thisMonth();
-      totalChanges++;
-      console.log(`   + news → ${c.id}: ${recent.length} articles`);
-    } else {
-      console.log(`   · ${c.id}: ${recent.length} recent articles — no update`);
+      if (recent.length >= 3 && !alreadySeen(c.timeline, null, thisMonth())) {
+        const headline = recent[0].title.slice(0, 120);
+        c.timeline.push({ date: fmtMonthYear(now), event: `${recent.length} news reports this week. Latest: "${headline}"`, autoAdded: runDate, source: 'Google News RSS' });
+        c.lastUpdated = thisMonth();
+        totalChanges++;
+        updatedCases.push(c.id);
+        summaryWrite(`- ✅ **${c.id}**: ${recent.length} articles — "${headline.slice(0, 60)}…"`);
+      } else {
+        summaryWrite(`- · **${c.id}**: ${recent.length} recent article(s) — no update`);
+      }
+    } catch (e) {
+      errors.push(`News fetch error for ${c.id}: ${e.message}`);
+      summaryWrite(`- ⚠️ **${c.id}**: fetch error — ${e.message}`);
     }
 
-    await new Promise(r => setTimeout(r, 600)); // rate-limit politeness
+    await new Promise(r => setTimeout(r, 600));
   }
+  summaryWrite('');
 
-  // 4. Update meta
-  meta.autoChecked = today();
+  // 4. Update meta and sitemap
+  meta.autoChecked = runDate;
+  updateSitemap(runDate);
 
   // 5. Write files
   writeFileSync('data/cases.json', JSON.stringify(cases, null, 2));
   writeFileSync('data/meta.json',  JSON.stringify(meta,  null, 2));
 
-  console.log(`\n✓ Done. ${totalChanges} timeline entries added. autoChecked: ${meta.autoChecked}`);
-  process.exit(0);
+  // 6. Summary footer
+  summaryWrite('## Result');
+  summaryWrite(`- **${totalChanges}** timeline entries added across **${new Set(updatedCases).size}** cases`);
+  summaryWrite(`- \`meta.autoChecked\` updated to \`${runDate}\``);
+  if (errors.length) {
+    summaryWrite('');
+    summaryWrite('### ⚠️ Non-fatal errors');
+    errors.forEach(e => summaryWrite(`- ${e}`));
+  } else {
+    summaryWrite('- No errors');
+  }
+
+  flushSummary();
+  process.exit(errors.length > 0 ? 0 : 0); // always exit 0 — partial success is fine
 }
 
-main().catch(err => { console.error('Update script failed:', err); process.exit(1); });
+main().catch(err => {
+  summaryWrite(`\n## ❌ Script crashed\n\`\`\`\n${err.stack}\n\`\`\``);
+  flushSummary();
+  console.error('Update script crashed:', err);
+  process.exit(1);
+});
