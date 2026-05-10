@@ -229,8 +229,6 @@ async function main() {
           timelineAdded++;
           summaryWrite(`- ✅ **${c.id}** (CBI): ${r.title.slice(0, 70)}…`);
         }
-      } else {
-        summaryWrite(`- · **${c.id}**: ${recent24h.length} in 24 h / ${newsFeed[c.id].count7d} in 7 d`);
       }
     } catch (e) { errors.push(`CBI match ${c.id}: ${e.message}`); }
   }
@@ -276,10 +274,9 @@ async function main() {
       summaryWrite(`- ⚠️ **${c.id}**: ${e.message}`);
     }
   }
-  if (!staleHearings) summaryWrite('- ✓ All hearing dates are current or TBD');
   summaryWrite('');
 
-  // ── 5. Pledge tracker update ──────────────────────────────────────────────
+  // ── 4. Pledge tracker update ──────────────────────────────────────────────
   summaryWrite('## Accountability Pledges');
   let pledgesObj;
   let pledgesUpdated = 0;
@@ -332,7 +329,7 @@ async function main() {
   }
   summaryWrite('');
 
-  // ── 4. Write data files ───────────────────────────────────────────────────
+  // ── 5. Write data files ───────────────────────────────────────────────────
   meta.autoChecked = runISO;
 
   const newsDoc = { generated: runISO, cases: newsFeed };
@@ -343,7 +340,7 @@ async function main() {
 
   updateSitemap(runDate);
 
-  // ── 5. Summary footer ─────────────────────────────────────────────────────
+  // ── 5. Summary footer ────────────────────────────────────────���────────────
   summaryWrite('## Result');
   summaryWrite(`- **${timelineAdded}** permanent timeline entries added`);
   summaryWrite(`- \`data/news.json\` refreshed with latest headlines for all ${cases.length} cases`);
