@@ -1,13 +1,38 @@
 {
   "swearingIn": "2026-05-08",
   "deadline100": "2026-08-16",
-  "lastUpdated": "2026-05-09",
+  "lastUpdated": "2026-05-10",
   "categories": [
-    { "id": "agriculture", "label": "Agriculture & Farmers",   "icon": "🌾", "num": "I" },
-    { "id": "welfare",     "label": "Welfare & Social",        "icon": "🏥", "num": "II" },
-    { "id": "justice",     "label": "Accountability & Justice","icon": "⚖️", "num": "III" },
-    { "id": "employment",  "label": "Employment & Industry",   "icon": "🏭", "num": "IV" },
-    { "id": "infra",       "label": "Infrastructure & Housing","icon": "🏗️", "num": "V" }
+    {
+      "id": "agriculture",
+      "label": "Agriculture & Farmers",
+      "icon": "🌾",
+      "num": "I"
+    },
+    {
+      "id": "welfare",
+      "label": "Welfare & Social",
+      "icon": "🏥",
+      "num": "II"
+    },
+    {
+      "id": "justice",
+      "label": "Accountability & Justice",
+      "icon": "⚖️",
+      "num": "III"
+    },
+    {
+      "id": "employment",
+      "label": "Employment & Industry",
+      "icon": "🏭",
+      "num": "IV"
+    },
+    {
+      "id": "infra",
+      "label": "Infrastructure & Housing",
+      "icon": "🏗️",
+      "num": "V"
+    }
   ],
   "pledges": [
     {
@@ -20,10 +45,13 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No government order issued yet.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["BJP Bengal paddy MSP 2026", "West Bengal paddy procurement MSP government"]
+      "newsHeadline": "Cong demands Rs 2700 MSP for wheat, says party well-wisher of agrarian community - The Times of India",
+      "newsDate": "2026-05-07",
+      "newsUrl": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOb2p0SnUySHpTRmZkYllXQ0daNUM2LXhiYld1SE9mR1dBdVBBS1h6ZFRSenFfM2k1NUlQS1I0aGJwRmlrMUVXZmxqSnlqbXlLc2JxWi1pX3RydTIyVzRZSTJCRXZLcGhPZnFHOTJJUXdSZGo5Vy1IMHpTYVZhOHFVRzgwbUNXWUticmxLWjNFUlRUZ1Q0ZC1FUHo4RWMyTEpjaU16TlV1ZWFzblhoaFVYSWhIdmZpRmxFclJIVmdqaGpSczk5VTluNEx1Uy1neWNSdTJPU29tUndtajBGTzZBd2dKN3JNQzVj0gHuAUFVX3lxTE92ZHBPWkJHYzNyWmUxSXh3NDFVUXRVXzJnSG5ua19QV1JyN1RHOU9mOW9QWDF6bjZIb1FCMlFMR3Ixc3A4LVpQLVB1UHluaXZuZm84Z3VGQU1uOEpXa01SRG5Kbk1ockRMazJOeWpQcVFkOWJmWmtHdElMZTJ6Ty1mWHBMRHcxRUZPdUFydkJsbXdkQks5dXFXQVBwS3g4X2hqYTNTdzRjdFJib2RUOHBuSkxUck80YUtzTDZLWU8yS1BzenJ2U19qN0hkMS1aSWY0OE9VZDdVTkx2aDVKUzJGWjI4Y0RXRG1NMGNUR3c?oc=5",
+      "keywords": [
+        "BJP Bengal paddy MSP 2026",
+        "West Bengal paddy procurement MSP government"
+      ]
     },
     {
       "id": "kisan",
@@ -38,7 +66,10 @@
       "newsHeadline": null,
       "newsDate": null,
       "newsUrl": null,
-      "keywords": ["BJP Bengal Kisan Samman supplement 2026", "West Bengal PM KISAN state supplement"]
+      "keywords": [
+        "BJP Bengal Kisan Samman supplement 2026",
+        "West Bengal PM KISAN state supplement"
+      ]
     },
     {
       "id": "irrigation",
@@ -50,10 +81,13 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No government order issued yet.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Teesta canal restoration Bengal BJP 2026", "West Bengal irrigation canal Jalpaiguri 2026"]
+      "newsHeadline": "India urges Bangladesh to clear pending verification of nearly 3,000 suspected illegal immigrants - The New Indian Express",
+      "newsDate": "2026-05-07",
+      "newsUrl": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQWU5naFpmcmx2Q2pDa0NNQzA1OVlfOEhWOVhwcWxzekJIVVZwMkRtbnBVeFNKdmphYTJEYzlCR2R4ajZIX005aUlhR01zWDdyYjd0WVExRXFybFFZRFM1eDFSVUpQVjlUbi1YSV9BeHpHOUN6WjA3ak12Q2xNOWx5ZkY4em1FSWlOVXZBQmJ0ZzI4aWZZc1p4NmtSVWJ5T1VJOWxxcUlod19NbjhBbk50VU1lQlY1Ukk3REZXazJGZzF5RFhEeFhVVlNUdDNfZWxIbWhpdXdSUy1lUkJ5azdDV1ZB0gHvAUFVX3lxTE8tVW5NbHM3blk0YjMxTXB4Q2RMYmd0NnlwSXFBc3UtTXR2bEZlOGIxZVF4YmpablpHb1JXZ1BZSXRiaGgxWGJQSS1QbHFYWkRCS205UTFwN2owSGtCTFVJZGxfMGtOdmQzV2dOSlN2VTByWnZrcUlvZ1hUVE5aZjh1Ty1Md0dxM05Ib0I3a1k1VGxnTDc2VEhIcFRqMWRpRnRIb2hWRndsS3R4OG1rNEdtTjFfNXJ4cE5lUnlLSEVYSTgtNUNFd0xLMExEZ0lyRUZwMDRray1DX0ZhWDhhN3l3Wm5OWFYxTEdKMmFtMFNj?oc=5",
+      "keywords": [
+        "Teesta canal restoration Bengal BJP 2026",
+        "West Bengal irrigation canal Jalpaiguri 2026"
+      ]
     },
     {
       "id": "pmfby",
@@ -65,10 +99,13 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No enrollment drive or state notification launched.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["PMFBY West Bengal BJP 2026 enrollment", "Bengal crop insurance Fasal Bima 2026"]
+      "newsHeadline": "West Bengal likely to re-join crop insurance scheme soon - financialexpress.com",
+      "newsDate": "2026-05-08",
+      "newsUrl": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQZWEzZWswbjRqaFJIYkNtc1BzSU43VW9ZM0JwcG9yVFI2T3hLOEpYSWEyanZWSGlYNDFSSHF5dTUwS0hPOVoyU3dUZGZaTzN2c1VvUTY2RUFBSUtHVEU2eDRSVkhKUnNIMm02SUNkX2xzZ0M0UDdvcFBlWC1aaDd1eXIxc3dGeUJidWxfalBFOUswWG4tWVhVeDN5bXAyYm40NjRpYm5qZW8tajBUb20xVC02WdIBugFBVV95cUxNcnoyNkxKNGVIWE1oQ2kwdkZGZVkzakZXQ3VwbHlpcmgxUEVaNFByNVFCbDc4Y3pEVXVOczVNZDBxV1FUOFk2RzdKVW5LaGxpY2xHejZYVXhwaXRsN293X2lnQmVFTVh2cEZoYjgtU01BMHgtYmFmRUhPSktWdkFUeEdZOEFyTVpIblNIeVM0ZG9VbWRCbEU5RmlpWTZMUUp1ajV5T0xDTHlfT1k4b0FDLWJGZXp4dnI3dWc?oc=5",
+      "keywords": [
+        "PMFBY West Bengal BJP 2026 enrollment",
+        "Bengal crop insurance Fasal Bima 2026"
+      ]
     },
     {
       "id": "jute",
@@ -83,7 +120,10 @@
       "newsHeadline": null,
       "newsDate": null,
       "newsUrl": null,
-      "keywords": ["JCI jute Bengal MSP BJP 2026", "West Bengal jute procurement 2026"]
+      "keywords": [
+        "JCI jute Bengal MSP BJP 2026",
+        "West Bengal jute procurement 2026"
+      ]
     },
     {
       "id": "health",
@@ -95,10 +135,13 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No government order issued yet.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Swastha Saathi expansion BJP Bengal 2026", "West Bengal health insurance 10 lakh 2026"]
+      "newsHeadline": "West Bengal’s Delhi wall may disappear: What schemes could BJP rule in Kolkata unlock? - The Economic Times",
+      "newsDate": "2026-05-09",
+      "newsUrl": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNVEx6THlVMzZoQ0xsRzJJeUFpLTJUcDFRZ0xBcksyTWZYN29WX0htMjRsSFRXb21peEV0dkpubWJjQlVRNVdnc3hPR21CdXR2eTRIUGk4NVM3UGQ2SFJoSFdPQUVwQ1VHc1dxZGRrNE9jb1pKY1dQWHE2RTQ3ZzROcDRGUmVOTkJUeE5XSTZFY08tTm0xbTh6VWYtZHdsNEdEYTZwYXR0RFVRZ1pUV1Z1WGFaZHlIek50N1V0Z1V5V05yeElrNzM4NGQ3ME56bUdwU3o4WDZOZ1RWcDFFUzVjUTVWSkJMV1lCTk9NalJWZzMyMkxadGxSa3kzQnk3VXNrQ3p3WmttZlRDcU5SN0xHatIBlgJBVV95cUxOOE9KRnRsanRESE1XQ3RVMUNsUEMzRXNVVUN0MDBYVmdXa1VlUndnRDdleDgxVGNXRFpmZWxGMGR3bHBDV1laYTlyNlB3THR1TG9WNWxPcEExa280eUR5Mmh0SFp6UnREbXM0NGplYjhPTjk4Tm50Rl9qb1AyUThfd1FRaVdOQ0F1NHU1dmNLNHpadHJxdTdyV3RIS243UmpKUGpyQmZTUkZneUlHdzd1aXR6bmljMmJ4X0lVZmxBYkFqekVPY1JiRlpFRUpKbC1ia1ktemFrc0wzQTlQMkxzS2VXQmNvUXd1NFdUTlh3OUVpWURPeWlMMmh2Uk5jSnNZMlJ5RFZkb2ZjSXdYeVNsOEJlZHpEUQ?oc=5",
+      "keywords": [
+        "Swastha Saathi expansion BJP Bengal 2026",
+        "West Bengal health insurance 10 lakh 2026"
+      ]
     },
     {
       "id": "electricity",
@@ -110,10 +153,13 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No government order issued yet.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["free electricity Bengal BJP 300 units 2026", "West Bengal WBSEDCL free units BJP"]
+      "newsHeadline": "UP Evening Wrap: Akhilesh promises free education for girls if SP forms govt; VCK extends unconditional sup... - Bhaskar English",
+      "newsDate": "2026-05-09",
+      "newsUrl": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNTlo4NUJVSkw3LU02RGdvcU1VNk56NkVhYXF1X0U3bEM2Nmx1UmhKRmdDQ0xRWHEwa1Q4UkRYUGpTR19lSmZKdTFtd2tvejZNN3Z5Rk1ydjNHMGNncUtIelRwcFhReUlPZEVuVGdkSmFKcEJmNF9mOUhQay14dmtiUlJVTnFVZlpJdHowbUhhZnREU1VMYllFWkIyVjVXWWVGQ05wMlF3SW91cnJYLS1kdENfVFBkZzMzSTU0dG1sRXc3cjd3bzc3ZlpFajZoTEhKSXJ6Z0tIMks1elJFLTNxSzN30gHnAUFVX3lxTE5fUy1hQ0lwdWU1NDJQTk40Wmg3NmVjT01IY2xhdkU1Nzk2SzFVN29Jcmk1MHZwM2xPZi1UZFA2X29yYmU3YzRRcHp6RE5HeDhzdG9PVElBUmpiREo0ZWN4SjNadUV2eXhwZXowYTRoV3RzMThObXUxTjItaHU4MWlGWlpkX0U0NzRWajBlYk1icGNTaDRycV9tcEstUnNXRzVwZXlqYXJSeWZaY21wLWN5QUE5WFFyZ3FVbGdxNm1pMm5mY3FqUVVoRTlzM2lPaDh6a1R1VlpybFdTUDNGT3ctMjFwcXUtVQ?oc=5",
+      "keywords": [
+        "free electricity Bengal BJP 300 units 2026",
+        "West Bengal WBSEDCL free units BJP"
+      ]
     },
     {
       "id": "bijoya",
@@ -128,7 +174,10 @@
       "newsHeadline": null,
       "newsDate": null,
       "newsUrl": null,
-      "keywords": ["Bijoya Lakshmi scheme Bengal BJP 2026", "West Bengal women stipend BJP 2000"]
+      "keywords": [
+        "Bijoya Lakshmi scheme Bengal BJP 2026",
+        "West Bengal women stipend BJP 2000"
+      ]
     },
     {
       "id": "ops",
@@ -140,10 +189,13 @@
       "deadlineLabel": "30 days (committee)",
       "deadlineDate": "2026-06-07",
       "updateNote": "No committee constituted; no notification issued.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Old Pension Scheme West Bengal BJP 2026", "Bengal OPS NPS reversal state employees"]
+      "newsHeadline": "West Bengal Cabinet Ministers List: Meet Chief Minister Suvendu Adhikari's A-team - The Economic Times",
+      "newsDate": "2026-05-09",
+      "newsUrl": "https://news.google.com/rss/articles/CBMi7AJBVV95cUxQbFJudlFtNF9oUzJjV2VLQW1RN05rVUEtVzhvbUZSUVh6SzRiblFnajd2NzhaM1dIR2NwdWxmc25OZkRJNk8wMW1TOWFDNjVqeTR5UGpqdDQ2QWU2a1JGVVBPUnYxVjJRTXhqOHVORjBCZHAxemRBdU11RE5MbzBIWkVEV1R2NFJsZDZWUG1YU0U4RmdUeTgzZVMzdkRtSmt3eE5kdzFuc3IyaVNrVnh5Y245aTk3ZmJ5QWNiamwtWER5aWk4UUJ4X2hXeEdtT0F4eUY2TnpzakE2T0FPZS1XRmxGNVBkb0RZb1Vsa2ZOdEp4M2ZDQXgzVWZyNXliSzRfVHh5SVI2ZFg5U184VzlsRGYyZmFKeUtoZ0RFbHJhRjBidm81Tjd1bVZHZTh6bDlZSzUxN1BmMlE5T2hMWHBZYUFVeVNSTlNjM29WS19uYmJ5TkpJX1FIVmxiZnJzMmJ6RUwyaWU1RGc3NzBX0gHyAkFVX3lxTE5aTmhzQkNTcm1RR0dtdHF2YUNTTVBtTTRyenY3d3V0VVV0M3NOT25RRW1KNElCU19XUS1MS0gtaVdMWUczYWNTNUZpcnNMT2g5NDExME95V2lUTHNFMHhjTVI1WmtibG00dWNQbC1FUm52MjBhcE83NGFiYVRvMzlpT1EwaGctWXFxNVpzY1NKQjhGbmdvU1ZabmZWbV81b1lXMGJuclF2QUNiX3ZJQXdZTUwyeV9LUnJhbURrMnZFMks2U0JEQWxwa2dGX1hGcklMU1BVVGkweTg0ckw5OXQ0UUZtNElMN1U4X21yNlFqcDRUQjRCSm8wVXhsSHhYcTgydUY0TmhUeUVJa1ZybEJpX0k0ckNBOXdNQWsybVh4dW1LdTNicVN2aG1lR2RqRk9YR3JmdGZ4SzBCSU5ZcXFBa2ZWeGFGN0U5VmhVajAzUmctQkdvUlNhTVJ5SDZnNjA4OXhkWnFKZ1RjOGlsUjdhZlE?oc=5",
+      "keywords": [
+        "Old Pension Scheme West Bengal BJP 2026",
+        "Bengal OPS NPS reversal state employees"
+      ]
     },
     {
       "id": "pds",
@@ -158,7 +210,10 @@
       "newsHeadline": null,
       "newsDate": null,
       "newsUrl": null,
-      "keywords": ["PDS ration card audit Bengal BJP 2026", "West Bengal ghost beneficiaries ration audit 2026"]
+      "keywords": [
+        "PDS ration card audit Bengal BJP 2026",
+        "West Bengal ghost beneficiaries ration audit 2026"
+      ]
     },
     {
       "id": "syndicate",
@@ -170,10 +225,13 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No action announced yet. Post-election violence against TMC workers reported in some districts — separate from syndicate dissolution.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["TMC syndicate crackdown BJP Bengal 2026", "Bengal cut money syndicate arrest 2026"]
+      "newsHeadline": "Opinion | Know Your Enemy: How BJP Radically Reframed Its Strategy Against TMC And Won - News18",
+      "newsDate": "2026-05-07",
+      "newsUrl": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQbkZhbmxVVUlSUzVzWUkwdTdhUzRzd2RqTHI1bHh4OWxkQ0lCUkxqWmxDZExfSmh0ZXdjUmQ3NURURVNlazEtQWRtb2lPY1hZZG4zSkJPdGt1amZnNWRMcGZhMVpXaDRaVEptbXVJaE8yQ2lsRHV1OE5TdmJST05aM29RTFdhRHBmUmh0czNDSTB0SDVYR1hla0pfTGZRVTk1aDJIT1FCWXp6SFNveFA5LTdBdHpIajNiZ09veGtmSGx6V3ZlVnloOTF0SjFqQdIB0wFBVV95cUxNc1NtQzJsWWxreVRTVXE3SDJTYzdhT04yWGpCLUt1Sm44cTRhb1BVWW8xN1QxbHdDc3RxRE9hY0w5VmhRbXZKZllwc3dGQ0ZsSzg2cWtRWkRIcGFqVjM5bUxVQXVFVDViVWJVaDVWYVhRTmNsRU5LMXhEWGFoU0hBOTJFdHBWWmJGVTk1ZnJ5ZTNFQ0E5dGVrV281S0d2M25YNVFPNlFKUmRydnk0cDlDVFo0SE9PSVpfMXJCR0tMVmxYSXNyQXN1Q0NBVWV0cEliTkE4?oc=5",
+      "keywords": [
+        "TMC syndicate crackdown BJP Bengal 2026",
+        "Bengal cut money syndicate arrest 2026"
+      ]
     },
     {
       "id": "ssc",
@@ -188,7 +246,10 @@
       "newsHeadline": null,
       "newsDate": null,
       "newsUrl": null,
-      "keywords": ["SSC teacher Bengal BJP regularization 2026", "Bengal SSC scam 26000 teachers reinstatement"]
+      "keywords": [
+        "SSC teacher Bengal BJP regularization 2026",
+        "Bengal SSC scam 26000 teachers reinstatement"
+      ]
     },
     {
       "id": "sandeshkhali",
@@ -200,10 +261,13 @@
       "deadlineLabel": "30 days",
       "deadlineDate": "2026-06-07",
       "updateNote": "No official action yet.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Sandeshkhali BJP action 2026 FIR", "Sandeshkhali Bengal new government action"]
+      "newsHeadline": "From Saraswati Puja ban to Murshidabad Violence: 13 major incidents that shook Bengal between 2017 and 2026 - Organiser",
+      "newsDate": "2026-05-10",
+      "newsUrl": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxONWxoc1V1bnVJRVBSTWZDVU81eGJhSU5HNGN3VHFuc3RuOVlMUFFJX0ZaVTVSTWI1aGNUVC1HcENTYmlLeWFrWmsxZkllalZZZGpaMy1fMlRDVjNER2ttTnFIMkpNTmpydVNvZTEwdE15SFF6MWwtQy1TMEZ0UHpPYUoyTHNhaUpSanNJalZqVE1EM1NxM3htdmR4SE1fUng1N0t3VDBEdWtwOVgxOHRRNk5LenFZYVgwWl9tYThoRjlLQ0tnd1FBRmJZX0ducWEwMWtSY3hyNmUyNFhTM3Q3RmRXenFIUGtkTlE?oc=5",
+      "keywords": [
+        "Sandeshkhali BJP action 2026 FIR",
+        "Sandeshkhali Bengal new government action"
+      ]
     },
     {
       "id": "narada",
@@ -215,10 +279,13 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No formal order issued.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Narada case CBI Bengal BJP 2026", "Rose Valley CBI Bengal new government 2026"]
+      "newsHeadline": "Suvendu Adhikari: From bribe taker to West Bengal CM chair - DeshkalNews",
+      "newsDate": "2026-05-09",
+      "newsUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE4xX0VySURELVNrZVV6TFNOMl9CT3VzNlhEQ1pkTTdlaHZPY0VUb3VjWnNBbENicFE4cURtaU1FeTRXU0p5N2ZmdkUtRVduRTZt?oc=5",
+      "keywords": [
+        "Narada case CBI Bengal BJP 2026",
+        "Rose Valley CBI Bengal new government 2026"
+      ]
     },
     {
       "id": "pev",
@@ -230,10 +297,13 @@
       "deadlineLabel": "Immediate",
       "deadlineDate": "2026-05-23",
       "updateNote": "DGP directed district police to register all complaints. Central observer teams reportedly deployed. Independent verification of FIR conversion rate pending.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["post election violence Bengal 2026 BJP FIR", "Bengal political violence 2026 relief"]
+      "newsHeadline": "TMC appoints Sobhandeb Chattopadhyay as LoP, Firhad as chief whip in West Bengal Assembly - The New Indian Express",
+      "newsDate": "2026-05-10",
+      "newsUrl": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPUmd5ZjhWSldyOGd0UDZLR0VYNTVHTUtQenJxQW1uU0VYRTVPelJidlFPWEJpUGc2MHBBNGx5bUllZEZtVmg3M2R5OGxYZVJCY0I3LVhNQmt4Wno4dVRVNkxYQkhqa2FYRmpBdkhDMFAyUm5HR2F0NWJjRXlkNm1HVVZMTU1xZVM0TXhnVjJQdEVUUXRLSWpXc2JqUmdkTjd1N2hGOGpndHBnN0FQWlZfMk85QmdPaDM5VFZSam5xeXk3bldPaUUzZmFrak8wX0ZVTXR1aXN6SF8zQTRpbU01YnJLVmlKX0nSAfQBQVVfeXFMTlhOQlc5WkJlN2NUaFVyb2lOMFk4QS1BUzJZYXdmUEpoSUNEaW1PbzJVVC1XTzNRdkR2OUtubjZjdURJS3VVeG9BT2ZwTERWejM4VDJXRGZqMDhBR2JtV1F2SkVKV3licHVHWnFZUE5oQjF5SkRiNVdnYm1EQ0ZJcWJGVHRBV0lXNDRsTkt1UTR3Tzh4aVJxOE9DYUJJejB0Y3FCa0dRVnJQaFJaalFmZXpKUUR4NldZMWhMRHd3aTNWSmN0SEFuZE95UE9zM2ZQMVlVUmd3Vk5IaVJNLWd1eUdUQWczOGVrYTVyTlRoM0FQaGc1eA?oc=5",
+      "keywords": [
+        "post election violence Bengal 2026 BJP FIR",
+        "Bengal political violence 2026 relief"
+      ]
     },
     {
       "id": "cutmoney",
@@ -248,7 +318,10 @@
       "newsHeadline": null,
       "newsDate": null,
       "newsUrl": null,
-      "keywords": ["Jan Adalat Bengal BJP cut money 2026", "Bengal cut money recovery BJP 2026"]
+      "keywords": [
+        "Jan Adalat Bengal BJP cut money 2026",
+        "Bengal cut money recovery BJP 2026"
+      ]
     },
     {
       "id": "jobs",
@@ -260,10 +333,13 @@
       "deadlineLabel": "2 lakh in 100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No recruitment notification issued yet.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Bengal BJP government jobs recruitment 2026", "West Bengal 2 lakh jobs BJP 100 days"]
+      "newsHeadline": "SSC uploads 22L OMR sheets from 2016 teacher recruitment test - The Times of India",
+      "newsDate": "2026-05-10",
+      "newsUrl": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQUzM0WWRRUjAzQWVKRnlhaVNzcTcwZDgzWXc0RS13MUpoTlFBbzRZZGY3T2I2OXZIYmRpUXdoZ3BuUGxVc1VaRE1od1lnUG02b0FzdG1oUWZ2dmlrMlBtUlpSQVJ0MWotbmhZN0hhOXR6ekY5blNCbEtxRWk0eFNYeWtHejlScWczLXVQT0tqOWluSm44Z2JxZHp3eEJqM0NVSWlfTEFNQ2tiaTdtMWlpejJiRXpfbS1BUTdGTjlzYzZicW90S0psS0FXUVljQ1dXMVHSAdcBQVVfeXFMTlg3c1oxUU1WN1VrUjFvMmtfc2NBVlBOdmxXSDdJdklDOTM1Vzl0Qk1pb1pOX0dwVnNHX0Z6VTM4aUczdzdaQ3JPZGQ5NFlZX2hwSGo1SG53dllkbk5QTmRYaEpCcTNzYmJfSDJMUmh1a1NfOEdyMHNMeDdJckd6TEtvTkNQdUpBbFhaaTRCQjNvWlVxdGRiSS1Ib2s0SmRPeGhQOTM4S1pMQjhKZ1NpZ0dsSUc1T3d2NmVlMXByaDZnQlVUcXRlaEk3UmpieENPU04xMmx2dWc?oc=5",
+      "keywords": [
+        "Bengal BJP government jobs recruitment 2026",
+        "West Bengal 2 lakh jobs BJP 100 days"
+      ]
     },
     {
       "id": "singur",
@@ -275,10 +351,13 @@
       "deadlineLabel": "Proposal in 100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No industrial tender or MoU issued yet.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Singur industrial zone BJP Bengal 2026", "Tata Motors Singur Bengal BJP"]
+      "newsHeadline": "What does incoming CM Suvendu Adhikari need to do to revive West Bengal’s economy? - Business Today",
+      "newsDate": "2026-05-09",
+      "newsUrl": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPTm5fbG5xRkVpRldzVHg5dUtqOHFlWVgtVE5mTUlsd0dSOVZ1bzNORDRBeTh5MFRkdXRWTFVnM3Jaa2ZoOGRlZ0o5SHhaV0lTMWJzVmlLYklGeVFCMXo4OEhfdElySFRWaWhPNUtNUWM2SEVKaDM3VUtaSlNlV1VsN0loYTBnLXZ3N0ZRRXVCMjFmWmFGbkZzcmp1NXJRMDZhNHh4WUVMcWVmUV84WTB5MGV1TE1wekpGWXFpQS03cURiMllGN3A1SjdBM0dJVGZvWENCRGdWYmFrM243LVc0OV9B0gHnAUFVX3lxTFBWNzZxMkNnMXNHanNoTk9fRGJKV19aekZHNHNzb1E2aGtQRktHZUpyT2NGUzZ1X00wRDdwN3BRdTlJZlp1MnJ2Z0NwM0JRQUI1c2NhcmRNYy1NZG1wRmxsRHZOMXM0NndEbFU2WGhQY2doV0IwVkZfamFMVGpEV3ZoandXZElrX0dqb0gyY0liVDgzMlZWS0piQ2ZBN3NkZUROS1B4YmdkbWgzak9YUjRwTERJM3ZjVW1YMkFfWHR5eWVIdGs2cWNhdGNzbzhmRlZIandZdl9PZ3laUmxHa3VVSkE3b1Yyaw?oc=5",
+      "keywords": [
+        "Singur industrial zone BJP Bengal 2026",
+        "Tata Motors Singur Bengal BJP"
+      ]
     },
     {
       "id": "bgbs",
@@ -290,10 +369,13 @@
       "deadlineLabel": "6 months",
       "deadlineDate": "2026-11-08",
       "updateNote": "No summit date announced.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Bengal Business Summit BJP 2026 investor", "BGBS Bengal BJP revamped 2026"]
+      "newsHeadline": "'Ami Suvendu Adhikari...': Senior BJP leader takes oath as West Bengal CM in mega ceremony - Business Today",
+      "newsDate": "2026-05-09",
+      "newsUrl": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNZ2dBYVBRZlJ0QXhzY2hmeUxFMHlVVTZDUC0wSWhKa0YxZmg2czFHUzlRVGgxanZTaGQ5NGlFck5Mbk8wWU9uVnQtXzNzQmFzSnpoRWFpX3lhUTd3YUhGRUJPWkNmVWt6SzJVNTIzTkNvYTBqSWp3SUtoYU9wMzdTMTJKQXJ3eDRVMU55M2p3alQ3MEtoZkx1Qm5aZi1lNF96dC1FbXUxdGVpRzM5MkdwbE5nSGxvSDFCVnU4Q2lMc0sxMmItdEtSeXd3WUJzQTg0Ukp6LTJVeTh1Wms5bTNsNFB2NTlpZ3I3eVg2dUphcHBYdkt3U29CRmtxb25JMVdqdkpvOGE3d1NGVDDSAZACQVVfeXFMT3BoaEZmMjRQOTBHSXVrX0lLXzY3VGlqVmlYVjllVGloVUx2RW9fSDZFcGl2OUxsRHhSRGY1ZDNpWXpWLWZrcjhYNlNsYzZ0YVFZRjl3QTh2dFpVeTRPOGRiRFhxbkFPM0tnMFVBTjREUG04NUF2Z3d3YWc4dXNMOWE2a1hRTzFWWlZqQ0lrSXJ5Um5HWkVYaUdGcW9seTh2U1JoWGt5RHJ0aDZPLVlxSXlNWWpkbDJzMzVkalZPTFpyXzNoZDRSbDE5by1NRlpsOVdMRjBYR3FTdXFydTROMUp5dUVNbExHVkpmcmM1Qms0RXFRMWtOcUJSQW5MWktlU2I4aFo0RFpGcmhEZnI4ZWw?oc=5",
+      "keywords": [
+        "Bengal Business Summit BJP 2026 investor",
+        "BGBS Bengal BJP revamped 2026"
+      ]
     },
     {
       "id": "leather",
@@ -308,7 +390,10 @@
       "newsHeadline": null,
       "newsDate": null,
       "newsUrl": null,
-      "keywords": ["Bantala leather complex BJP Bengal 2026", "jute mill Hooghly BJP revival 2026"]
+      "keywords": [
+        "Bantala leather complex BJP Bengal 2026",
+        "jute mill Hooghly BJP revival 2026"
+      ]
     },
     {
       "id": "pmay",
@@ -320,10 +405,13 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No housing order issued yet.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["PMAY Bengal BJP 10 lakh homes 2026", "West Bengal PMAY backlog BJP 100 days"]
+      "newsHeadline": "\"Development of West Bengal priority for BJP:\" UP Minister Danish Ansari - India's News.Net",
+      "newsDate": "2026-05-10",
+      "newsUrl": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOOGJtTFRNYlhzeHlaMXNneDNaZUpXN3lORVhaYWFybHRhczFydFVpNWlNeHVQNG1xZ2VnVHpVTmNkTFVobkp0aFg1Q2VQaXBfNDMtZ0xCa08yYmltb0RsT1pya3FZNGVZMUhudjR4SjBXSVRLbmVBLXJraXpRZTBoblIwUHFJWHZSaTkzMTlDQ1oyNm5oWmoxSWp5ek5vSU9aajB5aThCVC1hZWo5QlNtYw?oc=5",
+      "keywords": [
+        "PMAY Bengal BJP 10 lakh homes 2026",
+        "West Bengal PMAY backlog BJP 100 days"
+      ]
     },
     {
       "id": "metro",
@@ -335,10 +423,13 @@
       "deadlineLabel": "Land clearance in 100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No official state order or coordination meeting announced.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Kolkata Metro Phase IV BJP 2026 land", "Noapara Barasat metro Bengal BJP"]
+      "newsHeadline": "Railways Ministry eyeing over Rs 98,499 crore rail reboot in West Bengal with improved land acquisition - financialexpress.com",
+      "newsDate": "2026-05-06",
+      "newsUrl": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQcWxmS0xkbmJlTmFFS0VRM0czNEpXZGZUcjBTLUtvTS1jLUJQY0RIaFZUTEtKQ2xPbGlfcC1IdjNVVFl5cnNwU1pRQW9wWDFqUU5jWmE3aktPNU8xYWw3OGV3aEJlLTNwMU00cVk4Zm9aT3A3RUdYb2ozV0tfOXZjTUJfSHZBZk5laFltdi1hVHRoYnF5cFktMWlMUFZIRWhGYlhkTGhOZDBwQW5XUmg1RkVUcS1xMkpNODRYTDcyc3NJanRpSEpSMGFjOVVZZm1vTGZGazRnNXFpX2VEeVBuYXhObzNldG1IRWoxd2lBWlhoVjRpSmxib25wejN4bzF5dGxQYWJB0gGMAkFVX3lxTE1mTmdZblE0ZzAzRjRkWXVnY1pYNENVamVoNVJPQkpqc19NcEswcFJqTWpwOXRSUGJSZFk2SWJ4amFRV1lsRUJTQmRMUEJ4cEV2elRJT1lhLWh1RWxrcGNGcnNvTHBmRHNCWFVOTVRUOW1RUGt2N1h0UHZ2NGFzY0RFUDNqSFNhUEtXNkhBR01LNGxwdld3ZVl6T08xUWpHcjc2YUZKeHl3RGVtQ0tZWGRkOFctbWVuOHJncjhtdGFCUE12enB0Nk84LWxqb2RBX1JHRUt2M3NnQVd2bGhqQTdaOFU2RjZfc0g4MjBhVkRWYUZQVDg4cjA0MG9Pemdkci1UQTl1S3M3VnhRZkw?oc=5",
+      "keywords": [
+        "Kolkata Metro Phase IV BJP 2026 land",
+        "Noapara Barasat metro Bengal BJP"
+      ]
     },
     {
       "id": "ganga",
@@ -350,10 +441,13 @@
       "deadlineLabel": "MoU in 100 days",
       "deadlineDate": "2026-08-16",
       "updateNote": "No state coordination order issued.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
-      "keywords": ["Ganga cleaning Bengal BJP NMCG 2026", "West Bengal sewage Ganga BJP 2026"]
+      "newsHeadline": "Namami Gange's Dolphin Ambulance rescues eight dolphins in four months - Awaz The Voice",
+      "newsDate": "2026-05-07",
+      "newsUrl": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPSW5NN3hYb2dfMTgyYkM5YVlQZS1mcmx6ekwxdmM2dHU1c2VFWEQ2MFlWdGVtLVFEVkRNc0g0elpjSWdBckNVLXBOY1JBZTBuQWdMTGttM2RpOXZDa0NHckRtS0ZpblZYR1JqMjBzSzkwbXQybElyeFo3Sm5EU2JnUzdlaENIbnlQX3E2TnBPMjVVM18tanpqMzJDenpMbWRLd3ExWEVtMFVnLTl6Qzhad3RyUEY4bHZhQ0pjYw?oc=5",
+      "keywords": [
+        "Ganga cleaning Bengal BJP NMCG 2026",
+        "West Bengal sewage Ganga BJP 2026"
+      ]
     },
     {
       "id": "dmic",
@@ -368,7 +462,10 @@
       "newsHeadline": null,
       "newsDate": null,
       "newsUrl": null,
-      "keywords": ["Durgapur Asansol industrial corridor BJP 2026 DMIC", "Bengal DMIC MoU BJP 2026"]
+      "keywords": [
+        "Durgapur Asansol industrial corridor BJP 2026 DMIC",
+        "Bengal DMIC MoU BJP 2026"
+      ]
     }
   ]
 }
