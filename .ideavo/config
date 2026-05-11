@@ -1,5 +1,10 @@
 {
-  "systemSetup": [],
+  "systemSetup": [
+    {
+      "name": "Install serve globally",
+      "command": "npm install -g serve"
+    }
+  ],
   "templateName": "custom",
   "projectDependencies": [
     {
@@ -9,39 +14,31 @@
   ],
   "codeChecks": [
     {
-      "name": "Lint HTML",
-      "command": "npx htmlhint *.html"
+      "name": "Lint HTML and CSS",
+      "command": "npm run lint"
     },
     {
-      "name": "Lint CSS",
-      "command": "npx stylelint *.css"
-    },
-    {
-      "name": "Validate Site",
-      "command": "node scripts/validate.mjs"
+      "name": "Validate Structure",
+      "command": "npm run validate"
     }
   ],
   "buildSteps": [
     {
-      "name": "Generate Sitemap",
-      "command": "node scripts/generate-sitemap.mjs"
-    },
-    {
-      "name": "Format Code",
-      "command": "npx prettier --write *.html *.css *.js *.mjs *.json *.yml *.md"
+      "name": "Build Project",
+      "command": "npm run build"
     }
   ],
   "runStep": [
     {
       "name": "Run Dev Server",
-      "command": "npx serve -l 3000 .",
+      "command": "serve public --listen 3000 --no-clipboard",
       "port": "3000"
     }
   ],
   "deploySteps": [
     {
-      "name": "Validate Build",
-      "command": "node scripts/validate.mjs"
+      "name": "Deploy to Vercel",
+      "command": "npx vercel --prod"
     }
   ],
   "cleanupFiles": [
@@ -49,10 +46,7 @@
     ".vercel/",
     ".cache/",
     "*.log",
-    ".stylelintcache",
-    ".htmlhintrc",
-    ".stylelintrc.json",
-    ".prettierrc"
+    ".stylelintcache"
   ],
   "packageManager": "npm",
   "envPaths": [
