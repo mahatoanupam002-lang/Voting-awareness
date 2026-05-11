@@ -8,7 +8,15 @@ import { join } from 'node:path';
 
 const PUBLIC_DIR = 'public';
 const HTML_FILES = readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html'));
-const DATA_FILES = ['public/data/cases.json', 'public/data/news.json', 'public/data/meta.json', 'public/data/pledges.json'];
+const DATA_FILES = [
+  'public/data/cases.json',
+  'public/data/news.json',
+  'public/data/meta.json',
+  'public/data/pledges.json',
+  'public/data/mlas.json',
+  'public/data/assets.json',
+  'public/data/constituencies.json',
+];
 
 let errors = 0;
 let warnings = 0;
@@ -87,6 +95,48 @@ try {
   }
 } catch (e) {
   logError(`meta.json: ${e.message}`);
+}
+
+console.log('\n=== constituencies.json Check ===\n');
+
+try {
+  const cd = JSON.parse(readFileSync('public/data/constituencies.json', 'utf-8'));
+  const seats     = cd.seats     || [];
+  const districts = cd.districts || [];
+
+  if (seats.length === 0)     logError('constituencies.json: seats array is empty');
+  else                        logOk(`constituencies.json: ${seats.length} seats`);
+
+  if (districts.length === 0) logWarn('constituencies.json: districts array is empty');
+  else                        logOk(`constituencies.json: ${districts.length} districts`);
+
+  const verified   = seats.filter(s => s.verified).length;
+  const unverified = seats.length - verified;
+  if (unverified > 0) logWarn(`constituencies.json: ${unverified} seats still unverified`);
+  else                logOk('constituencies.json: all seats verified');
+
+  // Check for duplicate AC numbers
+  const acNos  = seats.map(s => s.ac);
+  const unique = new Set(acNos);
+  if (unique.size !== acNos.length)
+    logWarn(`constituencies.json: ${acNos.length - unique.size} duplicate AC numbers detected`);
+  else
+    logOk('constituencies.json: no duplicate AC numbers');
+} catch (e) {
+  logError(`constituencies.json: ${e.message}`);
+}
+
+console.log('\n=== mlas.json Check ===\n');
+
+try {
+  const mlasData = JSON.parse(readFileSync('public/data/mlas.json', 'utf-8'));
+  const mlas = Array.isArray(mlasData) ? mlasData : (mlasData.mlas || []);
+  logOk(`mlas.json: ${mlas.length} MLA records`);
+  if (mlas.length < 41)  logWarn('mlas.json: fewer than 41 records — scraper may not have run');
+  if (mlas.length < 294) logWarn(`mlas.json: ${294 - mlas.length} MLAs still missing (${mlas.length}/294)`);
+  else                   logOk('mlas.json: full 294 MLA coverage achieved');
+} catch (e) {
+  logError(`mlas.json: ${e.message}`);
 }
 
 console.log(`\n=== Result: ${errors} errors, ${warnings} warnings ===\n`);

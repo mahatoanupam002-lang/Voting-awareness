@@ -4,6 +4,10 @@
  *   1. Scroll progress bar
  *   2. Dark/light theme toggle + localStorage persistence
  *   3. Language toggle (en/bn) + localStorage persistence
+ *   4. Dynamic day badge (BJP days in office)
+ *   5. Live meta timestamp sync
+ *   6. Share utilities (WhatsApp, Twitter, copy link)
+ *   7. Active nav link highlighting
  */
 
 /* ── 1. Scroll progress bar ─────────────────────────────────────────────── */
@@ -23,10 +27,6 @@
 })();
 
 /* ── 2. Theme toggle ────────────────────────────────────────────────────── */
-/**
- * Call toggleTheme() from any button's onclick.
- * Persists preference in localStorage as 'theme' = 'light' | 'dark'.
- */
 window.toggleTheme = function () {
   var html = document.documentElement;
   var isDark = html.getAttribute('data-theme') === 'dark';
@@ -35,6 +35,7 @@ window.toggleTheme = function () {
   var btn = document.querySelector('.theme-toggle');
   if (btn) btn.textContent = isDark ? '\u25d0 Dark' : '\u25d1 Light';
   try { localStorage.setItem('theme', next); } catch (e) {}
+  if (window.trackEvent) window.trackEvent('Theme Toggle', { theme: next });
 };
 
 /* Restore saved theme immediately (avoids flash) */
@@ -43,7 +44,6 @@ window.toggleTheme = function () {
     var t = localStorage.getItem('theme');
     if (t === 'dark' || t === 'light') {
       document.documentElement.setAttribute('data-theme', t);
-      /* Update button label once DOM is ready */
       document.addEventListener('DOMContentLoaded', function () {
         var btn = document.querySelector('.theme-toggle');
         if (btn && t === 'dark') btn.textContent = '\u25d1 Light';
@@ -53,11 +53,6 @@ window.toggleTheme = function () {
 })();
 
 /* ── 3. Language toggle (en / bn) ───────────────────────────────────────── */
-/**
- * Call setLang('en') or setLang('bn') from buttons.
- * Toggles .en-only / .bn-only visibility and marks lang-btn active.
- * Persists preference in localStorage as 'lang'.
- */
 window.setLang = function (lang) {
   document.documentElement.setAttribute('lang', lang === 'bn' ? 'bn' : 'en');
   document.querySelectorAll('.en-only').forEach(function (el) {
@@ -70,6 +65,7 @@ window.setLang = function (lang) {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
   try { localStorage.setItem('lang', lang); } catch (e) {}
+  if (window.trackEvent) window.trackEvent('Language Toggle', { lang: lang });
 };
 
 /* Restore saved language */
@@ -82,4 +78,93 @@ window.setLang = function (lang) {
       });
     }
   } catch (e) {}
+})();
+
+/* ── 4. Dynamic day badge ───────────────────────────────────────────────── */
+/* Updates any element with id="dayBadge" or class="day-badge"
+   to show "BJP Day N" since swearing-in on 2026-05-09 */
+(function () {
+  var SWEARING_IN = new Date('2026-05-09T00:00:00+05:30');
+  function updateDayBadge() {
+    var dayN = Math.floor((Date.now() - SWEARING_IN.getTime()) / 86400000) + 1;
+    var text = 'BJP Day\u00a0' + dayN;
+    var els = document.querySelectorAll('#dayBadge, .day-badge');
+    els.forEach(function (el) { el.textContent = text; });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateDayBadge);
+  } else {
+    updateDayBadge();
+  }
+})();
+
+/* ── 5. Live meta timestamp sync ────────────────────────────────────────── */
+/* Fetches /data/meta.json and updates any element with class="last-updated"
+   or id="autoChecked" to show the real last-update time. */
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var targets = document.querySelectorAll('.last-updated, #autoChecked, .auto-checked');
+    if (targets.length === 0) return;
+    fetch('/data/meta.json', { cache: 'no-cache' })
+      .then(function (r) { return r.json(); })
+      .then(function (meta) {
+        if (!meta.autoChecked) return;
+        var d = new Date(meta.autoChecked);
+        var fmt = d.toLocaleString('en-IN', {
+          timeZone: 'Asia/Kolkata',
+          day: 'numeric', month: 'short', year: 'numeric',
+          hour: '2-digit', minute: '2-digit',
+        }) + ' IST';
+        targets.forEach(function (el) { el.textContent = fmt; });
+      })
+      .catch(function () {});
+  });
+})();
+
+/* ── 6. Share utilities ─────────────────────────────────────────────────── */
+window.shareWhatsApp = function (text, url) {
+  var msg = (text || document.title) + '\n' + (url || location.href);
+  window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  if (window.trackEvent) window.trackEvent('Share', { method: 'whatsapp', page: location.pathname });
+};
+
+window.shareTwitter = function (text, url) {
+  var t = encodeURIComponent(text || document.title);
+  var u = encodeURIComponent(url || location.href);
+  window.open('https://twitter.com/intent/tweet?text=' + t + '&url=' + u, '_blank', 'noopener');
+  if (window.trackEvent) window.trackEvent('Share', { method: 'twitter', page: location.pathname });
+};
+
+window.copyLink = function (url, btn) {
+  var link = url || location.href;
+  navigator.clipboard.writeText(link).then(function () {
+    if (btn) {
+      var orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(function () { btn.textContent = orig; }, 2000);
+    }
+    if (window.trackEvent) window.trackEvent('Share', { method: 'copy', page: location.pathname });
+  }).catch(function () {
+    prompt('Copy this link:', link);
+  });
+};
+
+/* Share a specific fact/data point (used on MLA, corruption, asset pages) */
+window.shareDataPoint = function (label, value, url) {
+  var text = '\u2060' + label + ': ' + value + ' — The Bengal Reader';
+  window.shareWhatsApp(text, url || location.href);
+};
+
+/* ── 7. Active nav link highlighting ────────────────────────────────────── */
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var path = location.pathname.replace(/\/$/, '') || '/';
+    document.querySelectorAll('.site-nav-link').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      if (href === path || (path === '/' && href === '/') ||
+          (path !== '/' && href !== '/' && path.startsWith(href))) {
+        a.classList.add('active');
+      }
+    });
+  });
 })();

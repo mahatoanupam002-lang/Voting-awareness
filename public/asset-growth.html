@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+Bengali:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #0a0804;
@@ -214,16 +214,50 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 .spotlight-card{transition:transform .2s ease,box-shadow .22s ease}
 .spotlight-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.1)}
 tbody tr{transition:background .12s ease}
+
+/* ── DARK MODE ── */
+[data-theme="dark"] body { background:#141210; color:#f0ece3; }
+[data-theme="dark"] .masthead { background:#141210 !important; border-color:rgba(255,255,255,.12); }
+[data-theme="dark"] .masthead-overline { border-color:rgba(255,255,255,.15); color:#9a9085; }
+[data-theme="dark"] p { color:#c8c0b4; }
+[data-theme="dark"] .article-lead { color:#d8d0c4; border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .controls-bar { background:#141210; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .search-input { background:#1e1b18; color:#f0ece3; border-color:rgba(255,255,255,.15); }
+[data-theme="dark"] .filter-select { background:#1e1b18; color:#f0ece3; border-color:rgba(255,255,255,.15); }
+[data-theme="dark"] table thead th { background:#141210 !important; border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] tbody tr { border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] tbody tr:hover { background:#1e1b18; }
+[data-theme="dark"] .td-note, [data-theme="dark"] .td-const, [data-theme="dark"] .agg-sub { color:#9a9085; }
+[data-theme="dark"] .spotlight-card { background:#1a1814; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .spotlight-desc { color:#c8c0b4; }
+[data-theme="dark"] .spotlight-source { border-color:rgba(255,255,255,.08); color:#9a9085; }
+[data-theme="dark"] .agg-grid { background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .agg-cell { background:#141210; }
+[data-theme="dark"] .party-asset-card { background:#1e1b18; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .callout { background:#1e1b18; }
+[data-theme="dark"] .callout p { color:#c8c0b4; }
+[data-theme="dark"] .callout.gold { background:#1a1608; }
+[data-theme="dark"] .callout.alert { background:#1a0808; }
+[data-theme="dark"] .method-box { background:#1e1b18; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .method-box p { color:#9a9085; }
+[data-theme="dark"] .lookup-box { border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .lookup-step { border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .lookup-step-text { color:#c8c0b4; }
+[data-theme="dark"] .section-header { border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .hr-ornate { border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .hr-ornate::before { background:#141210; color:#9a9085; }
+[data-theme="dark"] body::before { opacity:0.15; }
 </style>
 <link rel="stylesheet" href="/shared.css">
 <script defer src="/analytics.js"></script>
 <script defer src="/shared.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="site-nav-inner">
-    <span class="site-nav-brand">The Bengal Reader</span>
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
     <div class="site-nav-links">
       <a href="/" class="site-nav-link">Voter Guide</a>
       <a href="/parties" class="site-nav-link">Party Compass</a>
@@ -240,13 +274,32 @@ tbody tr{transition:background .12s ease}
 </nav>
 
 <header class="masthead">
-  <div class="masthead-overline">Asset Declarations · ECI Affidavits · 2021 vs 2026 · Source: ADR India / ECI</div>
+  <div class="masthead-overline">
+    <span class="en-only">Asset Declarations · ECI Affidavits · 2021 vs 2026 · Source: ADR India / ECI</span>
+    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">সম্পদ ঘোষণা · ইসিআই হলফনামা · ২০২১ বনাম ২০২৬ · উৎস: এডিআর ইন্ডিয়া</span>
+  </div>
   <h1>MLA <em>Wealth</em> Growth</h1>
-  <p class="masthead-sub">What They Declared Before. What They Declare Now. The Gap in Between.</p>
+  <p class="masthead-sub">
+    <span class="en-only">What They Declared Before. What They Declare Now. The Gap in Between.</span>
+    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">আগে কী ঘোষণা করেছিলেন। এখন কী ঘোষণা করছেন। মাঝখানে ফারাক।</span>
+  </p>
   <div class="masthead-meta">
     <span>Source: ECI nomination affidavits, 2021 &amp; 2026 · ADR India analysis</span>
     <span>Comparison: two successive Bengal assembly elections</span>
-    <span>Updated: May 2026</span>
+    <span class="last-updated">Updated: May 2026</span>
+  </div>
+  <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:1rem;flex-wrap:wrap;">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--aged);background:transparent;color:var(--muted);cursor:pointer;">◐ Dark</button>
+    <div class="share-bar" style="margin:0;">
+      <span class="share-label">Share:</span>
+      <button class="share-btn whatsapp" onclick="shareWhatsApp('MLA Wealth Growth — how much did Bengal MLAs gain in 5 years? — The Bengal Reader')">WhatsApp</button>
+      <button class="share-btn twitter" onclick="shareTwitter('MLA Wealth Growth 2021→2026 — The Bengal Reader')">Twitter</button>
+      <button class="share-btn" onclick="copyLink(null,this)">Copy Link</button>
+    </div>
   </div>
 </header>
 
@@ -362,6 +415,16 @@ tbody tr{transition:background .12s ease}
   <div class="callout fade-in">
     <div class="callout-label">⚖ Legal Note</div>
     <p>Declared assets are self-reported, sworn figures. Discrepancy between declared and actual assets is itself a legal offence under Section 125A of the Representation of the People Act. High declared growth is not proof of corruption — it may reflect legitimate investment returns, inheritance, or business income. It is, however, a flag for public scrutiny and media investigation.</p>
+  </div>
+
+  <div class="section-header fade-in">
+    <div class="section-label">Interactive Chart</div>
+    <h2 class="section-title">2021 vs 2026 Assets — All MLAs</h2>
+  </div>
+  <p>Each dot is one MLA. Hover to see name and figures. Dots above the diagonal grew faster than the average. Colour indicates party. Data loads from the live dataset — only MLAs with both 2021 and 2026 figures are plotted.</p>
+  <div class="chart-wrap fade-in" id="scatterChartWrap" style="position:relative;width:100%;max-width:860px;margin:1.5rem auto 2.5rem;">
+    <canvas id="scatterChart" style="width:100%;height:460px;display:block;"></canvas>
+    <p id="chartStatus" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted);text-align:center;margin-top:0.5rem;"></p>
   </div>
 
 </main>
@@ -682,10 +745,172 @@ async function loadData() {
   renderSpotlight();
   renderPartyAverages();
   applyFilters();
+  renderScatterChart();
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+// ── SCATTER CHART ─────────────────────────────────────────────────────────────
+let scatterChartInstance = null;
+
+function renderScatterChart() {
+  const canvas  = document.getElementById('scatterChart');
+  const status  = document.getElementById('chartStatus');
+  if (!canvas || typeof Chart === 'undefined') return;
+
+  // Only MLAs with both years of data
+  const plotData = (ASSET_DATA || []).filter(m => m.assets2021 && m.assets2026 && m.assets2021 > 0);
+
+  if (plotData.length === 0) {
+    if (status) status.textContent = 'Not enough data to plot yet — scatter chart will appear as more 2021 figures are verified.';
+    canvas.style.display = 'none';
+    return;
+  }
+
+  const partyColors = {
+    BJP:      '#e8640a',
+    TMC:      '#1a7a3c',
+    CPIM:     '#c0171b',
+    INC:      '#1565c0',
+    IND:      '#8a8275',
+    default:  '#9a9085',
+  };
+
+  const toC = v => v / 1e7; // paise → crore (assets stored in rupees typically)
+  const normalize = v => {
+    if (!v) return 0;
+    if (typeof v === 'string') v = parseFloat(v.replace(/[₹,\s]/g, '')) || 0;
+    // If value looks like it's already in crore (<1000) vs full rupees (>10L)
+    return v > 1e6 ? v / 1e7 : v;
+  };
+
+  const points = plotData.map(m => ({
+    x:     normalize(m.assets2021),
+    y:     normalize(m.assets2026),
+    label: m.name,
+    party: m.party,
+    constituency: m.constituency || '',
+  }));
+
+  const maxVal = Math.max(...points.map(p => Math.max(p.x, p.y)), 5);
+
+  // Group by party for colour coding
+  const parties = [...new Set(points.map(p => p.party))];
+  const datasets = parties.map(pty => ({
+    label:           pty,
+    data:            points.filter(p => p.party === pty).map(p => ({ x: p.x, y: p.y, label: p.label, constituency: p.constituency })),
+    backgroundColor: (partyColors[pty] || partyColors.default) + 'cc',
+    borderColor:     partyColors[pty] || partyColors.default,
+    borderWidth:     1,
+    pointRadius:     6,
+    pointHoverRadius: 10,
+  }));
+
+  // Diagonal reference line dataset (y=x)
+  datasets.push({
+    label:           '45° (no change)',
+    data:            [{ x: 0, y: 0 }, { x: maxVal * 1.1, y: maxVal * 1.1 }],
+    type:            'line',
+    borderColor:     'rgba(107,95,78,0.3)',
+    borderDash:      [6, 4],
+    borderWidth:     1.5,
+    pointRadius:     0,
+    fill:            false,
+    tension:         0,
+    showLine:        true,
+  });
+
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const gridColor = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)';
+  const textColor = isDark ? '#9a9085' : '#6b5f4e';
+
+  if (scatterChartInstance) scatterChartInstance.destroy();
+
+  scatterChartInstance = new Chart(canvas, {
+    type: 'scatter',
+    data: { datasets },
+    options: {
+      responsive:          true,
+      maintainAspectRatio: false,
+      animation:           { duration: 600 },
+      plugins: {
+        legend: {
+          labels: { color: textColor, font: { family: "'IBM Plex Mono', monospace", size: 11 } },
+          filter: item => item.text !== '45° (no change)',
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const pt = ctx.raw;
+              if (!pt.label) return `${ctx.dataset.label}: ${ctx.parsed.x.toFixed(2)} Cr → ${ctx.parsed.y.toFixed(2)} Cr`;
+              const pct = pt.x > 0 ? (((pt.y - pt.x) / pt.x) * 100).toFixed(0) : '—';
+              return [
+                `${pt.label} (${ctx.dataset.label})`,
+                `${pt.constituency}`,
+                `2021: ₹${ctx.parsed.x.toFixed(2)} Cr`,
+                `2026: ₹${ctx.parsed.y.toFixed(2)} Cr`,
+                `Growth: ${pct}%`,
+              ];
+            },
+          },
+          backgroundColor: isDark ? '#1e1b18' : '#fdfaf4',
+          titleColor:      isDark ? '#f0ece3' : '#0a0804',
+          bodyColor:        isDark ? '#c8c0b4' : '#2a2018',
+          borderColor:      isDark ? 'rgba(255,255,255,.1)' : 'rgba(0,0,0,.1)',
+          borderWidth:      1,
+          padding:          10,
+          titleFont: { family: "'Playfair Display', serif", size: 13 },
+          bodyFont:  { family: "'IBM Plex Mono', monospace", size: 11 },
+        },
+      },
+      scales: {
+        x: {
+          title: { display: true, text: '2021 Declared Assets (₹ Crore)', color: textColor, font: { family: "'IBM Plex Mono', monospace", size: 11 } },
+          grid:  { color: gridColor },
+          ticks: { color: textColor, font: { family: "'IBM Plex Mono', monospace", size: 10 }, callback: v => '₹' + v + ' Cr' },
+          min:   0,
+        },
+        y: {
+          title: { display: true, text: '2026 Declared Assets (₹ Crore)', color: textColor, font: { family: "'IBM Plex Mono', monospace", size: 11 } },
+          grid:  { color: gridColor },
+          ticks: { color: textColor, font: { family: "'IBM Plex Mono', monospace", size: 10 }, callback: v => '₹' + v + ' Cr' },
+          min:   0,
+        },
+      },
+    },
+  });
+
+  if (status) status.textContent = `${plotData.length} MLAs with verified 2021 & 2026 data · Dots above the diagonal grew faster than average`;
+
+  // Re-render on theme change
+  document.documentElement.addEventListener('themechange', () => renderScatterChart(), { once: true });
 }
 
 loadData();
 </script>
+
+<!-- SUBSCRIBE STRIP -->
+<div class="subscribe-strip">
+  <div class="subscribe-strip-text"><strong>Asset data</strong> updates as new affidavit comparisons are verified from ECI records</div>
+  <div class="subscribe-strip-links">
+    <a href="/rss.xml" class="subscribe-link" onclick="if(window.trackEvent)window.trackEvent('RSS Subscribe',{page:'assets'})">RSS Feed</a>
+    <a href="/mlas" class="subscribe-link">MLA Criminal Records →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="site-footer-brand">The Bengal Reader</div>
+      <div class="site-footer-tagline">Non-partisan civic journalism for West Bengal.<br>Asset data sourced from ECI affidavit portal and ADR India.</div>
+    </div>
+    <div class="site-footer-links">
+      <a href="/mlas" class="site-footer-link">MLA Criminal Records</a>
+      <a href="/corruption" class="site-footer-link">Corruption Dossier</a>
+      <a href="/bonds" class="site-footer-link">Electoral Bonds</a>
+      <a href="/methodology" class="site-footer-link">Methodology</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

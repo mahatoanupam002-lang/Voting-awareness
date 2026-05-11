@@ -28,6 +28,8 @@
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: rgba(245, 240, 232, 0.35);
+  text-decoration: none;
+  white-space: nowrap;
 }
 .site-nav-links {
   display: flex;
@@ -80,7 +82,8 @@ button:active,
 .lang-btn:active,
 .sort-btn:active,
 .audience-tab:active,
-.filter-tab:active {
+.filter-tab:active,
+.share-btn:active {
   transform: scale(0.95);
 }
 
@@ -116,4 +119,223 @@ button:active,
     padding: 10px 11px;
     white-space: nowrap;
   }
+}
+
+/* ── SHARED DARK MODE (Playfair/Crimson pages) ─────────────────────────────── */
+/* Applied to pages that use --ink / --paper variables but lack [data-theme=dark] */
+[data-theme="dark"] {
+  --ink: #f0ece3 !important;
+  --paper: #141210 !important;
+  --aged: #2a2520 !important;
+  --muted: #9a9085 !important;
+  --ink-soft: #b8b2a8 !important;
+  --ink-faint: #706a62 !important;
+}
+[data-theme="dark"] body {
+  background: #141210;
+  color: #f0ece3;
+}
+[data-theme="dark"] .masthead,
+[data-theme="dark"] .controls-bar,
+[data-theme="dark"] .filter-bar {
+  background: #141210 !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
+[data-theme="dark"] p,
+[data-theme="dark"] .article-lead {
+  color: #c8c0b4 !important;
+}
+[data-theme="dark"] .how-card,
+[data-theme="dark"] .case-card,
+[data-theme="dark"] .pledge-card,
+[data-theme="dark"] .mla-row:hover {
+  background: #1e1b18 !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+[data-theme="dark"] table th {
+  background: #1e1b18 !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+[data-theme="dark"] table td {
+  border-color: rgba(255,255,255,0.06) !important;
+}
+[data-theme="dark"] input,
+[data-theme="dark"] select {
+  background: #1e1b18 !important;
+  color: #f0ece3 !important;
+  border-color: rgba(255,255,255,0.15) !important;
+}
+
+/* ── SHARE BUTTON BAR ──────────────────────────────────────────────────────── */
+.share-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  align-items: center;
+}
+.share-label {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted, #6b5f4e);
+  margin-right: 4px;
+}
+.share-btn {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--aged, #e8e0cc);
+  background: transparent;
+  color: var(--ink, #0a0804);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.share-btn:hover {
+  background: var(--ink, #0a0804);
+  color: var(--paper, #f5f0e8);
+}
+.share-btn.whatsapp { border-color: #25d366; color: #1a8c49; }
+.share-btn.whatsapp:hover { background: #25d366; color: #fff; }
+.share-btn.twitter { border-color: #1da1f2; color: #1da1f2; }
+.share-btn.twitter:hover { background: #1da1f2; color: #fff; }
+
+/* ── RSS / SUBSCRIBE STRIP ─────────────────────────────────────────────────── */
+.subscribe-strip {
+  background: var(--ink, #0a0804);
+  color: var(--paper, #f5f0e8);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.subscribe-strip-text {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.6);
+}
+.subscribe-strip-text strong {
+  color: rgba(245,240,232,0.9);
+}
+.subscribe-strip-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.subscribe-link {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.5);
+  text-decoration: none;
+  padding: 4px 10px;
+  border: 1px solid rgba(245,240,232,0.15);
+  transition: color 0.2s, border-color 0.2s;
+}
+.subscribe-link:hover {
+  color: rgba(245,240,232,0.9);
+  border-color: rgba(245,240,232,0.4);
+}
+
+/* ── LANGUAGE TOGGLE ───────────────────────────────────────────────────────── */
+.lang-toggle {
+  display: flex;
+  gap: 0;
+}
+.lang-btn {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border: 1px solid var(--aged, #e8e0cc);
+  background: transparent;
+  color: var(--muted, #6b5f4e);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.lang-btn + .lang-btn {
+  border-left: none;
+}
+.lang-btn.active {
+  background: var(--ink, #0a0804);
+  color: var(--paper, #f5f0e8);
+  border-color: var(--ink, #0a0804);
+}
+
+/* ── DATA FRESHNESS BADGE ──────────────────────────────────────────────────── */
+.freshness-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--muted, #6b5f4e);
+}
+.freshness-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #16a34a;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── FOOTER ────────────────────────────────────────────────────────────────── */
+.site-footer {
+  background: #050403;
+  color: rgba(245,240,232,0.35);
+  padding: 2rem;
+  margin-top: 4rem;
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+}
+.site-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.site-footer-brand {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.5);
+  margin-bottom: 0.4rem;
+}
+.site-footer-tagline {
+  color: rgba(245,240,232,0.25);
+  line-height: 1.7;
+}
+.site-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.site-footer-link {
+  color: rgba(245,240,232,0.3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-footer-link:hover {
+  color: rgba(245,240,232,0.7);
 }

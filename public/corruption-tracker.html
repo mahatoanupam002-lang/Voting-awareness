@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+Bengali:wght@400;600;800&display=swap" rel="stylesheet">
 <script defer src="/analytics.js"></script>
 <style>
 :root {
@@ -288,6 +288,38 @@ footer a { color:#8a7a60; text-decoration:none; }
 input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 .case-card{transition:transform .2s ease,box-shadow .22s ease,background .2s}
 .case-card:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,.1)}
+
+/* ── DARK MODE ── */
+[data-theme="dark"] body { background:#141210; color:#f0ece3; }
+[data-theme="dark"] .masthead { background:#141210 !important; border-color:rgba(255,255,255,.12); }
+[data-theme="dark"] .masthead-overline { border-color:rgba(255,255,255,.15); color:#9a9085; }
+[data-theme="dark"] .filter-bar { background:#141210; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .filter-btn { color:#9a9085; }
+[data-theme="dark"] .filter-btn:hover { color:#f0ece3; }
+[data-theme="dark"] .filter-btn.active { color:var(--accent); }
+[data-theme="dark"] .case-card { background:#1a1814; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .case-card:hover { background:#1e1c18; box-shadow:0 10px 32px rgba(0,0,0,.4); }
+[data-theme="dark"] .case-header { border-color:rgba(255,255,255,.07); }
+[data-theme="dark"] .case-main { border-color:rgba(255,255,255,.07); }
+[data-theme="dark"] .case-sidebar { background:#161412; }
+[data-theme="dark"] .case-summary { color:#c8c0b4; }
+[data-theme="dark"] .accused-item { border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .accused-detail { color:#9a9085; }
+[data-theme="dark"] .tl-item { border-color:rgba(255,255,255,.12); }
+[data-theme="dark"] .tl-event { color:#c8c0b4; }
+[data-theme="dark"] .case-footer { background:#161412; border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .docket-panel { background:#1a1814; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .docket-header { border-color:rgba(255,255,255,.12); }
+[data-theme="dark"] .docket-row { border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .docket-row:hover { background:#1e1c18; }
+[data-theme="dark"] .docket-matter { color:#c8c0b4; }
+[data-theme="dark"] .method-box { background:#1a1814; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .method-box p { color:#9a9085; }
+[data-theme="dark"] .legal-note { background:#1a1814; border-color:rgba(255,255,255,.12); color:#9a9085; }
+[data-theme="dark"] .hr-ornate { border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .hr-ornate::before { background:#141210; color:#9a9085; }
+[data-theme="dark"] .case-section-title { border-color:rgba(255,255,255,.08); color:#9a9085; }
+[data-theme="dark"] body::before { opacity:0.15; }
 </style>
 <link rel="stylesheet" href="/shared.css">
 <script defer src="/shared.js"></script>
@@ -297,7 +329,7 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 <!-- SITE NAV -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav-inner">
-    <span class="site-nav-brand">The Bengal Reader</span>
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
     <div class="site-nav-links">
       <a href="/" class="site-nav-link">Voter Guide</a>
       <a href="/parties" class="site-nav-link">Party Compass</a>
@@ -317,13 +349,32 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 
 <!-- MASTHEAD -->
 <header class="masthead">
-  <div class="masthead-overline">Political Accountability · West Bengal · Court-Verified Records</div>
+  <div class="masthead-overline">
+    <span class="en-only">Political Accountability · West Bengal · Court-Verified Records</span>
+    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">রাজনৈতিক দায়বদ্ধতা · পশ্চিমবঙ্গ · আদালত-যাচাইকৃত রেকর্ড</span>
+  </div>
   <h1>Bengal <em>Corruption</em> Dossier</h1>
-  <p class="masthead-sub">Every Documented Case. Every Named Accused. Every Court.</p>
+  <p class="masthead-sub">
+    <span class="en-only">Every Documented Case. Every Named Accused. Every Court.</span>
+    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">প্রতিটি নথিভুক্ত মামলা। প্রতিটি অভিযুক্ত। প্রতিটি আদালত।</span>
+  </p>
   <div class="masthead-meta">
     <span>Sources: CBI · ED · Supreme Court · Calcutta HC · NHRC · SEBI</span>
     <span>Cases: 8 tracked · Accused: 20+ named</span>
-    <span id="autoStatus">Updated: May 2026</span>
+    <span id="autoStatus" class="last-updated">Updated: May 2026</span>
+  </div>
+  <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:1rem;flex-wrap:wrap;">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--aged);background:transparent;color:var(--muted);cursor:pointer;">◐ Dark</button>
+    <div class="share-bar" style="margin:0;">
+      <span class="share-label">Share:</span>
+      <button class="share-btn whatsapp" onclick="shareWhatsApp('Bengal Corruption Dossier — 8 cases, 20+ politicians, ₹20,000cr+ — The Bengal Reader')">WhatsApp</button>
+      <button class="share-btn twitter" onclick="shareTwitter('Bengal Corruption Dossier — The Bengal Reader')">Twitter</button>
+      <button class="share-btn" onclick="copyLink(null,this)">Copy Link</button>
+    </div>
   </div>
 </header>
 
@@ -580,6 +631,9 @@ function buildCard(c) {
     <span>Court: ${c.court}</span>
     ${c.nextHearing && c.nextHearing.date ? `<span class="footer-next-hearing">${isDatePast(c.nextHearing.date) ? '<span style="color:#b45309;">Hearing date passed — verify schedule</span>' : 'Next hearing: ' + formatHearingDate(c.nextHearing.date) + ' · ' + c.nextHearing.matter.split(';')[0]}</span>` : ''}
     <span>Last updated: ${c.lastUpdated}</span>
+    <span>
+      <button class="share-btn whatsapp" style="font-size:0.55rem;padding:3px 8px;" onclick="shareDataPoint('${c.name.replace(/'/g,"\\'")}','${c.amount||'documented'}')">Share</button>
+    </span>
   </div>
 </div>`;
 }
@@ -601,7 +655,9 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     if (!CASES.length) return;
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    render(btn.dataset.filter);
+    const filter = btn.dataset.filter;
+    render(filter);
+    if (window.trackEvent) window.trackEvent('Corruption Filter', { filter });
   });
 });
 
@@ -785,5 +841,30 @@ async function loadData() {
 
 loadData();
 </script>
+
+<!-- SUBSCRIBE STRIP -->
+<div class="subscribe-strip">
+  <div class="subscribe-strip-text"><strong>Live updates</strong> — corruption case news refreshes every 6 hours automatically</div>
+  <div class="subscribe-strip-links">
+    <a href="/rss.xml" class="subscribe-link" onclick="if(window.trackEvent)window.trackEvent('RSS Subscribe',{page:'corruption'})">RSS Feed</a>
+    <a href="/methodology" class="subscribe-link">Methodology</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="site-footer-brand">The Bengal Reader</div>
+      <div class="site-footer-tagline">Non-partisan civic journalism for West Bengal.<br>All case data sourced from CBI, ED, court records, and NHRC.</div>
+    </div>
+    <div class="site-footer-links">
+      <a href="/accountability" class="site-footer-link">100-Day Tracker</a>
+      <a href="/mlas" class="site-footer-link">MLA Criminal Records</a>
+      <a href="/assets" class="site-footer-link">MLA Wealth Growth</a>
+      <a href="/methodology" class="site-footer-link">Methodology</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

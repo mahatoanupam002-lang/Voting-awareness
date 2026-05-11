@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
 <meta property="og:title" content="BJP's 100-Day Pledge Tracker — The Bengal Reader">
 <meta property="og:description" content="What Bengal's new government promised. What it must deliver. Updated live.">
 <meta property="og:type" content="article">
-<meta property="og:image" content="/og-accountability.png">
+<meta property="og:image" content="/og-assets.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
@@ -18,7 +18,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+Bengali:wght@400;600;800&display=swap" rel="stylesheet">
 <script defer src="/analytics.js"></script>
 <style>
 :root {
@@ -190,6 +190,28 @@ footer a { color:#8a7a60; text-decoration:none; }
 input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 .pledge-card{transition:transform .2s ease,box-shadow .22s ease,background .2s}
 .pledge-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+
+/* ── DARK MODE ── */
+[data-theme="dark"] body { background:#141210; color:#f0ece3; }
+[data-theme="dark"] .masthead { background:#141210 !important; border-color:rgba(255,255,255,.12); }
+[data-theme="dark"] .masthead-overline { border-color:rgba(255,255,255,.15); color:#9a9085; }
+[data-theme="dark"] p { color:#c8c0b4; }
+[data-theme="dark"] p.article-lead { color:#d8d0c4; border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .callout { background:#1e1b18; border-left-color:var(--bjp); }
+[data-theme="dark"] .callout p { color:#c8c0b4; }
+[data-theme="dark"] .callout.neutral { background:#1e1b18; border-left-color:#6b5f4e; }
+[data-theme="dark"] .method-box { background:#1e1b18; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .method-box p { color:#9a9085; }
+[data-theme="dark"] .pledge-card { border-color:rgba(255,255,255,.07); }
+[data-theme="dark"] .pledge-card:hover { background:#1e1b18; box-shadow:0 8px 24px rgba(0,0,0,.3); }
+[data-theme="dark"] .pledge-detail { color:#9a9085; }
+[data-theme="dark"] .pledge-update { background:#252220; color:#c8c0b4; }
+[data-theme="dark"] .pledge-category { border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .section-header { border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .hr-ornate { border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .hr-ornate::before { background:#141210; color:#9a9085; }
+[data-theme="dark"] .filter-bar { background:#141210; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] body::before { opacity:0.15; }
 </style>
 <link rel="stylesheet" href="/shared.css">
 <script defer src="/shared.js"></script>
@@ -199,7 +221,7 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 <!-- SITE NAV -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav-inner">
-    <span class="site-nav-brand">The Bengal Reader</span>
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
     <div class="site-nav-links">
       <a href="/" class="site-nav-link">Voter Guide</a>
       <a href="/parties" class="site-nav-link">Party Compass</a>
@@ -217,13 +239,32 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 
 <!-- MASTHEAD -->
 <header class="masthead">
-  <div class="masthead-overline">Political Accountability · 2026 West Bengal · Updated Continuously</div>
+  <div class="masthead-overline">
+    <span class="en-only">Political Accountability · 2026 West Bengal · Updated Continuously</span>
+    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">রাজনৈতিক책임জবাবদিহিতা · ২০২৬ পশ্চিমবঙ্গ · ক্রমাগত আপডেট</span>
+  </div>
   <h1><em>100-Day</em> Pledge Tracker</h1>
-  <p class="masthead-sub">What Bengal's New Government Promised. What It Must Deliver.</p>
+  <p class="masthead-sub">
+    <span class="en-only">What Bengal's New Government Promised. What It Must Deliver.</span>
+    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">বাংলার নতুন সরকার কী প্রতিশ্রুতি দিয়েছে। কী পূরণ করতে হবে।</span>
+  </p>
   <div class="masthead-meta">
     <span>Source: BJP 2026 Manifesto · Press Statements · Campaign Speeches</span>
     <span>Election: 4 May 2026 · Swearing-in: 9 May 2026</span>
     <span id="lastUpdatedMeta">Day 100 deadline: 17 August 2026</span>
+  </div>
+  <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:1rem;flex-wrap:wrap;">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--aged);background:transparent;color:var(--muted);cursor:pointer;">◐ Dark</button>
+    <div class="share-bar" style="margin:0;">
+      <span class="share-label">Share:</span>
+      <button class="share-btn whatsapp" onclick="shareWhatsApp('BJP 100-Day Pledge Tracker — The Bengal Reader')">WhatsApp</button>
+      <button class="share-btn twitter" onclick="shareTwitter('BJP 100-Day Pledge Tracker — The Bengal Reader')">Twitter</button>
+      <button class="share-btn" onclick="copyLink(null,this)">Copy Link</button>
+    </div>
   </div>
 </header>
 
@@ -461,6 +502,9 @@ function renderPledgeSection(containerId, pledges) {
           <p class="pledge-detail">${escHtml(p.detail)}</p>
           <p class="pledge-source">Source: ${escHtml(p.source)}</p>
           ${updateNote}${newsChip}
+          <div style="margin-top:0.5rem;">
+            <button class="share-btn whatsapp" style="font-size:0.55rem;padding:3px 7px;" onclick="shareDataPoint('${escHtml(p.title).replace(/'/g,"\\'")}','${escHtml(statusLabel)}')">Share</button>
+          </div>
         </div>
         <div class="pledge-right">
           <span class="status-badge ${statusClass}">${statusLabel}</span>
@@ -563,6 +607,38 @@ async function loadData() {
 }
 
 loadData();
+
+// Analytics: track filter interactions
+document.querySelectorAll('.pledge-category').forEach(function(el) {
+  el.addEventListener('click', function() {
+    if (window.trackEvent) window.trackEvent('Pledge Category View', { category: el.textContent.trim().slice(0, 40) });
+  });
+});
 </script>
+
+<!-- SUBSCRIBE STRIP -->
+<div class="subscribe-strip">
+  <div class="subscribe-strip-text"><strong>Stay updated</strong> — this tracker updates as news breaks, 6× daily</div>
+  <div class="subscribe-strip-links">
+    <a href="/rss.xml" class="subscribe-link" onclick="if(window.trackEvent)window.trackEvent('RSS Subscribe',{page:'accountability'})">RSS Feed</a>
+    <a href="https://github.com/voting-awareness/voting-awareness" class="subscribe-link" target="_blank" rel="noopener">Watch on GitHub</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="site-footer-brand">The Bengal Reader</div>
+      <div class="site-footer-tagline">Non-partisan civic journalism for West Bengal.<br>Data sourced from ECI, ADR India, court records.</div>
+    </div>
+    <div class="site-footer-links">
+      <a href="/methodology" class="site-footer-link">Methodology</a>
+      <a href="/corruption" class="site-footer-link">Corruption Dossier</a>
+      <a href="/mlas" class="site-footer-link">MLA Records</a>
+      <a href="/rss.xml" class="site-footer-link">RSS Feed</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

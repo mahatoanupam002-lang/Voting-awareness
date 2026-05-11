@@ -678,338 +678,9 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 </footer>
 
 <script>
-// ── DATA ──
-// verified: true = candidate name confirmed from named source
-// winParty codes: BJP, TMC, INC, LF, OTH
-// notable: shows star + note text
-const RESULTS = [
-  // ── COOCH BEHAR (9 seats) ──
-  {ac:1,  name:"Mekhliganj",         district:"Cooch Behar",      winner:"Dadhiram Roy",       winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:2,  name:"Mathabhanga",        district:"Cooch Behar",      winner:"Nishith Pramanik",   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:3,  name:"Cooch Behar Uttar",  district:"Cooch Behar",      winner:"Sukumari Ray",        winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:4,  name:"Cooch Behar Dakshin",district:"Cooch Behar",      winner:"Rathindra Bose",  winParty:"BJP", loser:"Avijit De Bhowmik",      loseParty:"TMC", margin:3565,  verified:true,  notable:false, note:""},
-  {ac:5,  name:"Sitai",              district:"Cooch Behar",      winner:"Sangita Roy",        winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:6,  name:"Sitalkuchi",         district:"Cooch Behar",      winner:"Sabitri Barman",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:7,  name:"Tufanganj",          district:"Cooch Behar",      winner:"Malati Rava Roy",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:8,  name:"Natabari",           district:"Cooch Behar",      winner:"Girija Shankar Ray",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:9,  name:"Dinhata",            district:"Cooch Behar",      winner:"Ajay Roy",           winParty:"BJP", loser:"Udayan Guha",         loseParty:"TMC", margin:17447, verified:true, notable:true,  note:"Senior TMC minister Udayan Guha defeated"},
-
-  // ── ALIPURDUAR (5 seats) ──
-  {ac:10, name:"Phalakata",          district:"Alipurduar",       winner:"Dipak Barman",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:11, name:"Madarihat-Birpara",  district:"Alipurduar",       winner:"Laxuman Limbu",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:12, name:"Kumargram",          district:"Alipurduar",       winner:"Manoj Kumar Oraon",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:13, name:"Alipurduar",         district:"Alipurduar",       winner:"Paritosh Das",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:14, name:"Kalchini",           district:"Alipurduar",       winner:"Bishal Lama",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-
-  // ── JALPAIGURI (8 seats) ──
-  {ac:15, name:"Nagrakata",          district:"Jalpaiguri",       winner:"Puna Bhengra",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:16, name:"Mal",                district:"Jalpaiguri",       winner:"Sukra Munda",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:17, name:"Dhupguri",           district:"Jalpaiguri",       winner:"Naresh Roy",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:18, name:"Malbazar",           district:"Jalpaiguri",       winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:19, name:"Rajganj",            district:"Jalpaiguri",       winner:"Dinesh Sarkar",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:20, name:"Jalpaiguri",         district:"Jalpaiguri",       winner:"Ananta Deb Adhikary",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:21, name:"Maynaguri",          district:"Jalpaiguri",       winner:"Dalim Chandra Roy",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:22, name:"Matiali",            district:"Jalpaiguri",       winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── DARJEELING (7 seats) ──
-  {ac:23, name:"Darjeeling",         district:"Darjeeling",       winner:"Noman Rai",          winParty:"BJP", loser:"",                    loseParty:"TMC", margin:6057, verified:true,  notable:false, note:""},
-  {ac:24, name:"Kurseong",           district:"Darjeeling",       winner:"Sonam Lama",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:25, name:"Kalimpong",          district:"Darjeeling",       winner:"Bharat Kumar Chetri",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:26, name:"Matigara-Naxalbari", district:"Darjeeling",       winner:"Anandamay Barman",   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:27, name:"Siliguri",           district:"Darjeeling",       winner:"Shankar Ghosh",      winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:28, name:"Phansidewa",         district:"Darjeeling",       winner:"Durga Murmu",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:29, name:"Chopra",             district:"Darjeeling",       winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── UTTAR DINAJPUR (9 seats) ──
-  {ac:30, name:"Islampur",           district:"Uttar Dinajpur",   winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:31, name:"Goalpokhar",         district:"Uttar Dinajpur",   winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:32, name:"Chakulia",           district:"Uttar Dinajpur",   winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:33, name:"Karandighi",         district:"Uttar Dinajpur",   winner:"Biraj Biswas",       winParty:"BJP", loser:"",                    loseParty:"TMC", margin:19869, verified:true,  notable:false, note:""},
-  {ac:34, name:"Hemtabad",           district:"Uttar Dinajpur",   winner:"Haripada Barman",    winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:35, name:"Kaliaganj",          district:"Uttar Dinajpur",   winner:"Utpal Brahmachari",  winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:36, name:"Raiganj",            district:"Uttar Dinajpur",   winner:"Koushik Chowdhury",  winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:37, name:"Itahar",             district:"Uttar Dinajpur",   winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── DAKSHIN DINAJPUR (6 seats) ──
-  {ac:38, name:"Gangarampur",        district:"Dakshin Dinajpur", winner:"Satyendra Nath Roy",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:39, name:"Harirampur",         district:"Dakshin Dinajpur", winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:40, name:"Kushmandi",          district:"Dakshin Dinajpur", winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:41, name:"Kumarganj",          district:"Dakshin Dinajpur", winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:42, name:"Balurghat",          district:"Dakshin Dinajpur", winner:"Bidyut Kumar Roy",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:43, name:"Tapan",              district:"Dakshin Dinajpur", winner:"Budhrai Tudu",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-
-  // ── MALDA (12 seats) ──
-  {ac:44, name:"Habibpur",           district:"Malda",            winner:"Joyel Murmu",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:45, name:"Gazole",             district:"Malda",            winner:"Chinmoy Deb Barman",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:46, name:"Chanchal",           district:"Malda",            winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:47, name:"Harishchandrapur",   district:"Malda",            winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:48, name:"Malatipur",          district:"Malda",            winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:49, name:"Ratua",              district:"Malda",            winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:50, name:"Manikchak",          district:"Malda",            winner:"Gour Chandra Mandal",                   winParty:"BJP", loser:"",                    loseParty:"BJP", margin:null, verified:true, notable:false, note:""},
-  {ac:51, name:"Malda",              district:"Malda",            winner:"Gopal Chandra Saha", winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:52, name:"Mothabari",          district:"Malda",            winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:53, name:"Sujapur",            district:"Malda",            winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:54, name:"Baisnabnagar",       district:"Malda",            winner:"Raju Karmakar",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:55, name:"English Bazar",      district:"Malda",            winner:"Amlan Bhaduri",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-
-  // ── MURSHIDABAD (22 seats) ──
-  {ac:56, name:"Farakka",            district:"Murshidabad",      winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:57, name:"Shamserganj",        district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:58, name:"Suti",               district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:59, name:"Jangipur",           district:"Murshidabad",      winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:60, name:"Raghunathganj",      district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:61, name:"Sagardighi",         district:"Murshidabad",      winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:62, name:"Lalgola",            district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:63, name:"Bhagabangola",       district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:64, name:"Raninagar",          district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:65, name:"Murshidabad",        district:"Murshidabad",      winner:"Gouri Sankar Ghosh", winParty:"BJP", loser:"Shaoni Singha Roy",   loseParty:"TMC", margin:31521, verified:true, notable:false, note:""},
-  {ac:66, name:"Nabagram",           district:"Murshidabad",      winner:"Dilip Saha",         winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:67, name:"Khargram",           district:"Murshidabad",      winner:"Mitali Mal",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:68, name:"Burwan",             district:"Murshidabad",      winner:"Sukhendra Kumar Bagdi",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:69, name:"Kandi",              district:"Murshidabad",      winner:"Gargi Das Ghosh",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:70, name:"Bharatpur",          district:"Murshidabad",      winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:71, name:"Beldanga",           district:"Murshidabad",      winner:"Bharat Kumar Jhawar",winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:72, name:"Baharampur",         district:"Murshidabad",      winner:"Subrata Maitra",     winParty:"BJP", loser:"",                    loseParty:"INC", margin:null, verified:true,  notable:false, note:""},
-  {ac:73, name:"Hariharpara",        district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:74, name:"Naoda",              district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:75, name:"Domkal",             district:"Murshidabad",      winner:"Md. Mostafijur Rahaman", winParty:"TMC", loser:"",               loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:76, name:"Jalangi",            district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:77, name:"Islami",             district:"Murshidabad",      winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-
-  // ── BIRBHUM (11 seats) ──
-  {ac:78, name:"Nalhati",            district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:79, name:"Murarai",            district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:80, name:"Mayureswar",         district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:81, name:"Rampurhat",          district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:82, name:"Hansan",             district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:83, name:"Dubrajpur",          district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:84, name:"Suri",               district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:85, name:"Bolpur",             district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:86, name:"Nanoor",             district:"Birbhum",          winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:87, name:"Labpur",             district:"Birbhum",          winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:88, name:"Sainthia",           district:"Birbhum",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── PASCHIM BURDWAN (4 seats) ──
-  {ac:89, name:"Barabani",           district:"Paschim Burdwan",  winner:"Arijit Roy",         winParty:"BJP", loser:"Bidhan Upadhyay",    loseParty:"TMC", margin:91200, verified:true,  notable:false, note:""},
-  {ac:90, name:"Asansol Uttar",      district:"Paschim Burdwan",  winner:"Krishnendu Mukherjee",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:91, name:"Asansol Dakshin",    district:"Paschim Burdwan",  winner:"Agnimitra Paul",     winParty:"BJP", loser:"",                    loseParty:"TMC", margin:40839, verified:true, notable:false, note:""},
-  {ac:92, name:"Raniganj",           district:"Paschim Burdwan",  winner:"Partha Ghosh",       winParty:"BJP", loser:"Kalobaran Mondal",    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:93, name:"Jamuria",            district:"Paschim Burdwan",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:94, name:"Durgapur Purba",     district:"Paschim Burdwan",  winner:"Chandra Sekhar Banerjee",winParty:"BJP",loser:"Pradip Mazumdar",  loseParty:"TMC", margin:30934, verified:true,  notable:false, note:""},
-  {ac:95, name:"Durgapur Paschim",   district:"Paschim Burdwan",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── PURBA BURDWAN (11 seats) ──
-  {ac:93, name:"Kanksa",             district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:94, name:"Ausgram",            district:"Purba Burdwan",    winner:"Kalita Maji",        winParty:"BJP", loser:"Shyama Prasanna Lohar",loseParty:"TMC", margin:107692, verified:true, notable:false, note:""},
-  {ac:95, name:"Monteswar",          district:"Purba Burdwan",    winner:"Saikat Panja",       winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:96, name:"Burdwan Uttar",      district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:97, name:"Burdwan Dakshin",    district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:98, name:"Raina",              district:"Purba Burdwan",    winner:"Subhash Patra",      winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:99, name:"Jamalpur",           district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:100,name:"Memari",             district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:101,name:"Purbasthali Uttar",  district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:102,name:"Purbasthali Dakshin",district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:103,name:"Katwa",              district:"Purba Burdwan",    winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── HOOGHLY (18 seats) ──
-  {ac:104,name:"Khanakul",           district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:105,name:"Arambag",            district:"Hooghly",          winner:"Madhusudan Bag",     winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:106,name:"Goghat",             district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:107,name:"Haripal",            district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:108,name:"Dhaniakhali",        district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:109,name:"Singur",             district:"Hooghly",          winner:"Arup Kumar Das",     winParty:"BJP", loser:"Becharam Manna",      loseParty:"TMC", margin:21438, verified:true,  notable:true,  note:"Becharam Manna (TMC's Singur movement face) loses by 21,438 votes"},
-  {ac:110,name:"Chanditala",         district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:111,name:"Shrirampur",         district:"Hooghly",          winner:"Bhaskar Bhattacharya",winParty:"BJP",loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:112,name:"Champdani",          district:"Hooghly",          winner:"Dilip Singh",                   winParty:"BJP", loser:"",                    loseParty:"BJP", margin:null, verified:true, notable:false, note:""},
-  {ac:113,name:"Uttarpara",          district:"Hooghly",          winner:"Dipanjan Chakraborty",winParty:"BJP",loser:"Dipanjan Chakraborty",loseParty:"BJP", margin:9913, verified:true,  notable:false, note:""},
-  {ac:114,name:"Shyampur",           district:"Hooghly",          winner:"Dr. Hiraan",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:115,name:"Balagarh",           district:"Hooghly",          winner:"Sumana Sarkar",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:116,name:"Pandua",             district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:117,name:"Chinsurah",          district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:118,name:"Hooghly-Chinsurah",  district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:119,name:"Pursurah",           district:"Hooghly",          winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:120,name:"Tarakeswar",         district:"Hooghly",          winner:"Santu Pan",          winParty:"BJP", loser:"Ramendu Sinharay",    loseParty:"TMC", margin:30999, verified:true,  notable:false, note:""},
-  {ac:121,name:"Polba-Dadpur",       district:"Hooghly",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── HOWRAH (16 seats) ──
-  {ac:122,name:"Uluberia Uttar",     district:"Howrah",           winner:"Chiran Bera",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:123,name:"Uluberia Dakshin",   district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:124,name:"Shyampur",           district:"Howrah",           winner:"Dr. Hiraan",winParty:"BJP",loser:"Nadebasi Jana",      loseParty:"TMC", margin:22260, verified:true,  notable:false, note:""},
-  {ac:125,name:"Bagnan",             district:"Howrah",           winner:"Arunava Sen",        winParty:"TMC", loser:"Pramanshu Rana",      loseParty:"BJP", margin:11316, verified:true,  notable:false, note:""},
-  {ac:126,name:"Amta",               district:"Howrah",           winner:"Amit Samanta",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:127,name:"Udaynarayanpur",     district:"Howrah",           winner:"Samir Kumar Panja",  winParty:"TMC", loser:"Prabhakar Pandit",    loseParty:"BJP", margin:12227, verified:true,  notable:false, note:""},
-  {ac:128,name:"Jagatballavpur",     district:"Howrah",           winner:"Anupam Ghosh",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:129,name:"Domjur",             district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:130,name:"Sankrail",           district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:131,name:"Howrah Uttara",      district:"Howrah",           winner:"Umesh Rai",          winParty:"BJP", loser:"Gautam Chowdhury",   loseParty:"TMC", margin:11250, verified:true,  notable:false, note:""},
-  {ac:132,name:"Shibpur",            district:"Howrah",           winner:"Rudranil Ghosh",     winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:133,name:"Howrah Madhya",      district:"Howrah",           winner:"Arup Roy",           winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:134,name:"Howrah Dakshin",     district:"Howrah",           winner:"Nandita Choudhary",  winParty:"TMC", loser:"Shyamal Kumar Hati",  loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:135,name:"Bally",              district:"Howrah",           winner:"Sanjay Kumar Singh", winParty:"BJP", loser:"Priyanka Choudhury",  loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:136,name:"Panchla",            district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:137,name:"Uluberia Paschim",   district:"Howrah",           winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── KOLKATA (11 seats) ──
-  {ac:138,name:"Kasba",              district:"Kolkata",          winner:"Ahmed Javed Khan",   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:139,name:"Kolkata Port",       district:"Kolkata",          winner:"Firhad Hakim",       winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:140,name:"Ballygunge",         district:"Kolkata",          winner:"Sobhandeb Chattopadhyay",winParty:"TMC",loser:"",               loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:141,name:"Rashbehari",         district:"Kolkata",          winner:"Dasgupta Swapan",    winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:142,name:"Tollygunge",         district:"Kolkata",          winner:"Papia Adhikary",     winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:143,name:"Entally",            district:"Kolkata",          winner:"Sandipan Saha",      winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:144,name:"Maniktala",          district:"Kolkata",          winner:"Tapas Roy",          winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:145,name:"Jorasanko",          district:"Kolkata",          winner:"Vijay Ojha",         winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:146,name:"Shyampukur",         district:"Kolkata",          winner:"Purnima Chakraborty",winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:147,name:"Cossipore-Belgachia",district:"Kolkata",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:148,name:"Beleghata",          district:"Kolkata",          winner:"Kunal Ghosh",        winParty:"TMC", loser:"Partha Chaudhury",   loseParty:"BJP", margin:93757, verified:true,  notable:false, note:""},
-  {ac:149,name:"Jadavpur",           district:"Kolkata",          winner:"Sarbori Mukherjee",  winParty:"BJP", loser:"Debabrata Majumdar",  loseParty:"TMC", margin:25773, verified:true,  notable:false, note:""},
-  {ac:150,name:"Bidhannagar",        district:"North 24 Parganas",winner:"Sharadwat Mukherjee",winParty:"BJP", loser:"Sujit Bose",         loseParty:"TMC", margin:10750, verified:true,  notable:false, note:""},
-  {ac:159,name:"Bhabanipur",         district:"Kolkata",          winner:"Suvendu Adhikari",   winParty:"BJP", loser:"Mamata Banerjee",     loseParty:"TMC", margin:15105, verified:true, notable:true,  note:"CM Mamata Banerjee loses home seat by 15,105 votes"},
-
-  // ── NORTH 24 PARGANAS (33 seats) ──
-  {ac:148,name:"Baranagar",          district:"North 24 Parganas",winner:"Sajal Ghosh",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:149,name:"Kamarhati",          district:"North 24 Parganas",winner:"Madan Mitra",        winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:150,name:"Dum Dum",            district:"North 24 Parganas",winner:"Arijit Bakshi",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:151,name:"Rajarhat-Gopalpur",  district:"North 24 Parganas",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:152,name:"Madhyamgram",        district:"North 24 Parganas",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:153,name:"Barasat",            district:"North 24 Parganas",winner:"Sankar Chatterjee",  winParty:"BJP", loser:"Sabyasachi Dutta",   loseParty:"TMC", margin:34558, verified:true,  notable:false, note:""},
-  {ac:154,name:"Deganga",            district:"North 24 Parganas",winner:"Anisur Rahaman Bidesh",winParty:"TMC",loser:"",                   loseParty:"BJP", margin:17818, verified:true,  notable:false, note:""},
-  {ac:155,name:"Baduria",            district:"North 24 Parganas",winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:156,name:"Swarupnagar",        district:"North 24 Parganas",winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:157,name:"Basirhat Uttar",     district:"North 24 Parganas",winner:"Md. Tauseffur Rahman",winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:158,name:"Basirhat Dakshin",   district:"North 24 Parganas",winner:"Surajit Mitra Badal",winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:160,name:"Hingalganj",         district:"North 24 Parganas",winner:"Rekha Patra",        winParty:"BJP", loser:"Ananda Sarkar",       loseParty:"TMC", margin:null, verified:true,  notable:true,  note:"Sandeshkhali survivor defeats TMC"},
-  {ac:161,name:"Sandeshkhali",       district:"North 24 Parganas",winner:"Sanat Sardar",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:162,name:"Minakhan",           district:"North 24 Parganas",winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:163,name:"Haroa",              district:"North 24 Parganas",winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:164,name:"Amdanga",            district:"North 24 Parganas",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:165,name:"Habra",              district:"North 24 Parganas",winner:"Debdas Mondal",      winParty:"BJP", loser:"Jyoti Priya Mallick", loseParty:"TMC", margin:104645,verified:true,  notable:true,  note:"Jyoti Priya Mallick (ex-TMC minister, food scam accused) loses by 1,04,645"},
-
-  // ── NADIA (17 seats) ──
-  {ac:166,name:"Krishnanagar Uttar", district:"Nadia",            winner:"Tarak Nath Chatterjee",winParty:"BJP",loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:167,name:"Nabadwip",           district:"Nadia",            winner:"Srutisekhar Goswami",winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:168,name:"Santipur",           district:"Nadia",            winner:"Swapan Kumar Das",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:169,name:"Chakdaha",           district:"Nadia",            winner:"Bankim Chandra Ghosh",winParty:"BJP",loser:"Subhankar Singha",    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:170,name:"Kalyani",            district:"Nadia",            winner:"Anupam Biswas",      winParty:"BJP", loser:"",                    loseParty:"TMC", margin:8208,  verified:true,  notable:false, note:""},
-  {ac:171,name:"Haringhata",         district:"Nadia",            winner:"Asim Kumar Sarkar",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:172,name:"Ranaghat Uttar Paschim",district:"Nadia",         winner:"Partha Sarathi Chatterjee",winParty:"BJP",loser:"",               loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:173,name:"Ranaghat Uttar Purba",district:"Nadia",           winner:"Ashim Biswas",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:174,name:"Ranaghat Dakshin",   district:"Nadia",            winner:"Ashim Kumar Biswas",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:175,name:"Chapra",             district:"Nadia",            winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:176,name:"Krishnanagar Dakshin",district:"Nadia",           winner:"Sadhan Ghosh",       winParty:"BJP", loser:"Ujjal Biswas",        loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:177,name:"Tehatta",            district:"Nadia",            winner:"Subrata Kabiraj",                   winParty:"BJP", loser:"",                    loseParty:"BJP", margin:null, verified:true, notable:false, note:""},
-  {ac:178,name:"Palashipara",        district:"Nadia",            winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:179,name:"Karimpur",           district:"Nadia",            winner:"Samarendranath Ghosh",                   winParty:"BJP", loser:"",                    loseParty:"BJP", margin:null, verified:true, notable:false, note:""},
-
-  // ── SOUTH 24 PARGANAS (31 seats) ──
-  {ac:180,name:"Mathurapur",         district:"South 24 Parganas",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:181,name:"Kultali",            district:"South 24 Parganas",winner:"Ganesh Chandra Mondal",winParty:"TMC",loser:"",                    loseParty:"BJP", margin:59276, verified:true,  notable:false, note:""},
-  {ac:182,name:"Patharpratima",      district:"South 24 Parganas",winner:"Samir Kumar Jana",   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:183,name:"Kakdwip",            district:"South 24 Parganas",winner:"Dipankar Jana",      winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:184,name:"Sagar",              district:"South 24 Parganas",winner:"Sumanta Mandal",                   winParty:"BJP", loser:"",                    loseParty:"BJP", margin:null, verified:true, notable:false, note:""},
-  {ac:185,name:"Joynagar",           district:"South 24 Parganas",winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:186,name:"Baruipur Paschim",   district:"South 24 Parganas",winner:"Biman Banerjee",     winParty:"TMC", loser:"",                    loseParty:"BJP", margin:17862, verified:true,  notable:true,  note:"Assembly Speaker holds seat by 17,862 votes"},
-  {ac:187,name:"Baruipur Purba",     district:"South 24 Parganas",winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:188,name:"Magrahat Paschim",   district:"South 24 Parganas",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:189,name:"Magrahat Purba",     district:"South 24 Parganas",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:190,name:"Diamond Harbour",    district:"South 24 Parganas",winner:"Pannalal Halder",   winParty:"BJP", loser:"Dipak Kumar Halder",  loseParty:"BJP", margin:31266, verified:true, notable:true,  note:"Abhishek Banerjee's former constituency stays TMC"},
-  {ac:191,name:"Falta",              district:"South 24 Parganas",winner:"Pending",             winParty:"?",   loser:"",                    loseParty:"",    margin:null, verified:false, notable:true,  note:"Repoll ordered for 21 May 2026"},
-  {ac:192,name:"Satgachhia",         district:"South 24 Parganas",winner:"Agniswar Naskar",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:193,name:"Bishnupur",          district:"South 24 Parganas",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:194,name:"Sonarpur Uttar",     district:"South 24 Parganas",winner:"Debasish Dhar",                   winParty:"BJP", loser:"",                    loseParty:"BJP", margin:null, verified:true, notable:false, note:""},
-  {ac:195,name:"Sonarpur Dakshin",   district:"South 24 Parganas",winner:"Rupa Ganguly",       winParty:"BJP", loser:"Arundhuti Maitra",    loseParty:"TMC", margin:128970,verified:true,  notable:true,  note:"BJP's Rupa Ganguly wins by massive 1,28,970 margin"},
-  {ac:196,name:"Bhangar",            district:"South 24 Parganas",winner:"",                   winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:false, notable:false, note:""},
-  {ac:197,name:"Canning Purba",      district:"South 24 Parganas",winner:"Md. Baharul Islam",  winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:198,name:"Canning Paschim",    district:"South 24 Parganas",winner:"Paresh Ram Das",     winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-  {ac:199,name:"Jaynagar",           district:"South 24 Parganas",winner:"Biswanath Das",      winParty:"TMC", loser:"",                    loseParty:"BJP", margin:null, verified:true,  notable:false, note:""},
-
-  // ── PURBA MEDINIPUR (16 seats) ──
-  {ac:200,name:"Tamluk",             district:"Purba Medinipur",  winner:"Hare Krishna Bera",  winParty:"BJP", loser:"Dipendra Narayan Roy",loseParty:"TMC", margin:26457, verified:true, notable:false, note:""},
-  {ac:201,name:"Panskura Paschim",   district:"Purba Medinipur",  winner:"Sintu Senapati",     winParty:"BJP", loser:"Siraj Khan",          loseParty:"TMC", margin:20638, verified:true,  notable:false, note:""},
-  {ac:202,name:"Panskura Purba",     district:"Purba Medinipur",  winner:"Subrata Maity",      winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:203,name:"Moyna",              district:"Purba Medinipur",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:204,name:"Nandakumar",         district:"Purba Medinipur",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:205,name:"Mahishadal",         district:"Purba Medinipur",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:206,name:"Haldia",             district:"Purba Medinipur",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:207,name:"Nandigram",          district:"Purba Medinipur",  winner:"Suvendu Adhikari",      winParty:"BJP", loser:"Pabitra Kar",         loseParty:"TMC", margin:9665, verified:true,  notable:true,  note:"BJP holds Suvendu's old seat; 9,665 vote margin over TMC"},
-  {ac:208,name:"Contai Uttar",       district:"Purba Medinipur",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:209,name:"Contai Dakshin",     district:"Purba Medinipur",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:210,name:"Ramnagar",           district:"Purba Medinipur",  winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:211,name:"Egra",               district:"Purba Medinipur",  winner:"Adhikari Dibyendu",  winParty:"BJP", loser:"Tarun Kumar Maity",   loseParty:"TMC", margin:18913, verified:true, notable:false, note:""},
-
-  // ── PASCHIM MEDINIPUR (19 seats) ──
-  {ac:212,name:"Medinipur",          district:"Paschim Medinipur",winner:"Sankar Kumar Guchhait",winParty:"BJP",loser:"",                   loseParty:"TMC", margin:38747, verified:true, notable:false, note:""},
-  {ac:213,name:"Binpur",             district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:214,name:"Bandwan",            district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:215,name:"Balarampur",         district:"Paschim Medinipur",winner:"Jaladhar Mahato",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:216,name:"Ghatal",             district:"Paschim Medinipur",winner:"Sital Kapat",        winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:217,name:"Daspur",             district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:218,name:"Pingla",             district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:219,name:"Keshpur",            district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:220,name:"Garbeta",            district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:221,name:"Salboni",            district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:222,name:"Narayangarh",        district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:223,name:"Sabang",             district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:224,name:"Kharagpur Sadar",    district:"Paschim Medinipur",winner:"Dilip Ghosh",        winParty:"BJP", loser:"Pradip Sarkar",       loseParty:"TMC", margin:30506, verified:true, notable:false, note:""},
-  {ac:225,name:"Chandrakona",        district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:226,name:"Chandrakona Road",   district:"Paschim Medinipur",winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── JHARGRAM (4 seats) ──
-  {ac:227,name:"Jhargram",           district:"Jhargram",         winner:"LK Sau",             winParty:"BJP", loser:"",                    loseParty:"TMC", margin:38147, verified:true, notable:false, note:""},
-  {ac:228,name:"Binpur",             district:"Jhargram",         winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:229,name:"Nayagram",           district:"Jhargram",         winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:230,name:"Gopiballavpur",      district:"Jhargram",         winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── BANKURA (12 seats) ──
-  {ac:231,name:"Ranibandh",          district:"Bankura",          winner:"Kshudiram Tudu",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:232,name:"Raipur",             district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:233,name:"Taldangra",          district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:234,name:"Bankura",            district:"Bankura",          winner:"Niladri Sekhar Dana",winParty:"BJP", loser:"Dr. Anup Mandal",     loseParty:"TMC", margin:51258, verified:true, notable:false, note:""},
-  {ac:235,name:"Barjora",            district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:236,name:"Sonamukhi",          district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:237,name:"Patrasayer",         district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:238,name:"Indpur",             district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:239,name:"Bishnupur",          district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:240,name:"Kotulpur",           district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:241,name:"Onda",               district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:242,name:"Saltora",            district:"Bankura",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-
-  // ── PURULIA (9 seats) ──
-  {ac:243,name:"Manbazar",           district:"Purulia",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:244,name:"Balarampur",         district:"Purulia",          winner:"Jaladhar Mahato",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true, notable:false, note:""},
-  {ac:245,name:"Bagmundi",           district:"Purulia",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:246,name:"Joypur",             district:"Purulia",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:247,name:"Purulia",            district:"Purulia",          winner:"Sudip Mukherjee",    winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:true,  notable:false, note:""},
-  {ac:248,name:"Manbajar",           district:"Purulia",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:249,name:"Kashipur",           district:"Purulia",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:250,name:"Para",               district:"Purulia",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-  {ac:251,name:"Raghunathpur",       district:"Purulia",          winner:"",                   winParty:"BJP", loser:"",                    loseParty:"TMC", margin:null, verified:false, notable:false, note:""},
-];
-
-// ── DISTRICT SUMMARY DATA (from ECI + news reporting) ──
-const DISTRICTS = [
-  {name:"Cooch Behar",       seats:9,  bjp:9,  tmc:0,  inc:0, lf:0, oth:0},
-  {name:"Alipurduar",        seats:5,  bjp:5,  tmc:0,  inc:0, lf:0, oth:0},
-  {name:"Jalpaiguri",        seats:8,  bjp:8,  tmc:0,  inc:0, lf:0, oth:0},
-  {name:"Darjeeling",        seats:7,  bjp:7,  tmc:0,  inc:0, lf:0, oth:0},
-  {name:"Uttar Dinajpur",    seats:9,  bjp:6,  tmc:3,  inc:0, lf:0, oth:0},
-  {name:"Dakshin Dinajpur",  seats:6,  bjp:6,  tmc:0,  inc:0, lf:0, oth:0},
-  {name:"Malda",             seats:12, bjp:7,  tmc:5,  inc:0, lf:0, oth:0},
-  {name:"Murshidabad",       seats:22, bjp:13, tmc:8,  inc:1, lf:0, oth:0},
-  {name:"Birbhum",           seats:11, bjp:9,  tmc:2,  inc:0, lf:0, oth:0},
-  {name:"Purba Burdwan",     seats:11, bjp:10, tmc:1,  inc:0, lf:0, oth:0},
-  {name:"Paschim Burdwan",   seats:4,  bjp:4,  tmc:0,  inc:0, lf:0, oth:0},
-  {name:"Hooghly",           seats:18, bjp:13, tmc:4,  inc:0, lf:0, oth:1},
-  {name:"Howrah",            seats:16, bjp:11, tmc:5,  inc:0, lf:0, oth:0},
-  {name:"Kolkata",           seats:11, bjp:7,  tmc:4,  inc:0, lf:0, oth:0},
-  {name:"North 24 Parganas", seats:33, bjp:18, tmc:14, inc:0, lf:0, oth:1},
-  {name:"Nadia",             seats:17, bjp:12, tmc:5,  inc:0, lf:0, oth:0},
-  {name:"South 24 Parganas", seats:31, bjp:14, tmc:16, inc:0, lf:1, oth:0},
-  {name:"Purba Medinipur",   seats:16, bjp:15, tmc:1,  inc:0, lf:0, oth:0},
-  {name:"Paschim Medinipur", seats:19, bjp:18, tmc:1,  inc:0, lf:0, oth:0},
-  {name:"Jhargram",          seats:4,  bjp:4,  tmc:0,  inc:0, lf:0, oth:0},
-  {name:"Bankura",           seats:12, bjp:12, tmc:0,  inc:0, lf:0, oth:0},
-  {name:"Purulia",           seats:9,  bjp:9,  tmc:0,  inc:0, lf:0, oth:0},
-];
+// ── DATA — loaded from /data/constituencies.json ──
+let RESULTS   = [];
+let DISTRICTS = [];
 
 // ── FILTER STATE ──
 let activeParty = 'all';
@@ -1177,14 +848,32 @@ function filterToSeat(name) {
 }
 
 // ── DATA-DRIVEN UPDATES ──────────────────────────────────────────────────────
-// Fetch meta.json to update results banner with live data
-(async function loadMeta() {
+// Load constituencies.json and meta.json, then initialise all renderers
+(async function init() {
+  // 1. Load constituencies data
+  try {
+    const res  = await fetch('/data/constituencies.json?t=' + Date.now());
+    if (res.ok) {
+      const data = await res.json();
+      RESULTS   = data.seats   || [];
+      DISTRICTS = data.districts || [];
+    }
+  } catch (e) {
+    console.warn('Could not load constituencies.json:', e.message);
+  }
+
+  // 2. Render everything
+  applyFilters();
+  renderDistricts();
+  renderSeatGrid();
+  const verified = RESULTS.filter(r => r.verified).length;
+  document.getElementById('verifiedCount').textContent = verified;
+
+  // 3. Load meta.json to update banner stats
   try {
     const res = await fetch('/data/meta.json?t=' + Date.now());
     if (!res.ok) return;
     const meta = await res.json();
-
-    // Update banner stats if meta provides them
     if (meta.bjpSeats) {
       const el = document.querySelector('.banner-num');
       if (el) el.textContent = meta.bjpSeats;
@@ -1205,15 +894,6 @@ function filterToSeat(name) {
     console.warn('Could not load meta.json:', e.message);
   }
 })();
-
-// ── INIT ──
-document.addEventListener('DOMContentLoaded', () => {
-  applyFilters();
-  renderDistricts();
-  renderSeatGrid();
-  const verified = RESULTS.filter(r => r.verified).length;
-  document.getElementById('verifiedCount').textContent = verified;
-});
 </script>
 </body>
 </html>

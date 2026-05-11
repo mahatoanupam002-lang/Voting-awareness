@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+Bengali:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #0a0804;
@@ -177,6 +177,27 @@ footer a { color:#8a7a60; text-decoration:none; }
 
 input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 tbody tr{transition:background .12s ease}
+
+/* ── DARK MODE ── */
+[data-theme="dark"] body { background:#141210; color:#f0ece3; }
+[data-theme="dark"] .masthead { background:#141210 !important; border-color:rgba(255,255,255,.12); }
+[data-theme="dark"] .masthead-overline { border-color:rgba(255,255,255,.15); color:#9a9085; }
+[data-theme="dark"] .controls-bar { background:#141210; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .search-input { background:#1e1b18; color:#f0ece3; border-color:rgba(255,255,255,.15); }
+[data-theme="dark"] .filter-select { background:#1e1b18; color:#f0ece3; border-color:rgba(255,255,255,.15); }
+[data-theme="dark"] table thead th { background:#141210 !important; border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] tbody tr { border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] tbody tr:hover { background:#1e1b18; }
+[data-theme="dark"] .td-ipc { color:#c8c0b4; }
+[data-theme="dark"] .party-card { background:#1e1b18; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .callout { background:#1e1b18; }
+[data-theme="dark"] .callout p { color:#c8c0b4; }
+[data-theme="dark"] .method-box { background:#1e1b18; border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .method-box p { color:#9a9085; }
+[data-theme="dark"] .section-header { border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .hr-ornate { border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .hr-ornate::before { background:#141210; color:#9a9085; }
+[data-theme="dark"] body::before { opacity:0.15; }
 </style>
 <link rel="stylesheet" href="/shared.css">
 <script defer src="/analytics.js"></script>
@@ -186,7 +207,7 @@ tbody tr{transition:background .12s ease}
 
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav-inner">
-    <span class="site-nav-brand">The Bengal Reader</span>
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
     <div class="site-nav-links">
       <a href="/" class="site-nav-link">Voter Guide</a>
       <a href="/parties" class="site-nav-link">Party Compass</a>
@@ -205,13 +226,32 @@ tbody tr{transition:background .12s ease}
 <main id="main-content">
 
 <header class="masthead">
-  <div class="masthead-overline">Affidavit Data · 2026 West Bengal Election · Source: ECI / ADR India</div>
+  <div class="masthead-overline">
+    <span class="en-only">Affidavit Data · 2026 West Bengal Election · Source: ECI / ADR India</span>
+    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">হলফনামার তথ্য · ২০২৬ পশ্চিমবঙ্গ নির্বাচন · উৎস: ইসিআই / এডিআর ইন্ডিয়া</span>
+  </div>
   <h1>MLA <em>Criminal</em> Records</h1>
-  <p class="masthead-sub">Every Case Declared by Every Elected MLA. Self-Reported. Sworn. Public.</p>
+  <p class="masthead-sub">
+    <span class="en-only">Every Case Declared by Every Elected MLA. Self-Reported. Sworn. Public.</span>
+    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">প্রতিটি নির্বাচিত বিধায়কের ঘোষিত মামলা। স্ব-ঘোষিত। শপথকৃত। সর্বজনীন।</span>
+  </p>
   <div class="masthead-meta">
     <span>Source: Nomination affidavits filed with Election Commission of India, 2026</span>
     <span>294 constituencies · Data via ADR India</span>
-    <span>Updated: May 2026</span>
+    <span class="last-updated">Updated: May 2026</span>
+  </div>
+  <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:1rem;flex-wrap:wrap;">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--aged);background:transparent;color:var(--muted);cursor:pointer;">◐ Dark</button>
+    <div class="share-bar" style="margin:0;">
+      <span class="share-label">Share:</span>
+      <button class="share-btn whatsapp" onclick="shareWhatsApp('MLA Criminal Records — see which Bengal MLAs have pending criminal cases — The Bengal Reader')">WhatsApp</button>
+      <button class="share-btn twitter" onclick="shareTwitter('MLA Criminal Records — Bengal 2026 — The Bengal Reader')">Twitter</button>
+      <button class="share-btn" onclick="copyLink(null,this)">Copy Link</button>
+    </div>
   </div>
 </header>
 
@@ -378,7 +418,9 @@ function buildRow(mla, idx) {
   const col = PARTY_COLORS[mla.party] || '#8a7a6a';
   return `<tr data-party="${mla.party}" data-cases="${mla.cases}" data-serious="${mla.serious}" data-district="${mla.district}">
     <td class="td-rank">${idx+1}</td>
-    <td class="td-name">${mla.name}${!mla.verified?' <span style="color:var(--muted);font-size:0.7rem;">*</span>':''}</td>
+    <td class="td-name">${mla.name}${!mla.verified?' <span style="color:var(--muted);font-size:0.7rem;">*</span>':''}
+      <button title="Share this MLA's record on WhatsApp" onclick="shareDataPoint('${mla.name.replace(/'/g,"\\'")}','${mla.cases} case${mla.cases!==1?'s':''} — ${mla.constituency}')" style="background:none;border:none;cursor:pointer;color:#25d366;font-size:0.75rem;padding:0 4px;" aria-label="Share">⬆</button>
+    </td>
     <td class="td-const">${mla.constituency}</td>
     <td class="td-dist">${mla.district}</td>
     <td class="td-party"><span class="party-dot" style="background:${col};"></span>${mla.party}</td>
@@ -461,7 +503,10 @@ function applyFilters() {
 }
 
 ['searchInput','partyFilter','casesFilter','districtFilter'].forEach(id => {
-  document.getElementById(id).addEventListener('input', applyFilters);
+  document.getElementById(id).addEventListener('input', () => {
+    applyFilters();
+    if (window.trackEvent) window.trackEvent('MLA Filter', { field: id, value: document.getElementById(id).value });
+  });
 });
 
 // Sortable columns
@@ -502,5 +547,30 @@ async function loadData() {
 
 loadData();
 </script>
+
+<!-- SUBSCRIBE STRIP -->
+<div class="subscribe-strip">
+  <div class="subscribe-strip-text"><strong>MLA data</strong> updates automatically as new affidavit data is verified</div>
+  <div class="subscribe-strip-links">
+    <a href="/rss.xml" class="subscribe-link" onclick="if(window.trackEvent)window.trackEvent('RSS Subscribe',{page:'mlas'})">RSS Feed</a>
+    <a href="/assets" class="subscribe-link">Wealth Growth →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="site-footer-brand">The Bengal Reader</div>
+      <div class="site-footer-tagline">Non-partisan civic journalism for West Bengal.<br>MLA data sourced from ECI affidavit portal and ADR India.</div>
+    </div>
+    <div class="site-footer-links">
+      <a href="/assets" class="site-footer-link">MLA Wealth Growth</a>
+      <a href="/corruption" class="site-footer-link">Corruption Dossier</a>
+      <a href="/constituencies" class="site-footer-link">2026 Results</a>
+      <a href="/methodology" class="site-footer-link">Methodology</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

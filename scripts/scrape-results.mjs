@@ -1,7 +1,7 @@
 /**
  * scripts/scrape-results.mjs
  * Scrapes ECI constituency-wise results for West Bengal (S25) and updates
- * constituencies.html in-place for any entries still marked verified:false.
+ * public/data/constituencies.json for any entries still marked verified:false.
  *
  * Run locally : node scripts/scrape-results.mjs
  * CI          : .github/workflows/scrape-results.yml  (cron 3×/day)
@@ -11,11 +11,15 @@
  *   N = AC serial number (1–294 for West Bengal)
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { join, dirname }                            from 'node:path';
+import { fileURLToPath }                            from 'node:url';
 
-const ECI_BASE = 'https://results.eci.gov.in/ResultAcGenMay2026/ConstituencywiseS25';
-const HTML_FILE = new URL('../public/constituencies.html', import.meta.url).pathname;
-const DELAY_MS  = 400; // ~2.5 req/sec — polite rate limit
+const __dirname  = dirname(fileURLToPath(import.meta.url));
+const ROOT       = join(__dirname, '..');
+const JSON_FILE  = join(ROOT, 'public', 'data', 'constituencies.json');
+const ECI_BASE   = 'https://results.eci.gov.in/ResultAcGenMay2026/ConstituencywiseS25';
+const DELAY_MS   = 400; // ~2.5 req/sec — polite rate limit
 
 // ── Party normalisation ───────────────────────────────────────────────────────
 const PARTY_MAP = {
@@ -149,11 +153,11 @@ function parseECI(html) {
   if (!winner || winVotes === 0) return null;
 
   // Runner-up = non-header row with highest votes among losers
-  let runnerRow  = null;
+  let runnerRow   = null;
   let runnerVotes = 0;
   for (let i = 0; i < rows.length; i++) {
     if (i === winnerIdx) continue;
-    const r = rows[i];
+    const r    = rows[i];
     const last = r[r.length - 1];
     if (/^won$/i.test(last)) continue;               // another winner? skip
     if (/candidate|s\.?\s*no/i.test(r[0])) continue; // header row
@@ -162,9 +166,9 @@ function parseECI(html) {
     if (votes > runnerVotes) { runnerRow = r; runnerVotes = votes; }
   }
 
-  const runnerUp   = runnerRow ? (runnerRow[colCandidate] || '').replace(/\s+/g, ' ').trim() : '';
+  const runnerUp    = runnerRow ? (runnerRow[colCandidate] || '').replace(/\s+/g, ' ').trim() : '';
   const runnerParty = runnerRow ? (runnerRow[colParty] || '').trim() : '';
-  const margin     = Math.max(0, winVotes - runnerVotes);
+  const margin      = Math.max(0, winVotes - runnerVotes);
 
   return {
     winner,
@@ -175,33 +179,17 @@ function parseECI(html) {
   };
 }
 
-// ── In-place field setters ────────────────────────────────────────────────────
-function setStr(entry, field, value) {
-  const safe = value.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-  return entry.replace(new RegExp(`(${field}\\s*:\\s*)'[^']*'`), `$1'${safe}'`);
-}
-function setNum(entry, field, value) {
-  return entry.replace(new RegExp(`(${field}\\s*:\\s*)-?\\d+`), `$1${value}`);
-}
-function setBool(entry, field, value) {
-  return entry.replace(new RegExp(`(${field}\\s*:\\s*)(true|false)`), `$1${value}`);
-}
-
 // ── Main ──────────────────────────────────────────────────────────────────────
-let html = readFileSync(HTML_FILE, 'utf8');
-
-// Match every seat entry in the SEATS JS array
-const entryRx = /(\{\s*no\s*:\s*(\d+)\s*,[\s\S]*?verified\s*:\s*(true|false)\s*\})/g;
-
-const unverified = [];
-let em;
-while ((em = entryRx.exec(html)) !== null) {
-  if (em[3] === 'false') {
-    unverified.push({ acNo: parseInt(em[2], 10), match: em[1] });
-  }
+if (!existsSync(JSON_FILE)) {
+  console.error(`ERROR: ${JSON_FILE} not found. Run: node scripts/extract-constituencies.mjs first.`);
+  process.exit(1);
 }
 
-console.log(`Unverified constituencies: ${unverified.length}`);
+const data = JSON.parse(readFileSync(JSON_FILE, 'utf8'));
+const unverified = data.seats.filter(s => !s.verified);
+
+console.log(`Total seats: ${data.seats.length}`);
+console.log(`Unverified:  ${unverified.length}`);
 
 if (unverified.length === 0) {
   console.log('All constituencies verified — nothing to do.');
@@ -211,11 +199,11 @@ if (unverified.length === 0) {
 let updated = 0;
 let skipped = 0;
 
-for (const { acNo, match } of unverified) {
+for (const seat of unverified) {
   await sleep(DELAY_MS);
-  process.stdout.write(`  AC${String(acNo).padStart(3, '0')}: `);
+  process.stdout.write(`  AC${String(seat.ac).padStart(3, '0')} ${seat.name.padEnd(28)}: `);
 
-  const raw    = await fetchECI(acNo);
+  const raw    = await fetchECI(seat.ac);
   const result = parseECI(raw);
 
   if (!result) {
@@ -224,20 +212,20 @@ for (const { acNo, match } of unverified) {
     continue;
   }
 
-  let newEntry = match;
-  newEntry = setStr(newEntry,  'winner',    result.winner);
-  newEntry = setStr(newEntry,  'winParty',  result.winParty);
-  newEntry = setStr(newEntry,  'loser',     result.runnerUp);
-  newEntry = setStr(newEntry,  'loseParty', result.runnerParty);
-  newEntry = setNum(newEntry,  'margin',    result.margin);
-  newEntry = setBool(newEntry, 'verified',  'true');
+  seat.winner    = result.winner;
+  seat.winParty  = result.winParty;
+  seat.loser     = result.runnerUp;
+  seat.loseParty = result.runnerParty;
+  seat.margin    = result.margin;
+  seat.verified  = true;
 
-  html = html.replace(match, newEntry);
   console.log(`${result.winner} (${result.winParty})  margin ${result.margin.toLocaleString()}`);
   updated++;
 }
 
-writeFileSync(HTML_FILE, html, 'utf8');
-console.log(`\nResult: ${updated} updated, ${skipped} skipped (no data)`);
-if (updated > 0) process.exit(0);
-else process.exit(0); // exit 0 even if nothing changed — let git diff decide
+// Update metadata
+data.meta.generatedAt = new Date().toISOString();
+data.meta.source      = 'ECI scraper + manual verification';
+
+writeFileSync(JSON_FILE, JSON.stringify(data, null, 2), 'utf8');
+console.log(`\nResult: ${updated} updated, ${skipped} skipped — wrote ${JSON_FILE}`);

@@ -11,6 +11,9 @@
     "generate-rss": "node scripts/generate-rss.mjs",
     "update-data": "node scripts/update.mjs",
     "scrape-results": "node scripts/scrape-results.mjs",
+    "scrape-mlas": "node scripts/scrape-mlas.mjs",
+    "auto-update": "node scripts/auto-update-system.mjs",
+    "extract-constituencies": "node scripts/extract-constituencies.mjs",
     "build": "npm run lint && npm run generate-sitemap && npm run validate",
     "test": "echo \"No tests specified\""
   },

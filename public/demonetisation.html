@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+Bengali:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #0a0804;
@@ -437,6 +437,41 @@ mark { background: var(--highlight); padding: 0 0.2em; font-style: normal; }
 input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 .stat-card{transition:transform .18s ease,box-shadow .2s ease}
 .stat-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+
+/* ── DARK MODE ── */
+[data-theme="dark"] body { background:#141210; color:#f0ece3; }
+[data-theme="dark"] .masthead { background:#141210 !important; border-color:rgba(255,255,255,.12); }
+[data-theme="dark"] .masthead-overline { border-color:rgba(255,255,255,.15); color:#9a9085; }
+[data-theme="dark"] p { color:#c8c0b4; }
+[data-theme="dark"] .article-lead { color:#d8d0c4; border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .section-header { border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .hr-ornate { border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .hr-ornate::before { background:#141210; color:#9a9085; }
+[data-theme="dark"] body::before { opacity:0.15; }
+[data-theme="dark"] .callout { background:#1e1b18; border-left-color:var(--accent); }
+[data-theme="dark"] .callout.gold { background:#1e1b12; }
+[data-theme="dark"] .callout p { color:#c8c0b4; }
+[data-theme="dark"] .key-facts { border-color:rgba(255,255,255,.15); }
+[data-theme="dark"] .key-facts ul li { border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .key-facts ul li .key { color:#9a9085; }
+[data-theme="dark"] .pull-quote { border-color:rgba(255,255,255,.2); }
+[data-theme="dark"] .pull-quote p { color:#f0ece3; }
+[data-theme="dark"] .data-table-wrap { border-color:rgba(255,255,255,.15); }
+[data-theme="dark"] th { background:#1e1b18; border-color:rgba(255,255,255,.15); color:#9a9085; }
+[data-theme="dark"] td { border-color:rgba(255,255,255,.06); color:#c8c0b4; }
+[data-theme="dark"] .td-highlight { background:rgba(255,243,205,0.06); }
+[data-theme="dark"] .td-positive { color:#5ab86c; }
+[data-theme="dark"] .timeline::before { background:rgba(255,255,255,.2); }
+[data-theme="dark"] .timeline-date { color:#9a9085; }
+[data-theme="dark"] .timeline-dot { background:rgba(255,255,255,.6); border-color:#141210; box-shadow:0 0 0 2px rgba(255,255,255,.4); }
+[data-theme="dark"] .timeline-dot.red { background:var(--accent); box-shadow:0 0 0 2px var(--accent); }
+[data-theme="dark"] .timeline-content p { color:#9a9085; }
+[data-theme="dark"] .references-section { background:#1e1b18; border-color:rgba(255,255,255,.15); }
+[data-theme="dark"] .references-section li { color:#9a9085; border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .sticky-nav { background:#0c0a08; border-color:var(--accent); }
+[data-theme="dark"] .hero { background:#0c0a08; }
+[data-theme="dark"] .conclusion { background:#0c0a08; }
+[data-theme="dark"] .conclusion-points li { border-color:rgba(255,255,255,.08); }
 </style>
 <link rel="stylesheet" href="/shared.css">
 <script defer src="/analytics.js"></script>
@@ -447,7 +482,7 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 <!-- SITE NAV -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav-inner">
-    <span class="site-nav-brand">The Bengal Reader</span>
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
     <div class="site-nav-links">
       <a href="/" class="site-nav-link">Voter Guide</a>
       <a href="/parties" class="site-nav-link">Party Compass</a>
@@ -465,14 +500,24 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 
 <!-- MASTHEAD -->
 <header class="masthead">
-  <div class="masthead-overline">Special Investigation · Financial Forensics · Indian Political Economy</div>
+  <div class="lang-toggle" aria-label="Language toggle">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+  </div>
+  <div class="masthead-overline" data-en="Special Investigation · Financial Forensics · Indian Political Economy" data-bn="বিশেষ তদন্ত · আর্থিক ফরেনসিক্স · ভারতীয় রাজনৈতিক অর্থনীতি">Special Investigation · Financial Forensics · Indian Political Economy</div>
   <h1>The <em>Other Side</em><br>of Demonetisation</h1>
-  <p class="masthead-sub">How Political Parties Earned, Managed &amp; Profited While the Nation Queued</p>
+  <p class="masthead-sub" data-en="How Political Parties Earned, Managed &amp; Profited While the Nation Queued" data-bn="দেশ লাইনে দাঁড়িয়ে থাকতে থাকতে রাজনৈতিক দলগুলো কীভাবে উপার্জন করল, সামলাল এবং মুনাফা করল">How Political Parties Earned, Managed &amp; Profited While the Nation Queued</p>
+  <div class="share-bar">
+    <button class="share-btn whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+    <button class="share-btn twitter" onclick="shareTwitter()">Twitter</button>
+    <button class="share-btn" onclick="copyLink()">Copy Link</button>
+  </div>
   <div class="masthead-meta">
     <span>ADR Data · SBI Disclosure (Mar 2024) · ED Records · Land Registry</span>
     <span>November 2016 – February 2024</span>
-    <span>Data last updated: May 2026</span>
+    <span class="last-updated">Data last updated: May 2026</span>
   </div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
 </header>
 
 <!-- NAV -->
@@ -963,9 +1008,17 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
   </div>
 </section>
 
-<footer>
-  <p>Investigative synthesis based on publicly available ADR data, media investigations, and ED records · <a href="https://adrindia.org" target="_blank">ADR India</a> · <a href="https://eci.gov.in" target="_blank">Election Commission of India</a></p>
-  <p style="margin-top:0.5rem;opacity:0.5;">This report synthesizes investigative journalism and public financial disclosures. Allegations cited reflect reported claims by political actors, opposition parties, and civil society organizations.</p>
+<div class="subscribe-strip">
+  <span>Get updates when new data is published</span>
+  <a class="subscribe-link" href="/methodology#subscribe">Subscribe to The Bengal Reader</a>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <a href="/" class="site-footer-brand">The Bengal Reader</a>
+    <span>Investigative synthesis based on ADR data, media investigations, and ED records · <a href="https://adrindia.org" target="_blank" rel="noopener">ADR India</a> · <a href="https://eci.gov.in" target="_blank" rel="noopener">ECI</a></span>
+    <span class="last-updated">Data last updated: May 2026</span>
+  </div>
 </footer>
 
 <script>
@@ -1004,6 +1057,15 @@ document.querySelectorAll('.stat-card').forEach((card, i) => {
   card.style.transition = `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`;
   statObserver.observe(card);
 });
+
+// Language toggle
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-en][data-bn]').forEach(el => {
+    el.textContent = el.dataset[lang] || el.dataset.en;
+  });
+  if (window.trackEvent) trackEvent('language_toggle', { lang, page: 'demonetisation' });
+}
 </script>
 </body>
 </html>
