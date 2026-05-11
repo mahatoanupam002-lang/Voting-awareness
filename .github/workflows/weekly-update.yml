@@ -36,6 +36,9 @@ jobs:
       - name: Regenerate sitemap
         run: node scripts/generate-sitemap.mjs
 
+      - name: Regenerate RSS feed
+        run: node scripts/generate-rss.mjs
+
       - name: Run validation
         run: node scripts/validate.mjs || true
 
@@ -43,7 +46,7 @@ jobs:
         run: |
           git config user.name  "Bengal Reader Bot"
           git config user.email "bot@bengal-reader.app"
-          git add public/data/ public/sitemap.xml
+          git add public/data/ public/sitemap.xml public/rss.xml
           if git diff --staged --quiet; then
             echo "✓ No data changes this run"
           else

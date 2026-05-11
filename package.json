@@ -11,6 +11,7 @@
     "format": "npx prettier --write public/*.html public/*.css public/*.js public/*.mjs public/*.json public/*.yml public/*.md *.js *.mjs *.json *.yml *.md",
     "validate": "node scripts/validate.mjs",
     "generate-sitemap": "node scripts/generate-sitemap.mjs",
+    "generate-rss": "node scripts/generate-rss.mjs",
     "update-data": "node scripts/update.mjs",
     "scrape-results": "node scripts/scrape-results.mjs",
     "test": "echo \"No tests specified\""

@@ -19,6 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<script defer src="/analytics.js"></script>
 <style>
 :root {
   --ink: #0a0804;
@@ -719,14 +720,52 @@ function scheduleNewsRefresh() {
   newsRefreshTimer = setTimeout(() => { refreshNews(); scheduleNewsRefresh(); }, 30 * 60 * 1000);
 }
 
+// ── Retry fetch with exponential backoff ─────────────────────────────────────
+async function fetchWithRetry(url, opts = {}, maxRetries = 3) {
+  let lastErr;
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      const res = await fetch(url, opts);
+      if (res.ok) return res;
+      throw new Error('HTTP ' + res.status);
+    } catch (e) {
+      lastErr = e;
+      if (i < maxRetries - 1) {
+        await new Promise(r => setTimeout(r, Math.pow(2, i) * 1000));
+      }
+    }
+  }
+  throw lastErr;
+}
+
+// ── Cached fallback using sessionStorage ──────────────────────────────────────
+function getCached(key) {
+  try {
+    const raw = sessionStorage.getItem('cache_' + key);
+    if (!raw) return null;
+    const { ts, data } = JSON.parse(raw);
+    if (Date.now() - ts < 5 * 60 * 1000) return data; // 5 min cache
+  } catch(e) {}
+  return null;
+}
+function setCached(key, data) {
+  try {
+    sessionStorage.setItem('cache_' + key, JSON.stringify({ ts: Date.now(), data }));
+  } catch(e) {}
+}
+
 // ── Main data loader ──────────────────────────────────────────────────────────
 async function loadData() {
+  let casesLoaded = false;
+
+  // Try network with retry
   try {
     const [casesRes, metaRes] = await Promise.all([
-      fetch('/data/cases.json'),
-      fetch('/data/meta.json'),
+      fetchWithRetry('/data/cases.json'),
+      fetchWithRetry('/data/meta.json'),
     ]);
     CASES = await casesRes.json();
+    setCached('cases', CASES);
     const meta = await metaRes.json();
     if (meta.autoChecked) {
       const el = document.getElementById('autoStatus');
@@ -739,14 +778,26 @@ async function loadData() {
     }
     const allBtn = document.getElementById('filterBtnAll');
     if (allBtn) allBtn.textContent = `All Cases (${CASES.length})`;
+    casesLoaded = true;
   } catch (e) {
+    // Fallback to cached data
+    const cached = getCached('cases');
+    if (cached) {
+      CASES = cached;
+      casesLoaded = true;
+      console.warn('Network failed; using cached case data');
+    }
+  }
+
+  if (!casesLoaded) {
     document.getElementById('caseList').innerHTML = `
       <div style="text-align:center;padding:4rem 2rem;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--muted);">
-        <p>Could not load case data. Please refresh the page.</p>
+        <p>Could not load case data. Please check your connection and refresh.</p>
         <p style="margin-top:1rem;"><a href="https://github.com/mahatoanupam002-lang/Voting-awareness/blob/main/data/cases.json" style="color:var(--ink);">View raw data on GitHub →</a></p>
       </div>`;
     return;
   }
+
   renderHearings();
   render('all');
   document.querySelectorAll('.fade-in:not(.case-card)').forEach(el => observer.observe(el));

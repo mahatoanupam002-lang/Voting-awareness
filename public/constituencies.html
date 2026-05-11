@@ -1207,6 +1207,36 @@ function filterToSeat(name) {
   document.querySelector('.controls-bar').scrollIntoView({behavior:'smooth'});
 }
 
+// ── DATA-DRIVEN UPDATES ──────────────────────────────────────────────────────
+// Fetch meta.json to update results banner with live data
+(async function loadMeta() {
+  try {
+    const res = await fetch('/data/meta.json?t=' + Date.now());
+    if (!res.ok) return;
+    const meta = await res.json();
+
+    // Update banner stats if meta provides them
+    if (meta.bjpSeats) {
+      const el = document.querySelector('.banner-num');
+      if (el) el.textContent = meta.bjpSeats;
+    }
+    if (meta.bjpVoteShare) {
+      const els = document.querySelectorAll('.banner-sub');
+      if (els[0]) els[0].textContent = 'BJP · ' + meta.bjpVoteShare + ' · ⅔ majority';
+    }
+    if (meta.tmcSeats) {
+      const els = document.querySelectorAll('.banner-num');
+      if (els[1]) els[1].textContent = meta.tmcSeats;
+    }
+    if (meta.tmcVoteShare) {
+      const els = document.querySelectorAll('.banner-sub');
+      if (els[1]) els[1].textContent = 'TMC · ' + meta.tmcVoteShare;
+    }
+  } catch (e) {
+    console.warn('Could not load meta.json:', e.message);
+  }
+})();
+
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
   applyFilters();

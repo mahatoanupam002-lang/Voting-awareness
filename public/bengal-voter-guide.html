@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script defer src="/analytics.js"></script>
 <style>
 /* === THEME === */
 :root {
@@ -2186,6 +2187,68 @@ document.querySelectorAll('.gloss').forEach(function(el) {
 document.addEventListener('click', function() {
   document.querySelectorAll('.gloss.tip-open').forEach(function(g) { g.classList.remove('tip-open'); });
 });
+
+// ── DATA-DRIVEN UPDATES ──────────────────────────────────────────────────────
+// Fetch meta.json to update results banner, hero stats, and day counter
+(async function loadMeta() {
+  try {
+    const res = await fetch('/data/meta.json?t=' + Date.now());
+    if (!res.ok) return;
+    const meta = await res.json();
+
+    // Update results banner
+    if (meta.bjpSeats) {
+      const bjpSeats = document.getElementById('bjp-seats');
+      if (bjpSeats) bjpSeats.textContent = 'BJP ' + meta.bjpSeats;
+    }
+    if (meta.tmcSeats) {
+      const tmcSeats = document.getElementById('tmc-seats');
+      if (tmcSeats) tmcSeats.textContent = 'TMC ' + meta.tmcSeats;
+    }
+    if (meta.othersSeats) {
+      const othersSeats = document.getElementById('others-seats');
+      if (othersSeats) othersSeats.textContent = 'Others ' + meta.othersSeats;
+    }
+    if (meta.bjpVoteShare) {
+      const bjpDetail = document.getElementById('bjp-detail');
+      if (bjpDetail) bjpDetail.textContent = meta.bjpVoteShare + ' · Two-Thirds Majority';
+    }
+    if (meta.tmcVoteShare) {
+      const tmcDetail = document.getElementById('tmc-detail');
+      if (tmcDetail) tmcDetail.textContent = meta.tmcVoteShare + ' · Opposition';
+    }
+    if (meta.othersBreakdown) {
+      const othersDetail = document.getElementById('others-detail');
+      if (othersDetail) othersDetail.textContent = meta.othersBreakdown;
+    }
+
+    // Update hero stats if present in meta
+    if (meta.yearsOfLeftRule) {
+      const el = document.querySelector('[data-count="34"]');
+      if (el) { el.dataset.count = meta.yearsOfLeftRule; el.textContent = meta.yearsOfLeftRule; }
+    }
+    if (meta.rulingPartiesCount) {
+      const el = document.querySelector('[data-count="3"]');
+      if (el) { el.dataset.count = meta.rulingPartiesCount; el.textContent = meta.rulingPartiesCount; }
+    }
+
+    // Update day badge from meta.swearingIn
+    if (meta.swearingIn) {
+      const swear = new Date(meta.swearingIn + 'T00:00:00+05:30');
+      const days = Math.max(1, Math.floor((Date.now() - swear.getTime()) / 86400000) + 1);
+      const badge = document.getElementById('dayBadge');
+      if (badge) badge.textContent = 'BJP Day ' + days;
+    }
+
+    // Update last-updated timestamp
+    if (meta.lastUpdated) {
+      const el = document.getElementById('lastUpdatedMeta');
+      if (el) el.textContent = 'Updated: ' + meta.lastUpdated;
+    }
+  } catch (e) {
+    console.warn('Could not load meta.json:', e.message);
+  }
+})();
 </script>
 <script>(function(){var p=document.createElement('div');p.id='scroll-prog';document.body.prepend(p);window.addEventListener('scroll',function(){var d=document.documentElement;p.style.width=Math.min(d.scrollTop/(d.scrollHeight-d.clientHeight)*100,100)+'%';},{passive:true});})();</script>
 </body>
