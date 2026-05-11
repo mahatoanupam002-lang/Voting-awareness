@@ -140,7 +140,7 @@ footer a:hover { color:rgba(244,241,234,.9); }
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav-inner">
-    <span class="site-nav-brand">The Bengal Reader</span>
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
     <div class="site-nav-links">
       <a href="/" class="site-nav-link">Voter Guide</a>
       <a href="/parties" class="site-nav-link">Party Compass</a>
@@ -159,11 +159,22 @@ footer a:hover { color:rgba(244,241,234,.9); }
 <header class="masthead">
   <div class="container">
     <div class="masthead-kicker">
-      <span>Sources &amp; Methodology</span>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">◐ Dark</button>
+      <span data-en="Sources &amp; Methodology" data-bn="তথ্যসূত্র ও পদ্ধতি">Sources &amp; Methodology</span>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="lang-toggle" aria-label="Language toggle">
+          <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">◐ Dark</button>
+      </div>
     </div>
-    <div class="masthead-title">How this site is built</div>
-    <p class="masthead-sub">What we count as evidence, where the data comes from, and how automated updates work.</p>
+    <div class="masthead-title" data-en="How this site is built" data-bn="এই সাইটটি কীভাবে তৈরি">How this site is built</div>
+    <p class="masthead-sub" data-en="What we count as evidence, where the data comes from, and how automated updates work." data-bn="কোনটিকে আমরা প্রমাণ হিসেবে গণনা করি, তথ্য কোথা থেকে আসে, এবং স্বয়ংক্রিয় আপডেট কীভাবে কাজ করে।">What we count as evidence, where the data comes from, and how automated updates work.</p>
+    <div class="share-bar" style="margin-top:0.8rem;">
+      <button class="share-btn whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+      <button class="share-btn twitter" onclick="shareTwitter()">Twitter</button>
+      <button class="share-btn" onclick="copyLink()">Copy Link</button>
+    </div>
   </div>
 </header>
 <main class="container" id="main-content" role="main">
@@ -212,13 +223,28 @@ footer a:hover { color:rgba(244,241,234,.9); }
     <p>This site is a static build that can be audited: the pages are plain HTML and the update scripts are plain Node scripts. Data files are committed to the repository so changes are reviewable over time.</p>
   </div>
 </main>
-<footer>
-  <p>The Bengal Reader · Sources &amp; Methodology</p>
-  <p style="margin-top:8px;">
-    <a href="/">Voter Guide</a> &nbsp;·&nbsp;
-    <a href="/constituencies">2026 Results</a> &nbsp;·&nbsp;
-    <a href="/corruption">Corruption Dossier</a>
-  </p>
+
+<div class="subscribe-strip">
+  <span>The Bengal Reader updates automatically — no paywall, no ads</span>
+  <a class="subscribe-link" href="/rss.xml">RSS Feed</a>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <a href="/" class="site-footer-brand">The Bengal Reader</a>
+    <span>Non-partisan civic journalism for West Bengal · All data sourced from public records</span>
+    <span class="last-updated">Updated May 2026</span>
+  </div>
 </footer>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-en][data-bn]').forEach(el => {
+    el.textContent = el.dataset[lang] || el.dataset.en;
+  });
+  if (window.trackEvent) trackEvent('language_toggle', { lang, page: 'methodology' });
+}
+</script>
 </body>
 </html>

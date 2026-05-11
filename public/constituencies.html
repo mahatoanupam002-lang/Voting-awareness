@@ -469,7 +469,7 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 <!-- SITE NAV -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav-inner">
-    <span class="site-nav-brand">The Bengal Reader</span>
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
     <div class="site-nav-links">
       <a href="/" class="site-nav-link">Voter Guide</a>
       <a href="/parties" class="site-nav-link">Party Compass</a>
@@ -524,11 +524,22 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 <div class="masthead">
   <div class="container">
     <div class="masthead-kicker">
-      <span>2026 West Bengal Assembly Election · Constituency Tracker</span>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">◐ Dark</button>
+      <span data-en="2026 West Bengal Assembly Election · Constituency Tracker" data-bn="২০২৬ পশ্চিমবঙ্গ বিধানসভা নির্বাচন · আসন ট্র্যাকার">2026 West Bengal Assembly Election · Constituency Tracker</span>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="lang-toggle" aria-label="Language toggle">
+          <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">◐ Dark</button>
+      </div>
     </div>
-    <div class="masthead-title">Bengal's 294 Seats —<br><em>Who Won Where</em></div>
-    <p class="masthead-sub">Search, filter, and explore the constituency-level results from Bengal's most consequential election in a generation.</p>
+    <div class="masthead-title" data-en="Bengal's 294 Seats — Who Won Where" data-bn="বাংলার ২৯৪ আসন — কে কোথায় জিতল">Bengal's 294 Seats —<br><em>Who Won Where</em></div>
+    <p class="masthead-sub" data-en="Search, filter, and explore the constituency-level results from Bengal's most consequential election in a generation." data-bn="বাংলার সবচেয়ে গুরুত্বপূর্ণ নির্বাচনের আসন-ভিত্তিক ফলাফল অনুসন্ধান, ফিল্টার ও অন্বেষণ করুন।">Search, filter, and explore the constituency-level results from Bengal's most consequential election in a generation.</p>
+    <div class="share-bar" style="margin-top:0.8rem;">
+      <button class="share-btn whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+      <button class="share-btn twitter" onclick="shareTwitter()">Twitter</button>
+      <button class="share-btn" onclick="copyLink()">Copy Link</button>
+    </div>
   </div>
 </div>
 
@@ -667,14 +678,17 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 </main>
 
 <!-- FOOTER -->
-<footer>
-  <p>The Bengal Reader · 2026 Constituency Tracker</p>
-  <p style="margin-top:8px;">
-    <a href="/">← Voter's Guide</a> &nbsp;·&nbsp;
-    <a href="/parties">Party Compass</a> &nbsp;·&nbsp;
-    <a href="/demonetisation">Demonetisation</a> &nbsp;·&nbsp;
-    <a href="https://results.eci.gov.in/ResultAcGenMay2026/" target="_blank" rel="noopener">ECI Official Results ↗</a>
-  </p>
+<div class="subscribe-strip">
+  <span>Constituency data auto-updates 3× daily from ECI</span>
+  <a class="subscribe-link" href="/methodology#subscribe">Subscribe to The Bengal Reader</a>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <a href="/" class="site-footer-brand">The Bengal Reader</a>
+    <span>Source: <a href="https://results.eci.gov.in/ResultAcGenMay2026/" target="_blank" rel="noopener">ECI Official Results 2026</a> · Data auto-updates 3× daily</span>
+    <span class="last-updated">Results declared 4 May 2026</span>
+  </div>
 </footer>
 
 <script>
@@ -894,6 +908,15 @@ function filterToSeat(name) {
     console.warn('Could not load meta.json:', e.message);
   }
 })();
+
+// Language toggle
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-en][data-bn]').forEach(el => {
+    el.textContent = el.dataset[lang] || el.dataset.en;
+  });
+  if (window.trackEvent) trackEvent('language_toggle', { lang, page: 'constituencies' });
+}
 </script>
 </body>
 </html>

@@ -620,7 +620,7 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 <!-- SITE NAV -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav-inner">
-    <span class="site-nav-brand">The Bengal Reader</span>
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
     <div class="site-nav-links">
       <a href="/" class="site-nav-link">Voter Guide</a>
       <a href="/parties" class="site-nav-link active">Party Compass</a>
@@ -644,14 +644,23 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 <header class="masthead">
   <div class="container">
     <div class="masthead-top">
-      <span>The Bengal Reader · Special Edition</span>
+      <span data-en="The Bengal Reader · Special Edition" data-bn="দ্য বেঙ্গল রিডার · বিশেষ সংস্করণ">The Bengal Reader · Special Edition</span>
       <div class="masthead-controls">
+        <div class="lang-toggle" aria-label="Language toggle">
+          <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+        </div>
         <button class="theme-toggle" id="themeBtn">Dark</button>
       </div>
     </div>
-    <div class="masthead-title">Party Compass</div>
+    <div class="masthead-title" data-en="Party Compass" data-bn="দলের কম্পাস">Party Compass</div>
     <div class="masthead-bengali">দলের নীতি · তথ্যের আলোয়</div>
-    <div class="masthead-sub">Ideology · Track Record · What Bengal Actually Needs — 2026</div>
+    <div class="masthead-sub" data-en="Ideology · Track Record · What Bengal Actually Needs — 2026" data-bn="মতাদর্শ · কার্যক্রমের রেকর্ড · বাংলার আসল প্রয়োজন — ২০২৬">Ideology · Track Record · What Bengal Actually Needs — 2026</div>
+    <div class="share-bar" style="margin-top:0.8rem;">
+      <button class="share-btn whatsapp" onclick="shareWhatsApp()">WhatsApp</button>
+      <button class="share-btn twitter" onclick="shareTwitter()">Twitter</button>
+      <button class="share-btn" onclick="copyLink()">Copy Link</button>
+    </div>
   </div>
 </header>
 
@@ -1474,9 +1483,17 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 </main>
 
 <!-- FOOTER -->
-<footer>
-  <p>The Bengal Reader · Party Compass · 2026 Edition</p>
-  <p style="margin-top:8px;"><a href="/">← Voter's Guide</a> &nbsp;·&nbsp; <a href="https://adrindia.org" target="_blank">ADR India</a> &nbsp;·&nbsp; <a href="https://eci.gov.in" target="_blank">Election Commission</a></p>
+<div class="subscribe-strip">
+  <span>Party data updates as 2026 government track record develops</span>
+  <a class="subscribe-link" href="/methodology#subscribe">Subscribe to The Bengal Reader</a>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <a href="/" class="site-footer-brand">The Bengal Reader</a>
+    <span>Sources: <a href="https://adrindia.org" target="_blank" rel="noopener">ADR India</a> · <a href="https://eci.gov.in" target="_blank" rel="noopener">Election Commission of India</a></span>
+    <span class="last-updated">Updated May 2026</span>
+  </div>
 </footer>
 
 <script>
@@ -1701,6 +1718,14 @@ async function loadData() {
   renderComparison();
 }
 document.addEventListener('DOMContentLoaded', loadData);
+
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-en][data-bn]').forEach(el => {
+    el.textContent = el.dataset[lang] || el.dataset.en;
+  });
+  if (window.trackEvent) trackEvent('language_toggle', { lang, page: 'parties' });
+}
 </script>
 </body>
 </html>
