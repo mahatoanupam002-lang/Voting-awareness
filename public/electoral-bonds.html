@@ -325,6 +325,15 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
   <hr class="hr-ornate">
 
   <div class="section-header fade-in">
+    <div class="section-label">Money Flow</div>
+    <h2 class="section-title">Donor → Party Flow Map</h2>
+  </div>
+  <p>Flow width is proportional to the donation amount. Donor–party links are derived from the SBI/ECI disclosure and ADR India's analysis of redemption records.</p>
+  <div id="flowDiagram" class="fade-in" style="margin:2rem 0;" aria-label="Electoral bonds donor to party flow diagram"></div>
+
+  <hr class="hr-ornate">
+
+  <div class="section-header fade-in">
     <div class="section-label">Top Donors — National</div>
     <h2 class="section-title">Who Was Buying</h2>
   </div>
@@ -640,12 +649,108 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold:0.06, rootMargin:'0px 0px -40px 0px' });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+// Flow diagram — donor-to-party Sankey-style SVG
+function renderFlowDiagram() {
+  const FLOWS = [
+    { donor:'Future Gaming',       party:'TMC',      amount:900 },
+    { donor:'Future Gaming',       party:'DMK',      amount:420 },
+    { donor:'Future Gaming',       party:'Others',   amount:48  },
+    { donor:'Megha Engineering',   party:'BJP',      amount:584 },
+    { donor:'Megha Engineering',   party:'BRS',      amount:306 },
+    { donor:'Megha Engineering',   party:'TDP',      amount:76  },
+    { donor:'Qwik Supply Chain',   party:'BJP',      amount:410 },
+    { donor:'Vedanta',             party:'BJP',      amount:280 },
+    { donor:'Vedanta',             party:'BJD',      amount:120 },
+    { donor:'Haldia Energy',       party:'TMC',      amount:377 },
+    { donor:'Keventer Agro',       party:'TMC',      amount:160 },
+    { donor:'Bharti Group',        party:'BJP',      amount:170 },
+    { donor:'Bharti Group',        party:'Congress', amount:77  },
+    { donor:'Torrent Power',       party:'BJP',      amount:120 },
+    { donor:'Torrent Power',       party:'Congress', amount:55  },
+  ];
+
+  const donors  = [...new Set(FLOWS.map(f => f.donor))];
+  const parties = [
+    { name:'BJP',      color:'#e8640a' },
+    { name:'TMC',      color:'#1a7a3c' },
+    { name:'Congress', color:'#1565c0' },
+    { name:'BRS',      color:'#7b1fa2' },
+    { name:'BJD',      color:'#d97706' },
+    { name:'DMK',      color:'#b45309' },
+    { name:'TDP',      color:'#0369a1' },
+    { name:'Others',   color:'#8a7a6a' },
+  ].filter(p => FLOWS.some(f => f.party === p.name));
+
+  const W = 700, H = Math.max(donors.length, parties.length) * 48 + 60;
+  const LX = 170, RX = W - 170;
+  const dY = (i) => 50 + i * ((H - 80) / (donors.length - 1 || 1));
+  const pY = (i) => 50 + i * ((H - 80) / (parties.length - 1 || 1));
+  const maxAmt = Math.max(...FLOWS.map(f => f.amount));
+
+  // Build party y-index map
+  const pIdx = Object.fromEntries(parties.map((p, i) => [p.name, i]));
+  const dIdx = Object.fromEntries(donors.map((d, i) => [d, i]));
+
+  // Track used vertical space on each node for stacking flows
+  const dUsed = donors.map(() => 0);
+  const pUsed = parties.map(() => 0);
+  const NODE_H = 28;
+
+  let paths = '', labels = '';
+
+  FLOWS.forEach(f => {
+    const di = dIdx[f.donor], pi = pIdx[f.party];
+    const flowH = Math.max(2, Math.round(f.amount / maxAmt * NODE_H));
+    const x1 = LX, y1 = dY(di) - NODE_H / 2 + dUsed[di] + flowH / 2;
+    const x2 = RX, y2 = pY(pi) - NODE_H / 2 + pUsed[pi] + flowH / 2;
+    const cp = (x2 - x1) * 0.45;
+    const pColor = parties[pi].color;
+    const alpha = 0.18 + (f.amount / maxAmt) * 0.4;
+    paths += `<path d="M${x1},${y1} C${x1+cp},${y1} ${x2-cp},${y2} ${x2},${y2}"
+      fill="none" stroke="${pColor}" stroke-width="${flowH}" stroke-opacity="${alpha.toFixed(2)}"/>`;
+    dUsed[di] += flowH;
+    pUsed[pi] += flowH;
+  });
+
+  // Donor nodes + labels
+  donors.forEach((d, i) => {
+    const y = dY(i);
+    labels += `<rect x="${LX - 4}" y="${y - NODE_H/2}" width="8" height="${NODE_H}" fill="#2a2520" rx="2"/>`;
+    labels += `<text x="${LX - 14}" y="${y + 4}" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="10" fill="currentColor">${d}</text>`;
+  });
+
+  // Party nodes + labels
+  parties.forEach((p, i) => {
+    const y = pY(i);
+    labels += `<rect x="${RX - 4}" y="${y - NODE_H/2}" width="8" height="${NODE_H}" fill="${p.color}" rx="2"/>`;
+    labels += `<text x="${RX + 14}" y="${y + 4}" text-anchor="start" font-family="JetBrains Mono,monospace" font-size="10" fill="${p.color}" font-weight="600">${p.name}</text>`;
+  });
+
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const textColor = isDark ? '#b8b2a8' : '#4a443c';
+
+  const svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"
+    style="width:100%;max-width:${W}px;height:auto;color:${textColor};display:block;margin:0 auto;">
+    <g>${paths}</g>
+    <g>${labels}</g>
+  </svg>`;
+
+  document.getElementById('flowDiagram').innerHTML = svg;
+}
+
+// Rerender on theme change
+window.addEventListener('bengal:dataupdate', renderFlowDiagram);
+document.querySelectorAll('.theme-toggle, [onclick*="toggleTheme"]').forEach(el => {
+  el.addEventListener('click', () => setTimeout(renderFlowDiagram, 50));
+});
+
 // Init
 renderPartyChart();
 renderDonorTable();
 renderTmcDonors();
 renderPatternCards();
 renderTimeline();
+renderFlowDiagram();
 
 // Language toggle
 function setLang(lang) {
