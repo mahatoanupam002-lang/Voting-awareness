@@ -15,6 +15,9 @@
  *   data/cases.json — permanent timeline entries for significant developments
  *   data/meta.json  — autoChecked timestamp
  *   sitemap.xml     — lastmod dates kept current
+ *
+ * New URLs added to timeline entries are asynchronously submitted to the
+ * Internet Archive Wayback Machine (fire-and-forget, never blocks the run).
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
@@ -178,6 +181,32 @@ function headlineIsFresh(timeline, title) {
   );
 }
 
+// ── Wayback Machine preservation ─────────────────────────────────────────────
+/* Fire-and-forget: submits a URL to the Wayback Machine save endpoint.
+   Never throws, never blocks the pipeline. Returns the archive URL if saved. */
+async function archiveUrl(url) {
+  if (!url || !url.startsWith('http')) return null;
+  try {
+    const res = await fetch(`https://web.archive.org/save/${url}`, {
+      method: 'GET',
+      headers: { 'User-Agent': 'BengalReader/1.0 (public transparency archive)' },
+      signal: AbortSignal.timeout(20000),
+      redirect: 'follow',
+    });
+    if (res.ok || res.status === 302) {
+      const loc = res.headers.get('Content-Location') || res.headers.get('location') || '';
+      return loc ? `https://web.archive.org${loc}` : `https://web.archive.org/web/*/${url}`;
+    }
+  } catch { /* timeout or network failure — silently skip */ }
+  return null;
+}
+
+/* Queue of URLs to archive — accumulated during the run, flushed in parallel. */
+const archiveQueue = new Set();
+function queueArchive(url) {
+  if (url && url.startsWith('http')) archiveQueue.add(url);
+}
+
 // ── Sitemap updater ───────────────────────────────────────────────────────────
 function updateSitemap(dateStr) {
   const path = 'public/sitemap.xml';
@@ -237,6 +266,7 @@ async function main() {
           c.timeline.push({ date: fmtMonthYear(now), event: `ED: ${r.title}`, autoAdded: runDate, autoFrom: r.url, source: 'ED press release' });
           c.lastUpdated = thisMonth();
           timelineAdded++;
+          queueArchive(r.url);
           summaryWrite(`- ✅ **${c.id}** (ED): ${r.title.slice(0, 70)}…`);
         }
       }
@@ -246,6 +276,7 @@ async function main() {
           c.timeline.push({ date: fmtMonthYear(now), event: `CBI: ${r.title}`, autoAdded: runDate, autoFrom: r.url, source: 'CBI press release' });
           c.lastUpdated = thisMonth();
           timelineAdded++;
+          queueArchive(r.url);
           summaryWrite(`- ✅ **${c.id}** (CBI): ${r.title.slice(0, 70)}…`);
         }
       }
@@ -267,6 +298,8 @@ async function main() {
       newsFeed[c.id].count7d  = items.filter(n => n.date > cutoff7d).length;
 
       const recent24h = items.filter(n => n.date > cutoff24h);
+      // Archive the URLs of the most recent articles
+      sorted.slice(0, 3).forEach(n => { if (n.url) queueArchive(n.url); });
       if (recent24h.length >= 2 && !newsSummaryAddedToday(c.timeline)) {
         const top = recent24h[0];
         if (headlineIsFresh(c.timeline, top.title)) {
@@ -349,7 +382,24 @@ async function main() {
   }
   summaryWrite('');
 
-  // ── 5. Write data files ───────────────────────────────────────────────────
+  // ── 5. Archive queued URLs to Wayback Machine (fire-and-forget, parallel) ──
+  let archivedCount = 0;
+  if (archiveQueue.size > 0) {
+    summaryWrite(`## Wayback Machine archiving (${archiveQueue.size} URLs)`);
+    const archiveResults = await withConcurrency([...archiveQueue], 3, async (url) => {
+      const archived = await archiveUrl(url);
+      return { url, archived };
+    });
+    archiveResults.forEach(r => {
+      if (r && r.archived) {
+        archivedCount++;
+        summaryWrite(`- ✅ Archived: ${r.url.slice(0, 80)}`);
+      }
+    });
+    summaryWrite('');
+  }
+
+  // ── 6. Write data files ───────────────────────────────────────────────────
   meta.autoChecked = runISO;
 
   const newsDoc = { generated: runISO, cases: newsFeed };
@@ -365,6 +415,7 @@ async function main() {
   summaryWrite(`- **${timelineAdded}** permanent timeline entries added`);
   summaryWrite(`- \`data/news.json\` refreshed with latest headlines for all ${cases.length} cases`);
   summaryWrite(`- \`meta.autoChecked\` → \`${runISO}\``);
+  if (archivedCount > 0) summaryWrite(`- **${archivedCount}** source URLs archived to Wayback Machine`);
   if (errors.length) {
     summaryWrite('\n### ⚠️ Non-fatal errors');
     errors.forEach(e => summaryWrite(`- ${e}`));
