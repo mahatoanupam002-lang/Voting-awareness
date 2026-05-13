@@ -8,7 +8,16 @@
  *   5. Live meta timestamp sync
  *   6. Share utilities (WhatsApp, Twitter, copy link)
  *   7. Active nav link highlighting
+ *   8. Live data polling (30 s)
+ *   9. Service worker registration
  */
+
+/* ── 9. Service worker registration ─────────────────────────────────────── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js').catch(function () {});
+  });
+}
 
 /* ── 1. Scroll progress bar ─────────────────────────────────────────────── */
 (function () {
