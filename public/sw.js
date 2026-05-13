@@ -7,10 +7,11 @@
  *   - HTML pages: network-first, fall back to cache
  */
 
-const VERSION = 'bengal-v1';
+const VERSION = 'bengal-v2';
 
 const PRECACHE = [
   '/shared.css',
+  '/fonts.css',
   '/shared.js',
   '/analytics.js',
   '/favicon.svg',
@@ -24,6 +25,10 @@ const PRECACHE = [
   '/bonds',
   '/demonetisation',
   '/methodology',
+  '/search',
+  '/compare',
+  '/corrections',
+  '/rti',
 ];
 
 const DATA_FILES = [
