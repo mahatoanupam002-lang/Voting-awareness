@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T10:01:50.759Z",
+  "generated": "2026-05-13T18:29:57.908Z",
   "cases": {
     "saradha": {
       "articles": [
@@ -47,7 +47,7 @@
       "articles": [
         {
           "title": "ED compensates 1.73 lakh Rose Valley scam investors in India - The News Mill",
-          "pubDate": "2026-05-08",
+          "pubDate": "2026-05-12",
           "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQTk5kOWFEWkVBS2JSTmsybVN2MHBiSVZUcGxjZXpPTVVfTkZURUZfckpXWjdJZmtPQ25CUHRjOG9HQXc4Y1VHWVpaaEtobktFLWZIWjZmRFVDUEVpZTZLcTdzLXpaT0JCd3FyNEstRWppN0JnSDVWTGo2TmExOWxYVWRMNTlpTnFLcnAwNmpLNk85bk9nVjE4LWxrTHNJRWZSRWpv?oc=5",
           "source": "The News Mill"
         },
@@ -82,7 +82,7 @@
           "source": "The Times of India"
         }
       ],
-      "count24h": 0,
+      "count24h": 1,
       "count7d": 1
     },
     "narada": {
@@ -98,6 +98,12 @@
           "pubDate": "2026-04-05",
           "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPalFfUnA1MHZqM1dnQWVFR2tWdTktQWV5aG53Q2pwNjZna2FiM3JrZEppNTJwRm8ySVpEbENjd3VyVURrQU13Q2RJZmxhOThTR2Ewd1J3QVp2V2xEUzFtS3p4RlctRVRWMDBGMF9iZ2tUU3BXVmEyTWlwcW5VZC1aT2FHVHhFOTFJSGNEU0dZUmNETFlyTHh4OV9PYkQyeVl3aGgtTkRMcl9JSDJhR3lkZFNkaGFuSUQy0gHGAUFVX3lxTE92SE44X196aWZFajdZUlJzSjlzTlZMNzVNenNmVWFUUjIyVHIxSTBHNXNobGJBbF9HSmlPY0V5MVBoTXBPN3hYV2RIU25UakdyZlhIRFpDaWxfb0tFZm9YSHM2aFRDSUEwVHNmMnhITUdpdS10TEc3UnRJbnpwRU9jTllzdG5UdGtYMzJSMEhkVzFxREg1Z19tODFBOTZoaWFYUDFzb0lzSnRSMHJnc29pWTdUcjZ1OUJuV1RsTldRS1dFU0diUQ?oc=5",
           "source": "NewsGram"
+        },
+        {
+          "title": "Narada sting: Kolkata Police summon IPS officer S. M. H. Mirza - Indiablooms",
+          "pubDate": "2025-11-10",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQTHJJOFpMNkZQcDF1d0xyckRCbHhKWk9lU3hmLTNUdDgxWTRIY3lrckpGNTNnX2tCVU8tRTlIOVZfb1c5ZzJqdDl1U19iMGwwU3BzOTVNQ0RTYVZDOFd1V0I3eGxDRXJZNWZSTExBU1FXblpaRWI4eFZHMFkzYlZ2c1ExWlAyejBHZ3ktUy14SDNfN05ubHN6RTRGdm53Tnpy?oc=5",
+          "source": "Indiablooms"
         },
         {
           "title": "CBI summons journalist Mathew Samuel in Narada Sting case again - India Today",
@@ -116,12 +122,6 @@
           "pubDate": "2024-03-27",
           "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOdEhHSm9vNWNvb0hINlExaFl5aEYxckZDMVd5T1dTOWI5bHVrS0hmLXJkZlJCam1zbWtIRjdnMUozM1VOd3htcUZBOWFDMzN0YmZEQ1FsRkNzVkV3ME93OGt5S3htVktkQS11UmpzSlJvcFdYNWItalAweTRnNk1NQW1DZTE0eklsZGZNZ3Z3cTNOUzJL?oc=5",
           "source": "The Federal"
-        },
-        {
-          "title": "Top TMC leaders spar over Abhishek remarks on Narada sting operation’ - The Indian Express",
-          "pubDate": "2023-09-18",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNcS1mQTlOX2RQbFVPRGRMTjFITm4zUzQwZlFMcGliNHZ6LWVPdm1MTVhzLUFVTGJMNE5sUG5JQnVqRlBBR2xsY0dZRm1POS1TeVZLZjBqbFRtckZLQW5LcXZEZnJaTnFTM1luTTA4eVpaRTVZTGk5NDFIQ0lJOENIbUNIM0tLWkVYQ2lhSUJIVGhnVjlQZ1BMWnhaODhfeUtrWmZQb3NZbDZXQ2UxMjZ2QTBPLTRlOUZVanNZNNIBwwFBVV95cUxOWWMxMXBxZXkxOUdaYUg0QzZNaUZHZ2Nrd0dVRVpNUFZ6WnpmeV9jM0VFRFNYaWlNUklvYk9Ca0JtWjR0UGpVNks1cUh3RnhEcFl4NnBTdktDc0RPV2E0aEZwcG0xVUkwZ0ctMDBWSGtZOXVRU2lJMFpaTlhYX0NKS1lBdkVVdEc3b3JXN2MtLS1hRi1sUjNIU3ZJbENMcVBWaUNpdWJISzN6bVpfcXhFVFpVdzRndTl6bEtNNHZwbm5aakU?oc=5",
-          "source": "The Indian Express"
         }
       ],
       "count24h": 0,
@@ -143,8 +143,8 @@
         },
         {
           "title": "West Bengal phase 2 polls: Will anti-incumbency, scam charges and SIR row end TMC's 15-year run? - MSN",
-          "pubDate": "2026-05-06",
-          "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxQWklRNnFZM0g1R1d1Q3lnS254T2ZfLTB5TVFtdDZjRHQwUk9hdExZanA5LTdjeWRMc09qTzNoSUR1NDF6RXFqN3AxX1NOV3VhUFVpMU9TR00yVm5oR1RMOV9HOGlBc2dMZk1MRmRETFFoMnNCRG8yTDVDcnVadUt4eE5sdkpPSXFZWFlBQTE3Q2pwd1NUakNIZ3JNNEtEbTVPa3M1YVBWd1kyWDR2V3VmVktjOXBFR3F6MmJkNWtHSGxveEZpTHBzUGVDcXNkUkliRFE1TEs2OEZ2U29OTW1fYUZKWTM5Mk1ISTdaNHdxNjdvMXFmRVljS2tReTg3NGNTeDR4dGxCd21tTTNxYW1pX3YxYjdSMjFQdXc?oc=5",
+          "pubDate": "2026-04-29",
+          "url": "https://news.google.com/rss/articles/CBMimwJBVV95cUxQWE9CYlZjUF9Na1g2UmU5akNxc0RfeG9HVjl1VXdMSFJHcFRxajViYjhNTm9YWWVPMFFTaHZHSWxieU1FemZTbHVJS3Ztd21va21xbnNCOV91b3VVNmowc2lUYS1iQ0FEZ2plWnNkUFdXUm8yZkp4akVJUTF2OFV1T01XTmtzeVp3dGs2ejVJMjBHWF9WZEZleXhfUHk0dlhsMXZwT1JHMXR6d0dGZXMwRkJERGRNMFVVUzlreVZPbkt6clpGeC1CQWtGUW1WT25NbVl4dkwyS3J5WGo2dGRIZDJNY25qQ2x1VDYxa3FzWm5wcDRpc3NpOWFJd05tRmNEdjhodm5scEdXV1NIX1hPeVhPNnp3OWlHQWNj?oc=5",
           "source": "MSN"
         },
         {
@@ -244,10 +244,10 @@
           "source": "Law Trend"
         },
         {
-          "title": "CBI frames charges against 48 in coal case, four years after beginning investigation - Telegraph India",
-          "pubDate": "2024-12-11",
-          "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNTTlMTFFwaGZsWGVELVVoRXpwVEpKN1VIWVU1M3BaUWlmYjVVa2tDMk5Gd2hKY2lyRXU0b1dHVGp1TWpEdU1LV01CMXcyS0FSNnhBU2k5ZEdJWkdKNFctSmdWbDhVZTFOT2M4YW9KVmZxTExmMFVtUWJyNTllTkQxbmZ1R2hLVUw2VTMwV0VkOHFiSHdpVnBDcWpfWUJKd0JaaHdwS0VmSWFLSHpmZnFtN1F4UVBuVDlqN0djX1MxcWlmTnJlT0lXejZLUm1aUTN1WFl6cERJTmJmcmZ5Ymc2al9fWUVCZGZiZHNURU1MYUcyX0lReVdReTNB0gH_AUFVX3lxTE96TkRwR1ZHSWtZNWl2eU5WVEdxeTI4ZDBmUUE1N1YwdkZJd1czT0VPUHBQT2dtRG9xOGRiOFFIMV9hRzJJdkxLQlF1cldVanFuOVdYOXF4T3VNYll4Y2FCVklhTXFzdHVlZ2hPbWIxZnpkd0dkYWI5SEZFUTNJQmgtLWM5UWN3ZzIxZTBLRFh0RXRubmVBdzdMcEFGYlptZF9CcHVoSEZLSm15WjVRZHpoSU9LclRScXZBVFhkV3J4dnVfMGEzTE9vbWxVRjY4TkpQQzZrb0ZwYkJxd1p4X0FPTXdnUGROOWw5V0treEZYTmF6MlJvN1JLREVqYWRBVQ?oc=5",
-          "source": "Telegraph India"
+          "title": "Fugitive coal scam accused is director of one Medical College - The Statesman",
+          "pubDate": "2024-12-05",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOZUdWYS1YS040Wm9CTmpocXNXMk5JOVhBUFZSU3p4NHhGNlRHeU1Od1VCbTl0X1lZbUV6MlNlc05zTWw5Rmk3SWdZc29Qa0tuRTAtbnFTdlR1UVBhU2lkVkE4MHpWdWpEVTlxMkNKbEs3ZVgtQW9TWU1qVEVRUkY2MlFGUE96Y3NXTUlndkF0Q2tqd1hsRWVTUURPM3E3TGhZSy1NRmp0Tzd4VEZkUW5PUGpaa9IBuAFBVV95cUxPZG04X1pEZVBTRWRKQmNweGtKMjRhLW1paUlCWFE5T3lQMjhGREpCVUdId0xVeUJORGFSRDBBM1l2QUxzV2NrNzhCNlBhaXBMQ1NHMGRYdGhNbjdlSkFwZXlTUXhiUHNEVnNwX05HWUFlODdCVEgzbnE5TTFzQjZGemdHNzl3N01GQWg5U1dBSzQwMGFHTHhzbjFCTVNpb0JuSUo5N3hoRFNsTVFTTDVHd21OMGhuSld0?oc=5",
+          "source": "The Statesman"
         }
       ],
       "count24h": 0,
@@ -286,10 +286,10 @@
           "source": "Telegraph India"
         },
         {
-          "title": "Former West Bengal Minister Jyoti Priya Mallick granted bail in PDS scam case - The Economic Times",
+          "title": "Former West Bengal Minister Jyoti Priya Mallick Gets Bail In Ration Distribution Case - ETV Bharat",
           "pubDate": "2025-01-15",
-          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxObG5TZ2t6UHU3Z0VoZXdlb3lybWlwZlBBek1Sa0xuM3d5NVR4S1JyWTFDN2RneUNJWWNlVzQ0YWNHUHFVRmJfSTd0cVFfc1VwUl9IbGFSeHllSkdNd0JPSGRuN010WFhLMzJBRmVmNXdqdDRwZVE3XzAyRTY0VG5ucFk5OG1DZGlRZVFLSzlNdmozRmxwQXZjcEVGMGFrcWlGa05rUS11RzNEVl9sZEE2SjJNSWt3UFFfV0owYVBXY1BWekVpQ0Z3YTNWUlFfZGJXbFUxZURZOWxUV2l4THVoRXNEcEJUUWtIS2tpatIB8gFBVV95cUxPX3VJNHNCd1JnVk5YQjhMbHRoTVluRGhRb1ZDUU8xQlhPeFBSTmpYUlNzbzVZcWtWVXlrUGQweTJMNEExT2JuZ0U2VnFleDc4MXdSZHFPV3hlaW1mcUJ3YzJnenRmTkp1N0N2QlJ0bFVzTVlxR1llV3UtdExBeEdRU3J6SHpQanV6VFRPYTQ1ZUVmSXpoaEg4Y2dqdGlXeHh5YjA4Vkd1QVpYQUZVLWUwX0pLU3I2Q1JqblFLZ3J2QVZ1Qk1FS1Rhc08zTGZQRDBUTGdGWTlad3ZPMUl6Wl9CVXgyZjBHNG95OEo2VGVJUWRUdw?oc=5",
-          "source": "The Economic Times"
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOZ0dMMXZFQjZ6RUNna2N2MmJ4TUhreGVRMHRtdFlhZUVNVC1hN2xMWGpoT2IxYnJVNVBINmtBN29fR2lXbGtxcUhyNzlkV2pfLXZDbXhfQ3Bha3B1R0tkX04tV3VuZUlmZUZpQUJCOE95ZmtrZmtQbUZDYW9RSTUwMlFRRlJ6SUpsZkNGX21qUWdtWUxqOXBSTk14ZjEydmcwZTdDTUtNaHBaY2swYWpmanc1elFjY2h3MGpxMzRicmRSbkN0TjNQWDFtZXdidFdOR1lGSC1KbUtkYTDSAeABQVVfeXFMUDdwQUF4QnlnMkEzM2gxYTVweFJuWmViaURDbU9xU2hmTjVKNjNDaldaVE9nXzFBeVhkcmVPUXEtanNvZDNuVWQwSjJrQXg0ZW4ydjRoeHR2NDJUWkMxaUFkUUd1d3pUUnpueDVWOW1sdG5EUGFDUjlPWjlUc0xKem4xY3dxOHF4YUhXbE9kcW5uRkE4UmRZTXhqOXgyUmlKaThsMy01VTNaUzhhdDd6em0wVzJycTVDbEo5VVE5MWFnVXZNcUx2YVJWZzJlZC0wbDRpWXJyLS1PcUxWazNQUnc?oc=5",
+          "source": "ETV Bharat"
         }
       ],
       "count24h": 0,
@@ -335,7 +335,7 @@
         }
       ],
       "count24h": 0,
-      "count7d": 2
+      "count7d": 0
     }
   }
 }
