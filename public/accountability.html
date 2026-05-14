@@ -258,6 +258,37 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
   .cat-nav-inner { padding:0 0.5rem; }
   .cat-nav-tab { padding:0.6rem 0.6rem; font-size:0.52rem; }
 }
+
+/* ── PROGRESS BARS ── */
+.pledge-progress-wrap { margin-top:0.7rem; }
+.pledge-progress-bar { height:3px; background:var(--aged); overflow:hidden; }
+.pledge-progress-fill { height:3px; transition:width 1s ease; }
+.pledge-progress-label { font-family:'IBM Plex Mono',monospace; font-size:0.52rem; letter-spacing:0.06em; color:var(--muted); margin-top:3px; }
+
+/* ── COUNTDOWN TIMER ── */
+.pledge-countdown { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.06em; color:var(--muted); margin-top:0.35rem; font-variant-numeric:tabular-nums; }
+.pledge-countdown.urgent { color:var(--broken); }
+
+/* ── BACKLOG TABLE ── */
+.backlog-intro { font-family:'Crimson Pro',serif; font-size:1rem; color:var(--muted); line-height:1.6; margin-bottom:1.5rem; }
+.backlog-total { font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; background:var(--ink); color:var(--paper); display:inline-block; padding:4px 12px; margin-bottom:1.2rem; }
+.backlog-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 0 2rem; border:1px solid var(--aged); }
+.backlog-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+.backlog-table th { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; background:var(--ink); color:var(--paper); padding:0.65rem 1rem; text-align:left; white-space:nowrap; }
+.backlog-table td { padding:0.75rem 1rem; border-bottom:1px solid var(--aged); font-family:'Crimson Pro',serif; font-size:0.9rem; vertical-align:top; }
+.backlog-table tr:last-child td { border-bottom:none; }
+.backlog-table tfoot td { background:var(--aged); font-family:'IBM Plex Mono',monospace; font-size:0.65rem; letter-spacing:0.08em; font-weight:600; padding:0.6rem 1rem; }
+.backlog-table tr:hover td { background:rgba(0,0,0,0.02); }
+.bl-val { font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-weight:600; color:var(--bjp); white-space:nowrap; }
+.bl-yr { font-family:'IBM Plex Mono',monospace; font-size:0.65rem; color:var(--broken); white-space:nowrap; }
+.bl-cat { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.52rem; letter-spacing:0.08em; text-transform:uppercase; padding:2px 6px; border:1px solid var(--aged); color:var(--muted); white-space:nowrap; }
+[data-theme="dark"] .backlog-table-wrap { border-color:rgba(255,255,255,0.08); }
+[data-theme="dark"] .backlog-table th { background:#0a0804; }
+[data-theme="dark"] .backlog-table td { border-color:rgba(255,255,255,0.07); color:#c8c0b4; }
+[data-theme="dark"] .backlog-table tfoot td { background:#1e1b18; color:#c8c0b4; }
+[data-theme="dark"] .backlog-table tr:hover td { background:rgba(255,255,255,0.03); }
+[data-theme="dark"] .bl-cat { border-color:rgba(255,255,255,0.12); color:#9a9085; }
+[data-theme="dark"] .pledge-progress-bar { background:#2a2520; }
 </style>
 <link rel="stylesheet" href="/shared.css">
 <script defer src="/shared.js"></script>
@@ -416,6 +447,109 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
   <div class="heat-grid-wrap fade-in">
     <div class="heat-grid-title">All 24 pledges at a glance — click any square to jump to that pledge</div>
     <div class="heat-grid" id="pledgeHeatGrid"></div>
+  </div>
+
+  <hr class="hr-ornate">
+
+  <!-- TMC BACKLOG TABLE -->
+  <div class="section-header fade-in">
+    <div class="section-header-text">
+      <div class="section-label">₹ Legacy Crisis</div>
+      <h2 class="section-title">TMC-Era Backlog: Stalled Central Schemes</h2>
+    </div>
+  </div>
+  <p class="backlog-intro">10 major Central government schemes stalled, rejected, or mismanaged by TMC over 15 years. The new government must unlock this pipeline — failure to do so compounds Bengal's development deficit beyond its own manifesto promises.</p>
+  <div class="backlog-total">Total unrealized: ₹34,350+ Cr across 10 schemes</div>
+  <div class="backlog-table-wrap fade-in">
+    <table class="backlog-table">
+      <thead>
+        <tr>
+          <th>Project / Scheme</th>
+          <th>₹ Value</th>
+          <th>Stalled Since</th>
+          <th>Category</th>
+          <th>Why Stalled Under TMC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>PM Awas Yojana Grameen (PMAY-G) Backlog</strong><br><span style="font-size:0.82rem;color:var(--muted);">~10 lakh rural housing units approved but unbuilt</span></td>
+          <td><span class="bl-val">₹11,000Cr</span></td>
+          <td><span class="bl-yr">2020 – 2026<br>(6 yrs)</span></td>
+          <td><span class="bl-cat">Housing</span></td>
+          <td>State refused to implement SECC-2011 beneficiary verification; funds withheld by Centre</td>
+        </tr>
+        <tr>
+          <td><strong>Ayushman Bharat (PM-JAY)</strong><br><span style="font-size:0.82rem;color:var(--muted);">7 crore residents without Central health cover</span></td>
+          <td><span class="bl-val">₹4,200Cr</span></td>
+          <td><span class="bl-yr">2019 – 2026<br>(7 yrs)</span></td>
+          <td><span class="bl-cat">Healthcare</span></td>
+          <td>TMC unilaterally opted out citing "duplication" with Swastha Saathi; left 7 crore without cover</td>
+        </tr>
+        <tr>
+          <td><strong>PM Fasal Bima Yojana (PMFBY)</strong><br><span style="font-size:0.82rem;color:var(--muted);">70 lakh farming families uninsured</span></td>
+          <td><span class="bl-val">₹8,500Cr</span></td>
+          <td><span class="bl-yr">2019 – 2026<br>(7 yrs)</span></td>
+          <td><span class="bl-cat">Agriculture</span></td>
+          <td>TMC withdrew Bengal from PMFBY; farmers bore full crop-loss risk through floods &amp; cyclones</td>
+        </tr>
+        <tr>
+          <td><strong>Smart City Mission</strong><br><span style="font-size:0.82rem;color:var(--muted);">Bidhannagar, Kolkata, Haldia, New Town</span></td>
+          <td><span class="bl-val">₹2,100Cr</span></td>
+          <td><span class="bl-yr">2015 – 2026<br>(11 yrs)</span></td>
+          <td><span class="bl-cat">Urban Dev</span></td>
+          <td>Less than 30% of allocated funds utilized after 11 years; projects stalled by state bureaucracy</td>
+        </tr>
+        <tr>
+          <td><strong>Ghatal Master Plan</strong><br><span style="font-size:0.82rem;color:var(--muted);">Flood control for Paschim Medinipur &amp; Howrah</span></td>
+          <td><span class="bl-val">₹800Cr</span></td>
+          <td><span class="bl-yr">2012 – 2026<br>(14 yrs)</span></td>
+          <td><span class="bl-cat">Flood Control</span></td>
+          <td>State refused to provide matching funds; district floods annually despite Central allocation</td>
+        </tr>
+        <tr>
+          <td><strong>SC/ST/OBC Scholarship (Post-Matric) Backlog</strong><br><span style="font-size:0.82rem;color:var(--muted);">~12 lakh students with unpaid scholarships</span></td>
+          <td><span class="bl-val">₹1,200Cr</span></td>
+          <td><span class="bl-yr">2016 – 2026<br>(10 yrs)</span></td>
+          <td><span class="bl-cat">Education</span></td>
+          <td>Central funds disbursed to state; state agencies delayed/diverted final payments to students</td>
+        </tr>
+        <tr>
+          <td><strong>National Health Mission (NHM) Annual Drawdown</strong><br><span style="font-size:0.82rem;color:var(--muted);">Consistently &lt;60% of Central allocation utilized</span></td>
+          <td><span class="bl-val">₹1,800Cr</span></td>
+          <td><span class="bl-yr">2019 – 2026<br>(7 yrs)</span></td>
+          <td><span class="bl-cat">Healthcare</span></td>
+          <td>State failed to submit utilization certificates; PHC upgrades and ASHA payments chronically delayed</td>
+        </tr>
+        <tr>
+          <td><strong>NMCG Phase II — Ganga Sewage Treatment</strong><br><span style="font-size:0.82rem;color:var(--muted);">STPs for Howrah, Kolkata south bank &amp; 18 municipalities</span></td>
+          <td><span class="bl-val">₹1,100Cr</span></td>
+          <td><span class="bl-yr">2021 – 2026<br>(5 yrs)</span></td>
+          <td><span class="bl-cat">Environment</span></td>
+          <td>State delayed land acquisition for STP sites; industrial effluent discharge continued unchecked</td>
+        </tr>
+        <tr>
+          <td><strong>PM Gati Shakti — NH Extensions in Bengal</strong><br><span style="font-size:0.82rem;color:var(--muted);">NH-12, NH-16, NH-116 widening projects</span></td>
+          <td><span class="bl-val">₹3,200Cr</span></td>
+          <td><span class="bl-yr">2022 – 2026<br>(4 yrs)</span></td>
+          <td><span class="bl-cat">Infrastructure</span></td>
+          <td>State government withheld forest &amp; land clearances; NHAI projects stalled at pre-construction stage</td>
+        </tr>
+        <tr>
+          <td><strong>Singur Industrial Zone Revival</strong><br><span style="font-size:0.82rem;color:var(--muted);">450 acres, 15,000 direct jobs potential</span></td>
+          <td><span class="bl-val">₹450Cr</span></td>
+          <td><span class="bl-yr">2011 – 2026<br>(15 yrs)</span></td>
+          <td><span class="bl-cat">Industry</span></td>
+          <td>Tata Motors eviction; land remained fallow for 15 years; TMC blocked all industrial re-tendering</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><strong>Total estimated backlog value</strong></td>
+          <td colspan="3"><strong>₹34,350+ Crore</strong> in stalled/rejected Central development funds</td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 
   <hr class="hr-ornate">
@@ -630,6 +764,8 @@ function renderPledgeSection(containerId, pledges) {
   for (const p of pledges) {
     const statusClass = 'status-' + (p.status || 'watching');
     const statusLabel = STATUS_LABELS[p.status] || p.status;
+    const statusColor = STATUS_COLORS[p.status] || STATUS_COLORS.watching;
+    const progress = typeof p.progress === 'number' ? p.progress : 0;
     const updateNote = p.updateNote
       ? `<div class="pledge-update visible">${escHtml(p.updateNote)}</div>` : '';
     let newsChip = '';
@@ -638,13 +774,19 @@ function renderPledgeSection(containerId, pledges) {
       const date = p.newsDate ? `<span class="news-chip-date">${timeAgo(p.newsDate)}</span>` : '';
       newsChip = `<div class="pledge-news-chip"><span class="news-chip-dot"></span><a href="${href}" target="_blank" rel="noopener noreferrer">${escHtml(p.newsHeadline)}</a>${date}</div>`;
     }
+    const progressBar = `<div class="pledge-progress-wrap">
+        <div class="pledge-progress-bar"><div class="pledge-progress-fill" style="width:${progress}%;background:${statusColor};"></div></div>
+        <div class="pledge-progress-label">${progress}% complete</div>
+      </div>`;
+    const countdownEl = p.deadlineDate
+      ? `<div class="pledge-countdown" data-deadline="${escHtml(p.deadlineDate)}">–</div>` : '';
     html += `
       <div class="pledge-card">
         <div>
           <div class="pledge-title">${escHtml(p.title)}</div>
           <p class="pledge-detail">${escHtml(p.detail)}</p>
           <p class="pledge-source">Source: ${escHtml(p.source)}</p>
-          ${updateNote}${newsChip}
+          ${updateNote}${newsChip}${progressBar}
           <div style="margin-top:0.5rem;">
             <button class="share-btn whatsapp" style="font-size:0.55rem;padding:3px 7px;" onclick="shareDataPoint('${escHtml(p.title).replace(/'/g,"\\'")}','${escHtml(statusLabel)}')">Share</button>
           </div>
@@ -652,6 +794,7 @@ function renderPledgeSection(containerId, pledges) {
         <div class="pledge-right">
           <span class="status-badge ${statusClass}">${statusLabel}</span>
           <div class="pledge-deadline">Target: ${escHtml(p.deadlineLabel)}</div>
+          ${countdownEl}
         </div>
       </div>`;
   }
@@ -771,6 +914,29 @@ async function loadData() {
 }
 
 loadData();
+
+// ── Per-pledge countdown timers ───────────────────────────────────────────────
+(function () {
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tickCountdowns() {
+    document.querySelectorAll('.pledge-countdown[data-deadline]').forEach(function (el) {
+      var d = new Date(el.getAttribute('data-deadline') + 'T23:59:59+05:30');
+      var diff = d - Date.now();
+      if (diff <= 0) {
+        el.textContent = 'Deadline passed';
+        el.classList.add('urgent');
+        return;
+      }
+      var days = Math.floor(diff / 86400000);
+      var hours = Math.floor((diff % 86400000) / 3600000);
+      var mins = Math.floor((diff % 3600000) / 60000);
+      var secs = Math.floor((diff % 60000) / 1000);
+      el.textContent = days + 'd ' + pad(hours) + 'h ' + pad(mins) + 'm ' + pad(secs) + 's';
+      el.classList.toggle('urgent', days < 7);
+    });
+  }
+  setInterval(tickCountdowns, 1000);
+})();
 
 // Analytics: track filter interactions
 document.querySelectorAll('.pledge-category').forEach(function(el) {
