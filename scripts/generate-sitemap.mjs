@@ -40,7 +40,7 @@ function getLastmod(filePath) {
     const out = execSync(`git log -1 --format=%cI -- "${filePath}"`, { encoding: 'utf-8' }).trim();
     if (out) return out.slice(0, 10);
   } catch {}
-  return new Date().toISOString().slice(0, 10);
+  return '2026-05-13';
 }
 
 // Collect routes from vercel.json rewrites
