@@ -749,6 +749,11 @@ const STATUS_LABELS = {
   delivered: 'Delivered', delayed: 'Delayed', broken: 'Broken'
 };
 
+const STATUS_COLORS = {
+  watching: '#8a7a6a', announced: '#1565c0', 'in-progress': '#d97706',
+  delivered: '#166534', delayed: '#b45309', broken: '#c0171b', evaded: '#7b3f6e'
+};
+
 function toggleSection(id) {
   var body = document.getElementById('body-' + id);
   var chevron = document.getElementById('chevron-' + id);
@@ -888,10 +893,11 @@ function setCached(key, data) {
 async function loadData() {
   let pledges = [];
   let loaded = false;
+  let data = {};
 
   try {
     const resp = await fetchWithRetry('/data/pledges.json');
-    const data = await resp.json();
+    data = await resp.json();
     pledges = data.pledges || [];
     setCached('pledges', data);
     loaded = true;
@@ -905,6 +911,7 @@ async function loadData() {
     console.warn('Network failed; trying cache:', err.message);
     const cached = getCached('pledges');
     if (cached) {
+      data = cached;
       pledges = cached.pledges || [];
       loaded = true;
     }
