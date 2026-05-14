@@ -289,6 +289,70 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 [data-theme="dark"] .backlog-table tr:hover td { background:rgba(255,255,255,0.03); }
 [data-theme="dark"] .bl-cat { border-color:rgba(255,255,255,0.12); color:#9a9085; }
 [data-theme="dark"] .pledge-progress-bar { background:#2a2520; }
+
+/* ── NEW CARD SYSTEM ── */
+.pch { display:flex; justify-content:space-between; align-items:flex-start; padding:1rem 1.2rem; border:1px solid var(--aged); margin-top:2rem; cursor:pointer; user-select:none; transition:background 0.15s; gap:1rem; }
+.pch:hover { background:rgba(0,0,0,0.02); }
+.pch-left { display:flex; align-items:flex-start; gap:0.8rem; flex:1; min-width:0; }
+.pch-icon { font-size:1.4rem; flex-shrink:0; margin-top:2px; line-height:1; }
+.pch-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; line-height:1.2; }
+.pch-kwds { font-family:'IBM Plex Mono',monospace; font-size:0.52rem; letter-spacing:0.08em; color:var(--muted); margin-top:0.3rem; text-transform:uppercase; line-height:1.6; }
+.pch-right { display:flex; align-items:center; gap:0.7rem; flex-shrink:0; }
+.pch-stats { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--aged); padding:4px 10px; color:var(--muted); white-space:nowrap; }
+.pch-active-txt { color:var(--bjp); }
+.pch-chevron { font-size:0.85rem; color:var(--muted); display:inline-block; transition:transform 0.25s ease; }
+.pch-chevron.rotated { transform:rotate(-90deg); }
+.promise-list { border:1px solid var(--aged); border-top:none; }
+.promise-list.collapsed { display:none; }
+.promise-row { display:grid; grid-template-columns:26px 1fr auto; gap:0.8rem; padding:1rem 1.2rem; border-bottom:1px solid var(--aged); align-items:start; }
+.promise-row:last-child { border-bottom:none; }
+.promise-row.is-active { background:#fdf5ef; }
+.pr-num { font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--muted); padding-top:0.15rem; }
+.promise-row.is-active .pr-num { color:var(--bjp); font-weight:600; }
+.pr-body { min-width:0; }
+.pr-title { font-family:'Crimson Pro',serif; font-size:1.05rem; line-height:1.5; color:var(--ink); font-weight:600; }
+.promise-row:not(.is-active) .pr-title { font-weight:400; color:var(--muted); }
+.pr-detail { font-family:'Crimson Pro',serif; font-size:0.88rem; color:var(--muted); line-height:1.5; margin-top:0.3rem; display:none; }
+.pr-upd-btn { display:inline-flex; align-items:center; margin-top:0.55rem; font-family:'IBM Plex Mono',monospace; font-size:0.56rem; letter-spacing:0.08em; text-transform:uppercase; border:1px solid var(--bjp); color:var(--bjp); background:transparent; padding:3px 10px; cursor:pointer; transition:background 0.15s,color 0.15s; border-radius:10px; }
+.pr-upd-btn:hover { background:var(--bjp); color:#fff; }
+.update-panel { margin-top:0.75rem; display:none; }
+.upd-inner { border-left:3px solid var(--bjp); padding:0.75rem 1rem; background:rgba(232,100,10,0.04); }
+.upd-hdr { display:flex; align-items:center; gap:0.7rem; margin-bottom:0.5rem; }
+.upd-badge { font-family:'IBM Plex Mono',monospace; font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; background:var(--bjp); color:#fff; padding:2px 8px; border-radius:2px; flex-shrink:0; }
+.upd-date { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; color:var(--muted); }
+.upd-text { font-family:'Crimson Pro',serif; font-size:0.95rem; line-height:1.6; color:var(--ink); }
+.upd-sources { display:flex; flex-wrap:wrap; gap:6px; margin-top:0.65rem; }
+.upd-src-chip { font-family:'IBM Plex Mono',monospace; font-size:0.52rem; letter-spacing:0.07em; text-transform:uppercase; border:1px solid var(--aged); color:var(--muted); padding:3px 8px; text-decoration:none; display:inline-flex; align-items:center; gap:3px; transition:color 0.15s,border-color 0.15s; }
+.upd-src-chip::before { content:'↗'; }
+.upd-src-chip:hover { color:var(--ink); border-color:var(--ink); }
+.pr-progress-wrap { margin-top:0.6rem; }
+.pr-progress-bar { height:3px; background:var(--aged); overflow:hidden; }
+.pr-progress-fill { height:3px; transition:width 1s ease; }
+.pr-right { display:flex; flex-direction:column; align-items:flex-end; gap:4px; padding-top:0.1rem; min-width:100px; }
+.pr-deadline { font-family:'IBM Plex Mono',monospace; font-size:0.56rem; color:var(--muted); text-align:right; }
+.pr-share-btn { font-family:'IBM Plex Mono',monospace; font-size:0.52rem; letter-spacing:0.06em; padding:2px 7px; border:1px solid var(--aged); background:transparent; color:var(--muted); cursor:pointer; margin-top:4px; transition:background 0.15s; }
+.pr-share-btn:hover { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+/* dark mode */
+[data-theme="dark"] .pch { border-color:rgba(255,255,255,0.1); }
+[data-theme="dark"] .pch:hover { background:rgba(255,255,255,0.03); }
+[data-theme="dark"] .promise-list { border-color:rgba(255,255,255,0.1); }
+[data-theme="dark"] .promise-row { border-color:rgba(255,255,255,0.07); }
+[data-theme="dark"] .promise-row.is-active { background:#1e1b18; }
+[data-theme="dark"] .pr-title { color:#f0ece3; }
+[data-theme="dark"] .promise-row:not(.is-active) .pr-title { color:#706a62; }
+[data-theme="dark"] .upd-inner { background:rgba(232,100,10,0.06); }
+[data-theme="dark"] .upd-text { color:#c8c0b4; }
+[data-theme="dark"] .upd-src-chip { border-color:rgba(255,255,255,0.12); color:#9a9085; }
+[data-theme="dark"] .upd-src-chip:hover { color:#f0ece3; border-color:rgba(255,255,255,0.3); }
+[data-theme="dark"] .pch-stats { border-color:rgba(255,255,255,0.12); }
+[data-theme="dark"] .pr-progress-bar { background:#2a2520; }
+[data-theme="dark"] .pr-share-btn { border-color:rgba(255,255,255,0.1); color:#706a62; }
+[data-theme="dark"] .pr-share-btn:hover { background:#f0ece3; color:#141210; border-color:#f0ece3; }
+@media(max-width:600px) {
+  .promise-row { grid-template-columns:22px 1fr; }
+  .pr-right { grid-column:2; flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:flex-start; min-width:0; margin-top:0.4rem; }
+  .pch-kwds { display:none; }
+}
 </style>
 <link rel="stylesheet" href="/shared.css">
 <script defer src="/shared.js"></script>
@@ -556,128 +620,56 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 
   <!-- AGRICULTURE -->
   <section class="fade-in" id="sec-agriculture">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">🌾 Category I</div>
-        <h2 class="section-title">Agriculture &amp; Farmers</h2>
-      </div>
-      <button class="section-toggle" id="toggle-agriculture" aria-expanded="true" onclick="toggleSection('agriculture')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-agriculture">
-      <div class="pledge-section" id="pledges-agriculture"></div>
-    </div>
+    <div class="pledge-section" id="pledges-agriculture"></div>
   </section>
 
   <hr class="hr-ornate">
 
   <!-- WELFARE -->
   <section class="fade-in" id="sec-welfare">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">🏥 Category II</div>
-        <h2 class="section-title">Welfare &amp; Women's Schemes</h2>
-      </div>
-      <button class="section-toggle" id="toggle-welfare" aria-expanded="true" onclick="toggleSection('welfare')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-welfare">
-      <div class="pledge-section" id="pledges-welfare"></div>
-    </div>
+    <div class="pledge-section" id="pledges-welfare"></div>
   </section>
 
   <hr class="hr-ornate">
 
   <!-- LAW AND ORDER -->
   <section class="fade-in" id="sec-justice">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">⚖️ Category III</div>
-        <h2 class="section-title">Law, Order &amp; Anti-Corruption</h2>
-      </div>
-      <button class="section-toggle" id="toggle-justice" aria-expanded="true" onclick="toggleSection('justice')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-justice">
-      <div class="pledge-section" id="pledges-justice"></div>
-    </div>
+    <div class="pledge-section" id="pledges-justice"></div>
   </section>
 
   <hr class="hr-ornate">
 
   <!-- EMPLOYMENT -->
   <section class="fade-in" id="sec-employment">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">💼 Category IV</div>
-        <h2 class="section-title">Employment &amp; Industry</h2>
-      </div>
-      <button class="section-toggle" id="toggle-employment" aria-expanded="true" onclick="toggleSection('employment')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-employment">
-      <div class="pledge-section" id="pledges-employment"></div>
-    </div>
+    <div class="pledge-section" id="pledges-employment"></div>
   </section>
 
   <hr class="hr-ornate">
 
   <!-- INFRASTRUCTURE -->
   <section class="fade-in" id="sec-infra">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">🏗️ Category V</div>
-        <h2 class="section-title">Infrastructure &amp; Housing</h2>
-      </div>
-      <button class="section-toggle" id="toggle-infra" aria-expanded="true" onclick="toggleSection('infra')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-infra">
-      <div class="pledge-section" id="pledges-infra"></div>
-    </div>
+    <div class="pledge-section" id="pledges-infra"></div>
   </section>
 
   <hr class="hr-ornate">
 
   <!-- GOVERNANCE -->
   <section class="fade-in" id="sec-governance">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">🏛️ Category VI</div>
-        <h2 class="section-title">Governance &amp; Administration</h2>
-      </div>
-      <button class="section-toggle" id="toggle-governance" aria-expanded="true" onclick="toggleSection('governance')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-governance">
-      <div class="pledge-section" id="pledges-governance"></div>
-    </div>
+    <div class="pledge-section" id="pledges-governance"></div>
   </section>
 
   <hr class="hr-ornate">
 
   <!-- WOMEN -->
   <section class="fade-in" id="sec-women">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">👩 Category VII</div>
-        <h2 class="section-title">Women's Safety &amp; Empowerment</h2>
-      </div>
-      <button class="section-toggle" id="toggle-women" aria-expanded="true" onclick="toggleSection('women')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-women">
-      <div class="pledge-section" id="pledges-women"></div>
-    </div>
+    <div class="pledge-section" id="pledges-women"></div>
   </section>
 
   <hr class="hr-ornate">
 
   <!-- EDUCATION -->
   <section class="fade-in" id="sec-education">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">📚 Category VIII</div>
-        <h2 class="section-title">Education &amp; Youth</h2>
-      </div>
-      <button class="section-toggle" id="toggle-education" aria-expanded="true" onclick="toggleSection('education')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-education">
-      <div class="pledge-section" id="pledges-education"></div>
-    </div>
+    <div class="pledge-section" id="pledges-education"></div>
   </section>
 
   <hr class="hr-ornate">
@@ -757,47 +749,105 @@ const STATUS_LABELS = {
   delivered: 'Delivered', delayed: 'Delayed', broken: 'Broken'
 };
 
-function renderPledgeSection(containerId, pledges) {
-  const el = document.getElementById(containerId);
-  if (!el || !pledges.length) return;
-  let html = `<div class="pledge-category">Pledges in this category: ${pledges.length}</div>`;
-  for (const p of pledges) {
-    const statusClass = 'status-' + (p.status || 'watching');
-    const statusLabel = STATUS_LABELS[p.status] || p.status;
-    const statusColor = STATUS_COLORS[p.status] || STATUS_COLORS.watching;
-    const progress = typeof p.progress === 'number' ? p.progress : 0;
-    const updateNote = p.updateNote
-      ? `<div class="pledge-update visible">${escHtml(p.updateNote)}</div>` : '';
-    let newsChip = '';
-    if (p.newsHeadline) {
-      const href = p.newsUrl ? escHtml(p.newsUrl) : '#';
-      const date = p.newsDate ? `<span class="news-chip-date">${timeAgo(p.newsDate)}</span>` : '';
-      newsChip = `<div class="pledge-news-chip"><span class="news-chip-dot"></span><a href="${href}" target="_blank" rel="noopener noreferrer">${escHtml(p.newsHeadline)}</a>${date}</div>`;
+function toggleSection(id) {
+  var body = document.getElementById('body-' + id);
+  var chevron = document.getElementById('chevron-' + id);
+  if (!body) return;
+  var collapsed = body.classList.toggle('collapsed');
+  if (chevron) chevron.classList.toggle('rotated', collapsed);
+  if (window.trackEvent) window.trackEvent('Accordion Toggle', { section: id, state: collapsed ? 'collapsed' : 'expanded' });
+}
+
+function toggleUpdate(id, btn) {
+  var panel = document.getElementById('upd-' + id);
+  if (!panel) return;
+  var opening = panel.style.display !== 'block';
+  panel.style.display = opening ? 'block' : 'none';
+  var count = btn.getAttribute('data-count') || '1';
+  btn.textContent = opening ? 'HIDE ←' : count + ' UPDATE →';
+  if (window.trackEvent) window.trackEvent('Update Expand', { pledge: id, open: opening });
+}
+
+function renderPledgeSection(containerId, pledges, catData) {
+  var el = document.getElementById(containerId);
+  if (!el) return;
+  if (!pledges.length) { el.innerHTML = ''; return; }
+  var catId = containerId.replace('pledges-', '');
+  var ACTIVE = ['in-progress', 'announced', 'delivered'];
+  var activeCount = pledges.filter(function(p) { return ACTIVE.indexOf(p.status) !== -1; }).length;
+  var icon = catData ? catData.icon : '';
+  var label = catData ? catData.label : '';
+  // Build keyword string from first 6 pledge titles
+  var kwds = pledges.slice(0, 6).map(function(p) {
+    return p.title.split(/[—–]/)[0].trim().split(' ').slice(0, 3).join(' ').toUpperCase();
+  }).join(' · ');
+  var activeHtml = activeCount > 0
+    ? '<span class="pch-active-txt">' + activeCount + ' ACTIVE</span> · ' : '';
+  var html = '<div class="pch" onclick="toggleSection(\'' + catId + '\')" role="button" tabindex="0"'
+    + ' onkeydown="if(event.key===\'Enter\'||event.key===\' \')toggleSection(\'' + catId + '\')">'
+    + '<div class="pch-left"><span class="pch-icon" aria-hidden="true">' + icon + '</span>'
+    + '<div><div class="pch-title">' + escHtml(label) + '</div>'
+    + '<div class="pch-kwds">' + escHtml(kwds) + '</div></div></div>'
+    + '<div class="pch-right"><span class="pch-stats">' + activeHtml + pledges.length + ' PROMISES</span>'
+    + '<span class="pch-chevron" id="chevron-' + catId + '" aria-hidden="true">▾</span></div></div>'
+    + '<div class="promise-list" id="body-' + catId + '">';
+  for (var i = 0; i < pledges.length; i++) {
+    var p = pledges[i];
+    var isActive = ACTIVE.indexOf(p.status) !== -1;
+    var statusClass = 'status-' + (p.status || 'watching');
+    var statusLabel = STATUS_LABELS[p.status] || p.status;
+    var statusColor = STATUS_COLORS[p.status] || STATUS_COLORS.watching;
+    var progress = typeof p.progress === 'number' ? p.progress : 0;
+    var hasUpdate = !!(p.updateNote || p.newsHeadline);
+    // Format update date
+    var updDate = '';
+    if (p.newsDate) {
+      updDate = new Date(p.newsDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
     }
-    const progressBar = `<div class="pledge-progress-wrap">
-        <div class="pledge-progress-bar"><div class="pledge-progress-fill" style="width:${progress}%;background:${statusColor};"></div></div>
-        <div class="pledge-progress-label">${progress}% complete</div>
-      </div>`;
-    const countdownEl = p.deadlineDate
-      ? `<div class="pledge-countdown" data-deadline="${escHtml(p.deadlineDate)}">–</div>` : '';
-    html += `
-      <div class="pledge-card">
-        <div>
-          <div class="pledge-title">${escHtml(p.title)}</div>
-          <p class="pledge-detail">${escHtml(p.detail)}</p>
-          <p class="pledge-source">Source: ${escHtml(p.source)}</p>
-          ${updateNote}${newsChip}${progressBar}
-          <div style="margin-top:0.5rem;">
-            <button class="share-btn whatsapp" style="font-size:0.55rem;padding:3px 7px;" onclick="shareDataPoint('${escHtml(p.title).replace(/'/g,"\\'")}','${escHtml(statusLabel)}')">Share</button>
-          </div>
-        </div>
-        <div class="pledge-right">
-          <span class="status-badge ${statusClass}">${statusLabel}</span>
-          <div class="pledge-deadline">Target: ${escHtml(p.deadlineLabel)}</div>
-          ${countdownEl}
-        </div>
-      </div>`;
+    // Source chip from newsHeadline
+    var srcChip = '';
+    if (p.newsHeadline && p.newsUrl) {
+      var parts = p.newsHeadline.split(' - ');
+      var pub = parts.length > 1 ? parts[parts.length - 1].trim() : parts[0].split(' ').slice(0, 4).join(' ');
+      srcChip = '<a href="' + escHtml(p.newsUrl) + '" target="_blank" rel="noopener noreferrer" class="upd-src-chip">'
+        + escHtml(pub) + (updDate ? ' · ' + escHtml(updDate) : '') + '</a>';
+    }
+    // Update panel (hidden by default)
+    var updPanel = '';
+    if (hasUpdate) {
+      var updText = p.updateNote || p.newsHeadline || '';
+      updPanel = '<div class="update-panel" id="upd-' + escHtml(p.id) + '">'
+        + '<div class="upd-inner">'
+        + '<div class="upd-hdr"><span class="upd-badge">Update 1</span>'
+        + '<span class="upd-date">' + escHtml(updDate || 'Ongoing') + '</span></div>'
+        + '<div class="upd-text">' + escHtml(updText) + '</div>'
+        + (srcChip ? '<div class="upd-sources">' + srcChip + '</div>' : '')
+        + '</div></div>';
+    }
+    var updBtn = hasUpdate
+      ? '<button class="pr-upd-btn" onclick="toggleUpdate(\'' + escHtml(p.id) + '\',this)" data-count="1">1 UPDATE →</button>'
+      : '';
+    var countdown = p.deadlineDate
+      ? '<div class="pledge-countdown" data-deadline="' + escHtml(p.deadlineDate) + '">–</div>' : '';
+    var shareTitle = escHtml(p.title).replace(/'/g, "\\'");
+    html += '<div class="promise-row' + (isActive ? ' is-active' : '') + '">'
+      + '<div class="pr-num">' + (i + 1) + '</div>'
+      + '<div class="pr-body">'
+      + '<div class="pr-title">' + escHtml(p.title) + '</div>'
+      + updBtn + updPanel
+      + '<div class="pr-progress-wrap"><div class="pr-progress-bar">'
+      + '<div class="pr-progress-fill" style="width:' + progress + '%;background:' + statusColor + ';"></div>'
+      + '</div></div>'
+      + '</div>'
+      + '<div class="pr-right">'
+      + '<span class="status-badge ' + statusClass + '">' + statusLabel + '</span>'
+      + '<div class="pr-deadline">Target: ' + escHtml(p.deadlineLabel || '') + '</div>'
+      + countdown
+      + '<button class="pr-share-btn" onclick="shareDataPoint(\'' + shareTitle + '\',\'' + escHtml(statusLabel) + '\')">Share</button>'
+      + '</div>'
+      + '</div>';
   }
+  html += '</div>';
   el.innerHTML = html;
 }
 
@@ -866,22 +916,24 @@ async function loadData() {
     return;
   }
 
+  const catMap = {};
+  (data.categories || []).forEach(function(c) { catMap[c.id] = c; });
   const byCategory = {};
-  const counts = { watching:0, announced:0, 'in-progress':0, delivered:0, delayed:0, broken:0 };
+  const counts = { watching:0, announced:0, 'in-progress':0, delivered:0, delayed:0, broken:0, evaded:0 };
 
   for (const p of pledges) {
     (byCategory[p.category] = byCategory[p.category] || []).push(p);
     if (p.status in counts) counts[p.status]++;
   }
 
-  renderPledgeSection('pledges-agriculture', byCategory.agriculture || []);
-  renderPledgeSection('pledges-welfare',     byCategory.welfare     || []);
-  renderPledgeSection('pledges-justice',     byCategory.justice     || []);
-  renderPledgeSection('pledges-employment',  byCategory.employment  || []);
-  renderPledgeSection('pledges-infra',       byCategory.infra       || []);
-  renderPledgeSection('pledges-governance',  byCategory.governance  || []);
-  renderPledgeSection('pledges-women',       byCategory.women       || []);
-  renderPledgeSection('pledges-education',   byCategory.education   || []);
+  renderPledgeSection('pledges-agriculture', byCategory.agriculture || [], catMap.agriculture);
+  renderPledgeSection('pledges-welfare',     byCategory.welfare     || [], catMap.welfare);
+  renderPledgeSection('pledges-justice',     byCategory.justice     || [], catMap.justice);
+  renderPledgeSection('pledges-employment',  byCategory.employment  || [], catMap.employment);
+  renderPledgeSection('pledges-infra',       byCategory.infra       || [], catMap.infra);
+  renderPledgeSection('pledges-governance',  byCategory.governance  || [], catMap.governance);
+  renderPledgeSection('pledges-women',       byCategory.women       || [], catMap.women);
+  renderPledgeSection('pledges-education',   byCategory.education   || [], catMap.education);
 
   // Render pledge heat grid
   var heatGrid = document.getElementById('pledgeHeatGrid');
