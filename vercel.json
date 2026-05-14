@@ -16,6 +16,10 @@
     { "source": "/search", "destination": "/search.html" },
     { "source": "/compare", "destination": "/compare.html" }
   ],
+  "cleanUrls": true,
+  "errors": [
+    { "statusCode": 404, "destination": "/404.html" }
+  ],
   "headers": [
     {
       "source": "/data/(.*)",

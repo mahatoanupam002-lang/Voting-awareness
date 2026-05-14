@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Page not found — The Bengal Reader">
+<meta property="og:title" content="404 — The Bengal Reader">
+<meta property="og:description" content="This page could not be found. Return to The Bengal Reader's civic journalism.">
+<meta property="og:image" content="/og-voter-guide.svg">
+<title>404 — Page Not Found · The Bengal Reader</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/shared.css">
+<script defer src="/analytics.js"></script>
+<script defer src="/shared.js"></script>
+<style>
+:root {
+  --paper: #f5f0e8; --ink: #0a0804; --aged: #e8e0cc;
+  --bjp: #e8640a; --muted: #6b5f4e; --broken: #c0171b;
+}
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--paper); color:var(--ink);
+  font-family:'Crimson Pro', serif; font-size:18px; line-height:1.7;
+  min-height:100vh; display:flex; flex-direction:column;
+}
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999; opacity:0.5;
+}
+
+.not-found-wrap {
+  flex:1; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; padding:4rem 2rem; text-align:center;
+}
+.not-found-code {
+  font-family:'Playfair Display',serif; font-size:clamp(6rem,20vw,14rem);
+  font-weight:900; line-height:1; color:var(--bjp); opacity:0.18;
+  position:absolute; pointer-events:none; user-select:none;
+  letter-spacing:-0.03em;
+}
+.not-found-inner { position:relative; z-index:1; max-width:560px; }
+.not-found-overline {
+  font-family:'IBM Plex Mono',monospace; font-size:0.65rem;
+  letter-spacing:0.3em; text-transform:uppercase; color:var(--muted);
+  border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);
+  padding:0.3rem 0; margin-bottom:1.5rem; display:inline-block;
+}
+.not-found-inner h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,6vw,3.5rem); font-weight:900;
+  line-height:1.1; margin-bottom:1rem;
+}
+.not-found-inner h1 em { font-style:italic; color:var(--bjp); }
+.not-found-sub {
+  font-family:'Crimson Pro',serif; font-size:1.1rem; color:var(--muted);
+  line-height:1.6; margin-bottom:2rem;
+}
+.not-found-links {
+  display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;
+}
+.not-found-link {
+  font-family:'IBM Plex Mono',monospace; font-size:0.65rem;
+  letter-spacing:0.1em; text-transform:uppercase; text-decoration:none;
+  padding:0.55rem 1.2rem; border:1px solid var(--ink);
+  color:var(--ink); transition:background 0.15s,color 0.15s;
+}
+.not-found-link:hover { background:var(--ink); color:var(--paper); }
+.not-found-link.primary { background:var(--bjp); color:#fff; border-color:var(--bjp); }
+.not-found-link.primary:hover { background:#c85a08; border-color:#c85a08; }
+.not-found-suggestion {
+  margin-top:3rem; border-top:1px solid var(--aged); padding-top:1.5rem;
+}
+.not-found-suggestion-label {
+  font-family:'IBM Plex Mono',monospace; font-size:0.6rem;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--muted);
+  margin-bottom:0.75rem;
+}
+.not-found-suggestion-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:0.5rem; text-align:left;
+}
+.nf-page-link {
+  font-family:'IBM Plex Mono',monospace; font-size:0.58rem;
+  letter-spacing:0.06em; text-decoration:none;
+  color:var(--muted); border:1px solid var(--aged); padding:0.5rem 0.75rem;
+  display:block; transition:color 0.15s,border-color 0.15s;
+}
+.nf-page-link:hover { color:var(--bjp); border-color:var(--bjp); }
+.nf-page-emoji { margin-right:0.3rem; }
+
+[data-theme="dark"] body { background:#141210; color:#f0ece3; }
+[data-theme="dark"] .not-found-overline { border-color:rgba(255,255,255,.2); color:#9a9085; }
+[data-theme="dark"] .not-found-link { border-color:rgba(255,255,255,.25); color:#f0ece3; }
+[data-theme="dark"] .not-found-link:hover { background:#f0ece3; color:#141210; border-color:#f0ece3; }
+[data-theme="dark"] .not-found-suggestion { border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .nf-page-link { border-color:rgba(255,255,255,.1); color:#9a9085; }
+[data-theme="dark"] .nf-page-link:hover { color:var(--bjp); border-color:var(--bjp); }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav-inner">
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
+    <div class="site-nav-links">
+      <a href="/" class="site-nav-link">Voter Guide</a>
+      <a href="/parties" class="site-nav-link">Party Compass</a>
+      <a href="/constituencies" class="site-nav-link">2026 Results</a>
+      <a href="/accountability" class="site-nav-link">100 Days</a>
+      <a href="/corruption" class="site-nav-link">Dossier</a>
+      <a href="/mlas" class="site-nav-link">MLA Records</a>
+    </div>
+  </div>
+</nav>
+
+<main><div class="not-found-wrap">
+  <div class="not-found-code" aria-hidden="true">404</div>
+  <div class="not-found-inner">
+    <div class="not-found-overline">The Bengal Reader · Page Not Found</div>
+    <h1>This Page Has <em>Gone Missing</em></h1>
+    <p class="not-found-sub">Like a Central scheme under TMC — the page you're looking for was either moved, deleted, or never arrived. Try one of the links below.</p>
+    <div class="not-found-links">
+      <a href="/" class="not-found-link primary">← Return Home</a>
+      <a href="/accountability" class="not-found-link">100-Day Tracker</a>
+      <button class="not-found-link" onclick="toggleTheme()" style="cursor:pointer;background:transparent;">◐ Toggle Theme</button>
+    </div>
+
+    <div class="not-found-suggestion">
+      <div class="not-found-suggestion-label">All pages on this site</div>
+      <div class="not-found-suggestion-grid">
+        <a href="/" class="nf-page-link"><span class="nf-page-emoji">🗺️</span>Voter Guide</a>
+        <a href="/parties" class="nf-page-link"><span class="nf-page-emoji">🧭</span>Party Compass</a>
+        <a href="/constituencies" class="nf-page-link"><span class="nf-page-emoji">📊</span>2026 Results</a>
+        <a href="/accountability" class="nf-page-link"><span class="nf-page-emoji">📋</span>100-Day Tracker</a>
+        <a href="/corruption" class="nf-page-link"><span class="nf-page-emoji">📁</span>Corruption Dossier</a>
+        <a href="/bonds" class="nf-page-link"><span class="nf-page-emoji">💰</span>Money Trail</a>
+        <a href="/mlas" class="nf-page-link"><span class="nf-page-emoji">🏛️</span>MLA Records</a>
+        <a href="/assets" class="nf-page-link"><span class="nf-page-emoji">💹</span>Wealth Growth</a>
+        <a href="/demonetisation" class="nf-page-link"><span class="nf-page-emoji">📉</span>Demonetisation</a>
+        <a href="/methodology" class="nf-page-link"><span class="nf-page-emoji">📖</span>Methodology</a>
+      </div>
+    </div>
+  </div>
+</div></main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="site-footer-brand">The Bengal Reader</div>
+      <div class="site-footer-tagline">Non-partisan civic journalism for West Bengal.</div>
+    </div>
+    <div class="site-footer-links">
+      <a href="/methodology" class="site-footer-link">Methodology</a>
+      <a href="/rss.xml" class="site-footer-link">RSS</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
