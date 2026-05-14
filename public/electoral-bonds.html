@@ -667,73 +667,101 @@ function renderFlowDiagram() {
     { donor:'Torrent Power',       party:'Congress', amount:55  },
   ];
 
-  const donors  = [...new Set(FLOWS.map(f => f.donor))];
-  const parties = [
-    { name:'BJP',      color:'#e8640a' },
-    { name:'TMC',      color:'#1a7a3c' },
-    { name:'Congress', color:'#1565c0' },
-    { name:'BRS',      color:'#7b1fa2' },
-    { name:'BJD',      color:'#d97706' },
-    { name:'DMK',      color:'#b45309' },
-    { name:'TDP',      color:'#0369a1' },
-    { name:'Others',   color:'#8a7a6a' },
-  ].filter(p => FLOWS.some(f => f.party === p.name));
+  const PARTY_COLORS = {
+    BJP:      '#e8640a',
+    TMC:      '#1a7a3c',
+    Congress: '#1565c0',
+    BRS:      '#7b1fa2',
+    BJD:      '#d97706',
+    DMK:      '#b45309',
+    TDP:      '#0369a1',
+    Others:   '#8a7a6a',
+  };
 
-  const W = 700, H = Math.max(donors.length, parties.length) * 48 + 60;
-  const LX = 170, RX = W - 170;
-  const dY = (i) => 50 + i * ((H - 80) / (donors.length - 1 || 1));
-  const pY = (i) => 50 + i * ((H - 80) / (parties.length - 1 || 1));
-  const maxAmt = Math.max(...FLOWS.map(f => f.amount));
+  // Compute totals per donor and party
+  const donorTotals = {}, partyTotals = {};
+  FLOWS.forEach(f => {
+    donorTotals[f.donor] = (donorTotals[f.donor] || 0) + f.amount;
+    partyTotals[f.party] = (partyTotals[f.party] || 0) + f.amount;
+  });
 
-  // Build party y-index map
-  const pIdx = Object.fromEntries(parties.map((p, i) => [p.name, i]));
-  const dIdx = Object.fromEntries(donors.map((d, i) => [d, i]));
+  const donors   = [...new Set(FLOWS.map(f => f.donor))];
+  const parties  = Object.keys(PARTY_COLORS).filter(p => partyTotals[p]);
 
-  // Track used vertical space on each node for stacking flows
-  const dUsed = donors.map(() => 0);
-  const pUsed = parties.map(() => 0);
-  const NODE_H = 28;
+  // Scale: tallest node = MAX_NODE_H px
+  const MAX_NODE_H = 90;
+  const GAP = 14;
+  const maxTotal = Math.max(...Object.values(donorTotals), ...Object.values(partyTotals));
+  const scale = MAX_NODE_H / maxTotal;
+  function nodeH(total) { return Math.max(6, Math.round(total * scale)); }
+
+  // Lay out left (donor) column
+  const dNodes = {};
+  let y = 36;
+  donors.forEach(d => {
+    const h = nodeH(donorTotals[d]);
+    dNodes[d] = { y, h, yUsed: 0 };
+    y += h + GAP;
+  });
+  const leftH = y - GAP + 36;
+
+  // Lay out right (party) column
+  const pNodes = {};
+  y = 36;
+  parties.forEach(p => {
+    const h = nodeH(partyTotals[p]);
+    pNodes[p] = { y, h, yUsed: 0, color: PARTY_COLORS[p] };
+    y += h + GAP;
+  });
+  const rightH = y - GAP + 36;
+
+  const W = 700, H = Math.max(leftH, rightH);
+  const LX = 178, RX = W - 178;
+  const CP = (RX - LX) * 0.44;
 
   let paths = '', labels = '';
 
-  FLOWS.forEach(f => {
-    const di = dIdx[f.donor], pi = pIdx[f.party];
-    const flowH = Math.max(2, Math.round(f.amount / maxAmt * NODE_H));
-    const x1 = LX, y1 = dY(di) - NODE_H / 2 + dUsed[di] + flowH / 2;
-    const x2 = RX, y2 = pY(pi) - NODE_H / 2 + pUsed[pi] + flowH / 2;
-    const cp = (x2 - x1) * 0.45;
-    const pColor = parties[pi].color;
-    const alpha = 0.18 + (f.amount / maxAmt) * 0.4;
-    paths += `<path d="M${x1},${y1} C${x1+cp},${y1} ${x2-cp},${y2} ${x2},${y2}"
-      fill="none" stroke="${pColor}" stroke-width="${flowH}" stroke-opacity="${alpha.toFixed(2)}"/>`;
-    dUsed[di] += flowH;
-    pUsed[pi] += flowH;
+  // Flows sorted largest-first so big flows are drawn behind small ones
+  [...FLOWS].sort((a, b) => b.amount - a.amount).forEach(f => {
+    const dn = dNodes[f.donor];
+    const pn = pNodes[f.party];
+    if (!dn || !pn) return;
+    const fh = Math.max(2, Math.round(f.amount * scale));
+    const y1 = dn.y + dn.yUsed + fh / 2;
+    const y2 = pn.y + pn.yUsed + fh / 2;
+    dn.yUsed += fh;
+    pn.yUsed += fh;
+    const alpha = (0.12 + (f.amount / maxTotal) * 0.5).toFixed(2);
+    paths += `<path d="M${LX},${y1} C${LX+CP},${y1} ${RX-CP},${y2} ${RX},${y2}" fill="none" stroke="${pn.color}" stroke-width="${fh}" stroke-opacity="${alpha}"/>`;
   });
 
   // Donor nodes + labels
-  donors.forEach((d, i) => {
-    const y = dY(i);
-    labels += `<rect x="${LX - 4}" y="${y - NODE_H/2}" width="8" height="${NODE_H}" fill="#2a2520" rx="2"/>`;
-    labels += `<text x="${LX - 14}" y="${y + 4}" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="10" fill="currentColor">${d}</text>`;
+  donors.forEach(d => {
+    const { y, h } = dNodes[d];
+    const cy = y + h / 2;
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const nodeColor = isDark ? '#706a62' : '#4a443c';
+    labels += `<rect x="${LX - 5}" y="${y}" width="10" height="${h}" fill="${nodeColor}" rx="2"/>`;
+    labels += `<text x="${LX - 14}" y="${cy + 4}" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="10" fill="currentColor">${d}</text>`;
   });
 
   // Party nodes + labels
-  parties.forEach((p, i) => {
-    const y = pY(i);
-    labels += `<rect x="${RX - 4}" y="${y - NODE_H/2}" width="8" height="${NODE_H}" fill="${p.color}" rx="2"/>`;
-    labels += `<text x="${RX + 14}" y="${y + 4}" text-anchor="start" font-family="JetBrains Mono,monospace" font-size="10" fill="${p.color}" font-weight="600">${p.name}</text>`;
+  parties.forEach(p => {
+    const { y, h, color } = pNodes[p];
+    const cy = y + h / 2;
+    labels += `<rect x="${RX - 5}" y="${y}" width="10" height="${h}" fill="${color}" rx="2"/>`;
+    labels += `<text x="${RX + 14}" y="${cy + 4}" text-anchor="start" font-family="JetBrains Mono,monospace" font-size="10" fill="${color}" font-weight="600">${p}</text>`;
   });
 
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  const textColor = isDark ? '#b8b2a8' : '#4a443c';
+  const fg = isDark ? '#b8b2a8' : '#4a443c';
 
-  const svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"
-    style="width:100%;max-width:${W}px;height:auto;color:${textColor};display:block;margin:0 auto;">
-    <g>${paths}</g>
-    <g>${labels}</g>
-  </svg>`;
-
-  document.getElementById('flowDiagram').innerHTML = svg;
+  document.getElementById('flowDiagram').innerHTML =
+    `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"
+      style="width:100%;max-width:${W}px;height:auto;color:${fg};display:block;margin:0 auto;overflow:visible;">
+      <g>${paths}</g>
+      <g>${labels}</g>
+    </svg>`;
 }
 
 // Rerender on theme change
