@@ -14,7 +14,9 @@
     { "source": "/corrections", "destination": "/corrections.html" },
     { "source": "/rti", "destination": "/rti.html" },
     { "source": "/search", "destination": "/search.html" },
-    { "source": "/compare", "destination": "/compare.html" }
+    { "source": "/compare", "destination": "/compare.html" },
+    { "source": "/ask", "destination": "/ask.html" },
+    { "source": "/map", "destination": "/map.html" }
   ],
   "headers": [
     {
@@ -24,7 +26,38 @@
       ]
     },
     {
-      "source": "/fonts/(.*)",
+      "source": "/(.*)\\.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=600" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=600" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(?:svg|png)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=86400, stale-while-revalidate=3600" }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=600" },
+        { "key": "Content-Type", "value": "application/manifest+json" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)\\.woff2",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=31536000, immutable" }
       ]
