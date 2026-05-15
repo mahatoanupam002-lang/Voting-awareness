@@ -38,7 +38,13 @@
       ]
     },
     {
-      "source": "/(.*)\\.(?:svg|png)",
+      "source": "/(.*)\\.svg",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=86400, stale-while-revalidate=3600" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.png",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=86400, stale-while-revalidate=3600" }
       ]
