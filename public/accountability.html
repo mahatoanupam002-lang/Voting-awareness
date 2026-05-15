@@ -20,229 +20,633 @@
 <script defer src="/analytics.js"></script>
 <link rel="stylesheet" href="/shared.css">
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-
-*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; }
 body {
-  background:var(--paper); color:var(--ink);
-  font-family:'Crimson Pro', serif; font-size:18px; line-height:1.7;
-  overflow-x:hidden;
-}
-body::before {
-  content:''; position:fixed; inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none; z-index:9999; opacity:0.5;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-
-/* ── MASTHEAD ── */
-.masthead { border-bottom:4px double var(--ink); padding:1.5rem 2rem 1rem; text-align:center; position:relative; background:var(--paper); }
-.masthead-overline { font-family:'IBM Plex Mono',monospace; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); padding:0.3rem 0; margin-bottom:1rem; }
-.masthead h1 { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,6vw,5rem); font-weight:900; line-height:1.0; letter-spacing:-0.02em; text-transform:uppercase; }
-.masthead h1 em { font-style:italic; color:var(--bjp); }
-.masthead-sub { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1rem,2.5vw,1.35rem); color:var(--muted); margin-top:0.5rem; }
-.masthead-meta { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; color:var(--muted); margin-top:1rem; border-top:1px solid var(--aged); padding-top:0.6rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
-
-/* ── COUNTER HERO ── */
-.counter-hero { background:var(--ink); color:var(--paper); padding:3rem 2rem; text-align:center; position:relative; overflow:hidden; }
-.counter-hero::before { content:'100'; position:absolute; font-family:'Playfair Display',serif; font-size:40vw; font-weight:900; opacity:0.04; top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; color:var(--paper); white-space:nowrap; }
-.counter-grid { display:flex; justify-content:center; gap:0; flex-wrap:wrap; max-width:700px; margin:0 auto; position:relative; }
-.counter-cell { padding:1.5rem 2.5rem; border-right:1px solid rgba(255,255,255,0.1); }
-.counter-cell:last-child { border-right:none; }
-.counter-big { font-family:'Playfair Display',serif; font-size:clamp(3rem,8vw,5.5rem); font-weight:900; line-height:1; color:var(--bjp); }
-.counter-label { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:#8a8070; margin-top:0.4rem; }
-.counter-sub { font-family:'Crimson Pro',serif; font-size:1rem; color:#b0a898; margin-top:1.5rem; max-width:500px; margin-left:auto; margin-right:auto; position:relative; }
-.mandate-bar { display:flex; height:8px; max-width:600px; margin:2rem auto 0.6rem; overflow:hidden; gap:2px; }
-.mandate-seg { height:8px; }
-.mandate-labels { display:flex; justify-content:space-between; max-width:600px; margin:0 auto; font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; color:#8a8070; }
-.day-progress-wrap { max-width:600px; margin:2rem auto 0; }
-.day-progress-bar { height:4px; background:rgba(255,255,255,0.08); overflow:hidden; }
-.day-progress-fill { height:4px; background:var(--bjp); width:0%; transition:width 1s ease; }
-.day-progress-labels { display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; color:#8a8070; margin-top:0.4rem; }
-
-/* ── LAYOUT ── */
-.container { max-width:1100px; margin:0 auto; padding:0 2rem; }
-
-/* ── PLEDGE HEAT GRID ── */
-.heat-grid-wrap { margin:2rem 0; }
-.heat-grid-title { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:.7rem; }
-.heat-grid { display:flex; flex-wrap:wrap; gap:5px; }
-.heat-cell {
-  width:36px; height:36px; display:flex; align-items:center; justify-content:center;
-  font-family:'IBM Plex Mono',monospace; font-size:0.58rem; font-weight:600;
-  cursor:pointer; transition:transform .15s, opacity .15s; position:relative;
-  border:2px solid transparent; color:#fff;
+/* ── PAGE HEADER ── */
+.tracker-header {
+  border-bottom: 3px solid var(--ink);
+  padding: 2rem 2rem 1.5rem;
+  background: var(--paper);
 }
-.heat-cell:hover { transform:scale(1.18); z-index:2; }
-.heat-cell:focus { outline:2px solid var(--bjp); outline-offset:2px; }
-.heat-cell .heat-tip {
-  display:none; position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%);
-  background:#050403; color:rgba(245,240,232,.9); font-size:0.55rem; white-space:nowrap;
-  padding:4px 8px; z-index:10; pointer-events:none; border:1px solid rgba(255,255,255,.12);
-  max-width:200px; white-space:normal; text-align:center;
+
+.tracker-header-inner { max-width: 860px; margin: 0 auto; }
+
+.tracker-overline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bjp);
+  margin-bottom: 1rem;
 }
-.heat-cell:hover .heat-tip { display:block; }
 
-/* ── SECTION HEADERS ── */
-.section-header { border-top:4px solid var(--ink); padding-top:0.5rem; margin:4rem 0 2rem; display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; }
-.section-header-text { flex:1; min-width:0; }
-.section-label { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--bjp); margin-bottom:0.4rem; }
-.section-title { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.8rem); font-weight:700; line-height:1.15; }
+.tracker-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.7rem;
+}
 
-p { margin-bottom:1.2rem; font-size:1.05rem; color:#2a2018; }
-.article-lead { font-family:'Crimson Pro',serif; font-size:1.25rem; font-weight:600; line-height:1.6; border-left:4px solid var(--ink); padding-left:1.5rem; margin:2rem 0; color:#1a1510; }
+.tracker-header h1 em { font-style: italic; color: var(--bjp); }
 
-/* ── STATUS BADGES ── */
+.tracker-mandate {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-width: 640px;
+}
+
+.mandate-bar { display: flex; height: 6px; gap: 2px; max-width: 400px; margin-bottom: 0.4rem; }
+.mandate-seg { height: 6px; }
+.mandate-legend {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  display: flex;
+  gap: 1.2rem;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--aged);
+}
+
+/* ── SUMMARY STATS BAR ── */
+.summary-bar {
+  background: var(--ink);
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.summary-cell {
+  flex: 1;
+  min-width: 70px;
+  text-align: center;
+  padding: 0.9rem 0.5rem;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.summary-cell:last-child { border-right: none; }
+
+.summary-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #6a5f50;
+  display: block;
+  line-height: 1;
+}
+
+.summary-lbl {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #4a4030;
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.summary-cell.s-days .summary-num { color: #f0ece3; }
+.summary-cell.s-remaining .summary-num { color: #8a7060; }
+.summary-cell.s-inprogress .summary-num { color: var(--bjp); }
+.summary-cell.s-delivered .summary-num { color: #2d9e56; }
+.summary-cell.s-broken .summary-num { color: #e83535; }
+.summary-cell.s-delayed .summary-num { color: #d97706; }
+
+/* ── PROGRESS STRIP ── */
+.progress-strip {
+  background: var(--ink);
+  padding: 0 0 0.7rem;
+}
+
+.progress-strip-track {
+  height: 3px;
+  background: rgba(255,255,255,0.07);
+}
+
+.progress-strip-fill {
+  height: 3px;
+  background: var(--bjp);
+  width: 0%;
+  transition: width 1s ease;
+}
+
+.progress-strip-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4a4030;
+  padding: 0.4rem 1.5rem 0;
+}
+
+/* ── STICKY JUMP BAR ── */
+.jump-bar {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: #0f0d0b;
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.jump-section {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.jump-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #5a5040;
+  padding: 0 1rem;
+  white-space: nowrap;
+}
+
+.jump-select {
+  background: transparent;
+  border: none;
+  color: #d0c8b8;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem 0.75rem 0;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.jump-select option { background: #141210; color: #d0c8b8; }
+
+.jump-arrow-icon {
+  color: var(--bjp);
+  font-size: 0.75rem;
+  position: absolute;
+  right: 0.8rem;
+  pointer-events: none;
+}
+
+.filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 0.8rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filter-pills::-webkit-scrollbar { display: none; }
+
+.filter-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.6rem 0.7rem;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.3);
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.filter-pill:hover { color: rgba(255,255,255,0.7); }
+.filter-pill.active { color: var(--bjp); border-bottom-color: var(--bjp); }
+
+/* ── TRACKER WRAP ── */
+.tracker-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+}
+
+/* ── CATEGORY CARD ── */
+.cat-card {
+  border: 1px solid var(--aged);
+  background: #fff;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  transition: opacity 0.2s;
+}
+
+.cat-card.hidden { display: none; }
+
+.cat-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--aged);
+  transition: background 0.15s;
+  user-select: none;
+}
+
+.cat-card-header:hover { background: var(--paper); }
+.cat-card-header:focus { outline: 2px solid var(--bjp); outline-offset: -2px; }
+
+.cat-icon-big {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 0.15rem;
+}
+
+.cat-meta { flex: 1; min-width: 0; }
+
+.cat-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 0.45rem;
+}
+
+.cat-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+.cat-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--aged);
+  padding: 2px 7px;
+}
+
+.cat-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.cat-count-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  text-align: right;
+}
+
+.cat-count-badge .active-count { color: var(--bjp); font-weight: 600; }
+
+.cat-toggle-arrow {
+  font-size: 0.7rem;
+  color: var(--muted);
+  transition: transform 0.25s;
+}
+
+.cat-card.collapsed .cat-toggle-arrow { transform: rotate(180deg); }
+
+/* ── PLEDGE LIST ── */
+.pledge-list {
+  max-height: 20000px;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.cat-card.collapsed .pledge-list { max-height: 0; }
+
+.pledge-row {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid var(--aged);
+  transition: background 0.15s;
+}
+
+.pledge-row:last-child { border-bottom: none; }
+.pledge-row:hover { background: var(--paper); }
+.pledge-row.filtered-out { display: none; }
+
+.pledge-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--aged);
+  line-height: 1.3;
+  min-width: 2.2rem;
+  flex-shrink: 0;
+  padding-top: 0.05rem;
+  border-right: 2px solid var(--aged);
+  padding-right: 0.8rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.pledge-row[data-status="in-progress"] .pledge-num,
+.pledge-row[data-status="delivered"] .pledge-num,
+.pledge-row[data-status="delayed"] .pledge-num,
+.pledge-row[data-status="broken"] .pledge-num,
+.pledge-row[data-status="announced"] .pledge-num {
+  color: var(--bjp);
+  border-color: var(--bjp);
+}
+
+.pledge-body { flex: 1; min-width: 0; }
+
+.pledge-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.pledge-detail {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+.pledge-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ── STATUS BADGES (outlined) ── */
 .status-badge {
-  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.58rem;
-  letter-spacing:0.15em; text-transform:uppercase; padding:3px 9px; font-weight:500;
-  border-radius:2px; white-space:nowrap;
-}
-.status-watching  { background:rgba(138,122,106,0.15); color:var(--watching); border:1px solid rgba(138,122,106,0.3); }
-.status-announced { background:rgba(21,101,192,0.12); color:var(--announced); border:1px solid rgba(21,101,192,0.3); }
-.status-in-progress { background:rgba(217,119,6,0.12); color:var(--in-progress); border:1px solid rgba(217,119,6,0.3); }
-.status-delivered { background:rgba(22,101,52,0.12); color:var(--delivered); border:1px solid rgba(22,101,52,0.3); }
-.status-delayed   { background:rgba(180,83,9,0.12); color:var(--delayed); border:1px solid rgba(180,83,9,0.3); }
-.status-broken    { background:rgba(192,23,27,0.1); color:var(--broken); border:1px solid rgba(192,23,27,0.3); }
-
-/* ── PLEDGE CARDS ── */
-.pledge-section { margin:2.5rem 0; }
-.pledge-category {
-  font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase;
-  color:var(--muted); padding:0.5rem 0; border-bottom:2px solid var(--ink);
-  margin-bottom:0; display:flex; align-items:center; gap:1rem;
-}
-.pledge-card {
-  border-bottom:1px solid var(--aged);
-  padding:1.4rem 0;
-  display:grid; grid-template-columns:1fr auto;
-  gap:1rem; align-items:start;
-}
-.pledge-card:last-child { border-bottom:none; }
-.pledge-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; margin-bottom:0.3rem; }
-.pledge-detail { font-family:'Crimson Pro',serif; font-size:0.95rem; color:var(--muted); margin:0; line-height:1.5; }
-.pledge-source { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:var(--muted); margin-top:0.4rem; opacity:0.7; }
-.pledge-update { font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:#3a2a1a; margin-top:0.5rem; background:var(--aged); padding:0.4rem 0.7rem; display:none; border-left:2px solid var(--bjp); }
-.pledge-update.visible { display:block; }
-.pledge-right { text-align:right; min-width:110px; }
-.pledge-deadline { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:var(--muted); margin-top:0.5rem; }
-
-/* ── LIVE NEWS CHIP ── */
-@keyframes live-pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-.pledge-news-chip {
-  display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;
-  font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:#1565c0;
-  margin-top:0.5rem; padding:0.3rem 0.6rem;
-  background:rgba(21,101,192,0.06); border:1px solid rgba(21,101,192,0.2); border-radius:2px;
-}
-.pledge-news-chip a { color:#1565c0; text-decoration:none; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.pledge-news-chip a:hover { text-decoration:underline; }
-.news-chip-dot { width:6px; height:6px; border-radius:50%; background:#c0171b; flex-shrink:0; animation:live-pulse 2s ease-in-out infinite; }
-.news-chip-date { color:var(--muted); flex-shrink:0; }
-
-/* ── PROGRESS SUMMARY ── */
-.progress-summary {
-  background:var(--ink); color:var(--paper);
-  padding:2rem; margin:3rem 0;
-}
-.progress-summary-inner { display:flex; flex-wrap:wrap; gap:0; }
-.progress-cell { flex:1; min-width:80px; text-align:center; padding:1rem; border-right:1px solid rgba(255,255,255,0.08); }
-.progress-cell:last-child { border-right:none; }
-.progress-num { font-family:'IBM Plex Mono',monospace; font-size:1.8rem; font-weight:500; }
-.progress-lbl { font-family:'IBM Plex Mono',monospace; font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; color:#8a8070; margin-top:0.3rem; }
-
-/* ── CALLOUT ── */
-.callout { border-left:5px solid var(--bjp); background:#fdf5ef; padding:1.2rem 1.5rem; margin:2rem 0; }
-.callout-label { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--bjp); margin-bottom:0.4rem; }
-.callout p { font-size:0.95rem; margin:0; color:#3a1a08; }
-.callout.neutral { border-left-color:var(--muted); background:var(--aged); }
-.callout.neutral .callout-label { color:var(--muted); }
-.callout.neutral p { color:#2a2018; }
-
-/* ── METHODOLOGY ── */
-.method-box { background:var(--aged); border:1px solid rgba(107,95,78,0.3); padding:1.5rem; margin:3rem 0; }
-.method-box h4 { font-family:'IBM Plex Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; border-bottom:1px solid rgba(107,95,78,0.3); padding-bottom:0.5rem; }
-.method-box p { font-size:0.9rem; color:var(--muted); margin-bottom:0.6rem; }
-.method-box p:last-child { margin-bottom:0; }
-
-/* ── FOOTER ── */
-footer { background:#0a0804; color:#5a5040; padding:2rem; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; }
-footer a { color:#8a7a60; text-decoration:none; }
-
-.hr-ornate { border:none; border-top:1px solid var(--aged); margin:2.5rem 0; position:relative; }
-.hr-ornate::before { content:'◆'; position:absolute; top:-0.6rem; left:50%; transform:translateX(-50%); background:var(--paper); padding:0 0.5rem; color:var(--muted); font-size:0.7rem; }
-
-@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-.fade-in { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
-.fade-in.visible { opacity:1; transform:translateY(0); }
-
-@media(max-width:700px) {
-  .pledge-card { grid-template-columns:1fr; }
-  .pledge-right { text-align:left; }
-  .counter-cell { padding:1rem 1.5rem; }
-  .progress-cell { min-width:60px; }
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
 }
 
-@media(max-width:500px) {
-  .counter-cell { padding:0.7rem 0.8rem; }
-  .counter-big { font-size:clamp(2rem,10vw,3.5rem); }
-  .progress-cell { padding:0.7rem 0.3rem; }
-  .progress-num { font-size:1.3rem; }
-  .masthead h1 { font-size:clamp(2rem,9vw,5rem); }
+.status-badge::before { content: '●'; font-size: 0.48rem; }
+
+.status-watching  { border: 1px solid #bbb; color: #999; }
+.status-watching::before { color: #ccc; }
+.status-announced { border: 1px solid #1565c0; color: #1565c0; }
+.status-announced::before { color: #1565c0; }
+.status-in-progress { border: 1px solid var(--bjp); color: var(--bjp); }
+.status-in-progress::before { color: var(--bjp); }
+.status-delivered { border: 1px solid #166534; color: #166534; }
+.status-delivered::before { color: #166534; }
+.status-delayed { border: 1px solid #b45309; color: #b45309; }
+.status-delayed::before { color: #b45309; }
+.status-broken { border: 1px solid #c0171b; color: #c0171b; }
+.status-broken::before { color: #c0171b; }
+
+.pledge-deadline-lbl {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.65;
 }
-/* ── SMOOTH TRANSITIONS ── */
-input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
-.pledge-card{transition:transform .2s ease,box-shadow .22s ease,background .2s}
-.pledge-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+
+/* ── UPDATE BUTTON ── */
+.update-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bjp);
+  border: 1px solid rgba(232,100,10,0.35);
+  background: transparent;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  margin-top: 0.1rem;
+}
+
+.update-toggle:hover {
+  background: rgba(232,100,10,0.07);
+  border-color: var(--bjp);
+}
+
+.update-toggle .u-arrow { transition: transform 0.2s; display: inline-block; }
+.update-toggle.open .u-arrow { transform: rotate(90deg); }
+
+/* ── UPDATE PANEL ── */
+.update-panel {
+  display: none;
+  margin-top: 0.7rem;
+  border-left: 3px solid var(--bjp);
+  padding: 0.75rem 0.9rem;
+  background: rgba(232,100,10,0.05);
+}
+
+.update-panel.visible { display: block; }
+
+.update-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.update-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--bjp);
+  color: #fff;
+  padding: 2px 7px;
+}
+
+.update-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.update-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 0.55rem;
+  line-height: 1.5;
+}
+
+.source-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.source-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border: 1px solid var(--aged);
+  padding: 2px 8px;
+  background: #fff;
+  text-decoration: none;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.source-chip:hover { border-color: var(--bjp); color: var(--bjp); }
+
+/* ── FLOATING SUBMIT BUTTON ── */
+.fab-submit {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bjp);
+  color: #fff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(232,100,10,0.3);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.fab-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232,100,10,0.4);
+  color: #fff;
+}
+
+/* ── METHOD BOX ── */
+.method-box {
+  border: 1px solid var(--aged);
+  background: var(--aged);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.method-box h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(107,95,78,0.25);
+}
+
+.method-box p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  line-height: 1.5;
+}
+
+.method-box p:last-child { margin-bottom: 0; }
 
 /* ── DARK MODE ── */
-[data-theme="dark"] body { background:#141210; color:#f0ece3; }
-[data-theme="dark"] .masthead { background:#141210 !important; border-color:rgba(255,255,255,.12); }
-[data-theme="dark"] .masthead-overline { border-color:rgba(255,255,255,.15); color:#9a9085; }
-[data-theme="dark"] p { color:#c8c0b4; }
-[data-theme="dark"] p.article-lead { color:#d8d0c4; border-color:rgba(255,255,255,.2); }
-[data-theme="dark"] .callout { background:#1e1b18; border-left-color:var(--bjp); }
-[data-theme="dark"] .callout p { color:#c8c0b4; }
-[data-theme="dark"] .callout.neutral { background:#1e1b18; border-left-color:#6b5f4e; }
-[data-theme="dark"] .method-box { background:#1e1b18; border-color:rgba(255,255,255,.08); }
-[data-theme="dark"] .method-box p { color:#9a9085; }
-[data-theme="dark"] .pledge-card { border-color:rgba(255,255,255,.07); }
-[data-theme="dark"] .pledge-card:hover { background:#1e1b18; box-shadow:0 8px 24px rgba(0,0,0,.3); }
-[data-theme="dark"] .pledge-detail { color:#9a9085; }
-[data-theme="dark"] .pledge-update { background:#252220; color:#c8c0b4; }
-[data-theme="dark"] .pledge-category { border-color:rgba(255,255,255,.2); }
-[data-theme="dark"] .section-header { border-color:rgba(255,255,255,.2); }
-[data-theme="dark"] .hr-ornate { border-color:rgba(255,255,255,.08); }
-[data-theme="dark"] .hr-ornate::before { background:#141210; color:#9a9085; }
-[data-theme="dark"] .filter-bar { background:#141210; border-color:rgba(255,255,255,.08); }
-[data-theme="dark"] body::before { opacity:0.15; }
+[data-theme="dark"] body { background: #141210; color: #f0ece3; }
+[data-theme="dark"] .tracker-header { background: #141210; }
+[data-theme="dark"] .cat-card { background: #1e1b18; border-color: rgba(255,255,255,0.06); }
+[data-theme="dark"] .cat-card-header { border-color: rgba(255,255,255,0.06); }
+[data-theme="dark"] .cat-card-header:hover { background: #252220; }
+[data-theme="dark"] .cat-name { color: #f0ece3; }
+[data-theme="dark"] .cat-tag { background: #2a2720; color: #7a7060; }
+[data-theme="dark"] .pledge-row { border-color: rgba(255,255,255,0.05); }
+[data-theme="dark"] .pledge-row:hover { background: #232120; }
+[data-theme="dark"] .pledge-title { color: #f0ece3; }
+[data-theme="dark"] .pledge-detail { color: #8a8070; }
+[data-theme="dark"] .pledge-num { color: #3a3530; border-color: #3a3530; }
+[data-theme="dark"] .pledge-row[data-status="in-progress"] .pledge-num,
+[data-theme="dark"] .pledge-row[data-status="delivered"] .pledge-num,
+[data-theme="dark"] .pledge-row[data-status="delayed"] .pledge-num,
+[data-theme="dark"] .pledge-row[data-status="broken"] .pledge-num,
+[data-theme="dark"] .pledge-row[data-status="announced"] .pledge-num { color: var(--bjp); border-color: var(--bjp); }
+[data-theme="dark"] .update-panel { background: rgba(232,100,10,0.08); }
+[data-theme="dark"] .update-text { color: #d0c8b8; }
+[data-theme="dark"] .source-chip { background: #2a2720; border-color: rgba(255,255,255,0.08); color: #7a7060; }
+[data-theme="dark"] .method-box { background: #1e1b18; border-color: rgba(255,255,255,0.07); }
+[data-theme="dark"] .method-box h4 { border-color: rgba(255,255,255,0.08); }
+[data-theme="dark"] .status-watching { border-color: #555; color: #777; }
+[data-theme="dark"] .status-watching::before { color: #555; }
 
-/* ── CATEGORY STICKY NAV ── */
-.cat-nav { position:sticky; top:0; z-index:900; background:var(--paper); border-bottom:2px solid var(--ink); overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
-.cat-nav::-webkit-scrollbar { display:none; }
-.cat-nav-inner { display:flex; max-width:1100px; margin:0 auto; padding:0 2rem; }
-.cat-nav-tab { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; white-space:nowrap; padding:0.65rem 0.85rem; color:var(--muted); text-decoration:none; border-bottom:2px solid transparent; margin-bottom:-2px; transition:color 0.15s,border-color 0.15s; }
-.cat-nav-tab:hover { color:var(--ink); border-color:var(--ink); }
-.cat-nav-tab.active { color:var(--bjp); border-color:var(--bjp); }
-
-/* ── ACCORDION ── */
-.section-toggle { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; border:1px solid var(--aged); background:transparent; color:var(--muted); cursor:pointer; flex-shrink:0; transition:background 0.15s,color 0.15s,border-color 0.15s; margin-bottom:0.2rem; align-self:flex-end; }
-.section-toggle:hover { background:var(--ink); color:var(--paper); border-color:var(--ink); }
-.pledge-section-body { display:grid; grid-template-rows:1fr; transition:grid-template-rows 0.38s ease; }
-.pledge-section-body > .pledge-section { overflow:hidden; }
-.pledge-section-body.collapsed { grid-template-rows:0fr; }
-
-/* ── DARK MODE: CAT NAV & ACCORDION ── */
-[data-theme="dark"] .cat-nav { background:#141210; border-color:rgba(255,255,255,0.15); }
-[data-theme="dark"] .cat-nav-tab:hover { color:#f0ece3; border-color:rgba(255,255,255,0.3); }
-[data-theme="dark"] .cat-nav-tab.active { color:var(--bjp); border-color:var(--bjp); }
-[data-theme="dark"] .section-toggle { border-color:rgba(255,255,255,0.15); color:#9a9085; }
-[data-theme="dark"] .section-toggle:hover { background:#f0ece3; color:#141210; border-color:#f0ece3; }
-
-@media(max-width:640px) {
-  .cat-nav-inner { padding:0 0.5rem; }
-  .cat-nav-tab { padding:0.6rem 0.6rem; font-size:0.52rem; }
+/* ── MOBILE ── */
+@media (max-width: 700px) {
+  .jump-bar { flex-wrap: wrap; }
+  .jump-section { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); width: 100%; }
+  .jump-label { font-size: 0.5rem; padding: 0 0.7rem; }
+  .filter-pills { padding: 0.3rem 0.5rem; width: 100%; }
+  .filter-pill { padding: 0.5rem 0.55rem; font-size: 0.48rem; }
+  .tracker-wrap { padding: 1rem 0.75rem 7rem; }
+  .pledge-row { gap: 0.7rem; padding: 1rem; }
+  .pledge-num { font-size: 1rem; min-width: 1.8rem; padding-right: 0.6rem; }
+  .cat-card-header { padding: 0.9rem 1rem; gap: 0.7rem; }
+  .cat-icon-big { font-size: 1.5rem; }
+  .tracker-header { padding: 1.5rem 1rem 1.2rem; }
+  .summary-bar { flex-wrap: wrap; }
+  .summary-cell { min-width: 50%; flex: none; width: 50%; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .summary-cell:nth-child(even) { border-right: none; }
+  .summary-cell:nth-last-child(-n+2) { border-bottom: none; }
+  .header-controls { gap: 0.5rem; }
+  .fab-submit { right: 1rem; bottom: 5rem; font-size: 0.52rem; padding: 0.55rem 0.9rem; }
 }
 </style>
 <script defer src="/shared.js"></script>
@@ -270,509 +674,145 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
   </div>
 </nav>
 
-<!-- MASTHEAD -->
-<header class="masthead">
-  <div class="masthead-overline">
-    <span class="en-only">Political Accountability · 2026 West Bengal · Updated Continuously</span>
-    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">রাজনৈতিক책임জবাবদিহিতা · ২০২৬ পশ্চিমবঙ্গ · ক্রমাগত আপডেট</span>
-  </div>
-  <h1><em>100-Day</em> Pledge Tracker</h1>
-  <p class="masthead-sub">
-    <span class="en-only">What Bengal's New Government Promised. What It Must Deliver.</span>
-    <span class="bn-only" style="font-family:'Noto Serif Bengali',serif;">বাংলার নতুন সরকার কী প্রতিশ্রুতি দিয়েছে। কী পূরণ করতে হবে।</span>
-  </p>
-  <div class="masthead-meta">
-    <span>Source: BJP 2026 Manifesto · Press Statements · Campaign Speeches</span>
-    <span>Election: 4 May 2026 · Swearing-in: 9 May 2026</span>
-    <span id="lastUpdatedMeta">Day 100 deadline: 17 August 2026</span>
-  </div>
-  <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:1rem;flex-wrap:wrap;">
-    <div class="lang-toggle">
-      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+<!-- PAGE HEADER -->
+<header class="tracker-header">
+  <div class="tracker-header-inner">
+    <div class="tracker-overline">BJP · 2026 WB Assembly · 100-Day Accountability Tracker</div>
+    <h1><em>What They Promised.</em><br>What They Must Deliver.</h1>
+    <p class="tracker-mandate">
+      BJP won 207 of 294 seats on 4 May 2026. Suvendu Adhikari was sworn in as Chief Minister on 9 May 2026.
+      The 100-day accountability window closes 17 August 2026. Every pledge is a full obligation — no coalition excuses.
+    </p>
+    <div class="mandate-bar">
+      <div class="mandate-seg" style="flex:207; background:var(--bjp);"></div>
+      <div class="mandate-seg" style="flex:80; background:#1a7a3c;"></div>
+      <div class="mandate-seg" style="flex:7; background:#555;"></div>
     </div>
-    <button class="theme-toggle" onclick="toggleTheme()" style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--aged);background:transparent;color:var(--muted);cursor:pointer;">◐ Dark</button>
-    <div class="share-bar" style="margin:0;">
-      <span class="share-label">Share:</span>
-      <button class="share-btn whatsapp" onclick="shareWhatsApp('BJP 100-Day Pledge Tracker — The Bengal Reader')">WhatsApp</button>
-      <button class="share-btn twitter" onclick="shareTwitter('BJP 100-Day Pledge Tracker — The Bengal Reader')">Twitter</button>
-      <button class="share-btn" onclick="copyLink(null,this)">Copy Link</button>
+    <div class="mandate-legend">
+      <span>BJP 207</span><span>TMC 80</span><span>Others 7</span>
+    </div>
+    <div class="header-controls">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" style="font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;padding:4px 10px;border:1px solid var(--aged);background:transparent;color:var(--muted);cursor:pointer;">◐ Dark</button>
+      <div class="share-bar" style="margin:0;">
+        <span class="share-label">Share:</span>
+        <button class="share-btn whatsapp" onclick="shareWhatsApp('BJP 100-Day Pledge Tracker — The Bengal Reader')">WhatsApp</button>
+        <button class="share-btn twitter" onclick="shareTwitter('BJP 100-Day Pledge Tracker — The Bengal Reader')">Twitter</button>
+        <button class="share-btn" onclick="copyLink(null,this)">Copy Link</button>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- COUNTER HERO -->
-<section class="counter-hero">
-  <div class="counter-grid">
-    <div class="counter-cell">
-      <div class="counter-big" id="dayCount">0</div>
-      <div class="counter-label">Days Since Swearing-In</div>
-    </div>
-    <div class="counter-cell">
-      <div class="counter-big" style="color:#f4f1ea;opacity:.7" id="daysRemaining">96</div>
-      <div class="counter-label">Days Remaining</div>
-    </div>
-    <div class="counter-cell">
-      <div class="counter-big" style="color:#5a5040" id="deliveredCount">0</div>
-      <div class="counter-label">Promises Delivered</div>
-    </div>
-    <div class="counter-cell">
-      <div class="counter-big" style="color:#e8640a" id="totalCount">24</div>
-      <div class="counter-label">Pledges Tracked</div>
-    </div>
+<!-- SUMMARY STATS BAR -->
+<div class="summary-bar" id="summaryBar">
+  <div class="summary-cell s-days">
+    <span class="summary-num" id="cntDays">6</span>
+    <span class="summary-lbl">Days Elapsed</span>
   </div>
-  <p class="counter-sub">BJP won 207 of 294 seats — a ⅔ supermajority — ending 15 years of TMC rule. With full legislative power and no coalition constraints, every promise is a full accountability obligation.</p>
-  <div class="mandate-bar" style="margin-top:2rem;">
-    <div class="mandate-seg" style="flex:207;background:#e8640a;"></div>
-    <div class="mandate-seg" style="flex:80;background:#1a7a3c;"></div>
-    <div class="mandate-seg" style="flex:7;background:#555;"></div>
+  <div class="summary-cell s-remaining">
+    <span class="summary-num" id="cntRemaining">94</span>
+    <span class="summary-lbl">Days Left</span>
   </div>
-  <div class="mandate-labels">
-    <span>BJP 207</span>
-    <span>TMC 80</span>
-    <span>Others 7</span>
+  <div class="summary-cell">
+    <span class="summary-num" id="cntTotal">33</span>
+    <span class="summary-lbl">Total Pledges</span>
   </div>
-  <div class="day-progress-wrap">
-    <div class="day-progress-bar"><div class="day-progress-fill" id="dayFill"></div></div>
-    <div class="day-progress-labels"><span>Day 0 · Swearing-In</span><span id="dayPct">0% of 100 days elapsed</span><span>Day 100 · Aug 17</span></div>
+  <div class="summary-cell">
+    <span class="summary-num" id="cntWatching">33</span>
+    <span class="summary-lbl">Watching</span>
   </div>
-</section>
-
-<!-- CATEGORY STICKY NAV -->
-<nav class="cat-nav" id="catNav" aria-label="Jump to pledge category">
-  <div class="cat-nav-inner">
-    <a href="#sec-agriculture" class="cat-nav-tab">🌾 Agriculture</a>
-    <a href="#sec-welfare" class="cat-nav-tab">🏥 Welfare</a>
-    <a href="#sec-justice" class="cat-nav-tab">⚖️ Law &amp; Order</a>
-    <a href="#sec-employment" class="cat-nav-tab">💼 Employment</a>
-    <a href="#sec-infra" class="cat-nav-tab">🏗️ Infrastructure</a>
-    <a href="#sec-governance" class="cat-nav-tab">🏛️ Governance</a>
-    <a href="#sec-women" class="cat-nav-tab">👩 Women</a>
-    <a href="#sec-education" class="cat-nav-tab">📚 Education</a>
+  <div class="summary-cell s-inprogress">
+    <span class="summary-num" id="cntInProgress">0</span>
+    <span class="summary-lbl">In Progress</span>
   </div>
-</nav>
-
-<main class="container">
-
-  <div class="section-header fade-in" style="margin-top:3rem;">
-    <div class="section-header-text">
-      <div class="section-label">Overview</div>
-      <h2 class="section-title">The Accountability Framework</h2>
-    </div>
+  <div class="summary-cell s-delivered">
+    <span class="summary-num" id="cntDelivered">0</span>
+    <span class="summary-lbl">Delivered</span>
   </div>
-  <p class="article-lead">A supermajority is a blank cheque — and a complete removal of excuses. BJP can pass any legislation, amend the state constitution, and appoint any official without a single opposition vote. Every unkept promise is therefore a choice, not a constraint.</p>
-  <p>This tracker monitors 24 pledges drawn from the BJP 2026 West Bengal election manifesto and documented campaign speeches across five domains: Agriculture, Welfare, Law &amp; Order, Employment, and Infrastructure. Status is updated as government orders are issued, schemes launched, or promises reversed. The 100-day window closes 17 August 2026.</p>
-
-  <div class="progress-summary fade-in">
-    <div class="progress-summary-inner">
-      <div class="progress-cell">
-        <div class="progress-num" style="color:#8a8070;" id="cnt-watching">24</div>
-        <div class="progress-lbl">Watching</div>
-      </div>
-      <div class="progress-cell">
-        <div class="progress-num" style="color:#1565c0;" id="cnt-announced">0</div>
-        <div class="progress-lbl">Announced</div>
-      </div>
-      <div class="progress-cell">
-        <div class="progress-num" style="color:#d97706;" id="cnt-in-progress">0</div>
-        <div class="progress-lbl">In Progress</div>
-      </div>
-      <div class="progress-cell">
-        <div class="progress-num" style="color:#166534;" id="cnt-delivered">0</div>
-        <div class="progress-lbl">Delivered</div>
-      </div>
-      <div class="progress-cell">
-        <div class="progress-num" style="color:#b45309;" id="cnt-delayed">0</div>
-        <div class="progress-lbl">Delayed</div>
-      </div>
-      <div class="progress-cell">
-        <div class="progress-num" style="color:#c0171b;" id="cnt-broken">0</div>
-        <div class="progress-lbl">Broken</div>
-      </div>
-    </div>
+  <div class="summary-cell s-broken">
+    <span class="summary-num" id="cntBroken">0</span>
+    <span class="summary-lbl">Broken</span>
   </div>
+</div>
 
-  <div class="callout neutral fade-in">
-    <div class="callout-label">ℹ Day 1 · Swearing-in: 9 May 2026</div>
-    <p>BJP's government was sworn in on May 9, 2026, with <strong>Suvendu Adhikari</strong> as Chief Minister. The 100-day accountability clock has begun. All 24 pledges are in <strong>"Watching"</strong> status. On Day 1, CM Adhikari reviewed law and order and welfare schemes. The tracker will update as government notifications (GOs), scheme launches, or verified actions are reported by credible sources.</p>
+<!-- DAY PROGRESS STRIP -->
+<div class="progress-strip">
+  <div class="progress-strip-track">
+    <div class="progress-strip-fill" id="progressFill"></div>
   </div>
-
-  <hr class="hr-ornate">
-
-  <!-- HEAT GRID -->
-  <div class="heat-grid-wrap fade-in">
-    <div class="heat-grid-title">All 24 pledges at a glance — click any square to jump to that pledge</div>
-    <div class="heat-grid" id="pledgeHeatGrid"></div>
+  <div class="progress-strip-labels">
+    <span>Day 0 · 9 May 2026</span>
+    <span id="progressLbl">Day 6 of 100</span>
+    <span>Day 100 · 17 Aug 2026</span>
   </div>
+</div>
 
-  <hr class="hr-ornate">
-
-  <!-- AGRICULTURE -->
-  <section class="fade-in" id="sec-agriculture">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">🌾 Category I</div>
-        <h2 class="section-title">Agriculture &amp; Farmers</h2>
-      </div>
-      <button class="section-toggle" id="toggle-agriculture" aria-expanded="true" onclick="toggleSection('agriculture')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-agriculture">
-      <div class="pledge-section" id="pledges-agriculture"></div>
-    </div>
-  </section>
-
-  <hr class="hr-ornate">
-
-  <!-- WELFARE -->
-  <section class="fade-in" id="sec-welfare">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">🏥 Category II</div>
-        <h2 class="section-title">Welfare &amp; Women's Schemes</h2>
-      </div>
-      <button class="section-toggle" id="toggle-welfare" aria-expanded="true" onclick="toggleSection('welfare')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-welfare">
-      <div class="pledge-section" id="pledges-welfare"></div>
-    </div>
-  </section>
-
-  <hr class="hr-ornate">
-
-  <!-- LAW AND ORDER -->
-  <section class="fade-in" id="sec-justice">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">⚖️ Category III</div>
-        <h2 class="section-title">Law, Order &amp; Anti-Corruption</h2>
-      </div>
-      <button class="section-toggle" id="toggle-justice" aria-expanded="true" onclick="toggleSection('justice')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-justice">
-      <div class="pledge-section" id="pledges-justice"></div>
-    </div>
-  </section>
-
-  <hr class="hr-ornate">
-
-  <!-- EMPLOYMENT -->
-  <section class="fade-in" id="sec-employment">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">💼 Category IV</div>
-        <h2 class="section-title">Employment &amp; Industry</h2>
-      </div>
-      <button class="section-toggle" id="toggle-employment" aria-expanded="true" onclick="toggleSection('employment')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-employment">
-      <div class="pledge-section" id="pledges-employment"></div>
-    </div>
-  </section>
-
-  <hr class="hr-ornate">
-
-  <!-- INFRASTRUCTURE -->
-  <section class="fade-in" id="sec-infra">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">🏗️ Category V</div>
-        <h2 class="section-title">Infrastructure &amp; Housing</h2>
-      </div>
-      <button class="section-toggle" id="toggle-infra" aria-expanded="true" onclick="toggleSection('infra')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-infra">
-      <div class="pledge-section" id="pledges-infra"></div>
-    </div>
-  </section>
-
-  <hr class="hr-ornate">
-
-  <!-- GOVERNANCE -->
-  <section class="fade-in" id="sec-governance">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">🏛️ Category VI</div>
-        <h2 class="section-title">Governance &amp; Administration</h2>
-      </div>
-      <button class="section-toggle" id="toggle-governance" aria-expanded="true" onclick="toggleSection('governance')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-governance">
-      <div class="pledge-section" id="pledges-governance"></div>
-    </div>
-  </section>
-
-  <hr class="hr-ornate">
-
-  <!-- WOMEN -->
-  <section class="fade-in" id="sec-women">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">👩 Category VII</div>
-        <h2 class="section-title">Women's Safety &amp; Empowerment</h2>
-      </div>
-      <button class="section-toggle" id="toggle-women" aria-expanded="true" onclick="toggleSection('women')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-women">
-      <div class="pledge-section" id="pledges-women"></div>
-    </div>
-  </section>
-
-  <hr class="hr-ornate">
-
-  <!-- EDUCATION -->
-  <section class="fade-in" id="sec-education">
-    <div class="section-header">
-      <div class="section-header-text">
-        <div class="section-label">📚 Category VIII</div>
-        <h2 class="section-title">Education &amp; Youth</h2>
-      </div>
-      <button class="section-toggle" id="toggle-education" aria-expanded="true" onclick="toggleSection('education')">▼ Collapse</button>
-    </div>
-    <div class="pledge-section-body" id="body-education">
-      <div class="pledge-section" id="pledges-education"></div>
-    </div>
-  </section>
-
-  <hr class="hr-ornate">
-
-  <div class="callout fade-in">
-    <div class="callout-label">📋 How This Tracker Works</div>
-    <p>Each pledge is sourced from documented BJP statements (manifesto, press conferences, rally speeches). Status changes only when <strong>official government orders, GO numbers, or independently verified action</strong> is reported by credible news sources. Campaign rhetoric is not treated as delivery. This tracker is updated as events occur — check back regularly.</p>
+<!-- STICKY JUMP BAR -->
+<div class="jump-bar" id="jumpBar">
+  <div class="jump-section">
+    <span class="jump-label">Jump to Section</span>
+    <select class="jump-select" id="jumpSelect" aria-label="Jump to pledge category">
+      <option value="">— Category —</option>
+      <option value="sec-agriculture">🌾 Agriculture</option>
+      <option value="sec-welfare">🏥 Welfare</option>
+      <option value="sec-justice">⚖️ Law &amp; Order</option>
+      <option value="sec-employment">💼 Employment</option>
+      <option value="sec-infra">🏗️ Infrastructure</option>
+      <option value="sec-governance">🏛️ Governance</option>
+      <option value="sec-women">👩 Women</option>
+      <option value="sec-education">📚 Education</option>
+    </select>
+    <span class="jump-arrow-icon" aria-hidden="true">▾</span>
   </div>
-
-  <div class="method-box fade-in">
-    <h4>Status Definitions</h4>
-    <p><span class="status-badge status-watching">Watching</span> — Promise made; no government action yet. Default state until an order is issued.</p>
-    <p><span class="status-badge status-announced">Announced</span> — Government has formally announced the policy/scheme via official communication.</p>
-    <p><span class="status-badge status-in-progress">In Progress</span> — Implementation has physically started (tenders issued, beneficiary lists activated, etc.).</p>
-    <p><span class="status-badge status-delivered">Delivered</span> — Independent verification confirms the promise has been substantially fulfilled.</p>
-    <p><span class="status-badge status-delayed">Delayed</span> — Past the stated or implied deadline without completion.</p>
-    <p><span class="status-badge status-broken">Broken</span> — Government has explicitly reversed the policy or confirmed it will not be implemented.</p>
+  <div class="filter-pills" role="group" aria-label="Filter by status">
+    <button class="filter-pill active" data-filter="all">ALL</button>
+    <button class="filter-pill" data-filter="watching">WATCHING</button>
+    <button class="filter-pill" data-filter="in-progress">IN PROGRESS</button>
+    <button class="filter-pill" data-filter="delivered">DELIVERED</button>
+    <button class="filter-pill" data-filter="delayed">DELAYED</button>
+    <button class="filter-pill" data-filter="broken">BROKEN</button>
   </div>
+</div>
 
+<main>
+  <div class="tracker-wrap">
+
+    <!-- PLEDGE CATEGORIES (rendered by JS) -->
+    <div id="trackerContainer">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--muted);text-align:center;padding:3rem 1rem;">
+        Loading pledges…
+      </div>
+    </div>
+
+    <!-- STATUS DEFINITIONS (static, always visible) -->
+    <div class="method-box" id="methodBox" style="margin-top:0.5rem;">
+      <h4>Status Definitions</h4>
+      <p><span class="status-badge status-watching">Watching</span> Promise made; no government action yet. Default state.</p>
+      <p><span class="status-badge status-announced">Announced</span> Government formally announced the policy via official communication.</p>
+      <p><span class="status-badge status-in-progress">In Progress</span> Implementation physically started — tenders issued, scheme activated, etc.</p>
+      <p><span class="status-badge status-delivered">Delivered</span> Independent verification confirms the promise is substantially fulfilled.</p>
+      <p><span class="status-badge status-delayed">Delayed</span> Past the stated deadline without completion.</p>
+      <p><span class="status-badge status-broken">Broken</span> Government reversed or explicitly abandoned the promise.</p>
+    </div>
+
+  </div>
 </main>
 
-<!-- FOOTER -->
-<footer>
-  <p>Sources: BJP 2026 West Bengal Election Manifesto · Campaign speeches (documented) · Press Conference transcripts · <a href="https://adrindia.org" target="_blank">ADR India</a> · <a href="https://eci.gov.in" target="_blank">Election Commission of India</a></p>
-  <p style="margin-top:0.5rem;opacity:0.5;">This tracker synthesizes publicly available BJP campaign commitments. Status updates are based on independent news verification, not government press releases alone.</p>
-</footer>
-
-<script>
-// Days since swearing-in — fetch from pledges.json for consistency
-(async function() {
-  let swearingIn = new Date('2026-05-09');
-  try {
-    const res = await fetch('/data/pledges.json?t=' + Date.now());
-    if (res.ok) {
-      const data = await res.json();
-      if (data.swearingIn) swearingIn = new Date(data.swearingIn);
-    }
-  } catch(e) {}
-  const today = new Date();
-  const days = Math.max(0, Math.floor((today - swearingIn) / (1000*60*60*24)));
-  const remaining = Math.max(0, 100 - days);
-  const pct = Math.min(100, days);
-  document.getElementById('dayCount').textContent = days;
-  const rem = document.getElementById('daysRemaining');
-  if (rem) rem.textContent = remaining;
-  requestAnimationFrame(() => {
-    const fill = document.getElementById('dayFill');
-    const lbl = document.getElementById('dayPct');
-    if (fill) setTimeout(() => { fill.style.width = pct + '%'; }, 200);
-    if (lbl) lbl.textContent = pct + '% of 100 days elapsed';
-  });
-})();
-
-// Fade-in observer
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// ── Pledge data loader ──
-function escHtml(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-function timeAgo(iso) {
-  if (!iso) return '';
-  const diff = Date.now() - new Date(iso).getTime();
-  const mins = Math.floor(diff / 60000);
-  if (mins < 60) return mins + 'm ago';
-  const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return hrs + 'h ago';
-  return Math.floor(hrs / 24) + 'd ago';
-}
-
-const STATUS_LABELS = {
-  watching: 'Watching', announced: 'Announced', 'in-progress': 'In Progress',
-  delivered: 'Delivered', delayed: 'Delayed', broken: 'Broken'
-};
-
-function renderPledgeSection(containerId, pledges) {
-  const el = document.getElementById(containerId);
-  if (!el || !pledges.length) return;
-  let html = `<div class="pledge-category">Pledges in this category: ${pledges.length}</div>`;
-  for (const p of pledges) {
-    const statusClass = 'status-' + (p.status || 'watching');
-    const statusLabel = STATUS_LABELS[p.status] || p.status;
-    const updateNote = p.updateNote
-      ? `<div class="pledge-update visible">${escHtml(p.updateNote)}</div>` : '';
-    let newsChip = '';
-    if (p.newsHeadline) {
-      const href = p.newsUrl ? escHtml(p.newsUrl) : '#';
-      const date = p.newsDate ? `<span class="news-chip-date">${timeAgo(p.newsDate)}</span>` : '';
-      newsChip = `<div class="pledge-news-chip"><span class="news-chip-dot"></span><a href="${href}" target="_blank" rel="noopener noreferrer">${escHtml(p.newsHeadline)}</a>${date}</div>`;
-    }
-    html += `
-      <div class="pledge-card">
-        <div>
-          <div class="pledge-title">${escHtml(p.title)}</div>
-          <p class="pledge-detail">${escHtml(p.detail)}</p>
-          <p class="pledge-source">Source: ${escHtml(p.source)}</p>
-          ${updateNote}${newsChip}
-          <div style="margin-top:0.5rem;">
-            <button class="share-btn whatsapp" style="font-size:0.55rem;padding:3px 7px;" onclick="shareDataPoint('${escHtml(p.title).replace(/'/g,"\\'")}','${escHtml(statusLabel)}')">Share</button>
-          </div>
-        </div>
-        <div class="pledge-right">
-          <span class="status-badge ${statusClass}">${statusLabel}</span>
-          <div class="pledge-deadline">Target: ${escHtml(p.deadlineLabel)}</div>
-        </div>
-      </div>`;
-  }
-  el.innerHTML = html;
-}
-
-// ── Retry fetch with exponential backoff ─────────────────────────────────────
-async function fetchWithRetry(url, opts = {}, maxRetries = 3) {
-  let lastErr;
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      const res = await fetch(url, opts);
-      if (res.ok) return res;
-      throw new Error('HTTP ' + res.status);
-    } catch (e) {
-      lastErr = e;
-      if (i < maxRetries - 1) {
-        await new Promise(r => setTimeout(r, Math.pow(2, i) * 1000));
-      }
-    }
-  }
-  throw lastErr;
-}
-
-// ── Cached fallback using sessionStorage ──────────────────────────────────────
-function getCached(key) {
-  try {
-    const raw = sessionStorage.getItem('cache_' + key);
-    if (!raw) return null;
-    const { ts, data } = JSON.parse(raw);
-    if (Date.now() - ts < 5 * 60 * 1000) return data;
-  } catch(e) {}
-  return null;
-}
-function setCached(key, data) {
-  try {
-    sessionStorage.setItem('cache_' + key, JSON.stringify({ ts: Date.now(), data }));
-  } catch(e) {}
-}
-
-async function loadData() {
-  let pledges = [];
-  let loaded = false;
-
-  try {
-    const resp = await fetchWithRetry('/data/pledges.json');
-    const data = await resp.json();
-    pledges = data.pledges || [];
-    setCached('pledges', data);
-    loaded = true;
-
-    // Update masthead last-updated timestamp
-    if (data.lastUpdated) {
-      const meta = document.getElementById('lastUpdatedMeta');
-      if (meta) meta.textContent = 'Data updated: ' + new Date(data.lastUpdated).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
-    }
-  } catch (err) {
-    console.warn('Network failed; trying cache:', err.message);
-    const cached = getCached('pledges');
-    if (cached) {
-      pledges = cached.pledges || [];
-      loaded = true;
-    }
-  }
-
-  if (!loaded) {
-    document.getElementById('pledges-agriculture').innerHTML =
-      '<div style="text-align:center;padding:2rem;font-family:IBM Plex Mono,monospace;font-size:0.78rem;color:var(--muted);">Could not load pledge data. Please check your connection and refresh.</div>';
-    return;
-  }
-
-  const byCategory = {};
-  const counts = { watching:0, announced:0, 'in-progress':0, delivered:0, delayed:0, broken:0 };
-
-  for (const p of pledges) {
-    (byCategory[p.category] = byCategory[p.category] || []).push(p);
-    if (p.status in counts) counts[p.status]++;
-  }
-
-  renderPledgeSection('pledges-agriculture', byCategory.agriculture || []);
-  renderPledgeSection('pledges-welfare',     byCategory.welfare     || []);
-  renderPledgeSection('pledges-justice',     byCategory.justice     || []);
-  renderPledgeSection('pledges-employment',  byCategory.employment  || []);
-  renderPledgeSection('pledges-infra',       byCategory.infra       || []);
-  renderPledgeSection('pledges-governance',  byCategory.governance  || []);
-  renderPledgeSection('pledges-women',       byCategory.women       || []);
-  renderPledgeSection('pledges-education',   byCategory.education   || []);
-
-  // Render pledge heat grid
-  var heatGrid = document.getElementById('pledgeHeatGrid');
-  if (heatGrid) {
-    var CAT_IDS = { agriculture:'pledges-agriculture', welfare:'pledges-welfare', justice:'pledges-justice', employment:'pledges-employment', infra:'pledges-infra' };
-    heatGrid.innerHTML = pledges.map(function (p, i) {
-      var bg = STATUS_COLORS[p.status] || STATUS_COLORS.watching;
-      var tip = '#' + (i + 1) + ' ' + escHtml(p.title) + ' — ' + (STATUS_LABELS[p.status] || p.status);
-      var sectionId = CAT_IDS[p.category] || 'pledges-agriculture';
-      return '<div class="heat-cell" style="background:' + bg + ';border-color:' + bg + ';" ' +
-        'role="button" tabindex="0" ' +
-        'onclick="document.getElementById(\'' + sectionId + '\').scrollIntoView({behavior:\'smooth\',block:\'start\'})" ' +
-        'onkeydown="if(event.key===\'Enter\'||event.key===\' \')this.click()" ' +
-        'aria-label="Pledge ' + (i + 1) + ': ' + escHtml(p.title) + ' — ' + (STATUS_LABELS[p.status] || p.status) + '">' +
-        (i + 1) +
-        '<span class="heat-tip">' + tip + '</span></div>';
-    }).join('');
-  }
-
-  // Update progress summary numbers
-  for (const [key, val] of Object.entries(counts)) {
-    const el = document.getElementById('cnt-' + key);
-    if (el) el.textContent = val;
-  }
-  // Update delivered counter in hero
-  const dc = document.getElementById('deliveredCount');
-  if (dc) dc.textContent = counts.delivered;
-  const tc = document.getElementById('totalCount');
-  if (tc) tc.textContent = pledges.length;
-}
-
-loadData();
-
-// Analytics: track filter interactions
-document.querySelectorAll('.pledge-category').forEach(function(el) {
-  el.addEventListener('click', function() {
-    if (window.trackEvent) window.trackEvent('Pledge Category View', { category: el.textContent.trim().slice(0, 40) });
-  });
-});
-</script>
+<!-- FLOATING SUBMIT BUTTON -->
+<a href="mailto:editor@bengalreader.in?subject=Pledge+Update+Submission&body=Pledge+ID:%0AUpdate+description:%0ASource+URL:" class="fab-submit" title="Submit a verified update about a pledge">
+  ✏ Submit an Update
+</a>
 
 <!-- SUBSCRIBE STRIP -->
 <div class="subscribe-strip">
   <div class="subscribe-strip-text"><strong>Stay updated</strong> — this tracker updates as news breaks, 6× daily</div>
   <div class="subscribe-strip-links">
     <a href="/rss.xml" class="subscribe-link" onclick="if(window.trackEvent)window.trackEvent('RSS Subscribe',{page:'accountability'})">RSS Feed</a>
-    <a href="https://github.com/voting-awareness/voting-awareness" class="subscribe-link" target="_blank" rel="noopener">Watch on GitHub</a>
+    <a href="https://github.com/mahatoanupam002-lang/voting-awareness" class="subscribe-link" target="_blank" rel="noopener">Watch on GitHub</a>
   </div>
 </div>
 
@@ -791,5 +831,313 @@ document.querySelectorAll('.pledge-category').forEach(function(el) {
     </div>
   </div>
 </footer>
+
+<script>
+// ── Utility helpers ──────────────────────────────────────────────────────────
+function escHtml(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  var d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function extractSource(headline) {
+  if (!headline) return '';
+  var parts = headline.split(' - ');
+  return parts.length > 1 ? parts[parts.length - 1].trim() : '';
+}
+
+function extractHeadlineText(headline) {
+  if (!headline) return '';
+  var parts = headline.split(' - ');
+  return parts.length > 1 ? parts.slice(0, -1).join(' - ').trim() : headline;
+}
+
+// ── Status labels ────────────────────────────────────────────────────────────
+var STATUS_LABELS = {
+  watching: 'Watching',
+  announced: 'Announced',
+  'in-progress': 'In Progress',
+  delivered: 'Delivered',
+  delayed: 'Delayed',
+  broken: 'Broken'
+};
+
+// ── Category keyword tags ────────────────────────────────────────────────────
+var CAT_TAGS = {
+  agriculture: ['MSP', 'Kisan', 'Procurement', 'Irrigation', 'Insurance'],
+  welfare: ['Health', 'Electricity', 'Women Stipend', 'PDS', 'Pension'],
+  justice: ['Syndicate', 'SSC', 'Sandeshkhali', 'CBI', 'Post-Election'],
+  employment: ['Govt Jobs', 'Singur', 'Investment', 'Leather & Jute'],
+  infra: ['PMAY', 'Metro', 'Ganga', 'DMIC'],
+  governance: ['IAS/IPS', 'Anti-Corruption', 'RTI'],
+  women: ['Fast-Track Courts', 'Women Police', 'Mahila Shakti'],
+  education: ['Teacher Recruitment', 'School Infra', 'SC/ST Scholarships']
+};
+
+// ── Update toggle ────────────────────────────────────────────────────────────
+function toggleUpdate(btn) {
+  var panel = btn.nextElementSibling;
+  var open = panel.classList.toggle('visible');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', String(open));
+}
+
+// ── Category collapse/expand ─────────────────────────────────────────────────
+function toggleCat(headerEl) {
+  var card = headerEl.closest('.cat-card');
+  var collapsed = card.classList.toggle('collapsed');
+  headerEl.setAttribute('aria-expanded', String(!collapsed));
+}
+
+// ── Jump to section ──────────────────────────────────────────────────────────
+document.getElementById('jumpSelect').addEventListener('change', function() {
+  var id = this.value;
+  if (!id) return;
+  var el = document.getElementById(id);
+  if (el) {
+    // account for sticky bar height
+    var offset = 80;
+    var top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+  this.value = '';
+});
+
+// ── Status filter ────────────────────────────────────────────────────────────
+var activeFilter = 'all';
+
+document.getElementById('jumpBar').addEventListener('click', function(e) {
+  var btn = e.target.closest('.filter-pill');
+  if (!btn) return;
+  var filter = btn.dataset.filter;
+  activeFilter = filter;
+  document.querySelectorAll('.filter-pill').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  applyFilter();
+});
+
+function applyFilter() {
+  document.querySelectorAll('.pledge-row').forEach(function(row) {
+    var match = activeFilter === 'all' || row.dataset.status === activeFilter;
+    row.classList.toggle('filtered-out', !match);
+  });
+  document.querySelectorAll('.cat-card').forEach(function(card) {
+    var visible = card.querySelectorAll('.pledge-row:not(.filtered-out)');
+    card.classList.toggle('hidden', visible.length === 0);
+  });
+}
+
+// ── Day counter ──────────────────────────────────────────────────────────────
+(function() {
+  var swearingIn = new Date('2026-05-09');
+  var today = new Date();
+  var days = Math.max(0, Math.floor((today - swearingIn) / (1000 * 60 * 60 * 24)));
+  var remaining = Math.max(0, 100 - days);
+  var pct = Math.min(100, days);
+
+  var el = document.getElementById('cntDays');
+  if (el) el.textContent = days;
+  var el2 = document.getElementById('cntRemaining');
+  if (el2) el2.textContent = remaining;
+  var lbl = document.getElementById('progressLbl');
+  if (lbl) lbl.textContent = 'Day ' + days + ' of 100';
+
+  requestAnimationFrame(function() {
+    var fill = document.getElementById('progressFill');
+    if (fill) setTimeout(function() { fill.style.width = pct + '%'; }, 300);
+  });
+})();
+
+// ── Fetch with retry ─────────────────────────────────────────────────────────
+async function fetchWithRetry(url, maxRetries) {
+  maxRetries = maxRetries || 3;
+  var lastErr;
+  for (var i = 0; i < maxRetries; i++) {
+    try {
+      var res = await fetch(url);
+      if (res.ok) return res;
+      throw new Error('HTTP ' + res.status);
+    } catch (e) {
+      lastErr = e;
+      if (i < maxRetries - 1) await new Promise(function(r) { setTimeout(r, Math.pow(2, i) * 1000); });
+    }
+  }
+  throw lastErr;
+}
+
+// ── Session cache ─────────────────────────────────────────────────────────────
+function getCached(key) {
+  try {
+    var raw = sessionStorage.getItem('cache_' + key);
+    if (!raw) return null;
+    var obj = JSON.parse(raw);
+    if (Date.now() - obj.ts < 5 * 60 * 1000) return obj.data;
+  } catch(e) {}
+  return null;
+}
+function setCached(key, data) {
+  try { sessionStorage.setItem('cache_' + key, JSON.stringify({ ts: Date.now(), data: data })); } catch(e) {}
+}
+
+// ── Build update panel HTML ───────────────────────────────────────────────────
+function buildUpdateHtml(p) {
+  var note = p.updateNote || '';
+  var hasNews = !!p.newsHeadline;
+  // Determine if note has real content beyond "No X issued" boilerplate
+  var noteReal = note && !/^No (government|GO|action|committee|notification|helpline|portal|JCI|enrollment|housing|official|survey|Jan Adalat|MoU|RTI|recruitment|court|station|block-level|scheme|summit|order|app|disbursement|tender|signed|formal|coordination|women)/i.test(note.trim());
+
+  if (!note && !hasNews) return '';
+
+  var updateCount = (noteReal ? 1 : 0) + (hasNews ? 1 : 0);
+  var btnLabel = updateCount > 0 ? (updateCount + ' UPDATE' + (updateCount > 1 ? 'S' : '')) : 'STATUS';
+
+  // Build panel body
+  var panelHtml = '';
+  var dateStr = hasNews ? formatDate(p.newsDate) : formatDate('2026-05-14');
+
+  if (noteReal || note) {
+    panelHtml += '<div class="update-header">' +
+      '<span class="update-pill">UPDATE ' + Math.max(1, updateCount) + '</span>' +
+      '<span class="update-date">' + escHtml(dateStr) + '</span>' +
+      '</div>' +
+      '<p class="update-text">' + escHtml(note) + '</p>';
+  }
+
+  if (hasNews) {
+    var src = extractSource(p.newsHeadline);
+    var hed = extractHeadlineText(p.newsHeadline);
+    var hedShort = hed.length > 90 ? hed.slice(0, 90) + '…' : hed;
+    var chipHref = p.newsUrl ? 'href="' + escHtml(p.newsUrl) + '" target="_blank" rel="noopener"' : '';
+    panelHtml += '<div class="source-chips"><a class="source-chip" ' + chipHref + '>' +
+      escHtml(hedShort) + (src ? ' · ' + escHtml(src) : '') +
+      '</a></div>';
+  }
+
+  return '<button class="update-toggle" onclick="toggleUpdate(this)" aria-expanded="false">' +
+    escHtml(btnLabel) + ' <span class="u-arrow" aria-hidden="true">→</span>' +
+    '</button>' +
+    '<div class="update-panel">' + panelHtml + '</div>';
+}
+
+// ── Render category card ──────────────────────────────────────────────────────
+function renderCategoryCard(catInfo, pledges, startNum) {
+  var activeCount = pledges.filter(function(p) { return p.status && p.status !== 'watching'; }).length;
+  var tags = (CAT_TAGS[catInfo.id] || []).map(function(t) {
+    return '<span class="cat-tag">' + escHtml(t) + '</span>';
+  }).join('');
+
+  var rows = pledges.map(function(p, i) {
+    var num = String(startNum + i).padStart(2, '0');
+    var status = p.status || 'watching';
+    var statusLabel = STATUS_LABELS[status] || status;
+    var updateHtml = buildUpdateHtml(p);
+
+    return '<div class="pledge-row" data-status="' + escHtml(status) + '" id="pledge-' + escHtml(p.id) + '">' +
+      '<div class="pledge-num" aria-hidden="true">' + escHtml(num) + '</div>' +
+      '<div class="pledge-body">' +
+        '<div class="pledge-title">' + escHtml(p.title) + '</div>' +
+        '<div class="pledge-detail">' + escHtml(p.detail) + '</div>' +
+        '<div class="pledge-meta-row">' +
+          '<span class="status-badge status-' + escHtml(status) + '">' + escHtml(statusLabel) + '</span>' +
+          '<span class="pledge-deadline-lbl">Target: ' + escHtml(p.deadlineLabel || '') + '</span>' +
+        '</div>' +
+        updateHtml +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  return '<div class="cat-card" id="sec-' + escHtml(catInfo.id) + '">' +
+    '<div class="cat-card-header" role="button" tabindex="0" aria-expanded="true"' +
+    ' onclick="toggleCat(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();this.click()}">' +
+      '<div class="cat-icon-big" aria-hidden="true">' + escHtml(catInfo.icon) + '</div>' +
+      '<div class="cat-meta">' +
+        '<div class="cat-name">' + escHtml(catInfo.label) + '</div>' +
+        '<div class="cat-tags">' + tags + '</div>' +
+      '</div>' +
+      '<div class="cat-right">' +
+        '<div class="cat-count-badge">' +
+          '<span class="active-count">' + activeCount + '</span> ACTIVE · ' + pledges.length + ' PROMISES' +
+        '</div>' +
+        '<span class="cat-toggle-arrow" aria-hidden="true">▲</span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="pledge-list">' + rows + '</div>' +
+  '</div>';
+}
+
+// ── Load data ─────────────────────────────────────────────────────────────────
+async function loadData() {
+  var pledges = [];
+  var categories = [];
+
+  try {
+    var resp = await fetchWithRetry('/data/pledges.json?t=' + Date.now());
+    var data = await resp.json();
+    pledges = data.pledges || [];
+    categories = data.categories || [];
+    setCached('pledges', data);
+  } catch (err) {
+    var cached = getCached('pledges');
+    if (cached) {
+      pledges = cached.pledges || [];
+      categories = cached.categories || [];
+    } else {
+      document.getElementById('trackerContainer').innerHTML =
+        '<div style="text-align:center;padding:3rem;font-family:IBM Plex Mono,monospace;font-size:0.7rem;color:var(--muted);">Could not load pledge data. Please check your connection and refresh.</div>';
+      return;
+    }
+  }
+
+  // Group pledges by category
+  var byCategory = {};
+  var counts = { watching: 0, announced: 0, 'in-progress': 0, delivered: 0, delayed: 0, broken: 0 };
+
+  pledges.forEach(function(p) {
+    if (!byCategory[p.category]) byCategory[p.category] = [];
+    byCategory[p.category].push(p);
+    if (p.status in counts) counts[p.status]++;
+  });
+
+  // Update summary counts
+  var idMap = { watching: 'cntWatching', 'in-progress': 'cntInProgress', delivered: 'cntDelivered', broken: 'cntBroken' };
+  Object.keys(idMap).forEach(function(k) {
+    var el = document.getElementById(idMap[k]);
+    if (el) el.textContent = counts[k] || 0;
+  });
+  var totEl = document.getElementById('cntTotal');
+  if (totEl) totEl.textContent = pledges.length;
+
+  // Render category cards
+  var html = '';
+  var pledgeNum = 1;
+
+  var catOrder = categories.length > 0 ? categories : [
+    { id: 'agriculture', label: 'Agriculture & Farmers', icon: '🌾' },
+    { id: 'welfare',     label: 'Welfare & Social',     icon: '🏥' },
+    { id: 'justice',     label: 'Accountability & Justice', icon: '⚖️' },
+    { id: 'employment',  label: 'Employment & Industry', icon: '🏭' },
+    { id: 'infra',       label: 'Infrastructure & Housing', icon: '🏗️' },
+    { id: 'governance',  label: 'Governance & Admin',   icon: '🏛️' },
+    { id: 'women',       label: "Women's Safety",       icon: '👩' },
+    { id: 'education',   label: 'Education & Youth',    icon: '📚' }
+  ];
+
+  catOrder.forEach(function(cat) {
+    var catPledges = byCategory[cat.id] || [];
+    if (catPledges.length === 0) return;
+    html += renderCategoryCard(cat, catPledges, pledgeNum);
+    pledgeNum += catPledges.length;
+  });
+
+  document.getElementById('trackerContainer').innerHTML = html;
+}
+
+loadData();
+</script>
 </body>
 </html>
