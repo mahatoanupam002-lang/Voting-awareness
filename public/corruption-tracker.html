@@ -301,6 +301,25 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 .case-card{transition:transform .2s ease,box-shadow .22s ease,background .2s}
 .case-card:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,.1)}
 
+/* ── ACCUSED NETWORK ── */
+.network-section { background:var(--ink); color:var(--paper); padding:2rem; }
+.network-inner { max-width:1100px; margin:0 auto; }
+.network-title { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; margin-bottom:0.25rem; }
+.network-sub { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:#8a8070; margin-bottom:1.5rem; }
+.network-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; }
+.network-card {
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06);
+  padding:1rem; cursor:pointer; transition:background .15s, transform .15s;
+}
+.network-card:hover { background:rgba(255,255,255,.07); transform:translateY(-1px); }
+.network-card-name { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; margin-bottom:0.25rem; }
+.network-card-role { font-family:'IBM Plex Mono',monospace; font-size:0.55rem; color:#8a8070; letter-spacing:0.05em; margin-bottom:0.6rem; }
+.network-cases-label { font-family:'IBM Plex Mono',monospace; font-size:0.5rem; letter-spacing:0.12em; text-transform:uppercase; color:#6a6050; margin-bottom:0.3rem; }
+.network-case-tags { display:flex; flex-wrap:wrap; gap:0.3rem; }
+.network-case-tag { font-family:'IBM Plex Mono',monospace; font-size:0.5rem; letter-spacing:0.06em; padding:2px 6px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); white-space:nowrap; }
+.network-party-dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:4px; vertical-align:middle; }
+.network-single-label { font-family:'IBM Plex Mono',monospace; font-size:0.55rem; color:#5a5040; text-align:center; padding:1rem; }
+
 /* ── DARK MODE ── */
 [data-theme="dark"] body { background:#141210; color:#f0ece3; }
 [data-theme="dark"] .masthead { background:#141210 !important; border-color:rgba(255,255,255,.12); }
@@ -418,6 +437,17 @@ input:focus,select:focus{box-shadow:0 0 0 3px rgba(107,95,78,.13);outline:none}
 <div class="container">
   <div class="legal-note" style="margin-top:2rem;">
     ⚖ LEGAL NOTE: All individuals listed below are accused or named in court/agency filings. Criminal charges are allegations unless a court has recorded a conviction. Bail does not imply innocence or guilt. This page reproduces publicly available court, agency, and media records only.
+  </div>
+</div>
+
+<!-- ACCUSED NETWORK -->
+<div class="network-section">
+  <div class="network-inner">
+    <div class="network-title">Accused Network — Recurring Figures</div>
+    <div class="network-sub">Politicians who appear in 2 or more documented corruption cases · click to see full case</div>
+    <div class="network-grid" id="accusedNetwork">
+      <div class="network-single-label">Loading network data…</div>
+    </div>
   </div>
 </div>
 
@@ -800,6 +830,60 @@ function setCached(key, data) {
 }
 
 // ── Main data loader ──────────────────────────────────────────────────────────
+// ── Accused Network — cross-case recurring figures ────────────────────────────
+function renderAccusedNetwork() {
+  const container = document.getElementById('accusedNetwork');
+  if (!container || !CASES.length) return;
+
+  const PARTY_COLORS = { TMC:'#1a7a3c', BJP:'#e8640a', CPIM:'#c0171b', Congress:'#1565c0', BSF:'#1565c0', none:'#8a7a6a' };
+
+  // Build map: accused name → { role, party, status, cases[] }
+  const network = {};
+  CASES.forEach(c => {
+    (c.accused || []).forEach(a => {
+      const key = a.name;
+      if (!network[key]) network[key] = { name: a.name, role: a.role, party: a.party || 'none', status: a.status, cases: [] };
+      network[key].cases.push({ caseId: c.id, caseName: c.name });
+    });
+  });
+
+  // Only show those in 2+ cases, sorted by case count desc
+  const multiCase = Object.values(network)
+    .filter(p => p.cases.length >= 2)
+    .sort((a, b) => b.cases.length - a.cases.length);
+
+  if (!multiCase.length) {
+    container.innerHTML = '<div class="network-single-label">No recurring accused found across multiple cases in current data.</div>';
+    return;
+  }
+
+  container.innerHTML = multiCase.map(p => {
+    const col = PARTY_COLORS[p.party] || '#8a7a6a';
+    const caseTagsHtml = p.cases.map(c =>
+      `<span class="network-case-tag" title="${c.caseName}">${c.caseName.slice(0,22)}${c.caseName.length>22?'…':''}</span>`
+    ).join('');
+    const partyLabel = p.party !== 'none' ? p.party : 'Independent/Unaffiliated';
+    return `<div class="network-card" role="button" tabindex="0"
+      aria-label="${p.name} — appears in ${p.cases.length} cases"
+      onclick="scrollToCase('${p.cases[0].caseId}')"
+      onkeydown="if(event.key==='Enter')scrollToCase('${p.cases[0].caseId}')">
+      <div class="network-card-name"><span class="network-party-dot" style="background:${col};"></span>${p.name}</div>
+      <div class="network-card-role">${p.role} · ${partyLabel}</div>
+      <div class="network-cases-label">${p.cases.length} Cases</div>
+      <div class="network-case-tags">${caseTagsHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+function scrollToCase(caseId) {
+  const el = document.getElementById('case-' + caseId);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    el.style.outline = '2px solid var(--accent)';
+    setTimeout(() => { el.style.outline = ''; }, 2000);
+  }
+}
+
 async function loadData() {
   let casesLoaded = false;
 
@@ -845,6 +929,7 @@ async function loadData() {
 
   renderHearings();
   render('all');
+  renderAccusedNetwork();
   document.querySelectorAll('.fade-in:not(.case-card)').forEach(el => observer.observe(el));
 
   // Load live news feed in parallel (non-blocking)
