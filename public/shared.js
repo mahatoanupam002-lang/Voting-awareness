@@ -363,3 +363,28 @@ window.lazyTable = function (tbodyId, rows, buildRowHTML, chunkSize) {
     });
   }
 })();
+
+/* ── 15. OneSignal push notifications ────────────────────────────────────── */
+/* Loads the OneSignal Web SDK and initialises it with the App ID fetched
+   from /api/config. Skips silently if ONESIGNAL_APP_ID is not configured. */
+(function () {
+  fetch('/api/config', { cache: 'no-store' })
+    .then(function (r) { return r.json(); })
+    .then(function (cfg) {
+      if (!cfg.onesignalAppId) return;
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      var s = document.createElement('script');
+      s.src = 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js';
+      s.defer = true;
+      document.head.appendChild(s);
+      OneSignalDeferred.push(function (OneSignal) {
+        OneSignal.init({
+          appId: cfg.onesignalAppId,
+          serviceWorkerPath: '/OneSignalSDKWorker.js',
+          notifyButton: { enable: false },
+          allowLocalhostAsSecureOrigin: true,
+        });
+      });
+    })
+    .catch(function () {});
+})();
