@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ask plain-English questions about West Bengal politics — MLAs, corruption cases, BJP pledges, electoral bonds. Answered by AI using live data.">
+<meta property="og:title" content="Ask AI — The Bengal Reader">
+<meta property="og:description" content="Ask anything about the 2026 election, corruption cases, MLA records, BJP pledges, or electoral bonds. Answers grounded in our data.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/og-voter-guide.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ask AI — The Bengal Reader">
+<meta name="twitter:description" content="AI-powered Q&A about West Bengal politics, grounded in live civic data.">
+<meta name="twitter:image" content="/og-voter-guide.svg">
+<title>Ask AI — The Bengal Reader</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/fonts.css">
+<script defer src="/analytics.js"></script>
+<link rel="stylesheet" href="/shared.css">
+<script defer src="/shared.js"></script>
+<style>
+/* ── LOCAL TOKENS ── */
+:root {
+  --paper-dark: #ebe6db;
+  --ink-soft: #4a443c;
+  --ink-faint: #8a8275;
+  --rule: #2a2520;
+  --shadow: rgba(26,23,20,0.08);
+  --ai-border: #c8bfae;
+  --chip-bg: transparent;
+  --chip-hover-bg: var(--ink);
+  --chip-hover-color: var(--paper);
+  --input-bg: #fdfaf4;
+  --answer-bg: #fdfaf4;
+  --answer-border: #c8bfae;
+  --error-color: #c0171b;
+  --spinner-color: var(--muted);
+}
+
+[data-theme="dark"] {
+  --paper-dark: #1e1b18;
+  --ink-soft: #b8b2a8;
+  --ink-faint: #706a62;
+  --rule: #3a3530;
+  --shadow: rgba(0,0,0,0.3);
+  --ai-border: #3a3530;
+  --chip-bg: transparent;
+  --chip-hover-bg: #f0ece3;
+  --chip-hover-color: #141210;
+  --input-bg: #1e1b18;
+  --answer-bg: #1a1714;
+  --answer-border: #2a2520;
+  --error-color: #e05555;
+  --spinner-color: #9a9085;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  border-bottom: 4px double var(--ink);
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+  background: var(--paper);
+}
+
+.masthead-overline {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.3rem 0;
+  margin-bottom: 1.2rem;
+  display: inline-block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.masthead h1 {
+  font-family: 'Playfair Display', 'Crimson Pro', serif;
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.masthead-sub {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--muted);
+  margin-top: 0.6rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── PAGE LAYOUT ── */
+.page-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+/* ── SUGGESTION CHIPS ── */
+.chips-label {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.chip {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border: 1px solid var(--ai-border);
+  background: var(--chip-bg);
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background: var(--chip-hover-bg);
+  color: var(--chip-hover-color);
+  border-color: var(--chip-hover-bg);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ── INPUT AREA ── */
+.input-callout {
+  border: 1.5px solid var(--ink);
+  background: var(--input-bg);
+  padding: 1.25rem 1.25rem 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.input-callout::before {
+  content: 'Your question';
+  position: absolute;
+  top: -1px;
+  left: 1.25rem;
+  transform: translateY(-50%);
+  background: var(--paper);
+  padding: 0 0.4rem;
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+[data-theme="dark"] .input-callout::before {
+  background: #141210;
+}
+
+#question-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 5rem;
+}
+
+#question-input::placeholder {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.char-count {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+}
+
+.char-count.near-limit { color: var(--bjp); }
+.char-count.at-limit { color: var(--error-color); }
+
+#ask-btn {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 8px 22px;
+  border: 1.5px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+  justify-content: center;
+}
+
+#ask-btn:hover:not(:disabled) {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+#ask-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* spinner */
+.spinner {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+
+#ask-btn.loading .spinner { display: block; }
+#ask-btn.loading .btn-label { display: none; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── ANSWER AREA ── */
+.answer-section {
+  display: none;
+}
+
+.answer-section.visible {
+  display: block;
+  animation: fadeUp 0.3s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.answer-label {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.answer-label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--muted);
+}
+
+.answer-box {
+  background: var(--answer-bg);
+  border: 1px solid var(--answer-border);
+  border-left: 3px solid var(--ink);
+  padding: 1.5rem 1.75rem;
+  min-height: 3rem;
+}
+
+#answer-text {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* blinking cursor while streaming */
+#answer-text.streaming::after {
+  content: '|';
+  animation: blink 0.9s step-end infinite;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── ERROR STATE ── */
+.answer-error {
+  display: none;
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1rem;
+  background: rgba(192, 23, 27, 0.04);
+}
+
+.answer-error.visible { display: block; }
+
+[data-theme="dark"] .answer-error {
+  background: rgba(224, 85, 85, 0.06);
+}
+
+/* ── ATTRIBUTION LINE ── */
+.answer-attribution {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  margin-top: 0.85rem;
+  line-height: 1.6;
+}
+
+/* ── DIVIDER ── */
+.editorial-rule {
+  border: none;
+  border-top: 1px solid var(--aged);
+  margin: 2.5rem 0;
+}
+
+/* ── ABOUT CALLOUT ── */
+.about-note {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.59rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  line-height: 1.8;
+  border-top: 2px solid var(--aged);
+  padding-top: 1rem;
+  margin-top: 3rem;
+}
+
+.about-note strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.about-note a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.about-note a:hover { color: var(--ink); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 540px) {
+  .masthead { padding: 1.5rem 1rem 1rem; }
+  .page-wrap { padding: 2rem 1rem 4rem; }
+  .input-callout { padding: 1rem 1rem 0.75rem; }
+  .answer-box { padding: 1.25rem; }
+  .chips-wrap { gap: 0.4rem; }
+  .chip { font-size: 0.58rem; padding: 4px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav-inner">
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
+    <div class="site-nav-links">
+      <a href="/" class="site-nav-link">Voter Guide</a>
+      <a href="/parties" class="site-nav-link">Party Compass</a>
+      <a href="/constituencies" class="site-nav-link">2026 Results</a>
+      <a href="/accountability" class="site-nav-link">100 Days</a>
+      <a href="/corruption" class="site-nav-link">Dossier</a>
+      <a href="/mlas" class="site-nav-link">MLA Records</a>
+      <a href="/ask" class="site-nav-link active">Ask AI</a>
+    </div>
+  </div>
+</nav>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-overline">The Bengal Reader &middot; AI Assistant</div>
+  <h1>Ask About West Bengal Politics</h1>
+  <p class="masthead-sub">Ask anything about the 2026 election, corruption cases, MLA records, BJP pledges, or electoral bonds. Answers are grounded in our data.</p>
+</div>
+
+<main>
+  <div class="page-wrap">
+
+    <!-- SUGGESTION CHIPS -->
+    <div class="chips-label">Suggested questions</div>
+    <div class="chips-wrap" role="list" aria-label="Suggested questions">
+      <button class="chip" role="listitem" type="button" aria-label="Suggested: Which MLAs have the most criminal cases?">Which MLAs have the most criminal cases?</button>
+      <button class="chip" role="listitem" type="button" aria-label="Suggested: How many BJP pledges have been delivered?">How many BJP pledges have been delivered?</button>
+      <button class="chip" role="listitem" type="button" aria-label="Suggested: Who won the most seats in 2026?">Who won the most seats in 2026?</button>
+      <button class="chip" role="listitem" type="button" aria-label="Suggested: What is the Saradha chit fund scam?">What is the Saradha chit fund scam?</button>
+      <button class="chip" role="listitem" type="button" aria-label="Suggested: Which party got the most electoral bond money?">Which party got the most electoral bond money?</button>
+      <button class="chip" role="listitem" type="button" aria-label="Suggested: Which MLA's wealth grew the most?">Which MLA&rsquo;s wealth grew the most?</button>
+    </div>
+
+    <!-- INPUT CALLOUT -->
+    <div class="input-callout">
+      <textarea
+        id="question-input"
+        rows="3"
+        maxlength="500"
+        placeholder="Type your question…"
+        aria-label="Your question"
+        spellcheck="true"
+      ></textarea>
+      <div class="input-footer">
+        <span class="char-count" id="char-count" aria-live="polite">0 / 500</span>
+        <button id="ask-btn" type="button" aria-label="Submit question">
+          <span class="btn-label">Ask</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div class="answer-error" id="answer-error" role="alert" aria-live="assertive">
+      Unable to fetch an answer &mdash; please try again.
+    </div>
+
+    <!-- ANSWER AREA -->
+    <section class="answer-section" id="answer-section" aria-live="polite" aria-label="Answer">
+      <div class="answer-label">Answer</div>
+      <div class="answer-box">
+        <div id="answer-text"></div>
+      </div>
+      <p class="answer-attribution">
+        Powered by Claude &middot; Data from ECI, ED, CBI press releases &middot; Updated 6-hourly
+      </p>
+    </section>
+
+    <hr class="editorial-rule">
+
+    <!-- ABOUT NOTE -->
+    <p class="about-note">
+      <strong>How this works:</strong> Your question is sent to Claude, which uses The Bengal Reader&rsquo;s curated datasets &mdash;
+      MLA criminal records, asset declarations, corruption case timelines, BJP pledge tracking, electoral bond data,
+      and constituency results &mdash; to generate a grounded, cited answer. Data is refreshed every 6 hours from
+      ECI affidavits, ED and CBI press releases, and court records.
+      <br><br>
+      AI answers may contain errors. Always verify important claims via our
+      <a href="/methodology">methodology page</a> and primary sources.
+    </p>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="site-footer-brand">The Bengal Reader</div>
+      <div class="site-footer-tagline">Non-partisan civic journalism for West Bengal.</div>
+    </div>
+    <div class="site-footer-links">
+      <a href="/methodology" class="site-footer-link">Methodology</a>
+      <a href="/rss.xml" class="site-footer-link">RSS</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var textarea = document.getElementById('question-input');
+  var askBtn = document.getElementById('ask-btn');
+  var charCount = document.getElementById('char-count');
+  var answerSection = document.getElementById('answer-section');
+  var answerText = document.getElementById('answer-text');
+  var answerError = document.getElementById('answer-error');
+  var chips = document.querySelectorAll('.chip');
+
+  var MAX_CHARS = 500;
+  var currentController = null;
+
+  /* ── CHAR COUNTER ── */
+  textarea.addEventListener('input', function () {
+    var len = textarea.value.length;
+    charCount.textContent = len + ' / ' + MAX_CHARS;
+    charCount.classList.toggle('near-limit', len >= 400 && len < MAX_CHARS);
+    charCount.classList.toggle('at-limit', len >= MAX_CHARS);
+  });
+
+  /* ── PREVENT ENTER SUBMIT ── */
+  textarea.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      /* Enter alone does nothing — Shift+Enter inserts newline naturally */
+      /* We only block plain Enter to avoid accidental submissions */
+      e.preventDefault();
+    }
+  });
+
+  /* ── CHIP CLICKS ── */
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var text = chip.textContent.trim();
+      textarea.value = text;
+      charCount.textContent = text.length + ' / ' + MAX_CHARS;
+      charCount.classList.remove('near-limit', 'at-limit');
+      textarea.focus();
+      textarea.selectionStart = textarea.selectionEnd = text.length;
+    });
+    /* keyboard accessibility */
+    chip.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        chip.click();
+      }
+    });
+  });
+
+  /* ── ASK BUTTON ── */
+  askBtn.addEventListener('click', function () {
+    var q = textarea.value.trim();
+    if (!q) {
+      textarea.focus();
+      return;
+    }
+    askQuestion(q);
+  });
+
+  /* ── CORE ASK FUNCTION ── */
+  function askQuestion(question) {
+    /* abort any in-flight request */
+    if (currentController) {
+      currentController.abort();
+    }
+    currentController = new AbortController();
+
+    /* UI: loading state */
+    setLoading(true);
+    clearAnswer();
+    hideError();
+
+    fetch('/api/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: question }),
+      signal: currentController.signal,
+    })
+      .then(function (res) {
+        if (!res.ok) {
+          return res.text().then(function () {
+            throw new Error('HTTP ' + res.status);
+          });
+        }
+        if (!res.body) {
+          /* no streaming support — fall back to text() */
+          return res.text().then(function (text) {
+            showAnswer(text, false);
+            setLoading(false);
+          });
+        }
+
+        /* show answer panel with streaming cursor */
+        showAnswerPanel();
+        answerText.classList.add('streaming');
+
+        var reader = res.body.getReader();
+        var decoder = new TextDecoder();
+        var buffer = '';
+
+        function pump() {
+          return reader.read().then(function (result) {
+            if (result.done) {
+              /* stream finished */
+              flush(buffer);
+              answerText.classList.remove('streaming');
+              setLoading(false);
+              return;
+            }
+
+            buffer += decoder.decode(result.value, { stream: true });
+
+            /* process complete SSE lines */
+            var lines = buffer.split('\n');
+            /* keep the last (potentially incomplete) chunk in buffer */
+            buffer = lines.pop();
+
+            lines.forEach(function (line) {
+              processSSELine(line.trim());
+            });
+
+            return pump();
+          });
+        }
+
+        return pump();
+      })
+      .catch(function (err) {
+        if (err.name === 'AbortError') return;
+        answerText.classList.remove('streaming');
+        setLoading(false);
+        if (!answerText.textContent) {
+          /* nothing was rendered yet — show error banner */
+          showError();
+        } else {
+          /* partial answer rendered — append a note */
+          answerText.classList.remove('streaming');
+        }
+      });
+  }
+
+  /* ── SSE LINE PARSER ── */
+  function processSSELine(line) {
+    if (!line.startsWith('data: ')) return;
+
+    var payload = line.slice(6);
+    if (payload === '[DONE]') {
+      answerText.classList.remove('streaming');
+      setLoading(false);
+      return;
+    }
+
+    var parsed;
+    try {
+      parsed = JSON.parse(payload);
+    } catch (e) {
+      return;
+    }
+
+    /* Anthropic SSE: content_block_delta with text_delta */
+    if (
+      parsed.type === 'content_block_delta' &&
+      parsed.delta &&
+      parsed.delta.type === 'text_delta' &&
+      typeof parsed.delta.text === 'string'
+    ) {
+      appendText(parsed.delta.text);
+    }
+
+    /* message_stop signals end of stream */
+    if (parsed.type === 'message_stop') {
+      answerText.classList.remove('streaming');
+      setLoading(false);
+    }
+  }
+
+  /* ── HELPERS ── */
+  function appendText(text) {
+    answerText.textContent += text;
+  }
+
+  function flush(remaining) {
+    if (!remaining) return;
+    var lines = remaining.split('\n');
+    lines.forEach(function (line) {
+      processSSELine(line.trim());
+    });
+  }
+
+  function showAnswerPanel() {
+    answerSection.classList.add('visible');
+    answerText.textContent = '';
+  }
+
+  function showAnswer(text, streaming) {
+    showAnswerPanel();
+    answerText.textContent = text;
+    if (!streaming) answerText.classList.remove('streaming');
+  }
+
+  function clearAnswer() {
+    answerText.textContent = '';
+    answerText.classList.remove('streaming');
+    answerSection.classList.remove('visible');
+  }
+
+  function showError() {
+    answerError.classList.add('visible');
+  }
+
+  function hideError() {
+    answerError.classList.remove('visible');
+  }
+
+  function setLoading(on) {
+    askBtn.disabled = on;
+    if (on) {
+      askBtn.classList.add('loading');
+      askBtn.setAttribute('aria-label', 'Loading answer…');
+    } else {
+      askBtn.classList.remove('loading');
+      askBtn.setAttribute('aria-label', 'Submit question');
+    }
+  }
+})();
+</script>
+</body>
+</html>

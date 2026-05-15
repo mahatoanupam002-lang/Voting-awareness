@@ -186,3 +186,180 @@ window.lazyTable = function (tbodyId, rows, buildRowHTML, chunkSize) {
     }, { rootMargin: '400px' }).observe(sentinel);
   }
 };
+
+/* ── 11. Source citation tooltips ────────────────────────────────────────── */
+/* Activates on any element with data-cite="Source name, year"
+   Optionally pair with data-cite-url="https://..." for a clickable link.
+   CSS lives in shared.css under "SOURCE CITATION TOOLTIPS". */
+(function () {
+  var tip = null;
+  var hideTimer = null;
+
+  function getTip() {
+    if (!tip) {
+      tip = document.createElement('div');
+      tip.className = 'bengal-cite-tip';
+      tip.setAttribute('role', 'tooltip');
+      document.body.appendChild(tip);
+      tip.addEventListener('mouseenter', function () {
+        clearTimeout(hideTimer);
+      });
+      tip.addEventListener('mouseleave', function () {
+        scheduleHide();
+      });
+    }
+    return tip;
+  }
+
+  function scheduleHide() {
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function () {
+      var t = getTip();
+      t.classList.remove('visible');
+    }, 120);
+  }
+
+  function show(el, e) {
+    clearTimeout(hideTimer);
+    var label = el.getAttribute('data-cite') || '';
+    var url = el.getAttribute('data-cite-url') || '';
+    var t = getTip();
+    t.innerHTML = label + (url
+      ? '<a href="' + url + '" target="_blank" rel="noopener">' + url.replace(/^https?:\/\//, '').split('/')[0] + ' ↗</a>'
+      : '');
+    t.classList.add('visible');
+    position(e);
+  }
+
+  function position(e) {
+    if (!tip) return;
+    var x = e.clientX + 12;
+    var y = e.clientY - 36;
+    var tw = tip.offsetWidth || 200;
+    var th = tip.offsetHeight || 50;
+    if (x + tw > window.innerWidth - 8) x = e.clientX - tw - 8;
+    if (y < 8) y = e.clientY + 16;
+    if (y + th > window.innerHeight - 8) y = window.innerHeight - th - 8;
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
+  }
+
+  document.addEventListener('mouseover', function (e) {
+    var el = e.target && e.target.closest('[data-cite]');
+    if (el) show(el, e);
+  });
+
+  document.addEventListener('mousemove', function (e) {
+    if (tip && tip.classList.contains('visible')) position(e);
+  });
+
+  document.addEventListener('mouseout', function (e) {
+    var el = e.target && e.target.closest('[data-cite]');
+    if (el) scheduleHide();
+  });
+
+  document.addEventListener('focusin', function (e) {
+    var el = e.target && e.target.closest('[data-cite]');
+    if (el) {
+      var rect = el.getBoundingClientRect();
+      show(el, { clientX: rect.left, clientY: rect.top });
+    }
+  });
+
+  document.addEventListener('focusout', function (e) {
+    var el = e.target && e.target.closest('[data-cite]');
+    if (el) scheduleHide();
+  });
+})();
+
+/* ── 12. Speculation Rules (instant page loads) ──────────────────────────── */
+/* Injects a <script type="speculationrules"> block so Chrome prerenders
+   internal links on hover (moderate eagerness = prerender on mousedown). */
+(function () {
+  if (!HTMLScriptElement.supports || !HTMLScriptElement.supports('speculationrules')) return;
+  var rules = {
+    prerender: [{ where: { and: [{ href_matches: '/*' }, { not: { href_matches: '/api/*' } }] }, eagerness: 'moderate' }],
+  };
+  var s = document.createElement('script');
+  s.type = 'speculationrules';
+  s.textContent = JSON.stringify(rules);
+  document.head.appendChild(s);
+})();
+
+/* ── 13. View Transitions (smooth cross-page navigation) ─────────────────── */
+/* Uses the native View Transitions API (Chrome 111+) to animate page changes.
+   Falls back gracefully — non-supporting browsers navigate normally. */
+(function () {
+  if (!document.startViewTransition) return;
+
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest('a[href]');
+    if (!link) return;
+    var href = link.href;
+    if (!href) return;
+    try {
+      var u = new URL(href);
+      if (u.origin !== location.origin) return; // external link — skip
+      if (u.pathname === location.pathname && u.search === location.search) return; // same page
+    } catch (_) { return; }
+    if (link.hasAttribute('download') || link.getAttribute('target') === '_blank') return;
+    e.preventDefault();
+    document.startViewTransition(function () {
+      location.href = href;
+    });
+  });
+})();
+
+/* ── 14. PWA manifest injection + install prompt ─────────────────────────── */
+/* Dynamically injects <link rel="manifest"> and <meta name="theme-color">
+   so we don't have to edit every HTML page. Also wires up the browser's
+   beforeinstallprompt event to show a subtle install button. */
+(function () {
+  // Inject manifest link
+  if (!document.querySelector('link[rel="manifest"]')) {
+    var lnk = document.createElement('link');
+    lnk.rel = 'manifest';
+    lnk.href = '/manifest.json';
+    document.head.appendChild(lnk);
+  }
+  // Inject theme-color meta
+  if (!document.querySelector('meta[name="theme-color"]')) {
+    var meta = document.createElement('meta');
+    meta.name = 'theme-color';
+    meta.content = '#050403';
+    document.head.appendChild(meta);
+  }
+
+  // Install prompt
+  var deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    showInstallBanner();
+  });
+
+  function showInstallBanner() {
+    if (document.getElementById('bengal-install-banner')) return;
+    var banner = document.createElement('div');
+    banner.id = 'bengal-install-banner';
+    banner.setAttribute('role', 'complementary');
+    banner.setAttribute('aria-label', 'Install app');
+    banner.innerHTML = '<span>Install The Bengal Reader for offline access</span>' +
+      '<button id="bengal-install-btn">Install App</button>' +
+      '<button id="bengal-install-dismiss" aria-label="Dismiss">✕</button>';
+    document.body.appendChild(banner);
+
+    document.getElementById('bengal-install-btn').addEventListener('click', function () {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function () {
+        deferredPrompt = null;
+        banner.remove();
+      });
+    });
+    document.getElementById('bengal-install-dismiss').addEventListener('click', function () {
+      banner.remove();
+      try { sessionStorage.setItem('install-dismissed', '1'); } catch (_) {}
+    });
+  }
+})();

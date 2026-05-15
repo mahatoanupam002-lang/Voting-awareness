@@ -1,0 +1,78 @@
+{
+  "name": "The Bengal Reader",
+  "short_name": "Bengal Reader",
+  "description": "Non-partisan civic journalism for West Bengal 2026 — corruption tracker, MLA records, electoral bonds, accountability.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#050403",
+  "theme_color": "#050403",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["news", "politics", "government"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-voter-guide.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "Voter Guide — The Bengal Reader"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Corruption Tracker",
+      "short_name": "Corruption",
+      "description": "Track 8 major corruption cases in West Bengal",
+      "url": "/corruption",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "100-Day Tracker",
+      "short_name": "Pledges",
+      "description": "BJP's pre-election pledges — delivered or broken?",
+      "url": "/accountability",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "MLA Records",
+      "short_name": "MLAs",
+      "description": "Criminal records of all 294 MLAs",
+      "url": "/mlas",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    }
+  ],
+  "share_target": {
+    "action": "/search",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "related_applications": [],
+  "prefer_related_applications": false
+}
