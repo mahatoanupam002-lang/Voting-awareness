@@ -304,12 +304,34 @@ async function main() {
     // Parallel news fetch for pledges that have keywords (concurrency = 3)
     const pledgesWithKw = pledgesObj.pledges.filter((p) => p.keywords && p.keywords.length);
     const pledgeLines = new Array(pledgesWithKw.length);
+
+    // Generic terms that appear in nearly every Bengal politics article — not
+    // useful for relevance checking on their own.
+    const GENERIC_TERMS = new Set([
+      'west', 'bengal', 'bjp', '2026', 'india', 'new', 'government', 'state',
+      'with', 'from', 'that', 'this', 'will', 'have', 'been', 'were', 'they',
+    ]);
+
+    // Returns true only if the headline contains ≥1 specific term from the pledge's
+    // keyword list (4+ char, not a generic stop word). Prevents stray articles
+    // (e.g. Punjab sanitation strikes showing under OPS pledge) from being stored.
+    function isHeadlineRelevant(headline, keywords) {
+      const hl = headline.toLowerCase();
+      const specificTerms = new Set(
+        keywords.flatMap((kw) =>
+          kw.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter((w) => w.length >= 4 && !GENERIC_TERMS.has(w))
+        )
+      );
+      return [...specificTerms].some((t) => hl.includes(t));
+    }
+
     await withConcurrency(pledgesWithKw, 3, async (p, i) => {
       try {
         const items = await fetchGoogleNews(p.keywords[0]);
         const recent = items.filter((n) => n.date > cutoff7d).sort((a, b) => b.date - a.date);
-        if (recent.length > 0) {
-          const top = recent[0];
+        const relevant = recent.filter((n) => isHeadlineRelevant(n.title, p.keywords));
+        if (relevant.length > 0) {
+          const top = relevant[0];
           if (p.newsHeadline !== top.title) {
             p.newsHeadline = top.title;
             p.newsDate = top.pubDate;
@@ -317,10 +339,19 @@ async function main() {
             pledgesUpdated++;
             pledgeLines[i] = `- 📰 **${p.id}**: new headline — "${top.title.slice(0, 70)}"`;
           } else {
-            pledgeLines[i] = `- · **${p.id}**: ${recent.length} articles (headline unchanged)`;
+            pledgeLines[i] = `- · **${p.id}**: ${relevant.length} articles (headline unchanged)`;
           }
         } else {
-          pledgeLines[i] = `- · **${p.id}**: no recent news`;
+          // No relevant article found — clear any previously stored unrelated headline
+          if (p.newsHeadline && recent.length > 0 && !isHeadlineRelevant(p.newsHeadline, p.keywords)) {
+            p.newsHeadline = null;
+            p.newsDate = null;
+            p.newsUrl = null;
+            pledgesUpdated++;
+            pledgeLines[i] = `- 🧹 **${p.id}**: cleared irrelevant headline (${recent.length} results, none matched)`;
+          } else {
+            pledgeLines[i] = `- · **${p.id}**: no relevant news (${recent.length} raw results)`;
+          }
         }
       } catch (e) {
         errors.push(`pledge news ${p.id}: ${e.message}`);
