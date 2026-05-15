@@ -182,7 +182,7 @@ footer a:hover { color:rgba(244,241,234,.9); }
     <ol style="margin-left:1.4rem;color:var(--ink-soft);font-size:.9rem;line-height:2;">
       <li><a href="#data-files" style="color:inherit">Data files: sources and update rules</a></li>
       <li><a href="#pipeline" style="color:inherit">Automated pipeline (hourly)</a></li>
-      <li><a href="#verification" style="color:inherit">What “verified” means</a></li>
+      <li><a href="#verification" style="color:inherit">What "verified" means</a></li>
       <li><a href="#editorial" style="color:inherit">Editorial independence</a></li>
       <li><a href="#corrections" style="color:inherit">Corrections policy</a></li>
     </ol>
@@ -197,7 +197,7 @@ footer a:hover { color:rgba(244,241,234,.9); }
     <div class="mono" style="margin-bottom:.6rem">mlas.json — MLA criminal records</div>
     <ul>
       <li><strong>Primary source:</strong> ECI Form 26 affidavits submitted by candidates for the 2021 West Bengal Legislative Assembly election, scraped from <span class="mono">myneta.info</span> and cross-referenced with <span class="mono">eci.gov.in</span> candidate portals.</li>
-      <li><strong>Criminal case data:</strong> IPC section numbers, case counts, and “serious” flags (IPC 302, 307, 376, 420, 120B) are extracted directly from affidavit tables. No inference is made about guilt.</li>
+      <li><strong>Criminal case data:</strong> IPC section numbers, case counts, and "serious" flags (IPC 302, 307, 376, 420, 120B) are extracted directly from affidavit tables. No inference is made about guilt.</li>
       <li><strong>CBI / ED overlay:</strong> Agency press releases are scraped hourly. An MLA is flagged as having an active CBI/ED case only when the agency names them in a press release.</li>
       <li><strong>Update frequency:</strong> Affidavit data is static (2021 election). CBI/ED flags update with each hourly pipeline run.</li>
       <li><strong>What we do not do:</strong> We do not infer guilt, do not include FIR allegations without charge-sheet, and do not use police sources alone.</li>
@@ -266,7 +266,7 @@ footer a:hover { color:rgba(244,241,234,.9); }
     <div class="mono" style="margin-bottom:.6rem">meta.json — pipeline timestamp</div>
     <ul>
       <li>Written on every pipeline run. Contains <span class="mono">lastUpdated</span> (ISO timestamp) and <span class="mono">autoChecked</span> (human-readable IST).</li>
-      <li>Used by the live-polling script to detect when new data has landed and show the “data updated” toast.</li>
+      <li>Used by the live-polling script to detect when new data has landed and show the "data updated" toast.</li>
     </ul>
   </div>
 
@@ -289,8 +289,8 @@ footer a:hover { color:rgba(244,241,234,.9); }
 
   <hr class="rule">
 
-  <h2 id="verification">What “verified” means</h2>
-  <p>The word “verified” is used narrowly — it means attributable to a named primary source, not “true beyond doubt.” Page-level definitions:</p>
+  <h2 id="verification">What "verified" means</h2>
+  <p>The word "verified" is used narrowly — it means attributable to a named primary source, not "true beyond doubt." Page-level definitions:</p>
   <ul>
     <li><strong>MLA criminal records</strong> — verified = sourced from the candidate's own ECI affidavit (self-declared).</li>
     <li><strong>Constituency results</strong> — verified = ECI has officially declared the result for that seat, not exit-poll or projection.</li>
@@ -301,7 +301,7 @@ footer a:hover { color:rgba(244,241,234,.9); }
   <hr class="rule">
 
   <h2 id="editorial">Editorial independence</h2>
-  <p>This is a civic education and transparency project with no party affiliation, no advertising, and no government funding. Where a page applies a judgment (e.g. calling an IPC charge “serious”), the criterion is documented and applied uniformly across all parties.</p>
+  <p>This is a civic education and transparency project with no party affiliation, no advertising, and no government funding. Where a page applies a judgment (e.g. calling an IPC charge "serious"), the criterion is documented and applied uniformly across all parties.</p>
   <p>All source code and data are public. Changes to data files are reviewable via git history. If you believe a data change was made in error, open a GitHub issue.</p>
 
   <h2 id="corrections">Corrections policy</h2>
