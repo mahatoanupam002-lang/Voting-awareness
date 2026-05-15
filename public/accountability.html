@@ -1352,6 +1352,20 @@ function renderUrgency(pledges) {
 }
 
 loadData();
+
+// Re-render burndown on theme toggle (canvas is not CSS-aware)
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.theme-toggle, [onclick*="toggleTheme"]')) {
+    setTimeout(function() {
+      var pledges = [];
+      try {
+        var cached = sessionStorage.getItem('cache_pledges');
+        if (cached) pledges = JSON.parse(cached).data.pledges || [];
+      } catch(ex) {}
+      if (pledges.length) renderBurndown(pledges);
+    }, 80);
+  }
+});
 </script>
 </body>
 </html>

@@ -554,20 +554,26 @@ function renderRiskSpotlight(data) {
   container.innerHTML = topRisk.map((mla, i) => {
     const cri = computeCRI(mla);
     const col = PARTY_COLORS[mla.party] || '#8a7a6a';
-    return `<div class="risk-card" style="--card-accent:${accentColors[i]};"
+    const ac = accentColors[i];
+    const safeName = mla.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+    return `<div class="risk-card"
+      style="border-top:3px solid ${ac};"
       role="button" tabindex="0" aria-label="View profile of ${mla.name}"
-      onclick="const m=MLA_DATA.find(x=>x.name===this.dataset.name);if(m)openProfile(m);"
-      onkeydown="if(event.key==='Enter'){const m=MLA_DATA.find(x=>x.name===this.dataset.name);if(m)openProfile(m);}"
-      data-name="${mla.name.replace(/"/g,'&quot;')}">
-      <div class="risk-card::before" style="background:${accentColors[i]};"></div>
-      <style>.risk-card:nth-child(${i+1})::before{background:${accentColors[i]};}</style>
-      <div class="risk-card-cri-num" style="color:${accentColors[i]};">${cri}</div>
-      <div class="risk-card-cri-label" style="color:${accentColors[i]};">${criLabel(cri)} Risk</div>
+      onclick="openProfileByName('${safeName}')"
+      onkeydown="if(event.key==='Enter')openProfileByName('${safeName}')">
+      <div class="risk-card-cri-num" style="color:${ac};">${cri}</div>
+      <div class="risk-card-cri-label" style="color:${ac};opacity:.75;">${criLabel(cri)} Risk</div>
       <div class="risk-card-name" style="margin-top:0.5rem;">${mla.name}</div>
       <div class="risk-card-meta"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${col};margin-right:4px;vertical-align:middle;"></span>${mla.party} · ${mla.constituency}</div>
       <div class="risk-card-meta">${mla.cases} case${mla.cases!==1?'s':''} · ${mla.serious?'<span style="color:#c0171b;">Serious charges</span>':'No serious charges'}</div>
     </div>`;
   }).join('');
+}
+
+// Open a profile by name string (used by risk spotlight cards)
+function openProfileByName(name) {
+  const mla = MLA_DATA.find(m => m.name === name);
+  if (mla) openProfile(mla);
 }
 
 // Filter table by CRI band
@@ -632,9 +638,10 @@ function computeStats(data) {
 function renderPartySummary(data) {
   const parties = {};
   data.forEach(m => {
-    if(!parties[m.party]) parties[m.party] = { seats:0, withCases:0, serious:0, total:0 };
+    if(!parties[m.party]) parties[m.party] = { seats:0, withCases:0, serious:0, total:0, criSum:0 };
     parties[m.party].seats++;
     parties[m.party].total += m.cases;
+    parties[m.party].criSum += computeCRI(m);
     if(m.cases>0) parties[m.party].withCases++;
     if(m.serious) parties[m.party].serious++;
   });
@@ -644,10 +651,13 @@ function renderPartySummary(data) {
     .map(([party, p]) => {
       const col = PARTY_COLORS[party] || '#8a7a6a';
       const pct = Math.round(p.withCases/p.seats*100);
+      const avgCri = Math.round(p.criSum / p.seats);
+      const criCls = criClass(avgCri);
       return `<div class="party-card">
         <div class="party-card-name"><span class="party-dot" style="background:${col};display:inline-block;width:9px;height:9px;border-radius:50%;"></span>${party}</div>
         <div class="party-card-seats">${p.seats} <span style="font-size:1rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;">seats</span></div>
         <div class="party-card-stat">${p.withCases} with cases (${pct}%) · ${p.serious} serious</div>
+        <div style="margin-top:0.5rem;display:flex;align-items:center;gap:0.4rem;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:var(--muted);">Avg CRI: <span class="cri-badge ${criCls}" style="font-size:0.58rem;padding:1px 5px;">${avgCri}</span></div>
         <div class="party-card-bar"><div class="party-card-bar-fill" style="width:${p.seats/maxSeats*100}%;background:${col};"></div></div>
       </div>`;
     }).join('');
