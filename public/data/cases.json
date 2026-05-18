@@ -345,6 +345,11 @@
         "event": "2 news reports in last 24 h. Latest: \"Bengal SSC publishes 2016 SLST OMR sheets - News Arena India\"",
         "autoAdded": "2026-05-10",
         "source": "Google News RSS"
+      },
+      {
+        "date": "2026 May 13",
+        "event": "Newly sworn-in BJP government (CM Suvendu Adhikari) grants fresh consent for CBI prosecution in the SSC teacher recruitment scam and two related cases — reversing the previous TMC government's stance of withholding prosecution consent and potentially unblocking stalled trial proceedings.",
+        "source": "The Economic Times, 13 May 2026; PTI"
       }
     ],
     "summary": "West Bengal's most consequential corruption case by institutional damage. The School Service Commission's Group C/D and teacher recruitment processes were systematically rigged — OMR sheets altered, rank lists manipulated, unqualified candidates inserted in exchange for cash payments routed through the Education Minister and the SSC chairman. The Supreme Court in April 2024 took the extraordinary step of cancelling all 25,753 tainted appointments and ordering a fresh, court-monitored process. The cash seizures at Arpita Mukherjee's home — ₹49.8 crore stacked in bundles — became an iconic image of Bengal's governance failure.",
@@ -352,7 +357,7 @@
     "nextHearing": {
       "date": "2026-05-19",
       "court": "Supreme Court of India",
-      "matter": "Status report on fresh recruitment progress; Partha Chatterjee bail plea"
+      "matter": "Status report on fresh recruitment progress under new BJP government; Partha Chatterjee bail plea"
     }
   },
   {
@@ -428,6 +433,11 @@
         "date": "2024–26",
         "event": "Trial proceeds; BSF officer convicted; chargesheet against Mondal being heard.",
         "source": "CBI Special Court, Asansol; BSF court-martial verdict; PTI"
+      },
+      {
+        "date": "2026 May",
+        "event": "New BJP government under CM Suvendu Adhikari signals renewed focus on border cattle smuggling — early policy signals include tightening of BSF coordination and resumption of border fencing in Cooch Behar and Murshidabad. Impact on ongoing CBI trial against Anubrata Mondal to be assessed.",
+        "source": "BJP government policy statements; The Hindu, May 2026"
       }
     ],
     "summary": "A decade-long organised cattle smuggling network operated at Bengal's border with Bangladesh, allegedly under the political protection of TMC's powerful Birbhum district chief Anubrata Mondal. BSF officers were bribed, cattle traders paid fixed tolls, and proceeds allegedly flowed upwards through the political hierarchy. The CBI's arrest of Mondal in August 2022 — who had been summoned nine times before and refused to appear — was a watershed moment. A BSF sub-inspector has been convicted; the trial against Mondal continues.",
@@ -635,9 +645,14 @@
         "source": "CBI chargesheets; Calcutta HC monitoring orders 2022–24"
       },
       {
-        "date": "2026 May",
-        "event": "New BJP government pledges full investigation and victim relief as one of its first stated priorities.",
-        "source": "BJP election manifesto 2026; ECI results declared 4 May 2026"
+        "date": "2026 May 9",
+        "event": "BJP government sworn in under CM Suvendu Adhikari; full investigation into 2021 post-poll violence cases and victim relief listed as first-week stated priorities.",
+        "source": "BJP election manifesto 2026; swearing-in ceremony statements, 9 May 2026"
+      },
+      {
+        "date": "2026 May 16",
+        "event": "West Bengal police files FIR against Opposition Leader Abhishek Banerjee (TMC) for allegedly inflammatory election-period remarks; DGP separately directs district police to register all pending post-election violence complaints — a first concrete signal of changed policing posture under the new government.",
+        "source": "The New Indian Express, 16 May 2026; PTI"
       }
     ],
     "summary": "In the hours and days following TMC's 2021 assembly election victory, the National Human Rights Commission documented 16 confirmed deaths, widespread displacement, arson of homes, and sexual violence primarily targeting political opponents and their families. The NHRC report described a \"complete breakdown of constitutional machinery.\" The Calcutta High Court ordered CBI probes into 8 specific cases. While some chargesheets have been filed, the pace of justice has been slow, bail has been routinely granted, and comprehensive accountability — including for higher-level direction of the violence — has not been established.",
@@ -645,7 +660,7 @@
     "nextHearing": {
       "date": "2026-06-05",
       "court": "Calcutta HC",
-      "matter": "CBI progress report on ongoing FIRs; victim compensation directions"
+      "matter": "CBI progress report on ongoing FIRs; victim compensation directions; new state government's cooperation to be assessed"
     }
   }
 ]
