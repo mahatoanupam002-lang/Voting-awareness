@@ -31,14 +31,20 @@
     { "name": "Anupam Biswas",           "constituency": "Ranaghat Dakshin",    "party": "BJP", "assets2021": 48,   "assets2026": 130,  "verified2021": true,  "note": "2021: ₹48.2 lakh · 2026: ₹1.3 cr (ECI affidavit); +170% growth; self-employed; crossed ₹1 cr threshold" },
     { "name": "Sangita Roy",             "constituency": "Sitai",               "party": "TMC", "assets2021": 47,   "assets2026": 78,   "verified2021": true,  "note": "2021: ₹46.5 lakh · 2026: ₹77.5 lakh (ECI affidavit); +67% growth; won Sitai in 2026" },
     { "name": "Surajit Mitra Badal",     "constituency": "Basirhat Dakshin",    "party": "TMC", "assets2021": 69,   "assets2026": 180,  "verified2021": true,  "note": "2021: ₹68.5 lakh · 2026: ₹1.8 cr (ECI affidavit); +163% growth; accountant and businessman" },
-    { "name": "Dipankar Jana",           "constituency": "Kakdwip",             "party": "TMC", "assets2021": 9,    "assets2026": 18,   "verified2021": true,  "note": "2021: ₹9.2 lakh · 2026: ₹17.7 lakh (ECI affidavit); +92% growth; won Kakdwip in 2026" },
+    { "name": "Dipankar Jana",           "constituency": "Kakdwip",             "party": "TMC", "assets2021": 9,    "assets2026": 18,   "verified2021": true,  "note": "2021 Kakdwip winner (TMC); declared ₹9.2 lakh in 2021 · ₹17.7 lakh in 2026. Lost Kakdwip in 2026 to BJP's Dipankar Jana." },
     { "name": "Md. Tauseffur Rahman",    "constituency": "Basirhat Uttar",      "party": "TMC", "assets2021": 8,    "assets2026": 20,   "verified2021": true,  "note": "2021: ₹8.4 lakh · 2026: ₹20.2 lakh (ECI affidavit); +141% growth; no immovable property; Tata Safari primary asset" },
     { "name": "Paresh Ram Das",          "constituency": "Mandirbazar",         "party": "TMC", "assets2021": 58,   "assets2026": 100,  "verified2021": true,  "note": "2021: ₹57.8 lakh · 2026: ₹1.0 cr (ECI affidavit); +73% growth; won Mandirbazar in 2026" },
     { "name": "Parthasarathi Chatterjee","constituency": "Nadia Sadar",         "party": "TMC", "assets2021": 50,   "assets2026": 136,  "verified2021": true,  "note": "2021: ₹49.9 lakh · 2026: ₹1.36 cr (ECI affidavit); +173% growth; commercial/residential holdings in Ranaghat and Dum Dum" },
     { "name": "Sadhan Ghosh",            "constituency": "Karimpur",            "party": "TMC", "assets2021": 82,   "assets2026": 240,  "verified2021": true,  "note": "2021: ₹82.1 lakh · 2026: ₹2.4 cr (ECI affidavit); +192% growth; ₹75 lakh liabilities declared — highest debt-to-asset ratio" },
     { "name": "Bankim Chandra Ghosh",    "constituency": "Tehatta",             "party": "TMC", "assets2021": 110,  "assets2026": 180,  "verified2021": true,  "note": "2021: ₹1.1 cr · 2026: ₹1.8 cr (ECI affidavit); +64% growth; won Tehatta in 2026" },
     { "name": "Haripada Barman",         "constituency": "Hemtabad",            "party": "TMC", "assets2021": 43,   "assets2026": 176,  "verified2021": true,  "note": "2021: ₹42.6 lakh · 2026: ₹1.76 cr (ECI affidavit); +313% growth; major increase in gold holdings (~490g total)" },
-    { "name": "Utpal Brahmachari",       "constituency": "Raiganj",             "party": "TMC", "assets2021": 89,   "assets2026": 130,  "verified2021": true,  "note": "2021: ₹89.33 lakh from Purbasthali Uttar (ECI affidavit); won Raiganj in 2026" }
+    { "name": "Utpal Brahmachari",       "constituency": "Raiganj",             "party": "TMC", "assets2021": 89,   "assets2026": 130,  "verified2021": true,  "note": "2021: ₹89.33 lakh from Purbasthali Uttar (ECI affidavit); won Raiganj in 2026" },
+    { "name": "Dipankar Jana",          "constituency": "Kakdwip",             "party": "BJP", "assets2021": 1480, "assets2026": 2247, "verified2021": true,  "note": "2026 Kakdwip winner (BJP, AC 131, margin 17,221). ADR/WB Election Watch: ₹14.80 Cr (2021) → ₹22.47 Cr (2026); +51.8% growth. Separate person from TMC's Dipankar Jana who held the seat in 2021." },
+    { "name": "Dilip Saha",            "constituency": "Nabagram",            "party": "BJP", "assets2021": 2852, "assets2026": 4303, "verified2021": true,  "note": "2026 Nabagram winner (BJP, Murshidabad, AC 65, margin 14,221). ADR/WB Election Watch: ₹28.52 Cr (2021) → ₹43.03 Cr (2026); +50.9% growth. Among wealthiest BJP MLAs in 2026 assembly." },
+    { "name": "Firhad Hakim",          "constituency": "Kolkata Port",        "party": "TMC", "assets2021": 1320, "assets2026": 2257, "verified2021": true,  "note": "2026 Kolkata Port winner (TMC, AC 158, margin 27,443). ADR/WB Election Watch: ₹13.20 Cr (2021) → ₹22.57 Cr (2026); +71.0% growth. Kolkata Mayor; Narada sting accused (bail). One of 80 TMC MLAs who survived the BJP wave." },
+    { "name": "Javed Ahmed Khan",      "constituency": "Kasba",               "party": "TMC", "assets2021": 3214, "assets2026": 3953, "verified2021": true,  "note": "2026 Kasba winner (TMC, Kolkata, AC 149, margin 11,240). ADR/WB Election Watch (listed as 'Ahmed Javed Khan'): ₹32.14 Cr (2021) → ₹39.53 Cr (2026); +23.0% growth. One of the wealthiest TMC MLAs in the 2026 assembly." },
+    { "name": "Pulak Roy",             "constituency": "Uluberia Dakshin",    "party": "TMC", "assets2021": 512,  "assets2026": 868,  "verified2021": true,  "note": "2026 Uluberia Dakshin winner (TMC, Howrah, AC 178, margin 18,990). ADR/WB Election Watch: ₹5.12 Cr (2021) → ₹8.68 Cr (2026); +69.5% growth." },
+    { "name": "Motab Shaikh",          "constituency": "—",                   "party": "INC", "assets2021": 1155, "assets2026": 1702, "verified2021": true,  "note": "ADR/WB Election Watch: ₹11.55 Cr (2021) → ₹17.02 Cr (2026); +47.4% growth. Re-contested 2026; INC won only Sujapur and Hansan — constituency and outcome not confirmed in this tracker." }
   ],
   "spotlights": [
     {
@@ -102,6 +108,16 @@
       "source": "ECI affidavit data 2021 & 2026."
     },
     {
+      "type": "extreme",
+      "name": "Firhad Hakim",
+      "role": "TMC · Kolkata Port MLA · Kolkata Mayor · Narada sting accused",
+      "declared2021": "₹13.20 crore",
+      "declared2026": "₹22.57 crore",
+      "growth": "+71% in 5 years",
+      "desc": "Firhad Hakim declared ₹13.20 crore in 2021 and ₹22.57 crore in 2026 — a ₹9.37 crore increase while serving as a state minister and Kolkata's Mayor. He is also a named accused in the Narada sting case, captured on video accepting cash in 2014, and was arrested by the CBI in May 2021 (bailed the same day by Calcutta HC). The 71% asset growth while facing an active criminal trial — and while holding the office of Mayor — is among the highest declared growth rates for a senior minister in this tracker. He was one of only 80 TMC MLAs to survive the 2026 BJP wave, winning Kolkata Port by a margin of 27,443 votes.",
+      "source": "ADR / West Bengal Election Watch, 2026. CBI Narada case records."
+    },
+    {
       "type": "high",
       "name": "Anubrata Mondal (\"Kesto\")",
       "role": "TMC · Bolpur MLA (did not contest 2026 — arrested)",
@@ -113,9 +129,27 @@
     }
   ],
   "partyAverages": [
-    { "party": "BJP",      "color": "#e8640a", "avg2021": 148, "avg2026": 196, "seatsWon2026": 207, "note": "Average across 207 winners; pulled up by a small number of wealthy MLAs" },
-    { "party": "TMC",      "color": "#1a7a3c", "avg2021": 212, "avg2026": 278, "seatsWon2026": 80,  "note": "Higher average reflects TMC's longer incumbency and ministerial wealth accumulation" },
-    { "party": "CPIM",     "color": "#c0171b", "avg2021": 45,  "avg2026": 52,  "seatsWon2026": 5,   "note": "CPIM candidates historically declare lower assets; party discipline on wealth display" },
-    { "party": "Congress", "color": "#1565c0", "avg2021": 89,  "avg2026": 110, "seatsWon2026": 3,   "note": "Small sample size; averages less meaningful with fewer winners" }
-  ]
+    { "party": "BJP",      "color": "#e8640a", "avg2021": 194, "avg2026": 297, "seatsWon2026": 207, "note": "ADR/WB Election Watch 2026: ₹1.94 Cr avg (2021) → ₹2.97 Cr avg (2026); pulled up by a small number of very wealthy MLAs; median is substantially lower" },
+    { "party": "TMC",      "color": "#1a7a3c", "avg2021": 348, "avg2026": 536, "seatsWon2026": 80,  "note": "ADR/WB Election Watch 2026: ₹3.48 Cr avg (2021) → ₹5.36 Cr avg (2026); higher average reflects 14 years of incumbency and ministerial wealth accumulation" },
+    { "party": "CPIM",     "color": "#c0171b", "avg2021": 45,  "avg2026": 52,  "seatsWon2026": 5,   "note": "Estimated from ECI affidavit sample; ADR aggregate not separately published for CPIM 2026 cohort. Party discipline historically suppresses declared wealth." },
+    { "party": "Congress", "color": "#1565c0", "avg2021": 1120, "avg2026": 1792, "seatsWon2026": 2,  "note": "ADR/WB Election Watch 2026: ₹11.20 Cr avg (2021) → ₹17.92 Cr avg (2026). INC won only 2 seats (Sujapur, Hansan); high average reflects wealthy urban/zamindar-background candidates in their winning pockets." }
+  ],
+  "macroStats": {
+    "source": "ADR / West Bengal Election Watch, 2026 Assembly Election",
+    "assemblySeatsAnalysed": 292,
+    "totalAssets2021Lakh": 73876,
+    "totalAssets2026Lakh": 109100,
+    "avgPerMLA2021Lakh": 253,
+    "avgPerMLA2026Lakh": 373,
+    "avgRecontestingCohort2021Lakh": 290,
+    "avgRecontestingCohort2026Lakh": 447,
+    "crorepatiCount2021": 158,
+    "crorepatiCount2026": 178,
+    "crorepatiShare2021Pct": 54,
+    "crorepatiShare2026Pct": 61,
+    "netCrorepatiIncrease": 20,
+    "totalAssetsGrowthPct": 47.7,
+    "avgPerMLAGrowthPct": 47.4,
+    "recontestingCohortGrowthPct": 54.1
+  }
 }
