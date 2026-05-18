@@ -57,6 +57,24 @@
       "label": "Border & Security",
       "icon": "🛡️",
       "num": "IX"
+    },
+    {
+      "id": "health",
+      "label": "Healthcare & Public Health",
+      "icon": "🏨",
+      "num": "X"
+    },
+    {
+      "id": "industry",
+      "label": "Traditional Industries",
+      "icon": "🧵",
+      "num": "XI"
+    },
+    {
+      "id": "culture",
+      "label": "Culture, Heritage & Welfare",
+      "icon": "🎭",
+      "num": "XII"
     }
   ],
   "pledges": [
@@ -940,6 +958,1791 @@
       "keywords": [
         "infiltration detect delete deport Bengal BJP 2026",
         "NRC Bengal illegal infiltrators BJP 2026"
+      ]
+    },
+    {
+      "id": "white-paper",
+      "category": "governance",
+      "title": "White Paper on TMC's Financial Mismanagement",
+      "detail": "BJP promised to release a comprehensive white paper exposing the financial irregularities, corruption, and fund diversions of the TMC government over 14 years — covering MGNREGS, housing schemes, irrigation funds, and central grant utilisation.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No white paper released or announced as of May 2026.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "white paper TMC financial mismanagement BJP Bengal 2026"
+      ]
+    },
+    {
+      "id": "vacant-posts",
+      "category": "governance",
+      "title": "Fill 3 Lakh Government Vacancies Within 1 Year",
+      "detail": "BJP pledged to fill all vacant government posts — estimated at over 3 lakh positions — through transparent, merit-based recruitment via the newly constituted State Public Service Commission within one year of taking office.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "1 year",
+      "deadlineDate": "2027-05-01",
+      "updateNote": "Recruitment process not yet announced as of May 2026.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "government vacancies recruitment Bengal BJP 2026 3 lakh jobs"
+      ]
+    },
+    {
+      "id": "panchayat-anti-corruption",
+      "category": "governance",
+      "title": "Anti-Corruption Drive in Panchayats — Social Audits and Vigilance Committees",
+      "detail": "BJP committed to establishing social audit cells and gram sabha vigilance committees in all 3,354 gram panchayats to monitor fund utilisation, MGNREGS attendance, and housing scheme allocations — with mandatory public disclosure of all expenditures.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No panchayat audit initiative launched yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "panchayat corruption social audit Bengal BJP 2026 MGNREGS"
+      ]
+    },
+    {
+      "id": "police-restructure",
+      "category": "governance",
+      "title": "Independent and Professional Police Restructuring",
+      "detail": "BJP pledged to restructure the West Bengal Police to ensure operational independence from political interference — including fixed tenures for district SPs, an independent Police Complaints Authority, and merit-based postings.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "6 months",
+      "deadlineDate": "2026-11-01",
+      "updateNote": "No structural police reform announced as of May 2026.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "police reform Bengal BJP 2026 independent SP tenure"
+      ]
+    },
+    {
+      "id": "corrupt-officials-penalty",
+      "category": "governance",
+      "title": "Fast-Track Prosecution of Corrupt Officials",
+      "detail": "BJP promised to establish special fast-track courts for corruption cases against government officials — with a mandate to complete trials within 6 months — and to create a dedicated anti-corruption directorate reporting directly to the Chief Minister.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Anti-corruption directorate not yet established.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "fast track corruption court Bengal BJP 2026 officials"
+      ]
+    },
+    {
+      "id": "land-encroachment",
+      "category": "governance",
+      "title": "Anti-Land-Encroachment Task Force — Protect Government and Temple Land",
+      "detail": "BJP pledged to create a dedicated task force to identify and reclaim encroached government land, forest land, and temple properties — with a digital land bank and grievance portal for citizens to report encroachments.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No anti-encroachment drive launched yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "land encroachment Bengal BJP 2026 temple government land"
+      ]
+    },
+    {
+      "id": "religious-freedom",
+      "category": "governance",
+      "title": "Ensure Religious Freedom and Temple Protection",
+      "detail": "BJP promised to end attacks on Hindu temples and religious sites, establish a Temple Protection Board, restore all seized or damaged religious properties, and ensure security forces for major religious festivals.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Temple Protection Board not yet constituted as of May 2026.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "religious freedom temple protection Bengal BJP 2026 Hindu"
+      ]
+    },
+    {
+      "id": "e-governance",
+      "category": "governance",
+      "title": "End-to-End E-Governance — All Citizen Services Online in 100 Days",
+      "detail": "BJP pledged to digitise all citizen-facing government services — including certificates, welfare scheme applications, and ration card management — through a single unified portal, with Jan Seva Kendras in every gram panchayat.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No unified e-governance portal launched yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "e-governance Bengal BJP 2026 digital citizen services portal"
+      ]
+    },
+    {
+      "id": "kolkata-vision",
+      "category": "governance",
+      "title": "Kolkata Vision 2030 — Smart City Upgrade and Infrastructure Revival",
+      "detail": "BJP pledged a dedicated Rs. 10,000 crore Kolkata Vision 2030 plan covering road repair, underground cabling, smart traffic management, flood drainage, heritage building restoration, and transformation of the city into a world-class business destination.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No Kolkata Vision plan announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Kolkata smart city 2030 BJP 2026 infrastructure"
+      ]
+    },
+    {
+      "id": "land-registry",
+      "category": "governance",
+      "title": "Transparent Land Registry — Digital Mutation Within 7 Days",
+      "detail": "BJP promised to eliminate corruption in land registration by digitising all land records, enabling online mutation within 7 working days, and establishing a citizen grievance system for disputed land records.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section I",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Land registry reform not initiated as of May 2026.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "land registry digital mutation Bengal BJP 2026 7 days"
+      ]
+    },
+    {
+      "id": "durga-squads",
+      "category": "women",
+      "title": "Durga Vahini Safety Squads — Women's Patrol Units in Every District",
+      "detail": "BJP pledged to deploy dedicated all-women Durga Vahini rapid-response patrol squads in every district for fast response to crimes against women — with a dedicated helpline and GPS-tracked vehicles.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No Durga Vahini squad deployment announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Durga Vahini women safety squad Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "nari-desk",
+      "category": "women",
+      "title": "Nari Help Desks in Every Police Station",
+      "detail": "BJP promised to establish dedicated Nari Suraksha Help Desks — staffed by women officers — in every police station in West Bengal for immediate, confidential handling of complaints from women victims.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Nari Help Desks not yet established as of May 2026.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Nari help desk women police station Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "women-battalions",
+      "category": "women",
+      "title": "All-Women Police Battalions in Every Division",
+      "detail": "BJP pledged to raise one all-women police battalion in each police division — 7 divisions in total — trained in anti-crime operations, crowd management, and women's welfare enforcement.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "1 year",
+      "deadlineDate": "2027-05-01",
+      "updateNote": "Women police battalion plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "women police battalion Bengal BJP 2026 division"
+      ]
+    },
+    {
+      "id": "women-hostels",
+      "category": "women",
+      "title": "Working Women's Hostels in All 23 Districts",
+      "detail": "BJP promised to build affordable, secure working women's hostels in every district headquarter — with subsidised rent, CCTV, security guards, and access to skilling and childcare facilities.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No hostel construction plan announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "working women hostel Bengal BJP 2026 district"
+      ]
+    },
+    {
+      "id": "anganwadi-asha",
+      "category": "women",
+      "title": "Salary Hike and Regularisation for Anganwadi and ASHA Workers",
+      "detail": "BJP pledged to regularise Anganwadi and ASHA workers as government employees with fixed monthly salaries of Rs. 18,000+, ESI and PF benefits, annual increments, and grievance redressal mechanisms.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No regularisation order or salary hike announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Anganwadi ASHA worker salary regularisation Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "child-marriage",
+      "category": "women",
+      "title": "Zero-Tolerance Drive Against Child Marriage",
+      "detail": "BJP promised to launch a state-wide enforcement drive to end child marriage — with mandatory birth registration, school enrolment tracking, special child marriage prohibition officers in every block, and community awareness campaigns.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No formal child marriage elimination drive announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "child marriage Bengal BJP 2026 zero tolerance enforcement"
+      ]
+    },
+    {
+      "id": "past-women-cases",
+      "category": "women",
+      "title": "Re-Investigate All Shelved Women's Crime Cases from TMC Era",
+      "detail": "BJP pledged to constitute a special review commission to re-open and investigate all women's crime cases — rape, trafficking, and murder — that were closed or suppressed under TMC governance, beginning with Sandeshkhali.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Special review commission not constituted as of May 2026.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "women crime cases review Bengal BJP 2026 Sandeshkhali TMC era"
+      ]
+    },
+    {
+      "id": "female-workforce-incentive",
+      "category": "women",
+      "title": "Incentives for Private Employers Hiring Women — Nari Rozgar Protsahan",
+      "detail": "BJP promised to subsidise PF/ESI contributions for private companies maintaining 30% or more female workforce and to offer land and power subsidies to units in women-led or women-majority employment categories.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No employer incentive policy for women workforce announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "women employment incentive Bengal BJP 2026 private employer"
+      ]
+    },
+    {
+      "id": "women-microcredit",
+      "category": "women",
+      "title": "Micro-Credit Fund for Women Entrepreneurs — Rs. 1 Lakh Interest-Free",
+      "detail": "BJP pledged to provide Rs. 1 lakh interest-free loans to women entrepreneurs through a dedicated Nari Udyog Fund — targeting self-help group members, first-generation entrepreneurs, and rural women starting micro-enterprises.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No women micro-credit fund announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "women microcredit loan Bengal BJP 2026 interest free SHG"
+      ]
+    },
+    {
+      "id": "childcare-centers",
+      "category": "women",
+      "title": "Creche and Childcare Centres at Workplaces and Panchayat Bhavans",
+      "detail": "BJP promised to establish free creche and childcare facilities at all government workplaces, industrial clusters, and gram panchayat bhavans — enabling working mothers to leave children safely while at work.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No childcare centre scheme announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "creche childcare working women Bengal BJP 2026 panchayat"
+      ]
+    },
+    {
+      "id": "gender-training",
+      "category": "women",
+      "title": "Mandatory Gender-Sensitisation Training for All Police Officers",
+      "detail": "BJP pledged to make gender-sensitisation and women's rights training mandatory in annual refresher courses for all police officers — with an external audit of departmental response to women's complaints every 6 months.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "6 months",
+      "deadlineDate": "2026-11-01",
+      "updateNote": "No gender training mandate issued yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "gender sensitisation police training Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "women-legal-aid",
+      "category": "women",
+      "title": "Free Legal Aid Cells for Women at Every District Court",
+      "detail": "BJP promised to establish state-funded women's legal aid cells in every district court, providing free legal representation and counselling for survivors of domestic violence, rape, trafficking, and property disputes.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No legal aid cell established yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "women legal aid district court Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "women-sanitation",
+      "category": "women",
+      "title": "100% Functional Toilets for Women in All Schools and Panchayats",
+      "detail": "BJP pledged to audit and restore all non-functional toilets in government schools and gram panchayat buildings, construct missing units, and appoint sanitation monitors — ensuring dignity and hygiene for girls and women.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No toilet audit or restoration programme announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "women toilet sanitation school panchayat Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "single-mother-stipend",
+      "category": "women",
+      "title": "Monthly Stipend for Destitute Single Mothers — Rs. 2,000/Month",
+      "detail": "BJP promised a monthly stipend of Rs. 2,000 to all destitute single mothers — widows, deserted wives, and unmarried mothers — identified through gram sabha verification and enrolled under the scheme within 100 days.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Stipend scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "single mother stipend Bengal BJP 2026 widow destitute"
+      ]
+    },
+    {
+      "id": "women-cooperative-markets",
+      "category": "women",
+      "title": "Women's Cooperative Bazaars and SHG Marketplaces in Every Block",
+      "detail": "BJP pledged to establish dedicated women's cooperative marketplaces in every block — providing SHG members and women entrepreneurs with permanent, low-cost stalls, supply chain linkages, and e-commerce onboarding.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No cooperative marketplace scheme announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "women cooperative bazaar SHG marketplace Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "maternal-mental-health",
+      "category": "women",
+      "title": "Maternal Mental Health Support Through PHCs and ASHA Network",
+      "detail": "BJP pledged to integrate maternal mental health screening and counselling into all PHC and sub-centre services — with trained ASHA workers identifying post-partum depression and anxiety cases and referring them to district-level support.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No maternal mental health integration programme announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "maternal mental health PHC ASHA Bengal BJP 2026 postpartum"
+      ]
+    },
+    {
+      "id": "dowry-courts",
+      "category": "women",
+      "title": "Fast-Track Dowry and Domestic Violence Courts in Every Division",
+      "detail": "BJP promised to set up dedicated fast-track courts for dowry harassment, domestic violence, and matrimonial cruelty cases in every police division — with a 90-day trial mandate and mandatory interim protection orders.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section II",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No fast-track dowry/DV court announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "dowry domestic violence fast track court Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "girl-graduation-grant",
+      "category": "education",
+      "title": "Rs. 25,000 Grant for Girls Completing Graduation — Shiksha Setu",
+      "detail": "BJP promised a one-time cash grant of Rs. 25,000 to every girl student who completes a three-year undergraduate degree from a West Bengal institution — disbursed directly into her bank account within 30 days of result declaration.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No graduation grant scheme announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "girl graduation grant Bengal BJP 2026 Shiksha Setu Rs25000"
+      ]
+    },
+    {
+      "id": "khelo-india",
+      "category": "education",
+      "title": "Khelo India — Playgrounds and Sports Infrastructure in Every Gram Panchayat",
+      "detail": "BJP pledged to build or upgrade playgrounds with basic sports infrastructure in every gram panchayat under Khelo India — and to hold annual inter-panchayat sports tournaments.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Gram panchayat sports infrastructure plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Khelo India playground gram panchayat Bengal BJP 2026 sports"
+      ]
+    },
+    {
+      "id": "skill-centers",
+      "category": "education",
+      "title": "Skill Development Centres in Every Block — 1,000 Centres in 3 Years",
+      "detail": "BJP pledged to establish at least one fully equipped skill development centre in each of Bengal's 341 blocks — offering courses aligned with industry demand in electronics, logistics, hospitality, healthcare, and digital services.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Block-level skill centre rollout not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "skill development centre block Bengal BJP 2026 vocational training"
+      ]
+    },
+    {
+      "id": "startup-ecosystem",
+      "category": "education",
+      "title": "Bengal Startup Ecosystem — Incubators in Every University",
+      "detail": "BJP pledged to establish startup incubation centres in every state university, a Bengal Startup Fund of Rs. 500 crore, and an annual Bengal Startup Summit to attract venture capital and foster youth entrepreneurship.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Startup ecosystem initiative not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "startup incubator Bengal BJP 2026 university fund venture capital"
+      ]
+    },
+    {
+      "id": "iti-revamp",
+      "category": "education",
+      "title": "Modernise All 152 Industrial Training Institutes (ITIs)",
+      "detail": "BJP promised to upgrade all 152 government ITIs with modern machinery, revised curricula aligned to Industry 4.0, and mandatory industry partnerships — with a target of 90% placement within 6 months of completion.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "ITI modernisation plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "ITI industrial training Bengal BJP 2026 modernise vocational"
+      ]
+    },
+    {
+      "id": "student-credit-card",
+      "category": "education",
+      "title": "Guaranteed Student Credit Card — Rs. 10 Lakh Limit, 4% Interest",
+      "detail": "BJP promised to operationalise a guaranteed student credit card scheme with a Rs. 10 lakh revolving credit limit at 4% interest — covering tuition, accommodation, and living expenses for all enrolled students in recognised institutions.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Student credit card scheme not yet launched.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "student credit card Bengal BJP 2026 Rs10 lakh education loan"
+      ]
+    },
+    {
+      "id": "university-infra",
+      "category": "education",
+      "title": "Rs. 1,000 Crore University Infrastructure Upgrade Fund",
+      "detail": "BJP pledged a Rs. 1,000 crore fund to upgrade laboratories, libraries, digital infrastructure, and hostels in all state universities and colleges — prioritising institutions in North Bengal and tribal districts.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "University infrastructure fund not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "university infrastructure fund Bengal BJP 2026 college upgrade"
+      ]
+    },
+    {
+      "id": "sports-academies",
+      "category": "education",
+      "title": "Sports Academies in All 23 Districts — Identify Olympic Talent",
+      "detail": "BJP promised to establish residential sports academies in all 23 districts — offering coaching in football, athletics, wrestling, shooting, and archery — with a talent-identification drive targeting Class 6 to 9 students.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "District sports academy plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "sports academy district Bengal BJP 2026 Olympic talent"
+      ]
+    },
+    {
+      "id": "student-hostels",
+      "category": "education",
+      "title": "Subsidised Student Hostels Near All State Universities",
+      "detail": "BJP pledged to build subsidised hostels for students near all state universities and large colleges — prioritising girl students, SC/ST/OBC students, and students from remote districts.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Subsidised student hostel scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "student hostel university Bengal BJP 2026 subsidised"
+      ]
+    },
+    {
+      "id": "digital-skills",
+      "category": "education",
+      "title": "Digital Literacy and Coding in All Government Schools (Classes 6 to 12)",
+      "detail": "BJP promised to introduce mandatory digital literacy and basic coding curriculum in all government schools from Class 6, with computer labs, internet connectivity, and trained teachers — targeting 1 crore students by 2028.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Digital literacy school programme not launched yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "digital literacy coding school Bengal BJP 2026 computer lab"
+      ]
+    },
+    {
+      "id": "overseas-scholarships",
+      "category": "education",
+      "title": "Overseas Scholarships for Meritorious SC/ST/OBC Students",
+      "detail": "BJP pledged 500 overseas scholarships per year for meritorious SC, ST, and OBC students — covering tuition and living costs for postgraduate or doctoral programmes at top 200 global universities.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Overseas scholarship programme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "overseas scholarship SC ST OBC Bengal BJP 2026 global university"
+      ]
+    },
+    {
+      "id": "academic-calendar",
+      "category": "education",
+      "title": "Restore Academic Calendar — Zero Session Loss Policy",
+      "detail": "BJP promised to legislate a zero-session-loss policy for all state universities and colleges — mandating that examinations and admissions follow a fixed annual timetable, with the Governor empowered to intervene if the calendar is disrupted.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section III",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No academic calendar reform legislation announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "academic calendar session loss university Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "district-hospital-upgrade",
+      "category": "health",
+      "title": "Upgrade Every District Hospital to 500-Bed Capacity",
+      "detail": "BJP pledged to expand all district hospitals to minimum 500 beds — with ICU, operation theatres, blood bank, dialysis unit, and 24x7 specialist availability — through central funds and state budget within 3 years.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No district hospital expansion plan announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "district hospital 500 bed Bengal BJP 2026 upgrade ICU"
+      ]
+    },
+    {
+      "id": "digital-phc",
+      "category": "health",
+      "title": "Digital Primary Health Centres With E-Sanjeevani Telemedicine",
+      "detail": "BJP promised to equip all 10,357 sub-centres and PHCs with digital diagnostic tools and full E-Sanjeevani telemedicine connectivity — enabling rural patients to consult specialist doctors via video call without travel.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No digital PHC or E-Sanjeevani rollout announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "digital PHC E-Sanjeevani telemedicine Bengal BJP 2026 rural health"
+      ]
+    },
+    {
+      "id": "jan-aushadhi",
+      "category": "health",
+      "title": "Jan Aushadhi Store in Every Block — Generic Medicines at 90% Discount",
+      "detail": "BJP pledged to open a Pradhan Mantri Jan Aushadhi Kendra in every block, providing over 1,900 generic medicine varieties at up to 90% discount from market prices — targeting 341 functional stores within 100 days.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Jan Aushadhi store rollout status unclear; not publicly tracked.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Jan Aushadhi generic medicine block Bengal BJP 2026 discount"
+      ]
+    },
+    {
+      "id": "specialty-care-rural",
+      "category": "health",
+      "title": "Specialty Care (Cardio, Oncology, Ortho) in Sub-Divisional Hospitals",
+      "detail": "BJP promised to deploy visiting specialist doctors — cardiologists, oncologists, and orthopaedic surgeons — on a weekly rotating basis to all sub-divisional hospitals, reducing the burden of referrals to Kolkata.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "6 months",
+      "deadlineDate": "2026-11-01",
+      "updateNote": "Specialist rotation to sub-divisional hospitals not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "specialty care sub-divisional hospital Bengal BJP 2026 specialist"
+      ]
+    },
+    {
+      "id": "ambulance-network",
+      "category": "health",
+      "title": "24x7 Ambulance Network — 1 Ambulance per 30,000 Population",
+      "detail": "BJP pledged to expand Bengal's ambulance fleet to achieve a ratio of one ambulance per 30,000 population — with GPS tracking, ALS equipment, and a single 108 dispatch centre covering all districts.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No ambulance expansion plan announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "ambulance network Bengal BJP 2026 108 emergency health"
+      ]
+    },
+    {
+      "id": "mobile-health-vans",
+      "category": "health",
+      "title": "Mobile Health Vans for Tribal and Remote Villages",
+      "detail": "BJP promised to deploy at least 500 mobile health vans equipped with doctor, nurse, diagnostic kit, and essential medicines — covering tribal areas of Jhargram, Purulia, Alipurduar, and Sundarban islands on a weekly schedule.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Mobile health van scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "mobile health van tribal remote Bengal BJP 2026 Jhargram Sundarban"
+      ]
+    },
+    {
+      "id": "health-digitization",
+      "category": "health",
+      "title": "Full Digitisation of Patient Records — Ayushman Bharat Digital Mission",
+      "detail": "BJP pledged to onboard all government hospitals onto Ayushman Bharat Digital Mission, creating a unique Health ID for every resident and enabling seamless transfer of medical records across facilities.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "1 year",
+      "deadlineDate": "2027-05-01",
+      "updateNote": "ABDM integration with Bengal government hospitals not begun.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "ABDM Ayushman digital health ID Bengal BJP 2026 patient records"
+      ]
+    },
+    {
+      "id": "medical-supply-chain",
+      "category": "health",
+      "title": "State Medical Supply Corporation to Prevent Drug Shortages",
+      "detail": "BJP pledged to establish a West Bengal State Medical Supply Corporation — centralising procurement, warehousing, and distribution of medicines and equipment to all government hospitals, eliminating stockouts and corruption.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Medical supply corporation not constituted yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "medical supply corporation Bengal BJP 2026 drug shortage hospital"
+      ]
+    },
+    {
+      "id": "nursing-colleges",
+      "category": "health",
+      "title": "New Nursing and Paramedic Colleges in All Divisions",
+      "detail": "BJP promised to establish at least one government nursing college and one paramedic training institute in each of Bengal's 7 divisions — targeting an additional 5,000 trained nurses and 3,000 paramedics annually.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Nursing college expansion plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "nursing college paramedic Bengal BJP 2026 division health workforce"
+      ]
+    },
+    {
+      "id": "private-health-cap",
+      "category": "health",
+      "title": "Regulate Private Hospitals — Fee Cap and Quality Standards",
+      "detail": "BJP pledged to bring all private hospitals under a mandatory fee-disclosure and rate-cap framework — with district-level medical regulation committees, surprise inspections, and a patient grievance portal.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Private hospital regulation framework not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "private hospital fee cap Bengal BJP 2026 regulation patient rights"
+      ]
+    },
+    {
+      "id": "diagnostic-centers",
+      "category": "health",
+      "title": "Free Diagnostic Centres at Every PHC — 50+ Tests at No Cost",
+      "detail": "BJP promised to attach free diagnostic labs to every PHC — offering blood count, sugar, thyroid, urine, X-ray, and ECG tests at zero cost to all patients — powered by a centralised quality-controlled network.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Free PHC diagnostic lab scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "diagnostic centre PHC free test Bengal BJP 2026 blood ECG X-ray"
+      ]
+    },
+    {
+      "id": "picu-nicu",
+      "category": "health",
+      "title": "PICU and NICU Units in Every District Hospital",
+      "detail": "BJP pledged to establish Paediatric Intensive Care Units (PICU) and Neonatal Intensive Care Units (NICU) in every district hospital — to reduce infant and child mortality and eliminate the need to transfer critically ill children to Kolkata.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "PICU/NICU expansion plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "PICU NICU district hospital Bengal BJP 2026 infant mortality child"
+      ]
+    },
+    {
+      "id": "vector-disease",
+      "category": "health",
+      "title": "Intensified Vector-Borne Disease Control — Malaria, Dengue, Kala-Azar",
+      "detail": "BJP promised to launch a comprehensive vector-borne disease elimination programme — including seasonal fogging, larvicidal treatment, community surveillance, and rapid test kits in all PHCs — targeting zero malaria deaths by 2028.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Intensified vector control programme not launched yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "malaria dengue Kala-Azar vector disease Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "contaminated-water",
+      "category": "health",
+      "title": "Contaminated Water Disease Surveillance — Arsenic and Fluoride Prevention",
+      "detail": "BJP pledged to expand water quality testing across all arsenic-affected districts in South Bengal and fluoride-prone regions in Birbhum — installing community water filters and providing safe drinking water kiosks in high-risk villages.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Arsenic/fluoride water safety programme status not updated.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "arsenic fluoride water contamination Bengal BJP 2026 safe drinking"
+      ]
+    },
+    {
+      "id": "mental-health-clinics",
+      "category": "health",
+      "title": "Community Mental Health Clinics in Every Sub-Division",
+      "detail": "BJP promised to establish community mental health outreach clinics in every sub-division — staffed by trained counsellors and visiting psychiatrists — to address substance abuse, depression, and post-disaster trauma, especially in Sundarbans and tea garden areas.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Mental health clinic plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "mental health clinic sub-division Bengal BJP 2026 counsellor psychiatry"
+      ]
+    },
+    {
+      "id": "senior-rehab",
+      "category": "health",
+      "title": "Senior Citizens Rehabilitation and Day-Care Centres",
+      "detail": "BJP pledged to establish senior citizens day-care and rehabilitation centres in every district — providing physiotherapy, occupational therapy, social activities, and doorstep healthcare visits for those above 70.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Senior rehabilitation centre scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "senior citizen rehabilitation day care Bengal BJP 2026 elderly"
+      ]
+    },
+    {
+      "id": "food-drug-safety",
+      "category": "health",
+      "title": "Strengthened Food and Drug Safety Enforcement",
+      "detail": "BJP promised to triple the number of food and drug inspectors, mandate quarterly inspections of all food processing units and pharmacies, and set up rapid testing labs in every district — with a zero-tolerance policy on adulteration.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "No food and drug safety enforcement strengthening announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "food drug safety inspector Bengal BJP 2026 adulteration enforcement"
+      ]
+    },
+    {
+      "id": "blood-banks",
+      "category": "health",
+      "title": "Blood Banks and Thalassemia Units in Every District",
+      "detail": "BJP pledged to establish operational blood banks and thalassemia detection-and-treatment units in every district hospital — with a real-time blood availability portal and community blood donation drives every quarter.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section IV",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Blood bank and thalassemia unit expansion not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "blood bank thalassemia district Bengal BJP 2026 donation"
+      ]
+    },
+    {
+      "id": "potato-mango",
+      "category": "agriculture",
+      "title": "Dedicated Export Policy for Potato, Mango, Litchi — Bengal Agri Export Board",
+      "detail": "BJP promised to establish a Bengal Agricultural Export Board to negotiate long-term export agreements for Bengal's major produce — potato (Hooghly, Bardhaman), mango (Malda), litchi (Murshidabad) — and to subsidise packaging and cold-chain logistics for exporters.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No agricultural export board or policy announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "potato mango export Bengal BJP 2026 agricultural export board"
+      ]
+    },
+    {
+      "id": "matsya-sampada",
+      "category": "agriculture",
+      "title": "Full Implementation of PM Matsya Sampada Yojana in Bengal",
+      "detail": "BJP pledged to utilise Rs. 2,000 crore under PM Matsya Sampada Yojana for Bengal — covering cage culture in reservoirs, seaweed farming, ice plants, fish landing centres, and direct benefit transfer to fishermen's families.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "PMMSY implementation status not tracked separately.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Matsya Sampada fisheries Bengal BJP 2026 PMMSY aquaculture"
+      ]
+    },
+    {
+      "id": "pm-kusum",
+      "category": "agriculture",
+      "title": "PM-KUSUM Solar Pumps for 5 Lakh Farmers",
+      "detail": "BJP pledged to install PM-KUSUM solar-powered irrigation pumps for 5 lakh farmers across Bengal — reducing electricity costs, enabling year-round irrigation, and generating additional income through surplus power sale to the grid.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "PM-KUSUM implementation in Bengal not tracked separately.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "PM-KUSUM solar pump farmer Bengal BJP 2026 irrigation 5 lakh"
+      ]
+    },
+    {
+      "id": "ghatal-masterplan",
+      "category": "agriculture",
+      "title": "Ghatal Master Plan — Permanent Flood Relief for Midnapore and Howrah",
+      "detail": "BJP promised to fast-track the long-delayed Ghatal Master Plan — a Rs. 1,552 crore comprehensive flood-control network of embankments, sluice gates, and river dredging for the Silabati and Kansai river basins — ending decades of annual waterlogging in 7 districts.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Ghatal Master Plan work status: DPR approved; ground work pending.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Ghatal master plan flood Midnapore Howrah BJP 2026 Silabati Kansai"
+      ]
+    },
+    {
+      "id": "cold-storages",
+      "category": "agriculture",
+      "title": "100 New Cold Storage Units in Major Farming Districts",
+      "detail": "BJP pledged to build 100 new cooperative cold storage units in high-produce districts (Hooghly, Bardhaman, Nadia, North 24 Parganas) — with a 50% capital subsidy and last-mile connectivity to mandis — to reduce post-harvest losses.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Cold storage expansion plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "cold storage Bengal BJP 2026 post-harvest loss farmer cooperative"
+      ]
+    },
+    {
+      "id": "organic-farming",
+      "category": "agriculture",
+      "title": "Organic Farming Certification and Market Linkage Programme",
+      "detail": "BJP promised a state-funded organic certification scheme enabling 1 lakh farmers to obtain PGS-India certification within 2 years — with direct linkages to organic retail chains, online platforms, and premium-price government procurement.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Organic farming certification scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "organic farming certification Bengal BJP 2026 PGS market"
+      ]
+    },
+    {
+      "id": "paan-cultivators",
+      "category": "agriculture",
+      "title": "Rs. 5,000 Seasonal Relief and Insurance for Betel (Paan) Cultivators",
+      "detail": "BJP pledged a Rs. 5,000 annual input subsidy and crop insurance scheme for Bengal's betel (paan) cultivators — primarily in East and West Midnapore, Howrah, and North 24 Parganas — who face high climate and market-price risks.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Betel cultivator relief scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "paan betel cultivator relief Bengal BJP 2026 insurance Midnapore"
+      ]
+    },
+    {
+      "id": "rural-roads",
+      "category": "agriculture",
+      "title": "Complete PMGSY Phase-III — All-Weather Roads to Every Village",
+      "detail": "BJP pledged to complete Pradhan Mantri Gram Sadak Yojana Phase-III in Bengal within 2 years — connecting all remaining habitations above 250 population with all-weather roads, and upgrading existing village link roads to bitumen standards.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "PMGSY Phase-III completion status in Bengal not tracked separately.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "PMGSY rural road Bengal BJP 2026 all-weather village connectivity"
+      ]
+    },
+    {
+      "id": "rural-electrification",
+      "category": "agriculture",
+      "title": "24x7 Reliable Electricity to Every Rural Household",
+      "detail": "BJP pledged to ensure 24x7 uninterrupted electricity supply to every rural household — completing last-mile grid connections, replacing failing transformers, and fixing feeder-separation to eliminate industrial-agricultural cross-subsidies that cause cuts.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Rural electricity reliability improvement not tracked separately.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "rural electrification 24x7 power Bengal BJP 2026 household"
+      ]
+    },
+    {
+      "id": "horticulture-export",
+      "category": "agriculture",
+      "title": "Bengal Horticulture Export Hub — Rs. 500 Crore Investment",
+      "detail": "BJP promised a Rs. 500 crore Bengal Horticulture Export Hub near Kolkata — with pack-houses, pre-cooling chambers, and phytosanitary testing labs — to double Bengal's horticultural export earnings within 5 years.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Horticulture export hub not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "horticulture export hub Bengal BJP 2026 Rs500 crore pack-house"
+      ]
+    },
+    {
+      "id": "dairy-cooperatives",
+      "category": "agriculture",
+      "title": "Revive and Expand Dairy Cooperatives on Amul Model",
+      "detail": "BJP pledged to revive defunct dairy cooperatives and establish new village-level milk collection societies — linked to a Bengal Milk Federation — on the Amul cooperative model, targeting 5 lakh litres/day milk procurement by 2028.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Dairy cooperative revival plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "dairy cooperative Amul Bengal BJP 2026 milk farmer cooperative"
+      ]
+    },
+    {
+      "id": "agro-processing",
+      "category": "agriculture",
+      "title": "Agro-Processing Clusters in Every Agricultural District",
+      "detail": "BJP promised to establish agro-processing and value-addition clusters in every agricultural district — with cold chain, primary processing, and packaging facilities — to double farmer income through value-addition before sale.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Agro-processing cluster scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "agro processing cluster food park Bengal BJP 2026 value addition"
+      ]
+    },
+    {
+      "id": "micro-irrigation",
+      "category": "agriculture",
+      "title": "Micro-Irrigation for 10 Lakh Hectares — Drip and Sprinkler Subsidies",
+      "detail": "BJP pledged to cover 10 lakh hectares of Bengal farmland under drip and sprinkler irrigation through a 55% capital subsidy under PM Krishi Sinchai Yojana — prioritising water-scarce Purulia, Bankura, and Birbhum districts.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Micro-irrigation subsidy rollout not separately tracked.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "micro irrigation drip sprinkler Bengal BJP 2026 PMKSY 10 lakh hectare"
+      ]
+    },
+    {
+      "id": "cyclone-relief",
+      "category": "agriculture",
+      "title": "Permanent Cyclone Disaster Response and Relief Fund — Rs. 1,000 Crore",
+      "detail": "BJP promised to establish a permanent Rs. 1,000 crore West Bengal Cyclone Relief and Reconstruction Fund — for immediate relief, home reconstruction, and livelihood restoration for Sundarban coastal communities after every cyclone.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Permanent cyclone relief fund not established yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "cyclone relief fund Sundarban Bengal BJP 2026 Rs1000 crore"
+      ]
+    },
+    {
+      "id": "seed-distribution",
+      "category": "agriculture",
+      "title": "Free High-Yield Certified Seed Kits for All Registered Farmers",
+      "detail": "BJP pledged to distribute free certified high-yield seed kits before every Kharif and Rabi season to all registered farmers — covering paddy, wheat, mustard, vegetables, and pulses — through the state agriculture department network.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Free seed kit scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "seed kit farmer Bengal BJP 2026 high yield Kharif Rabi"
+      ]
+    },
+    {
+      "id": "rural-banking",
+      "category": "agriculture",
+      "title": "Banking Correspondent Network — Doorstep Banking for Every Village",
+      "detail": "BJP promised to deploy banking correspondents and micro-ATMs in every unbanked village — targeting zero unbanked villages in Bengal by 2027 — and to integrate BC services with DBT, PM-Kisan, and MGNREGS payment systems.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Banking correspondent village coverage plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "banking correspondent village Bengal BJP 2026 micro-ATM unbanked DBT"
+      ]
+    },
+    {
+      "id": "fisheries-modernization",
+      "category": "agriculture",
+      "title": "Modernise Inland and Marine Fisheries — New Vessels and Cold Chain",
+      "detail": "BJP pledged to modernise Bengal's marine fisheries by providing subsidised deep-sea fishing vessels, GPS navigation equipment, and cold-chain infrastructure from jetty to market — targeting a 40% increase in marine fish landings by 2029.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section V",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Marine fisheries modernisation plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "fisheries marine Bengal BJP 2026 deep-sea vessel cold chain modernise"
+      ]
+    },
+    {
+      "id": "ease-business",
+      "category": "industry",
+      "title": "Make West Bengal Top-5 in Ease of Doing Business — Single-Window Reform",
+      "detail": "BJP pledged to eliminate manual approvals and establish a single-window DPIIT-compliant clearance system for all industrial approvals — targeting Top-5 ranking in India's Ease of Doing Business index within 2 years.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "1 year",
+      "deadlineDate": "2027-05-01",
+      "updateNote": "Single-window industrial clearance system not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "ease doing business Bengal BJP 2026 single window DPIIT Top-5"
+      ]
+    },
+    {
+      "id": "industrial-corridors",
+      "category": "industry",
+      "title": "Eastern and Southern Industrial Corridors — 50,000 Acres Land Bank",
+      "detail": "BJP promised to develop dedicated Eastern Industrial Corridor (Durgapur-Asansol-Dhanbad) and Southern Corridor (Haldia-Kharagpur-Panskura) with plug-and-play industrial infrastructure — backed by a 50,000-acre state land bank.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Industrial corridor announcement pending.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "industrial corridor Durgapur Haldia Bengal BJP 2026 land bank"
+      ]
+    },
+    {
+      "id": "haldia-port",
+      "category": "industry",
+      "title": "Haldia Port Capacity Expansion — Multi-Modal Logistics Hub",
+      "detail": "BJP pledged to expand Haldia Port's cargo handling capacity to 100 million tonnes per annum and develop it as a multi-modal logistics hub — linking river, rail, and road freight to reduce logistics costs for North-East-bound goods.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Haldia port expansion plan status pending.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Haldia port cargo expansion Bengal BJP 2026 logistics North-East"
+      ]
+    },
+    {
+      "id": "msme-credit",
+      "category": "industry",
+      "title": "MSME Credit Guarantee Fund — Rs. 5,000 Crore Corpus",
+      "detail": "BJP pledged to establish a West Bengal MSME Credit Guarantee Fund with a Rs. 5,000 crore corpus — enabling banks to lend to small businesses without collateral, with the state guaranteeing up to 80% of loan defaults.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "MSME credit guarantee fund not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "MSME credit guarantee fund Bengal BJP 2026 Rs5000 crore small business"
+      ]
+    },
+    {
+      "id": "textile-policy",
+      "category": "industry",
+      "title": "New Textile and Garment Policy — 2 Lakh Jobs in 5 Years",
+      "detail": "BJP promised a dedicated Bengal Textile and Garment Policy — with capital subsidies, GST reimbursement, power tariff concessions, and a Rs. 1,000 crore skill fund — targeting 2 lakh new jobs in garment manufacturing within 5 years.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Bengal Textile Policy not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "textile garment policy Bengal BJP 2026 2 lakh jobs manufacturing"
+      ]
+    },
+    {
+      "id": "expressways",
+      "category": "industry",
+      "title": "Kolkata-Siliguri Expressway and North Bengal Connectivity",
+      "detail": "BJP pledged to fast-track construction of the Kolkata-Siliguri 6-lane expressway and integrate it with the North Bengal Connectivity Grid — cutting travel time from 12 hours to under 6 — under PM Gati Shakti.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Kolkata-Siliguri expressway DPR not cleared yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Kolkata Siliguri expressway Bengal BJP 2026 North Bengal Gati Shakti"
+      ]
+    },
+    {
+      "id": "industrial-power",
+      "category": "industry",
+      "title": "24x7 Reliable and Affordable Power for All Industrial Zones",
+      "detail": "BJP promised to establish dedicated industrial feeders — providing uninterrupted 24x7 power to all industrial zones and EPZs — and to cap industrial tariff increases for 5 years to make Bengal competitive with Gujarat and Tamil Nadu.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Industrial power feeder plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "industrial power feeder Bengal BJP 2026 24x7 reliable electricity tariff"
+      ]
+    },
+    {
+      "id": "it-cluster",
+      "category": "industry",
+      "title": "IT and Electronics Cluster in Rajarhat and Siliguri — 1 Lakh Jobs",
+      "detail": "BJP pledged to develop a world-class IT and electronics manufacturing cluster at Rajarhat and a second cluster in Siliguri — with data centre parks, semiconductor assembly units, and a 1 lakh tech jobs target by 2030.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "IT cluster expansion plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "IT electronics cluster Rajarhat Siliguri Bengal BJP 2026 tech jobs"
+      ]
+    },
+    {
+      "id": "warehouse-hubs",
+      "category": "industry",
+      "title": "Logistics and Warehousing Hubs at Key Rail-Road Junctions",
+      "detail": "BJP promised to develop integrated logistics parks and warehousing hubs at Durgapur, Kharagpur, Siliguri, and Raina under PM Gati Shakti — with cold storage, bonded warehousing, and inter-modal connectivity.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Logistics hub plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "logistics warehouse hub Durgapur Siliguri Bengal BJP 2026 Gati Shakti"
+      ]
+    },
+    {
+      "id": "green-industrial-parks",
+      "category": "industry",
+      "title": "Green Industrial Parks Under PM Gati Shakti — Solar and EV Ready",
+      "detail": "BJP pledged to develop 10 green industrial parks with 100% renewable energy supply, EV charging infrastructure, ZLD water treatment, and green certification — attracting ESG-compliant global manufacturers to Bengal.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Green industrial park plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "green industrial park renewable EV Bengal BJP 2026 ESG solar"
+      ]
+    },
+    {
+      "id": "global-manufacturing",
+      "category": "industry",
+      "title": "Position Bengal as Global Manufacturing Destination — Annual Conclave",
+      "detail": "BJP promised to host an annual Bengal Global Investors Conclave — with binding MoU tracking and a 3-year investment facilitation unit — to attract Rs. 5 lakh crore in manufacturing investments by 2030.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VI",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "No Bengal Global Investors Conclave announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "global manufacturing investors conclave Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "jute-mills",
+      "category": "culture",
+      "title": "Revive Sick Jute Mills and Ensure MSP for Raw Jute",
+      "detail": "BJP pledged to revive all 27 closed or sick jute mills in Hooghly and North 24 Parganas through NJB-supported rehabilitation packages, MSP for raw jute at Rs. 7,000/quintal, and mandatory jute packaging for government procurement.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Jute mill revival package not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "jute mill revival Bengal BJP 2026 MSP NJB Hooghly packaging"
+      ]
+    },
+    {
+      "id": "tea-garden-revival",
+      "category": "culture",
+      "title": "Revive All Closed Tea Gardens — Pay Pending Wages and PF",
+      "detail": "BJP pledged to revive all closed and abandoned tea gardens in Darjeeling, Terai, and Dooars — paying all pending wages and PF from a state-funded corpus — and to invite fresh investors under a new Tea Plantation Rescue Policy.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Closed tea garden revival policy not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "tea garden revival Darjeeling Dooars BJP 2026 closed wages PF"
+      ]
+    },
+    {
+      "id": "darjeeling-tea-brand",
+      "category": "culture",
+      "title": "Protect and Promote Darjeeling Tea GI Brand Globally",
+      "detail": "BJP promised to aggressively protect the Darjeeling Tea Geographical Indication (GI) through international legal action against counterfeit labelling, and to launch a global campaign funded by the Tea Board of India.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "GI enforcement and global branding campaign not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Darjeeling tea GI brand protection Bengal BJP 2026 counterfeit Tea Board"
+      ]
+    },
+    {
+      "id": "silk-weavers",
+      "category": "culture",
+      "title": "Silk Weavers Welfare Board — Murshidabad and Malda",
+      "detail": "BJP pledged to create a dedicated Silk Weavers Welfare Board for the Murshidabad and Malda silk clusters — providing Rs. 2,000/month income support during off-season, subsidised raw silk, and direct-to-consumer market access.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Silk Weavers Welfare Board not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "silk weaver welfare board Murshidabad Malda Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "kumartuli-cluster",
+      "category": "culture",
+      "title": "Kumartuli and Clay-Artisan Cluster Development — Kolkata Heritage Scheme",
+      "detail": "BJP promised to develop Kumartuli as a UNESCO-recognised craft cluster — with low-cost studios, improved drainage, tourist infrastructure, GI-certified Kumartuli idols, and a permanent export facilitation desk for international orders.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Kumartuli cluster scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Kumartuli clay artisan cluster Kolkata BJP 2026 UNESCO GI idol"
+      ]
+    },
+    {
+      "id": "artisan-marketplace",
+      "category": "culture",
+      "title": "National and International Artisan Marketplace for Bengal Crafts",
+      "detail": "BJP pledged to establish a permanent Bengal Crafts Emporium in Kolkata and virtual marketplaces on GeM and global e-commerce platforms — enabling artisans from Bankura, Birbhum, Murshidabad, and Purulia to sell directly to buyers worldwide.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Bengal Crafts Emporium or virtual marketplace not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "artisan marketplace Bengal crafts emporium BJP 2026 GeM global"
+      ]
+    },
+    {
+      "id": "folk-artist-pension",
+      "category": "culture",
+      "title": "Monthly Pension of Rs. 3,000 for Traditional Folk Artists",
+      "detail": "BJP promised a monthly pension of Rs. 3,000 to all registered traditional folk artists — Baul, Bhatiali, Chhau, Gambhira, Jatra, and Patachitra — above age 60, recognising their contribution to Bengal's living cultural heritage.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "Folk artist pension scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "folk artist pension Baul Chhau Jatra Bengal BJP 2026 Rs3000"
+      ]
+    },
+    {
+      "id": "brass-bellmetal",
+      "category": "culture",
+      "title": "Brass and Bell-Metal Craft Revival — Bankura and Birbhum Cluster",
+      "detail": "BJP pledged to revive the traditional brass and bell-metal craft clusters of Bankura and Birbhum with subsidised raw material, cluster-level common facility centres, and GI branding — providing livelihood to 50,000 artisan families.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Brass and bell-metal cluster scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "brass bellmetal craft Bankura Birbhum Bengal BJP 2026 GI artisan"
+      ]
+    },
+    {
+      "id": "handicraft-expo",
+      "category": "culture",
+      "title": "Annual Bengal Handicraft Export Fair and International Buyer Meets",
+      "detail": "BJP promised to host an annual Bengal Handicraft Export Fair in Kolkata — inviting global buyers, diaspora entrepreneurs, and export-import councils — with free stall allocation for artisan cooperatives and SHGs.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Bengal Handicraft Export Fair not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "handicraft export fair Bengal BJP 2026 buyer meet artisan SHG Kolkata"
+      ]
+    },
+    {
+      "id": "terracotta-industry",
+      "category": "culture",
+      "title": "Terracotta and Dokra Industry Cluster — Bishnupur Heritage Zone",
+      "detail": "BJP pledged to develop a dedicated terracotta and Dokra metal-craft cluster in Bishnupur — with master craftsperson mentoring, national craft museum, GI certification, and tourism integration — under the PM Vishwakarma framework.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Bishnupur terracotta-Dokra cluster scheme not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "terracotta Dokra Bishnupur Bengal BJP 2026 GI craft cluster PM Vishwakarma"
+      ]
+    },
+    {
+      "id": "regional-languages",
+      "category": "culture",
+      "title": "Protect and Promote Bengali, Nepali, Santali, and Rajbanshi Languages",
+      "detail": "BJP promised to give official recognition and government medium-of-instruction status to Nepali, Santali (in Ol Chiki script), and Rajbanshi alongside Bengali — with dedicated academies, school textbooks, and Doordarshan programmes for each language.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Regional language recognition and academy plan not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Bengali Nepali Santali Rajbanshi language Bengal BJP 2026 academy school"
+      ]
+    },
+    {
+      "id": "vande-mataram-museum",
+      "category": "culture",
+      "title": "Vande Mataram National Museum in Kolkata",
+      "detail": "BJP pledged to establish a world-class Vande Mataram National Museum in Kolkata — honouring Bankim Chandra Chattopadhyay, Swami Vivekananda, Netaji Subhas Chandra Bose, and Bengal's freedom struggle — with a digital archive and school visit programme.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Vande Mataram Museum not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Vande Mataram museum Kolkata BJP 2026 freedom struggle Netaji Vivekananda"
+      ]
+    },
+    {
+      "id": "pm-vishwakarma",
+      "category": "culture",
+      "title": "PM Vishwakarma Yojana — Full Implementation for All Artisans in Bengal",
+      "detail": "BJP pledged to fully implement PM Vishwakarma Yojana in Bengal — enrolling 10 lakh artisans across 18 trades with Rs. 1 lakh collateral-free loans, free skill training, and digital market linkages.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "PM Vishwakarma Bengal rollout underway at central level; state facilitation pending.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "PM Vishwakarma artisan Bengal BJP 2026 loan skill training 10 lakh"
+      ]
+    },
+    {
+      "id": "pm-ujjwala",
+      "category": "culture",
+      "title": "PM Ujjwala — Free LPG Connections to All Remaining BPL Households",
+      "detail": "BJP pledged to complete the PM Ujjwala Yojana rollout in Bengal — providing free LPG connections with first refill to all remaining BPL households identified through Socio-Economic Caste Census data — targeting 20 lakh new connections.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "PM Ujjwala Bengal completion status not tracked separately.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "PM Ujjwala LPG BPL Bengal BJP 2026 free connection 20 lakh"
+      ]
+    },
+    {
+      "id": "community-boards",
+      "category": "culture",
+      "title": "Bengali Cultural Boards in Every District for Festivals and Heritage",
+      "detail": "BJP promised to establish district-level Bengali Cultural Boards — organising Durga Puja, Poila Boishakh, Rabindra Jayanti, and Netaji Jayanti as public celebrations with government funding, reducing dependence on extortion-based syndicate levies.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "District cultural board formation not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "cultural board district Bengal BJP 2026 Durga Puja Poila Boishakh heritage"
+      ]
+    },
+    {
+      "id": "heritage-tourism",
+      "category": "culture",
+      "title": "Heritage Tourism Circuit — Bishnupur, Murshidabad, Shantiniketan",
+      "detail": "BJP pledged to develop an integrated Heritage Tourism Circuit linking Bishnupur (terracotta temples), Murshidabad (Nawabi architecture), and Shantiniketan — with dedicated tourist trains, hospitality hubs, and international marketing.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Heritage tourism circuit not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "heritage tourism Bishnupur Murshidabad Shantiniketan Bengal BJP 2026"
+      ]
+    },
+    {
+      "id": "unorganized-sector-pension",
+      "category": "culture",
+      "title": "Social Security and Rs. 3,000/Month Pension for Unorganised Sector Workers",
+      "detail": "BJP promised to enrol all unorganised sector workers in Bengal — domestic workers, rickshaw pullers, street vendors, construction workers — under PM-SYM (Shram Yogi Maan-Dhan) with co-contribution and Rs. 3,000/month pension after age 60.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "100 days",
+      "deadlineDate": "2026-08-17",
+      "updateNote": "PM-SYM enrolment drive not launched yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "unorganised sector pension PM-SYM Bengal BJP 2026 domestic worker Rs3000"
+      ]
+    },
+    {
+      "id": "folk-arts-preservation",
+      "category": "culture",
+      "title": "Digital Archive and Preservation Fund for Bengal's Folk Arts",
+      "detail": "BJP pledged to create a comprehensive digital archive of Bengal's intangible cultural heritage — Baul, Bhatiali, Chhau, Patachitra, Gambhira, Kirtan — with funding for master-apprentice transmission programmes and international festival participation.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Folk arts digital archive fund not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "folk arts digital archive Bengal BJP 2026 Baul Chhau Patachitra heritage"
+      ]
+    },
+    {
+      "id": "jal-jeevan",
+      "category": "culture",
+      "title": "Jal Jeevan Mission — 100% Tap Water to Every Rural Home by 2027",
+      "detail": "BJP pledged to complete the Jal Jeevan Mission rollout in Bengal by December 2027 — ensuring every rural household has a functional tap water connection with safe, tested water — targeting the 40% uncovered households, primarily in tribal and coastal areas.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": "2027-12-31",
+      "updateNote": "Jal Jeevan Mission coverage in Bengal at approx. 60% at time of election.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "Jal Jeevan Mission tap water rural Bengal BJP 2026 2027 tribal coastal"
+      ]
+    },
+    {
+      "id": "cultural-monuments-fund",
+      "category": "culture",
+      "title": "Rs. 200 Crore Restoration Fund for Bengal's Historical Monuments",
+      "detail": "BJP promised a Rs. 200 crore Bengal Heritage Restoration Fund — for conservation, lighting, and tourism infrastructure at 200 key historical sites including Hazarduari, Bishnupur temples, Gaur-Pandua ruins, and Ajodhya Hills — in partnership with ASI.",
+      "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) — Section VIII",
+      "status": "watching",
+      "deadlineLabel": "Full term",
+      "deadlineDate": null,
+      "updateNote": "Heritage restoration fund not announced yet.",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
+      "keywords": [
+        "heritage restoration fund Bengal BJP 2026 Rs200 crore ASI monuments"
       ]
     }
   ]

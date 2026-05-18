@@ -834,6 +834,9 @@ a.source-chip:hover { border-color: var(--bjp); color: var(--bjp); }
       <option value="sec-women">👩 Women</option>
       <option value="sec-education">📚 Education</option>
       <option value="sec-security">🛡️ Border &amp; Security</option>
+      <option value="sec-health">🏨 Healthcare</option>
+      <option value="sec-industry">🧵 Industry &amp; Infra</option>
+      <option value="sec-culture">🎭 Culture &amp; Heritage</option>
     </select>
     <span class="jump-arrow-icon" aria-hidden="true">▾</span>
   </div>
@@ -946,7 +949,10 @@ var CAT_TAGS = {
   governance: ['IAS/IPS', 'Anti-Corruption', 'RTI', 'DA Arrears', '7th Pay', 'UCC'],
   women: ['Fast-Track Courts', 'Women Police', 'Mahila Shakti', 'Annapurna Bhandar', 'Free Bus', 'Women Quota'],
   education: ['Teacher Recruitment', 'School Infra', 'SC/ST Scholarships', 'AIIMS', 'IIT', 'IIM'],
-  security: ['Border Fencing', 'Cattle Smuggling', 'Infiltration']
+  security: ['Border Fencing', 'Cattle Smuggling', 'Infiltration'],
+  health: ['Hospitals', 'Jan Aushadhi', 'Telemedicine', 'Ambulance', 'Mental Health', 'Blood Banks'],
+  industry: ['MSME', 'Ease of Business', 'Expressways', 'IT Cluster', 'Haldia Port', 'Green Parks'],
+  culture: ['Jute Mills', 'Tea Gardens', 'Folk Arts', 'Jal Jeevan', 'PM Vishwakarma', 'Heritage Tourism']
 };
 
 // ── Update toggle ────────────────────────────────────────────────────────────
@@ -1195,7 +1201,10 @@ async function loadData() {
     { id: 'governance',  label: 'Governance & Admin',   icon: '🏛️' },
     { id: 'women',       label: "Women's Safety",       icon: '👩' },
     { id: 'education',   label: 'Education & Youth',    icon: '📚' },
-    { id: 'security',    label: 'Border & Security',    icon: '🛡️' }
+    { id: 'security',    label: 'Border & Security',    icon: '🛡️' },
+    { id: 'health',      label: 'Healthcare',            icon: '🏨' },
+    { id: 'industry',    label: 'Industry & Infra',      icon: '🧵' },
+    { id: 'culture',     label: 'Culture & Heritage',    icon: '🎭' }
   ];
 
   catOrder.forEach(function(cat) {
