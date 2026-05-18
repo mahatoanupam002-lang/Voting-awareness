@@ -126,6 +126,62 @@ try {
   logError(`constituencies.json: ${e.message}`);
 }
 
+console.log('\n=== pledges.json Check ===\n');
+
+try {
+  const pd = JSON.parse(readFileSync('public/data/pledges.json', 'utf-8'));
+  const categories = pd.categories || [];
+  const pledges    = pd.pledges    || [];
+
+  if (categories.length === 0) logError('pledges.json: categories array is empty');
+  else                         logOk(`pledges.json: ${categories.length} categories`);
+
+  if (pledges.length === 0) logError('pledges.json: pledges array is empty');
+  else                      logOk(`pledges.json: ${pledges.length} total pledges`);
+
+  // Duplicate ID check
+  const ids     = pledges.map((p) => p.id);
+  const seen    = new Set();
+  const dupes   = ids.filter((id) => { if (seen.has(id)) return true; seen.add(id); return false; });
+  if (dupes.length > 0) logError(`pledges.json: duplicate pledge IDs — ${dupes.join(', ')}`);
+  else                  logOk('pledges.json: no duplicate pledge IDs');
+
+  // Required fields
+  const REQUIRED = ['id', 'category', 'title', 'status'];
+  const missing  = pledges.filter((p) => REQUIRED.some((f) => !p[f]));
+  if (missing.length > 0)
+    logError(`pledges.json: ${missing.length} pledges missing required fields (${missing.map((p) => p.id || '?').join(', ')})`);
+  else
+    logOk('pledges.json: all pledges have required fields');
+
+  // Category consistency — every pledge.category must exist in categories
+  const catIds    = new Set(categories.map((c) => c.id));
+  const badCat    = pledges.filter((p) => !catIds.has(p.category));
+  if (badCat.length > 0)
+    logError(`pledges.json: ${badCat.length} pledges reference unknown category — ${[...new Set(badCat.map((p) => p.category))].join(', ')}`);
+  else
+    logOk('pledges.json: all pledge categories are defined');
+
+  // Valid status values
+  const VALID_STATUS = new Set(['watching', 'partial', 'fulfilled', 'evaded', 'delayed', 'in-progress']);
+  const badStatus = pledges.filter((p) => !VALID_STATUS.has(p.status));
+  if (badStatus.length > 0)
+    logError(`pledges.json: ${badStatus.length} pledges have invalid status values`);
+  else
+    logOk('pledges.json: all pledge statuses are valid');
+
+  // Per-category summary
+  const byCat = {};
+  for (const p of pledges) byCat[p.category] = (byCat[p.category] || 0) + 1;
+  for (const c of categories) {
+    const count = byCat[c.id] || 0;
+    if (count === 0) logWarn(`pledges.json: category "${c.id}" has no pledges`);
+    else             logOk(`pledges.json: ${c.id} — ${count} pledges`);
+  }
+} catch (e) {
+  logError(`pledges.json: ${e.message}`);
+}
+
 console.log('\n=== mlas.json Check ===\n');
 
 try {

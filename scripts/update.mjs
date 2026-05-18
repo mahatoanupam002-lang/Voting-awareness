@@ -301,15 +301,25 @@ async function main() {
       }
     }
 
-    // Parallel news fetch for pledges that have keywords (concurrency = 3)
-    const pledgesWithKw = pledgesObj.pledges.filter((p) => p.keywords && p.keywords.length);
+    // Parallel news fetch — only for pledges that are still being watched
+    // (fulfilled / evaded / delayed pledges don't need live news updates)
+    const pledgesWithKw = pledgesObj.pledges.filter(
+      (p) => p.keywords && p.keywords.length && p.status === 'watching'
+    );
     const pledgeLines = new Array(pledgesWithKw.length);
 
     // Generic terms that appear in nearly every Bengal politics article — not
     // useful for relevance checking on their own.
     const GENERIC_TERMS = new Set([
+      // Political boilerplate
       'west', 'bengal', 'bjp', '2026', 'india', 'new', 'government', 'state',
       'with', 'from', 'that', 'this', 'will', 'have', 'been', 'were', 'they',
+      // Common in nearly every health / welfare article
+      'health', 'scheme', 'policy', 'fund', 'mission', 'plan', 'board',
+      // Common in nearly every rural / agriculture article
+      'rural', 'village', 'block', 'district', 'farmer', 'farming', 'crop',
+      // Common in nearly every development / infra article
+      'crore', 'lakh', 'invest', 'develop', 'project', 'build',
     ]);
 
     // Returns true only if the headline contains ≥1 specific term from the pledge's
