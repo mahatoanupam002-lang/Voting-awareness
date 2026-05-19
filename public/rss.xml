@@ -5,7 +5,7 @@
     <link>https://voting-awareness.vercel.app</link>
     <description>Latest headlines on Bengal corruption cases, court hearings, and political accountability — updated every 6 hours.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 19 May 2026 12:10:29 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 16:19:11 GMT</lastBuildDate>
     <atom:link href="https://voting-awareness.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://voting-awareness.vercel.app/favicon.svg</url>
@@ -78,19 +78,6 @@
       </content:encoded>
     </item>
     <item>
-      <title>ED disburses Rs 127.69 crore to 1.73 lakh Rose Valley scam investors - Dailyhunt</title>
-      <link>https://news.google.com/rss/articles/CBMi5AFBVV95cUxNaWJWZ2llUEx0dnV5YjFhalc1blJtWDJhQk5EVG9RSDRxa0x6YldRMnRudXRsVUZrTU1lbUN3dWVBZEdlN2VJNUVMTG5pSDNtWUU1SFh5d1dyRk1fOW41NFFiRnFhcHNzWmRIaE5qODhrSkk1eXZFdkp5TVlIbWhMMDZQM2Q0Rjh3blI0SWl4dFh2Sm0yZ3BnX185VnllM2tPaV9jVGhtc3AwbFp1akpPV29DSFZpdDA3cmdMMjhON19PU0hvODVCZ0pIbDhpTWpxYlV6WjdqZDJxcUN5R1Bydk9uMEk?oc=5</link>
-      <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
-      <source>Dailyhunt</source>
-      <category>rose-valley</category>
-      <content:encoded>
-        <![CDATA[
-          <p>ED disburses Rs 127.69 crore to 1.73 lakh Rose Valley scam investors - Dailyhunt</p>
-          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
-        ]]>
-      </content:encoded>
-    </item>
-    <item>
       <title>Probe Agency Disburses Rs 127.69 Crore To 1.73 Lakh Rose Valley Scam Victims - NDTV</title>
       <link>https://news.google.com/rss/articles/CBMiuAFBVV95cUxNN1NZbmFMb01FdThJSi03X0pjUHFBRi1kTWt0cW1Ob3FpbzB4UlBraGd1TVVHTGUzbTUxa3ozQW9hdHUtR3E5bnNZMnpRS3BuUU9ad3pmTDl4WDFNZWVIbmlTSjZyQXNtYlByRko3VGdWZWhFekZTV1QyME9QemtZcFB6TUtnSjNDMG1wcWJUOFJwSmoxendmdkRMZF9wYk5VbGJBMW9JUGdKSTBPREpBWXVXVGpDT0oz0gHAAUFVX3lxTE1uWWVLXzZWM2tKSzJKMGhra3o0SGM4cjR5Sl90MzNQYmNjdG5ZVVJveXlhbkVWcDZoM1Y2SUFlRkRScUZmU1NPQmQwRy05eVI1VWpqbEJ2U3hWajRPYTRSbTRKNHlwLXFLRjY2Zl9YeXVPY1pKdVNBUTdzWTdYQThteU41MFg3WWl2TmdhVC1INW1mVFg5ak9WSzRVZFNwSTVZX3pwQXdhZUQxZVd0QU5OYVlwVHBoYWE1M19Eb0k3eg?oc=5</link>
       <pubDate>Tue, 28 Apr 2026 00:00:00 GMT</pubDate>
@@ -99,6 +86,19 @@
       <content:encoded>
         <![CDATA[
           <p>Probe Agency Disburses Rs 127.69 Crore To 1.73 Lakh Rose Valley Scam Victims - NDTV</p>
+          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
+        ]]>
+      </content:encoded>
+    </item>
+    <item>
+      <title>ED compensates 1.73 lakh Rose Valley scam investors in India - The News Mill</title>
+      <link>https://news.google.com/rss/articles/CBMiowFBVV95cUxQTk5kOWFEWkVBS2JSTmsybVN2MHBiSVZUcGxjZXpPTVVfTkZURUZfckpXWjdJZmtPQ25CUHRjOG9HQXc4Y1VHWVpaaEtobktFLWZIWjZmRFVDUEVpZTZLcTdzLXpaT0JCd3FyNEstRWppN0JnSDVWTGo2TmExOWxYVWRMNTlpTnFLcnAwNmpLNk85bk9nVjE4LWxrTHNJRWZSRWpv?oc=5</link>
+      <pubDate>Tue, 28 Apr 2026 00:00:00 GMT</pubDate>
+      <source>The News Mill</source>
+      <category>rose-valley</category>
+      <content:encoded>
+        <![CDATA[
+          <p>ED compensates 1.73 lakh Rose Valley scam investors in India - The News Mill</p>
           <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
         ]]>
       </content:encoded>
@@ -260,27 +260,14 @@
       </content:encoded>
     </item>
     <item>
-      <title>Bengal teacher recruitment scam: ED raids former education minister Partha Chatterjee’s Kolkata residence - The Indian Express</title>
-      <link>https://news.google.com/rss/articles/CBMi9AFBVV95cUxNdDJmNkxQYWRFMTVNSEJmY1ZQSDNKaF90MTU2bkxpVG5LZ3ZoTXNCdnZqaTVmdGNZS2I0dnNwVWtla3RaWG03YTY2ZUxKVXVfYnlKaG1jZ2lqSmdKZlhIdVBObXFsUTYzemMtNzdxZVVGMjhGTU5aXzlpZUsycy1aOVRUblVINXZLYlpCUWtKSFB3RjNLQi11UENhLXd6c1RKZHlQZ1ZWWUJMYVR5TWx0TUF6OEJhZEZ6a1hJSXJBSFBaOW9jbGM3OUZ2VFBiQlNEV3ZOVFdhdjJENjJ6RTNuYmgwWGlFZUpXdzd6b0ZwZ3F6Z2Uz0gH7AUFVX3lxTE40YkxMbVBMS0NXcy0yNk9uVzlIbFJWRl9BVjFuUk9MWG1oYy1yeHFOMnRsdWw0X2V2bGpCaTNNWUxPS2VRcUhManQ4QXBHMVNXS0U3WWl5eU1VQmFLOWlEUG5Qc2FKU1BZME5McDEyWlpyX3R0ZmJ6ajBSdkRhUUNqNktySDhCREJRYmZza05RaW1RRDNPMElpZlJrVmQzQUtsTUpXaHlfLTZBYmctSkRLTVBHTW1FeWtkQlJteTFTQ2lScnR3dTlUOW9rTUpldUNQSzFxUDRnQ3FPUmxsY2kwNkxERXByRlJLcTdLbDY0dFdqOVdrcmttUk53?oc=5</link>
-      <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
-      <source>The Indian Express</source>
+      <title>Recruitment scam: ED conducts raids at West Bengal ex-minister Partha Chatterjee&apos;s house - Dailyhunt</title>
+      <link>https://news.google.com/rss/articles/CBMigwJBVV95cUxPWmdUR1NvclF0UU9DQ1FEdWlaektnM0ZORENZSEIxUmlVWXRuY1Z5cG1xM2VzZEh2V2V6ZGlzRTZUS1ZUSW1OcXNxZHdTWG93TkZyRVNZZHEwbzNERGtaRXRCenVGWVNNQ3FPS1g3VUtoYk5TMVczbkpBZklNcUcwZy04TG1PaThPSXg5OC1hY3RacGcwNDh0WW9nZHVIbGZYekI3b1R1MmFlMmVzZ0NwcFowN2p1aGVUM2hibVVfYXI3Wm9mdjJwWmFzbmV2UmpUZlpoZ3VZYk5ZRGd2b1NpVW8ycWU0Z21YNGFjR0NmbEV1a3VWNUdrMjViSnNBbUR3NWxB?oc=5</link>
+      <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+      <source>Dailyhunt</source>
       <category>ssc-scam</category>
       <content:encoded>
         <![CDATA[
-          <p>Bengal teacher recruitment scam: ED raids former education minister Partha Chatterjee’s Kolkata residence - The Indian Express</p>
-          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
-        ]]>
-      </content:encoded>
-    </item>
-    <item>
-      <title>Mamata defends jailed Birbhum strongman Anubrata Mondal, talks of BJP as the &apos;bigger thief&apos; - Dailyhunt</title>
-      <link>https://news.google.com/rss/articles/CBMiigJBVV95cUxQX3RFWXp2VHM4UDRXUktVLWVRdEhjNVBZY2MzenpfOTlMOFlYUkZ3bnVqejhXX2s2dFhBclNjeklHd09Qa1dRNzlNU3UwQ0dPS1BvTjViUTZSQnBnT3RYODVCYVlnRFllWF9ZbXFtejFSMGEwY1pSMmJiZjlLbWdKa1lXWlZTcE9JN1p1YlFKRnZpRG1CS1J0MzNsa055SXc3eFNmVGllZkhxYWF4OGFOeHdyeTA1R0VJQ0tianRRSE9vckFwemN0cDhLSUVMWGp2UF93LVctRzlxREZZWmFKN3FJa3ctUkN3aHp5TTNhdUMzaGJuOUhlQ285U2I0ZlNrRGtjMzZBN3Rwdw?oc=5</link>
-      <pubDate>Sun, 03 May 2026 00:00:00 GMT</pubDate>
-      <source>Dailyhunt</source>
-      <category>cattle-trafficking</category>
-      <content:encoded>
-        <![CDATA[
-          <p>Mamata defends jailed Birbhum strongman Anubrata Mondal, talks of BJP as the &apos;bigger thief&apos; - Dailyhunt</p>
+          <p>Recruitment scam: ED conducts raids at West Bengal ex-minister Partha Chatterjee&apos;s house - Dailyhunt</p>
           <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
         ]]>
       </content:encoded>
@@ -333,6 +320,19 @@
       <content:encoded>
         <![CDATA[
           <p>Calcutta HC grants permission to Birbhum SP to challenge summons in Anubrata Mondal case - Telegraph India</p>
+          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
+        ]]>
+      </content:encoded>
+    </item>
+    <item>
+      <title>Birbhum SP moves Calcutta HC against NCW summons in Anubrata Mondal case - The Indian Express</title>
+      <link>https://news.google.com/rss/articles/CBMiywFBVV95cUxQT1dpclJPQ2dyaVNZZjZTWl9HaXNHekVTUEE2azRTSnRGX21QNldrZ2RnUDV2SFQxVWNLcU9OaFpyX3Q5ZEhOOWZNcXYzS1BfaEh2Ylh4QmRraGtjVGExYUlOUWpzaS13dDc3a0N5VUZhN1dJOHl2WW5oMzdfWUw0RWhBY3Atdmk1QjhPeGxpY0oyYlI1RUtLM0pXWWpYSFhUMXBWU3E2Wl9ZWlFJc1Q3WmFHaTdoc21LamlpR3RERHFINjRzdDU2UGUwRdIB0gFBVV95cUxQT0NCOVE5MU1Ta2p0MTZCY0pWdWhCNlBTcWRQYUNIakVsT3hDOHhFcGZQSGdMUlFqcG05ZWw1TEZxVW5IOW50c2FzTl9MSmRQQVcxMVRXUlFKUS10SXJfZ1FsVjY4MFY4bnJFZ2FBbVFOTUJ3LU5sZEhLZW83ZjlCbExBQXhEaHdXajlrWFp6YXRSVFBTSDY4d1lwM0lPUDBYS1V3Sy1rYWw3MTV6b1YwOENyLTdidlR5ci1obmxYbzdNRmN0T1U1XzRWOEtLc1dMMHc?oc=5</link>
+      <pubDate>Tue, 08 Jul 2025 00:00:00 GMT</pubDate>
+      <source>The Indian Express</source>
+      <category>cattle-trafficking</category>
+      <content:encoded>
+        <![CDATA[
+          <p>Birbhum SP moves Calcutta HC against NCW summons in Anubrata Mondal case - The Indian Express</p>
           <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
         ]]>
       </content:encoded>
@@ -429,19 +429,6 @@
       </content:encoded>
     </item>
     <item>
-      <title>Bengal PDS Scam: ED Conducting Simultaneous Raids At 12 Locations - Ommcom News</title>
-      <link>https://news.google.com/rss/articles/CBMioAFBVV95cUxNdnZ2RU1Tby1hSzhhUVptNm01WVFpWERyZUlBQkl0T0pOZ2FVOEhaa01oNkwwRkhtQjVRSFB2c1NRRm9mYmtPUTdyUUhpdjFKMUVoUkVHZExrSlhDblQzdjI0Qm1oTmdVLV9vOEVvTVNVcmtSLTFPcEc5WWJRZEhtNGFjVWZKaThzYVg0YnZRd0xDQ3FTN2FHUDdGSFRHMHAw?oc=5</link>
-      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
-      <source>Ommcom News</source>
-      <category>ration-scam</category>
-      <content:encoded>
-        <![CDATA[
-          <p>Bengal PDS Scam: ED Conducting Simultaneous Raids At 12 Locations - Ommcom News</p>
-          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
-        ]]>
-      </content:encoded>
-    </item>
-    <item>
       <title>ED moves Calcutta HC seeking cancellation of ex-Bengal minister Jyoti Priya Mallick’s bail - The Statesman</title>
       <link>https://news.google.com/rss/articles/CBMi2AFBVV95cUxNOXg4cjB5c1BQa2xSNHNOYnJOeVVFSEdvZDRzZmhWZGZlSDVkVXFtMjd6aGFDY1JFSnJTaWNWcGRwZU9vNU1SakNWaHBCQzJVdjhWSWIzX3VnOXk1OHo3Q1RTNm5KSVFpY2s0QllKY1N3eXpZbmFyVmFHX0pabGN4dEc2eTF1QU4yMU1PWE56MVd5WHp1V0NqM2lLSWlvZFg3ekNzZ0wydUZ6WWlhNFRZSWpfc2NXUFBUVm95WXMtTVFXN0JoZFZxZUlBRUU4YjYzSHhuWWtpa27SAd4BQVVfeXFMUElrLVhQdkNpdzJmalA2VXhtYWFvSUxLamJwTXZqLUxjcDY3UTZHMFBWS2JWelF2VnVfNUFja20xby1vN3JlOGVmN0R6TTRsSTY1MjdERDN2bTBzOG9uYnMtZFNhRGxhRXFRMTlsNkVRdHktVDJWVXBNWWNsRGhZRlJBSmhlOHFNWU5oSi1PelRJS0YwYVZmUlNDb3p1YXZWV0JjSmNueUc1ajB1LXVQeGV0Q3FPeXhHY3lLdXN2THpXOC1vaVFKS0tJYjVvczBYYVhtcEtWNC1wOVZrRXRR?oc=5</link>
       <pubDate>Thu, 11 Sep 2025 00:00:00 GMT</pubDate>
@@ -463,6 +450,19 @@
       <content:encoded>
         <![CDATA[
           <p>West Bengal PDS scam: Former Minister Jyotipriya Mallick granted bail - The Hindu</p>
+          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
+        ]]>
+      </content:encoded>
+    </item>
+    <item>
+      <title>Bengal PDS case: Bail for ex-minister Jyotipriya Mallick - The Statesman</title>
+      <link>https://news.google.com/rss/articles/CBMiqwFBVV95cUxNNjZjTXAxcFFtSXJSOHZqalNsWW1NcVlfSU5tNjVsa2ZOcm4zMzFrRUdGalNVektzQUJ4c2V5UlN1Q1R2VEFvYWJHUUV6bi1wUFhtV2pyNVpjR2VOTjhielRHQzNLSlp6R0p2UExjOFAyQjEwd1RvZENQNW1RT2owTDNoV2dPTDlYMFc1eHp3a1NhZ1pnRDdJcDZsS0FEVFhYeHh6OFVEZk50dlnSAbABQVVfeXFMTndCY3g3MFM4Sm9CZExsX08yRW1uSDloYVNTS2JINlpKcHo3dTFPNU1ZR216N2Z5UndCMjZPYlBkQ0dnS29wNDBEb0xCelpxSkhid1BEdEJ2SkFVR2t6dkZ0dkFsNHhuYTc4aW1naXlBd2FNNXRudER6STlLX1c0ak95UkdjV0pacy1XcG5EZnpxLXplQnV1Y2xkYlkwQ3BRV0diVVVtcUkxRmRLWHpGQ0o?oc=5</link>
+      <pubDate>Thu, 16 Jan 2025 00:00:00 GMT</pubDate>
+      <source>The Statesman</source>
+      <category>ration-scam</category>
+      <content:encoded>
+        <![CDATA[
+          <p>Bengal PDS case: Bail for ex-minister Jyotipriya Mallick - The Statesman</p>
           <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
         ]]>
       </content:encoded>
