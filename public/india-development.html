@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="India's development story: a paradox of world-class digital payments and persistent water crises. An overview of India's core challenges from basic survival to 21st-century frontier issues.">
+<meta name="description" content="India's development paradox: world-class digital infrastructure alongside persistent poverty, jobless growth, and a water crisis affecting 600 million. A civic data investigation.">
 <meta property="og:title" content="India's Development Paradox — The Bengal Reader">
-<meta property="og:description" content="From UPI to water scarcity: how a billion-person nation navigates poverty, jobless growth, gender gaps, pollution, and the digital divide simultaneously.">
+<meta property="og:description" content="Five tiers of challenge, five tiers of response. India's growth story — and everything it leaves behind.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="/og-voter-guide.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="India's Development Paradox — The Bengal Reader">
-<meta name="twitter:description" content="From UPI to water scarcity: India's full spectrum of challenges from basic survival to cybersecurity.">
+<meta name="twitter:description" content="From UPI to water scarcity: the full spectrum of India's challenges and the policies trying to fix them.">
 <meta name="twitter:image" content="/og-voter-guide.svg">
 <title>India's Development Paradox — The Bengal Reader</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -21,347 +21,113 @@
 <style>
 :root {
   --saffron: #d97706;
-  --green-india: #1a6b2a;
+  --forest: #1a6b2a;
   --navy: #1565c0;
-  --highlight: #fff3cd;
-  --highlight-green: rgba(26, 107, 42, 0.08);
-  --highlight-red: rgba(192, 23, 27, 0.07);
+  --danger: #c0171b;
 }
 [data-theme='dark'] {
   --saffron: #e8983a;
-  --green-india: #4ca86a;
+  --forest: #4ca86a;
   --navy: #5a9fd4;
-  --highlight: rgba(217, 119, 6, 0.12);
-  --highlight-green: rgba(76, 168, 106, 0.1);
-  --highlight-red: rgba(224, 85, 85, 0.1);
+  --danger: #e05555;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 18px;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 9999; opacity: 0.5;
-}
+body { background: var(--paper); color: var(--ink); font-family: 'Crimson Pro', Georgia, serif; font-size: 18px; line-height: 1.7; overflow-x: hidden; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
 
-/* ── MASTHEAD ── */
-.masthead {
-  border-bottom: 4px double var(--ink);
-  padding: 1.5rem 2rem 1rem;
-  text-align: center;
-  background: var(--paper);
-}
-.masthead-overline {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--muted);
-  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
-  padding: 0.3rem 0; margin-bottom: 1rem;
-}
-.masthead h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.4rem, 6vw, 5rem);
-  font-weight: 900; line-height: 1.0;
-  letter-spacing: -0.02em; text-transform: uppercase;
-}
+/* MASTHEAD */
+.masthead { border-bottom: 4px double var(--ink); padding: 1.5rem 2rem 1rem; text-align: center; }
+.eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); padding: 0.3rem 0; margin-bottom: 1rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.masthead h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 900; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; }
 .masthead h1 em { font-style: italic; color: var(--saffron); }
-.masthead-sub {
-  font-family: 'Playfair Display', serif; font-style: italic;
-  font-size: clamp(1rem, 2.5vw, 1.35rem); color: var(--muted); margin-top: 0.5rem;
-}
-.masthead-meta {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem;
-  letter-spacing: 0.15em; color: var(--muted); margin-top: 1rem;
-  border-top: 1px solid var(--aged); padding-top: 0.6rem;
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
-}
+.deck { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1rem, 2.5vw, 1.35rem); color: var(--muted); margin-top: 0.5rem; }
+.meta-bar { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--muted); margin-top: 1rem; border-top: 1px solid var(--aged); padding-top: 0.6rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
 
-/* ── STATS HERO ── */
+/* HERO STATS */
 .stats-hero { background: var(--ink); color: var(--paper); padding: 2.5rem 2rem; text-align: center; }
-.stats-grid { display: flex; justify-content: center; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
-.stat-cell { padding: 1.2rem 2rem; border-right: 1px solid rgba(255,255,255,0.1); }
-.stat-cell:last-child { border-right: none; }
-.stat-big {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; line-height: 1;
-  color: var(--saffron);
-}
-.stat-big.green { color: #4ca86a; }
-.stat-big.blue { color: #5a9fd4; }
-.stat-big.red { color: var(--accent); }
-.stat-label {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem;
-  letter-spacing: 0.2em; text-transform: uppercase; color: #8a8070; margin-top: 0.3rem;
-}
-.stats-note {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem;
-  color: #6a6050; margin-top: 1.5rem; max-width: 700px;
-  margin-left: auto; margin-right: auto;
-}
+.stat-row { display: flex; justify-content: center; flex-wrap: wrap; max-width: 800px; margin: 0 auto; }
+.stat { padding: 1rem 2rem; border-right: 1px solid rgba(255,255,255,0.1); }
+.stat:last-child { border-right: none; }
+.stat-n { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; line-height: 1; color: var(--saffron); }
+.stat-n.g { color: #4ca86a; }
+.stat-n.r { color: #e05555; }
+.stat-l { font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8a8070; margin-top: 0.3rem; }
+.stats-note { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: #6a6050; margin-top: 1.5rem; max-width: 680px; margin-left: auto; margin-right: auto; }
 
-/* ── LAYOUT ── */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-.article-grid {
-  display: grid; grid-template-columns: 1fr 340px; gap: 3rem;
-  padding: 3rem 0;
-}
-@media (max-width: 860px) {
-  .article-grid { grid-template-columns: 1fr; }
-  .sidebar { display: none; }
-}
+/* MAIN */
+main { padding: 3rem 0; }
 
-/* ── SECTION HEADERS ── */
-.section-label {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem;
-  letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 0.5rem;
-  display: flex; align-items: center; gap: 0.7rem;
-}
-.section-label::before {
-  content: ''; display: inline-block; width: 24px; height: 1px;
-  background: var(--muted);
-}
-.section-number {
-  font-family: 'Playfair Display', serif; font-size: 0.75rem;
-  color: var(--saffron); font-weight: 700;
-}
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 800; line-height: 1.15; margin-bottom: 0.75rem;
-}
-.section-intro {
-  font-family: 'Crimson Pro', serif; font-style: italic;
-  font-size: 1.15rem; color: var(--muted); margin-bottom: 1.5rem;
-  border-left: 3px solid var(--saffron); padding-left: 1rem;
-}
+/* TIER CHROME */
+.tier-lbl { font-family: 'IBM Plex Mono', monospace; font-size: 0.57rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+.tier-lbl::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--muted); }
+.tier-n { font-family: 'Playfair Display', serif; font-size: 0.7rem; color: var(--saffron); font-weight: 700; }
+.section-h { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; line-height: 1.15; margin-bottom: 0.75rem; }
+.section-intro { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 1.1rem; color: var(--muted); margin-bottom: 1.5rem; border-left: 3px solid var(--saffron); padding-left: 1rem; }
 
-/* ── CONTENT BLOCKS ── */
-.issue-block {
-  margin: 1.5rem 0; padding: 1.25rem 1.5rem;
-  border: 1px solid var(--aged); background: var(--paper);
-  position: relative;
-}
-.issue-block::before {
-  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-  width: 3px; background: var(--ink);
-}
-.issue-block.orange::before { background: var(--saffron); }
-.issue-block.green::before { background: var(--green-india); }
-.issue-block.blue::before { background: var(--navy); }
-.issue-block.red::before { background: var(--accent); }
-.issue-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem;
-}
-.issue-body { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
+/* CONTENT BLOCKS */
+.block { margin: 1.2rem 0; padding: 1.2rem 1.5rem; border: 1px solid var(--aged); border-left: 3px solid var(--aged); }
+.block.problem { border-left-color: var(--danger); }
+.block.solution { border-left-color: var(--forest); background: rgba(26,107,42,0.03); }
+.block.navy { border-left-color: var(--navy); }
+[data-theme='dark'] .block.solution { background: rgba(76,168,106,0.06); }
+.block-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.35rem; color: var(--muted); }
+.block.problem .block-tag { color: var(--danger); }
+.block.solution .block-tag { color: var(--forest); }
+.block.navy .block-tag { color: var(--navy); }
+.block-h { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+.block-p { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
 
-/* ── SECTION DIVIDER ── */
-.section-divider {
-  border: none; border-top: 2px solid var(--aged); margin: 2.5rem 0;
-}
+/* PULL QUOTE */
+.pull-quote { margin: 2rem 0; padding: 1.5rem 2rem; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--aged); font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; line-height: 1.4; }
 
-/* ── PULL QUOTE ── */
-.pull-quote {
-  margin: 2rem 0; padding: 1.5rem 2rem;
-  border-top: 3px solid var(--ink); border-bottom: 1px solid var(--aged);
-  font-family: 'Playfair Display', serif; font-size: 1.3rem;
-  font-style: italic; line-height: 1.4; color: var(--ink);
-}
+/* TIER SEPARATOR */
+.tier-sep { height: 1px; background: var(--aged); margin: 3rem 0; }
 
-/* ── DATA LABEL ── */
-.data-pill {
-  display: inline-block;
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.2rem 0.5rem; margin-right: 0.4rem;
-  background: var(--aged); color: var(--muted);
-}
+/* WIDGET */
+.widget { margin: 0 0 3rem; padding: 2rem; border: 2px solid var(--ink); }
+.widget-head { border-bottom: 1px solid var(--aged); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.widget-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+.widget-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.25rem; }
+.ctrl-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem; align-items: flex-end; }
+.ctrl-g { display: flex; flex-direction: column; gap: 0.4rem; }
+.ctrl-l { font-family: 'IBM Plex Mono', monospace; font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.ctrl-btns { display: flex; border: 1px solid var(--ink); overflow: hidden; }
+.cbtn { background: transparent; border: none; border-right: 1px solid var(--aged); font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; cursor: pointer; color: var(--muted); transition: all 0.15s; }
+.cbtn:last-child { border-right: none; }
+.cbtn.on { background: var(--ink); color: var(--paper); }
+.cbtn:hover:not(.on) { background: var(--aged); color: var(--ink); }
+.yr-row { display: flex; align-items: center; gap: 0.8rem; }
+.yr-slider { -webkit-appearance: none; appearance: none; width: 180px; height: 3px; background: var(--aged); outline: none; cursor: pointer; }
+.yr-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--ink); cursor: pointer; }
+.yr-slider::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--ink); cursor: pointer; border: none; }
+.yr-val { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; min-width: 52px; color: var(--saffron); }
+.gini-badge { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--muted); padding: 4px 10px; border: 1px solid var(--aged); }
+.chart-note { font-family: 'IBM Plex Mono', monospace; font-size: 0.57rem; color: var(--muted); margin-top: 0.75rem; letter-spacing: 0.04em; }
 
-/* ── WIDGET: ECONOMIC INEQUALITY EXPLORER ── */
-.widget-section {
-  margin: 2.5rem 0; padding: 2rem;
-  border: 2px solid var(--ink);
-  background: var(--paper);
-}
-.widget-header {
-  border-bottom: 1px solid var(--aged); padding-bottom: 1rem; margin-bottom: 1.5rem;
-}
-.widget-title {
-  font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 800;
-  text-transform: uppercase; letter-spacing: 0.02em;
-}
-.widget-subtitle {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem;
-  letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
-  margin-top: 0.3rem;
-}
-.widget-controls {
-  display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem;
-  align-items: flex-end;
-}
-.ctrl-group { display: flex; flex-direction: column; gap: 0.4rem; }
-.ctrl-label {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem;
-  letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
-}
-.ctrl-toggle {
-  display: flex; gap: 0; border: 1px solid var(--ink); overflow: hidden;
-}
-.ctrl-btn {
-  background: transparent; border: none;
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 5px 14px; cursor: pointer; color: var(--muted);
-  transition: all 0.15s; border-right: 1px solid var(--aged);
-}
-.ctrl-btn:last-child { border-right: none; }
-.ctrl-btn.active { background: var(--ink); color: var(--paper); }
-.ctrl-btn:hover:not(.active) { background: var(--aged); color: var(--ink); }
-.slider-wrap { display: flex; align-items: center; gap: 0.8rem; }
-.year-slider {
-  -webkit-appearance: none; appearance: none;
-  width: 200px; height: 3px; background: var(--aged);
-  outline: none; cursor: pointer;
-}
-.year-slider::-webkit-slider-thumb {
-  -webkit-appearance: none; appearance: none;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--ink); cursor: pointer;
-}
-.year-slider::-moz-range-thumb {
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--ink); cursor: pointer; border: none;
-}
-.year-display {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem; font-weight: 800; min-width: 52px;
-  color: var(--saffron);
-}
-.gini-display {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
-  letter-spacing: 0.1em; color: var(--muted);
-  padding: 4px 10px; border: 1px solid var(--aged);
-}
-#chart-area {
-  width: 100%; overflow: hidden;
-}
-.chart-svg { width: 100%; }
-.chart-note {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem;
-  color: var(--muted); margin-top: 0.75rem; letter-spacing: 0.05em;
-}
+/* RELATED */
+.related { margin: 2.5rem 0 0; padding: 1.5rem 0; border-top: 2px solid var(--ink); }
+.related-l { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.related-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.related-link { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1px solid var(--aged); color: var(--ink); text-decoration: none; transition: all 0.15s; }
+.related-link:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-/* ── SIDEBAR ── */
-.sidebar-card {
-  border: 1px solid var(--aged); padding: 1.2rem;
-  margin-bottom: 1.5rem; background: var(--paper);
-}
-.sidebar-card-title {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem;
-  letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--muted); border-bottom: 1px solid var(--aged);
-  padding-bottom: 0.5rem; margin-bottom: 0.8rem;
-}
-.sidebar-stat {
-  display: flex; justify-content: space-between; align-items: baseline;
-  padding: 0.4rem 0; border-bottom: 1px dashed var(--aged); font-size: 0.9rem;
-}
-.sidebar-stat:last-child { border-bottom: none; }
-.sidebar-stat-label { color: var(--muted); font-size: 0.85rem; }
-.sidebar-stat-value {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
-  font-weight: 700; color: var(--ink);
-}
-
-/* ── FOOTER ── */
-.page-footer {
-  background: var(--ink); color: var(--paper);
-  padding: 2rem; text-align: center;
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem;
-  letter-spacing: 0.1em; color: #6a6050; margin-top: 3rem;
-}
-
-/* ── PART II DIVIDER ── */
-.part-divider {
-  margin: 3rem 0 2rem;
-  padding: 2rem;
-  background: var(--ink);
-  color: var(--paper);
-  text-align: center;
-}
-.part-divider-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
-  color: rgba(245,240,232,0.4); margin-bottom: 0.75rem;
-}
-.part-divider-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 900; line-height: 1.05;
-  letter-spacing: -0.02em; text-transform: uppercase;
-}
-.part-divider-title em { font-style: italic; color: var(--saffron); }
-.part-divider-sub {
-  font-family: 'Crimson Pro', serif; font-style: italic;
-  font-size: 1rem; color: rgba(245,240,232,0.55);
-  margin-top: 0.75rem; max-width: 600px; margin-left: auto; margin-right: auto;
-}
-
-/* ── SOLUTION BLOCKS ── */
-.solution-block {
-  margin: 1.5rem 0; padding: 1.25rem 1.5rem;
-  border: 1px solid var(--aged); background: var(--paper);
-  position: relative;
-}
-.solution-block::before {
-  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-  width: 4px;
-}
-.solution-block.green::before { background: var(--green-india); }
-.solution-block.blue::before { background: var(--navy); }
-.solution-block.orange::before { background: var(--saffron); }
-.solution-tag {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--green-india); margin-bottom: 0.35rem;
-}
-.solution-block.blue .solution-tag { color: var(--navy); }
-.solution-block.orange .solution-tag { color: var(--saffron); }
-
-/* ── VIDEO SECTION ── */
-.video-section {
-  margin: 2rem 0; padding: 1.5rem;
-  background: var(--aged); border-left: 4px solid var(--saffron);
-}
-.video-note {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
-  color: var(--muted); padding: 0.75rem 1rem;
-  border: 1px dashed var(--muted); margin-top: 0.75rem;
-}
+/* FOOTER */
+.page-footer { background: var(--ink); color: #6a6050; padding: 2rem; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; margin-top: 3rem; }
+.page-footer a { color: var(--saffron); }
 
 @media (max-width: 600px) {
-  .stats-grid { flex-direction: column; }
-  .stat-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
-  .widget-controls { flex-direction: column; gap: 1rem; }
-  .year-slider { width: 160px; }
+  .stat-row { flex-direction: column; }
+  .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .ctrl-row { flex-direction: column; gap: 1rem; }
+  .yr-slider { width: 150px; }
   .masthead { padding: 1rem; }
-  .part-divider { padding: 1.5rem 1rem; }
+  .related-links { flex-direction: column; }
 }
 </style>
 </head>
 <body>
 
-<!-- SITE NAV -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav-inner">
     <a href="/" class="site-nav-brand">The Bengal Reader</a>
@@ -383,773 +149,361 @@ body::before {
   </div>
 </nav>
 
-<!-- MASTHEAD -->
 <header class="masthead">
-  <div class="masthead-overline">The Bengal Reader · India in Focus · Analysis</div>
+  <div class="eyebrow">The Bengal Reader · India in Focus · 2025–2026 Analysis</div>
   <h1>India's Development<br><em>Paradox</em></h1>
-  <p class="masthead-sub">From UPI to water crisis — a continent-sized nation's full spectrum of challenges</p>
-  <div class="masthead-meta">
+  <p class="deck">The fastest-growing major economy in the world is home to 600 million people without safe water</p>
+  <div class="meta-bar">
     <span>Updated: May 2026</span>
-    <span>The Bengal Reader · Non-partisan analysis</span>
-    <span>Sources: World Bank · CMIE · Oxfam India · WID · NCRB</span>
+    <span>Non-partisan · Verifiable data</span>
+    <span>World Bank · CMIE · Oxfam India · WID · NCRB</span>
   </div>
 </header>
 
-<!-- HERO STATS -->
 <section class="stats-hero" aria-label="Key statistics">
-  <div class="stats-grid">
-    <div class="stat-cell">
-      <div class="stat-big">1.44B</div>
-      <div class="stat-label">Population</div>
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-n">50%</div>
+      <div class="stat-l">Wealth held by top 1%</div>
     </div>
-    <div class="stat-cell">
-      <div class="stat-big green">7%+</div>
-      <div class="stat-label">GDP Growth Rate</div>
+    <div class="stat">
+      <div class="stat-n r">600M</div>
+      <div class="stat-l">Under high water stress</div>
     </div>
-    <div class="stat-cell">
-      <div class="stat-big blue">17–20%</div>
-      <div class="stat-label">Women's Labour Force Participation</div>
+    <div class="stat">
+      <div class="stat-n g">7%+</div>
+      <div class="stat-l">Annual GDP growth rate</div>
     </div>
-    <div class="stat-cell">
-      <div class="stat-big red">600M</div>
-      <div class="stat-label">Under High Water Stress</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-big">70–92%</div>
-      <div class="stat-label">Mental Healthcare Treatment Gap</div>
+    <div class="stat">
+      <div class="stat-n">17%</div>
+      <div class="stat-l">Women in workforce</div>
     </div>
   </div>
-  <p class="stats-note">India's numbers span both extremes: world-class digital infrastructure coexists with persistent deficits in water, healthcare, and economic equity.</p>
+  <p class="stats-note">These four numbers tell the paradox. Growth is real and world-leading — and the gains are concentrating among the fewest people, while nearly half the population still lacks safe water access.</p>
 </section>
 
-<!-- MAIN ARTICLE -->
 <main>
   <div class="container">
-    <div class="article-grid">
 
-      <!-- LEFT: Main content -->
-      <article>
-
-        <!-- SECTION 1 -->
-        <section aria-labelledby="section1-title">
-          <div class="section-label"><span class="section-number">01</span> The Foundation</div>
-          <h2 class="section-title" id="section1-title">Basic Needs &amp; Survival</h2>
-          <p class="section-intro">
-            Before looking at the high-tech economy, a massive portion of the population is still fighting to secure the basics.
-          </p>
-
-          <div class="issue-block orange">
-            <div class="issue-title">Poverty &amp; Malnutrition</div>
-            <p class="issue-body">
-              While extreme, abject poverty has significantly declined over the last two decades, a vast number of people remain highly vulnerable to economic shocks. Childhood malnutrition and stunting rates remain stubbornly high — impacting long-term cognitive and physical development in ways that compound across generations.
-            </p>
-          </div>
-
-          <div class="issue-block red">
-            <div class="issue-title">The Healthcare Gap</div>
-            <p class="issue-body">
-              Urban centres boast world-class private hospitals, but rural areas face severe shortages of doctors and primary clinics. Out-of-pocket healthcare expenses regularly push lower-middle-class families into debt. Mental healthcare is especially under-resourced: treatment gaps range from <strong>70% to 92%</strong>, depending on the condition — meaning the vast majority of people who need psychiatric care simply do not receive it.
-            </p>
-          </div>
-
-          <div class="issue-block blue">
-            <div class="issue-title">Learning Outcomes vs. Enrollment</div>
-            <p class="issue-body">
-              India has largely solved school <em>enrollment</em> — getting children into classrooms. But <em>learning outcomes</em> lag far behind. Many students in middle school struggle with foundational reading and arithmetic. The core challenge has shifted from access to quality: building systems that produce real skills, not exam-passing rote learners.
-            </p>
-          </div>
-        </section>
-
-        <hr class="section-divider">
-
-        <!-- SECTION 2 -->
-        <section aria-labelledby="section2-title">
-          <div class="section-label"><span class="section-number">02</span> The Core</div>
-          <h2 class="section-title" id="section2-title">Economic &amp; Structural Roadblocks</h2>
-          <p class="section-intro">
-            India's economy is growing rapidly, but the nature of that growth brings its own set of intense challenges.
-          </p>
-
-          <div class="issue-block red">
-            <div class="issue-title">Jobless Growth &amp; Skill Mismatch</div>
-            <p class="issue-body">
-              This is arguably India's biggest powder keg. The economy is growing, but it is not creating enough formal, well-paying jobs to absorb the millions of young people entering the workforce every year. Furthermore, many graduates hold degrees but lack the practical skills the modern market demands — the so-called "educated unemployment" trap where credentials and competence diverge.
-            </p>
-          </div>
-
-          <div class="issue-block orange">
-            <div class="issue-title">Agricultural Inefficiencies</div>
-            <p class="issue-body">
-              Agriculture employs roughly <strong>half of India's workforce</strong> but contributes less than 20% to its GDP. Farmers are constantly squeezed by erratic monsoons, fragmented land ownership, complex supply chains, and price volatility. The gap between farm income and urban wages drives continuous rural-to-urban migration, placing pressure on cities already straining under growth.
-            </p>
-          </div>
-
-          <div class="issue-block red">
-            <div class="issue-title">Deepening Wealth Inequality</div>
-            <p class="issue-body">
-              The gap between the ultra-rich and the working class continues to widen. Economic growth has disproportionately benefited the skilled and asset-owning wealthy, while marginalised groups — especially Dalit, Adivasi, and rural communities — are increasingly left behind. India's top 1% now control over half of the nation's total wealth.
-            </p>
-          </div>
-
-          <!-- WIDGET -->
-          <div class="widget-section" aria-label="Interactive: Economic inequality explorer">
-            <div class="widget-header">
-              <div class="widget-title">Economic Inequality Explorer</div>
-              <div class="widget-subtitle">Wealth &amp; income share by bracket · Urban vs Rural · 2000–2024</div>
-            </div>
-
-            <div class="widget-controls">
-              <div class="ctrl-group">
-                <div class="ctrl-label">Sector</div>
-                <div class="ctrl-toggle" role="group" aria-label="Sector selector">
-                  <button class="ctrl-btn active" data-sector="all" onclick="setSector('all')" type="button">All India</button>
-                  <button class="ctrl-btn" data-sector="urban" onclick="setSector('urban')" type="button">Urban</button>
-                  <button class="ctrl-btn" data-sector="rural" onclick="setSector('rural')" type="button">Rural</button>
-                </div>
-              </div>
-              <div class="ctrl-group">
-                <div class="ctrl-label">Metric</div>
-                <div class="ctrl-toggle" role="group" aria-label="Metric selector">
-                  <button class="ctrl-btn active" data-metric="wealth" onclick="setMetric('wealth')" type="button">Wealth Share</button>
-                  <button class="ctrl-btn" data-metric="income" onclick="setMetric('income')" type="button">Income Share</button>
-                </div>
-              </div>
-              <div class="ctrl-group">
-                <div class="ctrl-label">Year: <span class="year-display" id="year-label">2024</span></div>
-                <div class="slider-wrap">
-                  <input type="range" class="year-slider" id="year-slider"
-                    min="0" max="5" step="1" value="5"
-                    aria-label="Select year"
-                    oninput="setYear(this.value)">
-                  <div class="gini-display" id="gini-display">Gini: —</div>
-                </div>
-              </div>
-            </div>
-
-            <div id="chart-area" aria-live="polite" aria-label="Inequality bar chart">
-              <svg class="chart-svg" id="inequality-chart" viewBox="0 0 660 320" preserveAspectRatio="xMidYMid meet"></svg>
-            </div>
-            <p class="chart-note">
-              Sources: World Inequality Database (WID), Oxfam India, CMIE. Figures are approximations based on published estimates; urban/rural splits derived from NSSO/HCES surveys. Gini coefficients from World Bank.
-            </p>
-          </div>
-
-        </section>
-
-        <hr class="section-divider">
-
-        <!-- SECTION 3 -->
-        <section aria-labelledby="section3-title">
-          <div class="section-label"><span class="section-number">03</span> The Fabric</div>
-          <h2 class="section-title" id="section3-title">Social &amp; Cultural Fissures</h2>
-          <p class="section-intro">
-            Deep-rooted social structures continue to influence modern life, often creating friction with democratic and economic ideals.
-          </p>
-
-          <div class="issue-block orange">
-            <div class="issue-title">Gender Disparities</div>
-            <p class="issue-body">
-              Women's workforce participation in India hovers around <strong>17–20%</strong> — far below the global average of ~45%. Safety concerns in public spaces, the absence of affordable childcare, and patriarchal norms keep millions of capable women out of the formal economy. The gender pay gap compounds the problem: women who do work earn significantly less than their male counterparts across nearly every sector.
-            </p>
-          </div>
-
-          <div class="issue-block blue">
-            <div class="issue-title">Caste and Social Exclusion</div>
-            <p class="issue-body">
-              Despite strong constitutional safeguards and affirmative action (reservations), the caste system still heavily influences social dynamics. It dictates residential segregation, marriage, and political alignment — making true social mobility difficult for marginalised groups. Inter-caste violence and discrimination, while legally prohibited, continue to be documented across states.
-            </p>
-          </div>
-
-          <div class="pull-quote">
-            "India's growth story is real — but so is the unevenness. A rising tide that lifts only some boats is not development. It is displacement with better statistics."
-          </div>
-        </section>
-
-        <hr class="section-divider">
-
-        <!-- SECTION 4 -->
-        <section aria-labelledby="section4-title">
-          <div class="section-label"><span class="section-number">04</span> The Environment</div>
-          <h2 class="section-title" id="section4-title">Urbanisation &amp; Climate Pressure</h2>
-          <p class="section-intro">
-            As people flock to cities for better opportunities, the infrastructure and the environment are buckling under the pressure.
-          </p>
-
-          <div class="issue-block red">
-            <div class="issue-title">Choking Cities &amp; Traffic</div>
-            <p class="issue-body">
-              Rapid, unplanned urbanisation has led to infrastructure nightmares. Cities like Bengaluru, Mumbai, and Delhi regularly top global traffic congestion indexes. Alongside traffic, waste management remains a severe issue: massive landfills overflow, local waste segregation is patchy at best, and urban rivers run as open sewers through some of India's most densely populated zones.
-            </p>
-          </div>
-
-          <div class="issue-block orange">
-            <div class="issue-title">Air Pollution &amp; Water Scarcity</div>
-            <p class="issue-body">
-              North Indian winters are infamous for hazardous smog — a toxic mix of vehicular emissions, industrial exhaust, and crop-stubble burning. Delhi regularly records air quality indices at 20–30× the WHO safe limit. Simultaneously, around <strong>600 million Indians</strong> face high water stress. Groundwater tables are depleting rapidly in key agricultural and urban zones, a crisis that is invisible until it is catastrophic.
-            </p>
-          </div>
-        </section>
-
-        <hr class="section-divider">
-
-        <!-- SECTION 5 -->
-        <section aria-labelledby="section5-title">
-          <div class="section-label"><span class="section-number">05</span> The Frontier</div>
-          <h2 class="section-title" id="section5-title">High-Standard &amp; Emerging Challenges</h2>
-          <p class="section-intro">
-            As India positions itself as a global superpower, it faces complex, 21st-century problems that sit alongside — not after — the foundational ones.
-          </p>
-
-          <div class="issue-block blue">
-            <div class="issue-title">The Digital Divide</div>
-            <p class="issue-body">
-              India has some of the cheapest mobile data in the world, and UPI is a genuine triumph of public digital infrastructure. But access to high-quality devices and true digital literacy remains largely an urban middle-class privilege. This became painfully obvious during the pandemic-era shift to online education, which excluded tens of millions of children who lacked smartphones, reliable connectivity, or power.
-            </p>
-          </div>
-
-          <div class="issue-block green">
-            <div class="issue-title">Brain Drain vs. Innovation</div>
-            <p class="issue-body">
-              India produces incredible tech and medical talent — then exports much of it to the US, UK, and Canada, where research ecosystems, pay, and quality of life are better. The challenge is not just retaining people: it is transitioning from being the world's "IT back-office" and outsourcing hub to a centre of original, high-value product innovation. A handful of unicorns masks a structural deficit in deep-tech R&amp;D.
-            </p>
-          </div>
-
-          <div class="issue-block orange">
-            <div class="issue-title">Ease of Doing Business</div>
-            <p class="issue-body">
-              While improving on global indices, navigating India's bureaucracy, complex tax structures, and rigid labour laws remains genuinely difficult for startups and foreign investors. The GST system was a major reform, but compliance costs are still high. Land acquisition for infrastructure projects remains a chronic bottleneck that delays critical investment.
-            </p>
-          </div>
-
-          <div class="issue-block red">
-            <div class="issue-title">Cybersecurity &amp; Data Privacy</div>
-            <p class="issue-body">
-              With over a billion people connected via Aadhaar (biometric ID), digital payment systems, and a rapidly expanding cloud footprint, securing national and personal data is now a critical national security challenge. Sophisticated, state-sponsored cyberattacks on infrastructure, finance, and health systems have increased sharply — while the regulatory framework for personal data privacy is still being built.
-            </p>
-          </div>
-
-        </section>
-
-        <!-- PART II DIVIDER -->
-        <div class="part-divider" aria-label="Part II: Solutions">
-          <div class="part-divider-label">Part II</div>
-          <h2 class="part-divider-title">India's Response:<br><em>Policy &amp; Reform</em></h2>
-          <p class="part-divider-sub">
-            Addressing India's complex problems requires equally diverse and large-scale solutions. The government, private sector, and civil society are actively deploying structural reforms, massive infrastructure projects, and world-class digital technology to bridge these gaps — based on the 2025–2026 economic roadmap.
-          </p>
-        </div>
-
-        <!-- SOLUTION 1 -->
-        <section aria-labelledby="sol1-title">
-          <div class="section-label"><span class="section-number">01</span> Securing Basic Needs</div>
-          <h2 class="section-title" id="sol1-title">The Foundation: Digital Welfare &amp; Healthcare</h2>
-          <p class="section-intro">
-            To fix leaks in the system and ensure the poorest actually receive help, India has heavily leaned into digital governance.
-          </p>
-
-          <div class="solution-block green">
-            <div class="solution-tag">JAM Trinity · Direct Benefit Transfer</div>
-            <div class="issue-title">Digital Welfare</div>
-            <p class="issue-body">
-              By linking <strong>Jan Dhan</strong> (bank accounts), <strong>Aadhaar</strong> (biometric ID), and <strong>Mobile numbers</strong>, the government uses Direct Benefit Transfers (DBT) to send subsidies, pensions, and relief funds directly into the bank accounts of the poor — virtually eliminating the "middlemen" who previously siphoned off funds.
-            </p>
-          </div>
-
-          <div class="solution-block blue">
-            <div class="solution-tag">Ayushman Bharat · NDHM</div>
-            <div class="issue-title">Healthcare Expansion</div>
-            <p class="issue-body">
-              <em>Ayushman Bharat</em> serves as the world's largest state-sponsored health insurance scheme, aiming to provide free secondary and tertiary care for the bottom 50% of the population. This is being paired with a National Digital Health Mission to create unified, portable health records for every citizen.
-            </p>
-          </div>
-
-          <div class="solution-block orange">
-            <div class="solution-tag">NEP 2020 · DIKSHA</div>
-            <div class="issue-title">Fixing Education at the Roots</div>
-            <p class="issue-body">
-              The National Education Policy (NEP) rollout is shifting the focus away from rote memorisation toward foundational literacy, vocational training, and critical thinking. Digital platforms like <strong>DIKSHA</strong> are distributing standardised, high-quality learning materials to rural teachers — addressing the quality gap without requiring new physical infrastructure.
-            </p>
-          </div>
-        </section>
-
-        <hr class="section-divider">
-
-        <!-- SOLUTION 2 -->
-        <section aria-labelledby="sol2-title">
-          <div class="section-label"><span class="section-number">02</span> Economic Reforms</div>
-          <h2 class="section-title" id="sol2-title">The Core: Jobs, Industry &amp; Agriculture</h2>
-          <p class="section-intro">
-            To generate jobs and fix the agricultural and manufacturing lag, the focus has shifted to making business easier and boosting domestic production.
-          </p>
-
-          <div class="solution-block green">
-            <div class="solution-tag">PLI Schemes · India Semiconductor Mission</div>
-            <div class="issue-title">Manufacturing &amp; Job Creation</div>
-            <p class="issue-body">
-              Production-Linked Incentive (PLI) schemes offer massive tax rebates to global and domestic companies manufacturing electronics, solar panels, and automobiles within India. The <em>India Semiconductor Mission</em> is pulling in billions in investments to build a domestic chip-making ecosystem — aiming to create high-quality formal jobs and reduce import dependency in critical sectors.
-            </p>
-          </div>
-
-          <div class="solution-block blue">
-            <div class="solution-tag">Labour Codes · MSME Credit</div>
-            <div class="issue-title">Labour &amp; MSME Simplification</div>
-            <p class="issue-body">
-              Dozens of complex, archaic labour laws have been consolidated into streamlined codes. The new codes extend social security and health benefits to the booming sector of gig and platform workers. For small businesses (MSMEs), the government has expanded credit guarantee limits and simplified the GST structure to reduce compliance headaches for the 63 million small enterprises that form the backbone of India's employment.
-            </p>
-          </div>
-
-          <div class="solution-block orange">
-            <div class="solution-tag">Agri-Stack · Digital Agriculture</div>
-            <div class="issue-title">Upgrading Agriculture</div>
-            <p class="issue-body">
-              The government is building an "Agri-Stack" — a digital infrastructure that gives farmers real-time access to weather patterns, soil health data, and direct market linkages to bypass local monopolies and middlemen. Combined with expanded crop insurance and e-NAM (the national digital agricultural marketplace), this aims to stabilise farm incomes and reduce the urban migration pressure.
-            </p>
-          </div>
-        </section>
-
-        <hr class="section-divider">
-
-        <!-- SOLUTION 3 -->
-        <section aria-labelledby="sol3-title">
-          <div class="section-label"><span class="section-number">03</span> Social Equity</div>
-          <h2 class="section-title" id="sol3-title">The Fabric: Financial Inclusion &amp; Formalisation</h2>
-          <p class="section-intro">
-            Social change is slow, but economic empowerment is being used as a lever to accelerate it — especially for women, Dalits, Adivasis, and informal workers.
-          </p>
-
-          <div class="solution-block green">
-            <div class="solution-tag">Stand-Up India Scheme</div>
-            <div class="issue-title">Financial Inclusion for the Marginalised</div>
-            <p class="issue-body">
-              The <em>Stand-Up India Scheme</em> provides dedicated, collateral-free business loans (₹10 lakh to ₹1 crore) specifically for women, Scheduled Caste (SC), and Scheduled Tribe (ST) entrepreneurs — fostering economic independence as a path to social mobility. Over 200,000 accounts have been sanctioned since launch.
-            </p>
-          </div>
-
-          <div class="solution-block blue">
-            <div class="solution-tag">PM SVANidhi</div>
-            <div class="issue-title">Formalising the Informal</div>
-            <p class="issue-body">
-              <em>PM SVANidhi</em> provides working capital loans to street vendors, bringing millions of marginalised, cash-based workers into the formal banking and credit system. Digital loan repayments build credit histories — creating a pathway from the informal economy to formal financial inclusion for one of India's most invisible workforces.
-            </p>
-          </div>
-        </section>
-
-        <hr class="section-divider">
-
-        <!-- SOLUTION 4 -->
-        <section aria-labelledby="sol4-title">
-          <div class="section-label"><span class="section-number">04</span> Sustainable Growth</div>
-          <h2 class="section-title" id="sol4-title">The Environment: Green Transition &amp; Infrastructure</h2>
-          <p class="section-intro">
-            India is trying to avoid the heavy-polluting mistakes of early Western industrialisation by leapfrogging directly to green technology.
-          </p>
-
-          <div class="solution-block green">
-            <div class="solution-tag">Renewable Energy · EV Mission</div>
-            <div class="issue-title">The Green Transition</div>
-            <p class="issue-body">
-              India has massively scaled its renewable energy capacity, surpassing <strong>180 GW</strong>, and is aggressively promoting Electric Vehicles (EVs) through manufacturing subsidies under the FAME scheme. This aims to curb severe urban air pollution while reducing India's massive crude oil import bill — simultaneously addressing both the climate and current-account deficit challenges.
-            </p>
-          </div>
-
-          <div class="solution-block blue">
-            <div class="solution-tag">Jal Jeevan Mission · PM Gati Shakti</div>
-            <div class="issue-title">Water &amp; Infrastructure</div>
-            <p class="issue-body">
-              The <em>Jal Jeevan Mission</em> is an ongoing massive public works project targeting piped drinking water for every rural household — one of the largest water access programmes in human history. To fix choking cities, the <em>PM Gati Shakti</em> master plan uses digital mapping to seamlessly coordinate transport, railway, and urban infrastructure projects, eliminating the inter-ministry delays that previously cost years and crores in idle investment.
-            </p>
-          </div>
-        </section>
-
-        <hr class="section-divider">
-
-        <!-- SOLUTION 5 -->
-        <section aria-labelledby="sol5-title">
-          <div class="section-label"><span class="section-number">05</span> Tech &amp; Global Integration</div>
-          <h2 class="section-title" id="sol5-title">The Frontier: Leading the Digital Economy</h2>
-          <p class="section-intro">
-            India is positioning itself not just to catch up with advanced economies, but to lead in the digital infrastructure of the developing world.
-          </p>
-
-          <div class="solution-block green">
-            <div class="solution-tag">Digital Public Infrastructure · UPI Export</div>
-            <div class="issue-title">Exporting Digital Public Infrastructure</div>
-            <p class="issue-body">
-              India's homegrown digital plumbing — UPI, Aadhaar, ONDC — is a global success story. The country is now actively exporting this architecture to other developing nations through the G20 and bilateral partnerships, positioning itself as a leader of the Global South and a model for how middle-income countries can leapfrog legacy financial systems.
-            </p>
-          </div>
-
-          <div class="solution-block blue">
-            <div class="solution-tag">AI Compute · Data Centres · Deep Tech</div>
-            <div class="issue-title">Strategic Indispensability</div>
-            <p class="issue-body">
-              The latest economic strategies focus on moving India from being an "IT back-office" for the West to building domestic AI compute infrastructure, massive data centres, and deep-tech R&amp;D capabilities. Large-scale investments in semiconductor fabrication and AI research labs aim to create the conditions that keep Indian talent in India — and attract global talent back.
-            </p>
-          </div>
-
-          <div class="solution-block orange">
-            <div class="solution-tag">Faceless Assessment · Digital Customs</div>
-            <div class="issue-title">Faceless Bureaucracy</div>
-            <p class="issue-body">
-              To improve Ease of Doing Business, tax assessments and customs clearances are increasingly becoming "faceless" — handled by algorithms and remote officers to drastically reduce local corruption and rent-seeking. Combined with e-courts and online dispute resolution, this targets the single biggest deterrent cited by foreign investors: unpredictable regulatory friction at the human level.
-            </p>
-          </div>
-        </section>
-
-        <!-- VIDEO SECTION -->
-        <section class="video-section" aria-labelledby="video-title">
-          <div class="section-label"><span class="section-number">→</span> Further Reading</div>
-          <h2 class="section-title" id="video-title">Economic Survey 2026: The Full Picture</h2>
-          <p class="issue-body" style="margin-bottom:1rem;">
-            The Economic Survey 2026 breaks down the structural reforms and policies shaping India's economic future — covering GDP outlook, sectoral targets, welfare expenditure, and the roadmap for India's next decade of growth.
-          </p>
-          <div class="video-note">
-            <span class="data-pill">Recommended</span>
-            Search for <strong>"Economic Survey 2026 Explained"</strong> on YouTube for a full breakdown of the key highlights, including manufacturing targets, social sector spending, and India's digital economy ambitions.
-          </div>
-        </section>
-
-      </article>
-
-      <!-- SIDEBAR -->
-      <aside class="sidebar" aria-label="Key data points">
-        <div class="sidebar-card">
-          <div class="sidebar-card-title">Foundation: Survival</div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Child stunting rate</span>
-            <span class="sidebar-stat-value">35%</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Rural doctor shortfall</span>
-            <span class="sidebar-stat-value">&gt;50%</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Mental health treatment gap</span>
-            <span class="sidebar-stat-value">70–92%</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Out-of-pocket health spend</span>
-            <span class="sidebar-stat-value">~62% of total</span>
+    <div class="widget" aria-label="Interactive inequality explorer">
+      <div class="widget-head">
+        <div class="widget-title">Economic Inequality Explorer</div>
+        <div class="widget-sub">Wealth &amp; income share · Urban vs Rural · 2000–2024 · Explore the data</div>
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-g">
+          <div class="ctrl-l">Sector</div>
+          <div class="ctrl-btns" role="group" aria-label="Sector selector">
+            <button class="cbtn on" data-sector="all" onclick="setSector('all')" type="button">All India</button>
+            <button class="cbtn" data-sector="urban" onclick="setSector('urban')" type="button">Urban</button>
+            <button class="cbtn" data-sector="rural" onclick="setSector('rural')" type="button">Rural</button>
           </div>
         </div>
-
-        <div class="sidebar-card">
-          <div class="sidebar-card-title">Economy</div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Agri. workforce share</span>
-            <span class="sidebar-stat-value">~45%</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Agri. GDP share</span>
-            <span class="sidebar-stat-value">&lt;18%</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Top 1% wealth share</span>
-            <span class="sidebar-stat-value">~50%</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Youth unemployment</span>
-            <span class="sidebar-stat-value">~17%</span>
+        <div class="ctrl-g">
+          <div class="ctrl-l">Metric</div>
+          <div class="ctrl-btns" role="group" aria-label="Metric selector">
+            <button class="cbtn on" data-metric="wealth" onclick="setMetric('wealth')" type="button">Wealth Share</button>
+            <button class="cbtn" data-metric="income" onclick="setMetric('income')" type="button">Income Share</button>
           </div>
         </div>
-
-        <div class="sidebar-card">
-          <div class="sidebar-card-title">Society</div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Women's LFPR</span>
-            <span class="sidebar-stat-value">17–20%</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Global LFPR average</span>
-            <span class="sidebar-stat-value">~45%</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Registered SC/ST MPs</span>
-            <span class="sidebar-stat-value">131 / 543</span>
+        <div class="ctrl-g">
+          <div class="ctrl-l">Year: <span class="yr-val" id="yr-label">2024</span></div>
+          <div class="yr-row">
+            <input type="range" class="yr-slider" id="yr-slider" min="0" max="5" step="1" value="5" aria-label="Select year" oninput="setYear(this.value)">
+            <div class="gini-badge" id="gini-badge">Gini: —</div>
           </div>
         </div>
+      </div>
+      <div id="chart-area" aria-live="polite" aria-label="Inequality bar chart">
+        <svg id="ineq-chart" style="width:100%;" viewBox="0 0 660 320" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <p class="chart-note">Sources: World Inequality Database (WID), Oxfam India, CMIE, World Bank. Figures are approximations within published estimate ranges; urban/rural splits from NSSO/HCES surveys.</p>
+    </div>
 
-        <div class="sidebar-card">
-          <div class="sidebar-card-title">Environment</div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Under high water stress</span>
-            <span class="sidebar-stat-value">600M</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Delhi AQI peak (winter)</span>
-            <span class="sidebar-stat-value">400–500+</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">WHO PM2.5 safe limit</span>
-            <span class="sidebar-stat-value">15 µg/m³</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Delhi annual avg PM2.5</span>
-            <span class="sidebar-stat-value">~90 µg/m³</span>
-          </div>
-        </div>
+    <!-- TIER 1: FOUNDATION -->
+    <section aria-labelledby="tier1-h">
+      <div class="tier-lbl"><span class="tier-n">01 / 05</span> The Foundation</div>
+      <h2 class="section-h" id="tier1-h">Basic Needs &amp; Survival</h2>
+      <p class="section-intro">Before the digital economy and the space programme — a massive portion of the population is still fighting for food, healthcare, and a meaningful education.</p>
 
-        <div class="sidebar-card">
-          <div class="sidebar-card-title">Digital &amp; Frontier</div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Aadhaar enrolments</span>
-            <span class="sidebar-stat-value">1.3B+</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">UPI monthly transactions</span>
-            <span class="sidebar-stat-value">&gt;13B</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Smartphone penetration</span>
-            <span class="sidebar-stat-value">~54%</span>
-          </div>
-          <div class="sidebar-stat">
-            <span class="sidebar-stat-label">Internet users</span>
-            <span class="sidebar-stat-value">~700M</span>
-          </div>
-        </div>
-      </aside>
+      <div class="block problem">
+        <div class="block-tag">Challenge</div>
+        <div class="block-h">Poverty, Malnutrition &amp; the Healthcare Gap</div>
+        <p class="block-p">While extreme poverty has declined sharply, vulnerability remains wide. Child stunting affects <strong>35%</strong> of under-5s — a cognitive cost that compounds across generations. Healthcare is split: world-class private hospitals in cities; rural areas face a doctor shortfall exceeding <strong>50%</strong>. Out-of-pocket medical expenses push lower-middle-class families into debt. Mental healthcare is worst: treatment gaps of <strong>70–92%</strong> mean most people who need psychiatric care never receive it.</p>
+      </div>
 
-    </div><!-- /article-grid -->
-  </div><!-- /container -->
+      <div class="block solution">
+        <div class="block-tag">Policy Response · Ayushman Bharat · JAM Trinity · DBT</div>
+        <div class="block-h">Digital Welfare &amp; Healthcare at Scale</div>
+        <p class="block-p"><em>Ayushman Bharat</em> is the world's largest state health insurance scheme, covering secondary and tertiary care for the bottom 50% of the population — paired with a National Digital Health Mission creating universal portable health records. The <strong>JAM Trinity</strong> (Jan Dhan bank accounts + Aadhaar ID + Mobile number) routes welfare subsidies directly into recipients' accounts, eliminating the intermediaries who previously siphoned funds from every transfer.</p>
+      </div>
+
+      <div class="block navy">
+        <div class="block-tag">Challenge</div>
+        <div class="block-h">Enrollment Without Learning</div>
+        <p class="block-p">India has largely solved school enrollment. The harder problem is what happens inside classrooms: many mid-school students still struggle with foundational reading and arithmetic. The challenge has shifted from access to quality — building systems that produce real skills rather than exam-passing rote learners who graduate into a market they are unprepared for.</p>
+      </div>
+
+      <div class="block solution">
+        <div class="block-tag">Policy Response · NEP 2020 · DIKSHA Platform</div>
+        <div class="block-h">Fixing Education at the Root</div>
+        <p class="block-p">The National Education Policy (NEP 2020) shifts from rote memorisation to foundational literacy, vocational training, and critical thinking. The <strong>DIKSHA</strong> platform distributes standardised learning materials to rural teachers nationwide — addressing quality without requiring new physical infrastructure in every village.</p>
+      </div>
+    </section>
+
+    <div class="tier-sep"></div>
+
+    <!-- TIER 2: ECONOMIC -->
+    <section aria-labelledby="tier2-h">
+      <div class="tier-lbl"><span class="tier-n">02 / 05</span> The Core</div>
+      <h2 class="section-h" id="tier2-h">Economic &amp; Structural Roadblocks</h2>
+      <p class="section-intro">India's economy is growing rapidly. The paradox is that growth and formal job creation have decoupled — the country produces more output while employing proportionally fewer people.</p>
+
+      <div class="block problem">
+        <div class="block-tag">Challenge</div>
+        <div class="block-h">Jobless Growth &amp; Educated Unemployment</div>
+        <p class="block-p">Every year, millions of young people enter a labour market that cannot absorb them formally. Worse: many hold degrees but lack practical skills the market demands — <em>educated unemployment</em>, where credentials and competence have diverged. Youth unemployment sits at <strong>~17%</strong>; the true figure is higher because it excludes those who have stopped looking. This is arguably India's biggest powder keg.</p>
+      </div>
+
+      <div class="block solution">
+        <div class="block-tag">Policy Response · PLI Schemes · India Semiconductor Mission</div>
+        <div class="block-h">Manufacturing as a Job Engine</div>
+        <p class="block-p">Production-Linked Incentive (PLI) schemes offer substantial tax rebates to companies manufacturing electronics, solar panels, and automobiles within India. The <em>India Semiconductor Mission</em> is attracting billions in investment to build a domestic chip ecosystem — targeting high-quality formal employment in sectors that have historically exported their jobs elsewhere.</p>
+      </div>
+
+      <div class="block problem">
+        <div class="block-tag">Challenge</div>
+        <div class="block-h">Agricultural Squeeze: 45% of Workers, Under 18% of GDP</div>
+        <p class="block-p">Nearly half the workforce farms land that produces less than a fifth of national income. Erratic monsoons, fragmented holdings, complex supply chains, and price volatility squeeze farmers from every direction. The income gap between farming and urban wages drives constant rural-to-urban migration — placing enormous pressure on cities already straining under rapid growth.</p>
+      </div>
+
+      <div class="block solution">
+        <div class="block-tag">Policy Response · Agri-Stack · e-NAM · Crop Insurance</div>
+        <div class="block-h">Digitising Agriculture</div>
+        <p class="block-p">The government's "Agri-Stack" gives farmers real-time access to weather data, soil health reports, and direct market linkages — bypassing local monopolies that historically controlled prices. Combined with e-NAM (the national digital agricultural marketplace) and expanded crop insurance, the aim is to stabilise farm incomes and reduce structural pressure to migrate.</p>
+      </div>
+
+      <div class="pull-quote">"India's growth story is real — but so is the unevenness. A rising tide that lifts only some boats is not development. It is displacement with better statistics."</div>
+    </section>
+
+    <div class="tier-sep"></div>
+
+    <!-- TIER 3: SOCIAL -->
+    <section aria-labelledby="tier3-h">
+      <div class="tier-lbl"><span class="tier-n">03 / 05</span> The Fabric</div>
+      <h2 class="section-h" id="tier3-h">Social &amp; Cultural Fissures</h2>
+      <p class="section-intro">Deep-rooted social structures limit economic participation for hundreds of millions of people — creating a compounding drag on both growth and equity.</p>
+
+      <div class="block problem">
+        <div class="block-tag">Challenge</div>
+        <div class="block-h">Gender Disparities: The Missing Workforce</div>
+        <p class="block-p">Women's workforce participation in India hovers around <strong>17–20%</strong>, against a global average of ~45%. Safety concerns in public spaces, absent affordable childcare, and patriarchal norms keep millions of capable women outside the formal economy. The gender pay gap compounds it: women who do work earn significantly less across nearly every sector.</p>
+      </div>
+
+      <div class="block problem">
+        <div class="block-tag">Challenge</div>
+        <div class="block-h">Caste &amp; Social Exclusion</div>
+        <p class="block-p">Despite constitutional safeguards and affirmative action, the caste system continues to shape residential segregation, marriage patterns, political alignment, and economic opportunity. True social mobility for Dalit, Adivasi, and other marginalised communities remains structurally obstructed. Inter-caste discrimination — legally prohibited — continues to be documented across states.</p>
+      </div>
+
+      <div class="block solution">
+        <div class="block-tag">Policy Response · Stand-Up India · PM SVANidhi</div>
+        <div class="block-h">Economic Empowerment as a Social Lever</div>
+        <p class="block-p">The <em>Stand-Up India Scheme</em> provides collateral-free loans (₹10 lakh–₹1 crore) specifically for women, SC, and ST entrepreneurs — over 200,000 accounts sanctioned. <em>PM SVANidhi</em> provides working capital to street vendors, drawing millions of informal workers into the formal banking system. Digital repayments build credit histories — a pathway from India's invisible informal economy to financial inclusion.</p>
+      </div>
+    </section>
+
+    <div class="tier-sep"></div>
+
+    <!-- TIER 4: ENVIRONMENT -->
+    <section aria-labelledby="tier4-h">
+      <div class="tier-lbl"><span class="tier-n">04 / 05</span> The Environment</div>
+      <h2 class="section-h" id="tier4-h">Urbanisation &amp; Climate Pressure</h2>
+      <p class="section-intro">India is urbanising at extraordinary speed. The infrastructure, the air, and the water supply are all buckling simultaneously — not sequentially.</p>
+
+      <div class="block problem">
+        <div class="block-tag">Challenge</div>
+        <div class="block-h">Choking Cities &amp; Disappearing Water</div>
+        <p class="block-p">Delhi's winter air regularly reaches <strong>20–30× the WHO safe limit</strong> — annual average PM2.5 of ~90 µg/m³ against a WHO guideline of 5 µg/m³. Meanwhile, <strong>600 million Indians</strong> live under high water stress. Groundwater tables in key agricultural and urban zones are depleting faster than monsoons replenish them: a crisis invisible until it is catastrophic. Bengaluru, Mumbai, and Delhi routinely top global congestion indexes as unplanned growth outpaces infrastructure investment.</p>
+      </div>
+
+      <div class="block solution">
+        <div class="block-tag">Policy Response · 180 GW Renewables · Jal Jeevan Mission · PM Gati Shakti</div>
+        <div class="block-h">Green Transition &amp; Infrastructure Coordination</div>
+        <p class="block-p">India has surpassed <strong>180 GW</strong> of renewable capacity — one of the fastest energy transitions in the world. FAME scheme subsidies are accelerating EV adoption to cut urban air pollution and reduce the crude oil import bill. The <em>Jal Jeevan Mission</em> targets piped drinking water for every rural household — one of the largest water access programmes in human history. <em>PM Gati Shakti</em> uses digital mapping to coordinate transport, rail, and urban infrastructure across ministries, eliminating the inter-departmental delays that previously cost years of idle investment.</p>
+      </div>
+    </section>
+
+    <div class="tier-sep"></div>
+
+    <!-- TIER 5: FRONTIER -->
+    <section aria-labelledby="tier5-h">
+      <div class="tier-lbl"><span class="tier-n">05 / 05</span> The Frontier</div>
+      <h2 class="section-h" id="tier5-h">High-Standard &amp; Emerging Challenges</h2>
+      <p class="section-intro">These 21st-century problems sit alongside — not after — the foundational ones. India's tiers of challenge do not have a priority order. They are simultaneous.</p>
+
+      <div class="block problem">
+        <div class="block-tag">Challenge</div>
+        <div class="block-h">The Digital Divide Inside Digital Success</div>
+        <p class="block-p">India has the world's cheapest mobile data. UPI processes <strong>13 billion+ transactions monthly</strong> — a genuine triumph of public digital infrastructure. But access to quality devices and true digital literacy remains largely an urban middle-class privilege. Smartphone penetration is ~54%. The pandemic exposed this starkly: when schools moved online, tens of millions of children — without smartphones, connectivity, or consistent power — were simply excluded.</p>
+      </div>
+
+      <div class="block problem">
+        <div class="block-tag">Challenge</div>
+        <div class="block-h">Brain Drain vs. Innovation Ambition</div>
+        <p class="block-p">India produces extraordinary tech and medical talent — then exports most of it to the US, UK, and Canada. The challenge is the transition from "IT back-office" to a centre of original, high-value product innovation. A handful of unicorns masks a deep deficit in domestic R&amp;D. Simultaneously, over a billion people connected via Aadhaar and digital payment systems create a critical national cybersecurity exposure that the regulatory framework is still scrambling to address.</p>
+      </div>
+
+      <div class="block solution">
+        <div class="block-tag">Policy Response · UPI Export · AI Compute · Faceless Assessment</div>
+        <div class="block-h">Exporting Infrastructure, Building Indispensability</div>
+        <p class="block-p">India is now exporting its digital architecture — UPI, Aadhaar, ONDC — to other developing nations via G20 and bilateral partnerships, positioning itself as the model for the Global South. Domestically, the strategy shifts from IT services to AI compute, large data centres, and deep-tech R&amp;D — to create the conditions that keep Indian talent in India. Tax assessments and customs clearances are becoming "faceless," handled by algorithms to reduce the regulatory friction that deters foreign investors at the human level.</p>
+      </div>
+    </section>
+
+    <div class="related" aria-label="Related investigations">
+      <div class="related-l">Related Investigations on The Bengal Reader</div>
+      <div class="related-links">
+        <a href="/bonds" class="related-link">Electoral Bonds</a>
+        <a href="/accountability" class="related-link">100-Day Pledges</a>
+        <a href="/demonetisation" class="related-link">Demonetisation Impact</a>
+        <a href="/corruption" class="related-link">Corruption Dossier</a>
+        <a href="/assets" class="related-link">MLA Wealth Growth</a>
+        <a href="/ask" class="related-link">Ask AI</a>
+        <a href="/methodology" class="related-link">Methodology &amp; Sources</a>
+      </div>
+    </div>
+
+  </div>
 </main>
 
 <footer class="page-footer">
   <p>The Bengal Reader · Non-partisan civic journalism · Data from World Bank, WID, CMIE, Oxfam India, NCRB, ECI</p>
-  <p style="margin-top:0.5rem;">This page presents publicly available data for civic education. All figures are approximate and drawn from published research.</p>
+  <p style="margin-top:0.5rem;">All figures are approximate and drawn from published research. See <a href="/methodology">methodology</a> for sources.</p>
 </footer>
 
-<!-- D3.js -->
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script>
 (function () {
   'use strict';
 
-  // ── DATA ─────────────────────────────────────────────────────────────────
-  // Approximate figures based on WID.world, Oxfam India Inequality Reports,
-  // World Bank GINI index, NSSO/HCES surveys. Numbers are illustrative
-  // approximations within published estimate ranges.
   const YEARS = [2000, 2005, 2010, 2015, 2020, 2024];
-
   const DATA = {
     all: {
-      wealth: {
-        top1:    [33, 36, 39, 43, 47, 50],
-        top10:   [63, 65, 68, 72, 76, 78],
-        bottom50:[8,   7,  6,  5,  4,  3],
-      },
-      income: {
-        top1:    [18, 20, 22, 24, 27, 30],
-        top10:   [52, 55, 57, 60, 63, 65],
-        bottom50:[15, 14, 13, 12, 11, 10],
-      },
+      wealth: { top1: [33, 36, 39, 43, 47, 50], top10: [63, 65, 68, 72, 76, 78], bottom50: [8, 7, 6, 5, 4, 3] },
+      income: { top1: [18, 20, 22, 24, 27, 30], top10: [52, 55, 57, 60, 63, 65], bottom50: [15, 14, 13, 12, 11, 10] },
       gini: [0.42, 0.43, 0.44, 0.46, 0.48, 0.49],
     },
     urban: {
-      wealth: {
-        top1:    [32, 35, 38, 42, 46, 50],
-        top10:   [62, 65, 68, 71, 74, 77],
-        bottom50:[8,   7,  5,  4,  3,  3],
-      },
-      income: {
-        top1:    [18, 20, 22, 25, 28, 31],
-        top10:   [50, 53, 57, 61, 64, 67],
-        bottom50:[16, 15, 14, 12, 10,  8],
-      },
+      wealth: { top1: [32, 35, 38, 42, 46, 50], top10: [62, 65, 68, 71, 74, 77], bottom50: [8, 7, 5, 4, 3, 3] },
+      income: { top1: [18, 20, 22, 25, 28, 31], top10: [50, 53, 57, 61, 64, 67], bottom50: [16, 15, 14, 12, 10, 8] },
       gini: [0.37, 0.38, 0.40, 0.42, 0.43, 0.44],
     },
     rural: {
-      wealth: {
-        top1:    [28, 30, 32, 35, 38, 41],
-        top10:   [55, 57, 60, 63, 66, 69],
-        bottom50:[9,   8,  7,  6,  5,  4],
-      },
-      income: {
-        top1:    [15, 16, 18, 20, 22, 24],
-        top10:   [46, 48, 51, 54, 57, 60],
-        bottom50:[18, 17, 16, 14, 13, 11],
-      },
+      wealth: { top1: [28, 30, 32, 35, 38, 41], top10: [55, 57, 60, 63, 66, 69], bottom50: [9, 8, 7, 6, 5, 4] },
+      income: { top1: [15, 16, 18, 20, 22, 24], top10: [46, 48, 51, 54, 57, 60], bottom50: [18, 17, 16, 14, 13, 11] },
       gini: [0.29, 0.30, 0.31, 0.31, 0.32, 0.33],
     },
   };
 
-  // ── STATE ─────────────────────────────────────────────────────────────────
   let state = { sector: 'all', metric: 'wealth', yearIdx: 5 };
 
-  // ── HELPERS ───────────────────────────────────────────────────────────────
   function getValues() {
     const d = DATA[state.sector][state.metric];
     const yi = state.yearIdx;
     return [
-      { bracket: 'Top 1%',    pop: 1,  share: d.top1[yi],    color: '#c0171b' },
-      { bracket: 'Top 10%',   pop: 10, share: d.top10[yi],   color: '#d97706' },
-      { bracket: 'Bottom 50%',pop: 50, share: d.bottom50[yi],color: '#1565c0' },
+      { bracket: 'Top 1%', pop: 1, share: d.top1[yi], color: '#c0171b' },
+      { bracket: 'Top 10%', pop: 10, share: d.top10[yi], color: '#d97706' },
+      { bracket: 'Bottom 50%', pop: 50, share: d.bottom50[yi], color: '#1565c0' },
     ];
   }
 
-  // ── CHART ─────────────────────────────────────────────────────────────────
-  const svgEl = document.getElementById('inequality-chart');
+  const svgEl = document.getElementById('ineq-chart');
   const W = 660, H = 320;
   const margin = { top: 28, right: 20, bottom: 44, left: 100 };
-  const innerW = W - margin.left - margin.right;
-  const innerH = H - margin.top - margin.bottom;
-
-  const svg = d3.select(svgEl)
-    .attr('viewBox', `0 0 ${W} ${H}`);
-
-  const g = svg.append('g')
-    .attr('transform', `translate(${margin.left},${margin.top})`);
-
-  // Axes groups
-  const xAxisG = g.append('g').attr('transform', `translate(0,${innerH})`);
+  const iW = W - margin.left - margin.right;
+  const iH = H - margin.top - margin.bottom;
+  const svg = d3.select(svgEl).attr('viewBox', `0 0 ${W} ${H}`);
+  const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const xAxisG = g.append('g').attr('transform', `translate(0,${iH})`);
   const yAxisG = g.append('g');
 
-  // Axis labels
-  svg.append('text')
-    .attr('x', margin.left + innerW / 2)
-    .attr('y', H - 6)
-    .attr('text-anchor', 'middle')
-    .attr('font-family', "'IBM Plex Mono', monospace")
-    .attr('font-size', '9')
-    .attr('fill', '#6b5f4e')
-    .attr('letter-spacing', '0.1em')
+  svg.append('text').attr('x', margin.left + iW / 2).attr('y', H - 6)
+    .attr('text-anchor', 'middle').attr('font-family', "'IBM Plex Mono',monospace")
+    .attr('font-size', '9').attr('fill', '#6b5f4e').attr('letter-spacing', '0.1em')
     .text('WEALTH / INCOME BRACKET');
 
-  svg.append('text')
-    .attr('transform', `rotate(-90)`)
-    .attr('x', -(margin.top + innerH / 2))
-    .attr('y', 12)
-    .attr('text-anchor', 'middle')
-    .attr('font-family', "'IBM Plex Mono', monospace")
-    .attr('font-size', '9')
-    .attr('fill', '#6b5f4e')
-    .attr('letter-spacing', '0.1em')
+  svg.append('text').attr('transform', 'rotate(-90)').attr('x', -(margin.top + iH / 2)).attr('y', 12)
+    .attr('text-anchor', 'middle').attr('font-family', "'IBM Plex Mono',monospace")
+    .attr('font-size', '9').attr('fill', '#6b5f4e').attr('letter-spacing', '0.1em')
     .text('SHARE (%)');
 
-  // Population baseline label
   const popLabel = svg.append('text')
-    .attr('font-family', "'IBM Plex Mono', monospace")
-    .attr('font-size', '8.5')
-    .attr('fill', '#6b5f4e')
-    .attr('x', margin.left)
-    .attr('y', margin.top - 8)
-    .text('Grey bar = population share  |  Coloured bar = ' + (state.metric === 'wealth' ? 'wealth' : 'income') + ' share');
+    .attr('font-family', "'IBM Plex Mono',monospace").attr('font-size', '8.5').attr('fill', '#6b5f4e')
+    .attr('x', margin.left).attr('y', margin.top - 8);
 
-  // Scales
-  const yScale = d3.scaleBand().padding(0.28).range([0, innerH]);
-  const xScale = d3.scaleLinear().range([0, innerW]);
+  const yScale = d3.scaleBand().padding(0.28).range([0, iH]);
+  const xScale = d3.scaleLinear().range([0, iW]);
 
-  // ── RENDER ────────────────────────────────────────────────────────────────
   function render(animated) {
     const values = getValues();
-    const maxVal = Math.max(100, d3.max(values, d => d.share));
-
     xScale.domain([0, 85]);
     yScale.domain(values.map(d => d.bracket));
 
-    // Axes
-    xAxisG.call(
-      d3.axisBottom(xScale)
-        .ticks(6)
-        .tickFormat(d => d + '%')
-        .tickSize(-innerH)
-    );
+    xAxisG.call(d3.axisBottom(xScale).ticks(6).tickFormat(d => d + '%').tickSize(-iH));
     xAxisG.selectAll('line').attr('stroke', '#e8e0cc').attr('stroke-dasharray', '3,3');
-    xAxisG.selectAll('text')
-      .attr('font-family', "'IBM Plex Mono', monospace")
-      .attr('font-size', '9')
-      .attr('fill', '#6b5f4e');
+    xAxisG.selectAll('text').attr('font-family', "'IBM Plex Mono',monospace").attr('font-size', '9').attr('fill', '#6b5f4e');
     xAxisG.select('.domain').remove();
 
     yAxisG.call(d3.axisLeft(yScale).tickSize(0));
-    yAxisG.selectAll('text')
-      .attr('font-family', "'Crimson Pro', serif")
-      .attr('font-size', '12')
-      .attr('fill', '#1a1714')
-      .attr('dx', '-8');
+    yAxisG.selectAll('text').attr('font-family', "'Crimson Pro',serif").attr('font-size', '12').attr('fill', '#1a1714').attr('dx', '-8');
     yAxisG.select('.domain').remove();
 
-    // Population bars (grey, background)
     const popBars = g.selectAll('.pop-bar').data(values, d => d.bracket);
-    popBars.enter().append('rect')
-      .attr('class', 'pop-bar')
-      .attr('x', 0)
-      .attr('y', d => yScale(d.bracket))
-      .attr('height', yScale.bandwidth())
-      .attr('fill', '#e8e0cc')
-      .attr('rx', 1)
-      .merge(popBars)
-      .transition().duration(animated ? 500 : 0)
-      .attr('width', d => xScale(d.pop))
-      .attr('y', d => yScale(d.bracket))
-      .attr('height', yScale.bandwidth());
+    popBars.enter().append('rect').attr('class', 'pop-bar').attr('x', 0)
+      .attr('y', d => yScale(d.bracket)).attr('height', yScale.bandwidth()).attr('fill', '#e8e0cc').attr('rx', 1)
+      .merge(popBars).transition().duration(animated ? 500 : 0)
+      .attr('width', d => xScale(d.pop)).attr('y', d => yScale(d.bracket)).attr('height', yScale.bandwidth());
 
-    // Share bars (coloured, overlapping)
     const shareBars = g.selectAll('.share-bar').data(values, d => d.bracket);
-    shareBars.enter().append('rect')
-      .attr('class', 'share-bar')
-      .attr('x', 0)
+    shareBars.enter().append('rect').attr('class', 'share-bar').attr('x', 0)
       .attr('y', d => yScale(d.bracket) + yScale.bandwidth() * 0.15)
-      .attr('height', yScale.bandwidth() * 0.7)
-      .attr('fill', d => d.color)
-      .attr('rx', 1)
-      .attr('opacity', 0.85)
-      .merge(shareBars)
-      .transition().duration(animated ? 600 : 0)
+      .attr('height', yScale.bandwidth() * 0.7).attr('fill', d => d.color).attr('rx', 1).attr('opacity', 0.85)
+      .merge(shareBars).transition().duration(animated ? 600 : 0)
       .attr('width', d => xScale(d.share))
       .attr('y', d => yScale(d.bracket) + yScale.bandwidth() * 0.15)
-      .attr('height', yScale.bandwidth() * 0.7)
-      .attr('fill', d => d.color);
+      .attr('height', yScale.bandwidth() * 0.7).attr('fill', d => d.color);
 
-    // Value labels
     const labels = g.selectAll('.val-label').data(values, d => d.bracket);
-    labels.enter().append('text')
-      .attr('class', 'val-label')
-      .attr('y', d => yScale(d.bracket) + yScale.bandwidth() * 0.15 + yScale.bandwidth() * 0.35 + 4)
-      .attr('font-family', "'IBM Plex Mono', monospace")
-      .attr('font-size', '10')
-      .attr('font-weight', '700')
-      .attr('fill', '#f5f0e8')
-      .merge(labels)
-      .transition().duration(animated ? 600 : 0)
+    labels.enter().append('text').attr('class', 'val-label')
+      .attr('y', d => yScale(d.bracket) + yScale.bandwidth() * 0.5 + 4)
+      .attr('font-family', "'IBM Plex Mono',monospace").attr('font-size', '10').attr('font-weight', '700').attr('fill', '#f5f0e8')
+      .merge(labels).transition().duration(animated ? 600 : 0)
       .attr('x', d => xScale(d.share) - 4)
-      .attr('y', d => yScale(d.bracket) + yScale.bandwidth() * 0.15 + yScale.bandwidth() * 0.35 + 4)
-      .attr('text-anchor', 'end')
-      .text(d => d.share + '%');
+      .attr('y', d => yScale(d.bracket) + yScale.bandwidth() * 0.5 + 4)
+      .attr('text-anchor', 'end').text(d => d.share + '%');
 
-    // Update pop label
     popLabel.text('Grey = population share  |  Coloured = ' + (state.metric === 'wealth' ? 'wealth' : 'income') + ' share');
-
-    // Update Gini
-    const gini = DATA[state.sector].gini[state.yearIdx];
-    document.getElementById('gini-display').textContent = 'Gini: ' + gini.toFixed(2);
+    document.getElementById('gini-badge').textContent = 'Gini: ' + DATA[state.sector].gini[state.yearIdx].toFixed(2);
   }
 
-  // ── CONTROLS ──────────────────────────────────────────────────────────────
   window.setSector = function (s) {
     state.sector = s;
-    document.querySelectorAll('[data-sector]').forEach(b => {
-      b.classList.toggle('active', b.dataset.sector === s);
-    });
+    document.querySelectorAll('[data-sector]').forEach(b => b.classList.toggle('on', b.dataset.sector === s));
     render(true);
   };
-
   window.setMetric = function (m) {
     state.metric = m;
-    document.querySelectorAll('[data-metric]').forEach(b => {
-      b.classList.toggle('active', b.dataset.metric === m);
-    });
+    document.querySelectorAll('[data-metric]').forEach(b => b.classList.toggle('on', b.dataset.metric === m));
     render(true);
   };
-
   window.setYear = function (idx) {
     state.yearIdx = +idx;
-    document.getElementById('year-label').textContent = YEARS[state.yearIdx];
+    document.getElementById('yr-label').textContent = YEARS[state.yearIdx];
     render(true);
   };
 
-  // Initial render
-  document.getElementById('year-label').textContent = YEARS[state.yearIdx];
+  document.getElementById('yr-label').textContent = YEARS[state.yearIdx];
   render(false);
 })();
 </script>
