@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="India vs China GDP comparison 1990–2030: how India's accelerating growth is narrowing the gap, and the five strategic pillars behind it.">
+<meta property="og:title" content="India vs China: The Race to 2030 — The Bengal Reader">
+<meta property="og:description" content="China's economy is 4.7× larger. India's growth rate is 60% faster. Here is how the trajectories are shifting.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="/og-voter-guide.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="India vs China: The Race to 2030 — The Bengal Reader">
+<meta name="twitter:description" content="China: $19.4T. India: $4.1T. Growth rates: 4.7% vs 7%. The trajectories are crossing.">
+<meta name="twitter:image" content="/og-voter-guide.svg">
+<title>India vs China: The Race to 2030 — The Bengal Reader</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/fonts.css">
+<script defer src="/analytics.js"></script>
+<script defer src="/shared.js"></script>
+<link rel="stylesheet" href="/shared.css">
+<style>
+:root {
+  --saffron: #d97706;
+  --forest: #1a6b2a;
+  --navy: #1565c0;
+  --danger: #c0171b;
+  --china: #c0171b;
+  --india: #d97706;
+}
+[data-theme='dark'] {
+  --saffron: #e8983a;
+  --forest: #4ca86a;
+  --navy: #5a9fd4;
+  --danger: #e05555;
+  --china: #e05555;
+  --india: #e8983a;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: 'Crimson Pro', Georgia, serif; font-size: 18px; line-height: 1.7; overflow-x: hidden; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+/* MASTHEAD */
+.masthead { border-bottom: 4px double var(--ink); padding: 1.5rem 2rem 1rem; text-align: center; }
+.eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); padding: 0.3rem 0; margin-bottom: 1rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.masthead h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 4.5rem); font-weight: 900; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; }
+.masthead h1 em { font-style: italic; color: var(--saffron); }
+.deck { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1rem, 2.5vw, 1.35rem); color: var(--muted); margin-top: 0.5rem; }
+.meta-bar { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--muted); margin-top: 1rem; border-top: 1px solid var(--aged); padding-top: 0.6rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+
+/* HERO STATS */
+.stats-hero { background: var(--ink); color: var(--paper); padding: 2.5rem 2rem; text-align: center; }
+.stat-row { display: flex; justify-content: center; flex-wrap: wrap; max-width: 840px; margin: 0 auto; }
+.stat { padding: 1rem 1.8rem; border-right: 1px solid rgba(255,255,255,0.1); }
+.stat:last-child { border-right: none; }
+.stat-n { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 900; line-height: 1; }
+.stat-n.i { color: var(--india); }
+.stat-n.c { color: var(--china); }
+.stat-n.g { color: #4ca86a; }
+.stat-l { font-family: 'IBM Plex Mono', monospace; font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8a8070; margin-top: 0.3rem; }
+.stats-note { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: #6a6050; margin-top: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+/* LEGEND */
+.chart-legend { display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 0.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.legend-line { width: 28px; height: 3px; display: inline-block; }
+.legend-line.proj { background: repeating-linear-gradient(to right, currentColor 0, currentColor 5px, transparent 5px, transparent 9px); }
+
+/* MAIN */
+main { padding: 3rem 0; }
+
+/* TIER CHROME */
+.tier-lbl { font-family: 'IBM Plex Mono', monospace; font-size: 0.57rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+.tier-lbl::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--muted); }
+.tier-n { font-family: 'Playfair Display', serif; font-size: 0.7rem; color: var(--saffron); font-weight: 700; }
+.section-h { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; line-height: 1.15; margin-bottom: 0.75rem; }
+.section-intro { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 1.1rem; color: var(--muted); margin-bottom: 1.5rem; border-left: 3px solid var(--saffron); padding-left: 1rem; }
+
+/* CONTENT BLOCKS */
+.block { margin: 1.2rem 0; padding: 1.2rem 1.5rem; border: 1px solid var(--aged); border-left: 3px solid var(--aged); }
+.block.pillar { border-left-color: var(--saffron); }
+.block.advantage { border-left-color: var(--forest); background: rgba(26,107,42,0.03); }
+.block.obstacle { border-left-color: var(--danger); }
+.block.navy { border-left-color: var(--navy); }
+[data-theme='dark'] .block.advantage { background: rgba(76,168,106,0.06); }
+.block-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.35rem; color: var(--muted); }
+.block.pillar .block-tag { color: var(--saffron); }
+.block.advantage .block-tag { color: var(--forest); }
+.block.obstacle .block-tag { color: var(--danger); }
+.block.navy .block-tag { color: var(--navy); }
+.block-h { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+.block-p { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
+
+/* PULL QUOTE */
+.pull-quote { margin: 2rem 0; padding: 1.5rem 2rem; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--aged); font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; line-height: 1.4; }
+
+/* TIER SEPARATOR */
+.tier-sep { height: 1px; background: var(--aged); margin: 3rem 0; }
+
+/* WIDGET */
+.widget { margin: 0 0 3rem; padding: 2rem; border: 2px solid var(--ink); }
+.widget-head { border-bottom: 1px solid var(--aged); padding-bottom: 1rem; margin-bottom: 1.2rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; }
+.widget-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+.widget-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.25rem; }
+.ctrl-btns { display: flex; border: 1px solid var(--ink); overflow: hidden; flex-shrink: 0; }
+.cbtn { background: transparent; border: none; border-right: 1px solid var(--aged); font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 11px; cursor: pointer; color: var(--muted); transition: all 0.15s; }
+.cbtn:last-child { border-right: none; }
+.cbtn.on { background: var(--ink); color: var(--paper); }
+.cbtn:hover:not(.on) { background: var(--aged); color: var(--ink); }
+.chart-wrap { position: relative; width: 100%; }
+.chart-note { font-family: 'IBM Plex Mono', monospace; font-size: 0.57rem; color: var(--muted); margin-top: 0.75rem; letter-spacing: 0.04em; }
+
+/* TOOLTIP */
+.chart-tooltip {
+  position: absolute; pointer-events: none; display: none;
+  background: var(--ink); color: var(--paper);
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em;
+  padding: 8px 12px; border: 1px solid rgba(255,255,255,0.1);
+  white-space: nowrap; z-index: 10;
+}
+.tooltip-year { font-size: 0.58rem; color: #8a8070; margin-bottom: 4px; letter-spacing: 0.2em; text-transform: uppercase; }
+.tooltip-india { color: var(--india); }
+.tooltip-china { color: var(--china); }
+.tooltip-proj { color: #8a8070; font-size: 0.54rem; }
+
+/* RELATED */
+.related { margin: 2.5rem 0 0; padding: 1.5rem 0; border-top: 2px solid var(--ink); }
+.related-l { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.related-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.related-link { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1px solid var(--aged); color: var(--ink); text-decoration: none; transition: all 0.15s; }
+.related-link:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* FOOTER */
+.page-footer { background: var(--ink); color: #6a6050; padding: 2rem; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; margin-top: 3rem; }
+.page-footer a { color: var(--saffron); }
+
+@media (max-width: 600px) {
+  .stat-row { flex-direction: column; }
+  .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .masthead { padding: 1rem; }
+  .related-links { flex-direction: column; }
+  .widget-head { flex-direction: column; }
+  .ctrl-btns { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav-inner">
+    <a href="/" class="site-nav-brand">The Bengal Reader</a>
+    <div class="site-nav-links">
+      <a href="/" class="site-nav-link">Voter Guide</a>
+      <a href="/parties" class="site-nav-link">Party Compass</a>
+      <a href="/constituencies" class="site-nav-link">2026 Results</a>
+      <a href="/demonetisation" class="site-nav-link">Demonetisation</a>
+      <a href="/accountability" class="site-nav-link">100 Days</a>
+      <a href="/corruption" class="site-nav-link">Dossier</a>
+      <a href="/bonds" class="site-nav-link">Money Trail</a>
+      <a href="/mlas" class="site-nav-link">MLA Records</a>
+      <a href="/india-development" class="site-nav-link">India's Story</a>
+      <a href="/india-china" class="site-nav-link active">India vs China</a>
+      <a href="/ask" class="site-nav-link">Ask AI</a>
+      <a href="/map" class="site-nav-link">Map</a>
+      <a href="/assets" class="site-nav-link">Wealth Growth</a>
+      <a href="/methodology" class="site-nav-link">Methodology</a>
+    </div>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="eyebrow">The Bengal Reader · Global Economy · Strategic Analysis</div>
+  <h1>India vs China:<br>The Race to <em>2030</em></h1>
+  <p class="deck">The gap is real. The momentum is changing. Here is how the trajectories cross.</p>
+  <div class="meta-bar">
+    <span>Updated: May 2026</span>
+    <span>Non-partisan · Verifiable data</span>
+    <span>World Bank · IMF · WEF · WID</span>
+  </div>
+</header>
+
+<section class="stats-hero" aria-label="Key comparison figures">
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-n c">$19.4T</div>
+      <div class="stat-l">China GDP 2026</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n i">$4.1T</div>
+      <div class="stat-l">India GDP 2026</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n c">4.5%</div>
+      <div class="stat-l">China growth rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n i">7.0%</div>
+      <div class="stat-l">India growth rate</div>
+    </div>
+  </div>
+  <p class="stats-note">India will not equal China's total GDP by 2030 — mathematically impossible from a 4.7× gap. But "catching up" is not just about total size. It is about momentum, strategic leverage, and becoming the engine of global growth that China no longer is.</p>
+</section>
+
+<main>
+  <div class="container">
+
+    <!-- CHART WIDGET -->
+    <div class="widget" aria-label="Interactive GDP trajectory chart: India vs China 1990–2030">
+      <div class="widget-head">
+        <div>
+          <div class="widget-title">Economic Trajectories: 1990–2030</div>
+          <div class="widget-sub">Historical data · Projections from 2024 shown as dashed</div>
+        </div>
+        <div class="ctrl-btns" role="group" aria-label="Select metric">
+          <button class="cbtn on" data-m="gdp" onclick="setMetric('gdp')" type="button">Nominal GDP</button>
+          <button class="cbtn" data-m="ppp" onclick="setMetric('ppp')" type="button">GDP PPP</button>
+          <button class="cbtn" data-m="pc" onclick="setMetric('pc')" type="button">Per Capita</button>
+          <button class="cbtn" data-m="gr" onclick="setMetric('gr')" type="button">Growth Rate</button>
+        </div>
+      </div>
+      <div class="chart-legend" aria-hidden="true">
+        <div class="legend-item" style="color:var(--india);">
+          <span class="legend-line" style="background:var(--india);"></span> India
+        </div>
+        <div class="legend-item" style="color:var(--china);">
+          <span class="legend-line" style="background:var(--china);"></span> China
+        </div>
+        <div class="legend-item" style="color:var(--muted);">
+          <span class="legend-line proj" style="color:var(--muted);border-top:2px dashed var(--muted);height:0;margin-top:1px;"></span> Projection (2024–2030)
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <svg id="traj-chart" style="width:100%;display:block;" viewBox="0 0 720 360" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+        <div class="chart-tooltip" id="chart-tt" aria-live="polite">
+          <div class="tooltip-year" id="tt-year"></div>
+          <div class="tooltip-india" id="tt-india"></div>
+          <div class="tooltip-china" id="tt-china"></div>
+          <div class="tooltip-proj" id="tt-proj"></div>
+        </div>
+      </div>
+      <p class="chart-note">Sources: World Bank, IMF World Economic Outlook. Projections (2024–2030) based on IMF baseline forecasts: India 6.5–7.1%, China 3.9–4.7%. All figures approximate.</p>
+    </div>
+
+    <!-- FRAMING -->
+    <section aria-labelledby="frame-h">
+      <div class="tier-lbl"><span class="tier-n">Context</span> The Honest Picture</div>
+      <h2 class="section-h" id="frame-h">Not a Tie. A Trajectory Crossing.</h2>
+      <p class="section-intro">India will not equal China's total GDP by 2030 — the raw arithmetic makes that impossible. But the relevant question is not where the two economies sit today. It is what is happening to the distance between them, and who is driving global growth for the next generation.</p>
+
+      <div class="block navy">
+        <div class="block-tag">The WEF Projection</div>
+        <div class="block-h">India and China Will Drive a Third of Global Growth by 2030</div>
+        <p class="block-p">The World Economic Forum projects that by 2030, India and China together will account for over <strong>one-third of all global economic growth</strong>. But their trajectories are crossing: China's growth is slowing toward 4.5% due to an aging population, property sector stress, and demographic contraction. India is accelerating to 6.5–7%. The growth <em>gap</em> between the two economies is narrowing every year — even as the absolute size gap remains vast.</p>
+      </div>
+
+      <div class="block pillar">
+        <div class="block-tag">The PPP Lens</div>
+        <div class="block-h">On Purchasing Power Parity, India Is Already No. 3</div>
+        <p class="block-p">Measured in Purchasing Power Parity (PPP) — which adjusts for what money actually buys within each economy — India already ranks as the world's <strong>third-largest economy</strong>, surpassing Japan and Germany. The PPP gap with China is narrowing faster than the nominal GDP gap, because India's domestic goods and services are cheaper, making each dollar of production go further for its citizens.</p>
+      </div>
+    </section>
+
+    <div class="tier-sep"></div>
+
+    <!-- FIVE PILLARS -->
+    <section aria-labelledby="pillars-h">
+      <div class="tier-lbl"><span class="tier-n">Strategy</span> Five Pillars</div>
+      <h2 class="section-h" id="pillars-h">How India Narrows the Gap: Five Strategic Levers</h2>
+      <p class="section-intro">India does not need to match China's total economy by 2030 to be a peer superpower. It needs to become the primary alternative to China — for global supply chains, digital infrastructure, and demographic-driven growth.</p>
+    </section>
+
+    <!-- PILLAR 1 -->
+    <section aria-labelledby="p1-h">
+      <div class="tier-lbl"><span class="tier-n">01 / 05</span> Supply Chains</div>
+      <h2 class="section-h" id="p1-h">Weaponise the "China Plus One" Strategy</h2>
+      <p class="section-intro">Global corporations are actively diversifying supply chains away from China due to geopolitical tensions. India cannot just catch the overflow — it must become the primary alternative.</p>
+
+      <div class="block pillar">
+        <div class="block-tag">Opportunity</div>
+        <div class="block-h">Move Beyond Assembly Into Deep Manufacturing</div>
+        <p class="block-p">India currently assembles large volumes of electronics — including iPhones — but still imports core components from China. The 2030 goal is to move up the value chain: fabricating semiconductors, display panels, and EV batteries locally. PLI schemes and the <em>India Semiconductor Mission</em> are the policy levers. The distinction matters enormously: assembly adds ~5–8% value to the supply chain; deep manufacturing adds 30–40%.</p>
+      </div>
+
+      <div class="block advantage">
+        <div class="block-tag">Advantage</div>
+        <div class="block-h">$100B+ Annual FDI Target — and a Democratic Pitch</div>
+        <p class="block-p">India is targeting over <strong>$100 billion in annual Foreign Direct Investment</strong> leading up to 2030. Critically, it can pitch something China cannot: democratic governance, rule of law, and no single-party risk. For Western corporations under pressure from boards and governments to diversify away from authoritarian supply chains, this is a structural advantage that India is only beginning to price into its offer to investors.</p>
+      </div>
+
+      <div class="block obstacle">
+        <div class="block-tag">Obstacle</div>
+        <div class="block-h">Factory Ease Must Match Shenzhen</div>
+        <p class="block-p">To absorb the FDI flowing out of China, the government must ensure that setting up a mega-factory in Tamil Nadu or Gujarat is as seamless as doing so in Shenzhen. Land acquisition, logistics, power stability, and bureaucratic friction remain real barriers. The competition for redirected global manufacturing capital is fierce — Vietnam, Mexico, and Indonesia are also competing, and they are faster to move.</p>
+      </div>
+    </section>
+
+    <div class="tier-sep"></div>
+
+    <!-- PILLAR 2 -->
+    <section aria-labelledby="p2-h">
+      <div class="tier-lbl"><span class="tier-n">02 / 05</span> Demographics</div>
+      <h2 class="section-h" id="p2-h">Capitalise on the Demographic Divergence</h2>
+      <p class="section-intro">This is India's biggest structural advantage. China's working-age population is shrinking and aging rapidly. India has the largest, youngest workforce in the world — but youth is only an asset if it is employable.</p>
+
+      <div class="block advantage">
+        <div class="block-tag">Structural Advantage</div>
+        <div class="block-h">China Ages — India's Workforce Peaks</div>
+        <p class="block-p">China's population is now in structural decline. Its working-age population is shrinking by millions each year, its dependency ratio is worsening, and its savings rate — the engine of its investment-driven growth model — is falling. India's demographic dividend is simultaneously peaking. For the next two decades, India will add more working-age people than any other country. This structural divergence is the single most important long-term driver separating the two trajectories.</p>
+      </div>
+
+      <div class="block obstacle">
+        <div class="block-tag">Bottleneck</div>
+        <div class="block-h">Young and Unemployable: The Skill Crisis</div>
+        <p class="block-p">A massive, unskilled youth population is an economic liability, not an asset. India must pivot its education system aggressively toward technical, vocational, and digital skills. Currently, a significant proportion of graduates lack the practical competencies demanded by the formal economy — producing the paradox of youth unemployment alongside corporate talent shortages.</p>
+      </div>
+
+      <div class="block obstacle">
+        <div class="block-tag">The Fastest Available Growth Lever</div>
+        <div class="block-h">Raising Female Workforce Participation</div>
+        <p class="block-p">India cannot match Chinese productivity while keeping the majority of its women out of the formal economy. Women's workforce participation at <strong>~20%</strong> is less than half the global average of ~45% — and a fraction of China's ~60%+. Raising it to 35% alone would add trillions to GDP. This is the single fastest available lever to accelerate economic convergence with China.</p>
+      </div>
+    </section>
+
+    <div class="tier-sep"></div>
+
+    <!-- PILLAR 3 -->
+    <section aria-labelledby="p3-h">
+      <div class="tier-lbl"><span class="tier-n">03 / 05</span> Infrastructure</div>
+      <h2 class="section-h" id="p3-h">Scale Infrastructure to Chinese Levels</h2>
+      <p class="section-intro">China's explosive growth in the 2000s was built on world-class physical infrastructure — ports, high-speed rail, highways — that slashed logistics costs and enabled export competitiveness. India is attempting the same, one decade later.</p>
+
+      <div class="block pillar">
+        <div class="block-tag">Priority</div>
+        <div class="block-h">Cut Logistics Costs from 13% to Under 8% of GDP</div>
+        <p class="block-p">India's logistics costs run at <strong>13–14% of GDP</strong>, compared to single digits in developed nations and ~8% in China. This structural inefficiency makes Indian exports less competitive in every global market. The <em>PM Gati Shakti</em> master plan uses digital mapping to seamlessly coordinate roads, rail, ports, and industrial corridors — eliminating the inter-ministry delays that previously added months and billions to infrastructure project timelines.</p>
+      </div>
+
+      <div class="block advantage">
+        <div class="block-tag">Strategic Opportunity</div>
+        <div class="block-h">Leapfrog to Green Energy Independence</div>
+        <p class="block-p">India can industrialise without repeating China's coal-heavy, pollution-intensive 2000s growth model. With <strong>180+ GW</strong> of renewable capacity already installed and aggressive targets for solar, wind, and green hydrogen, India can simultaneously secure energy independence (reducing a massive import bill), build clean manufacturing for global markets, and claim the green industrial leadership that China's coal-heavy past prevents it from credibly owning.</p>
+      </div>
+    </section>
+
+    <div class="tier-sep"></div>
+
+    <!-- PILLAR 4 -->
+    <section aria-labelledby="p4-h">
+      <div class="tier-lbl"><span class="tier-n">04 / 05</span> Digital Power</div>
+      <h2 class="section-h" id="p4-h">Export the Digital Public Infrastructure Stack</h2>
+      <p class="section-intro">While China dominates hardware manufacturing, India has quietly built the world's most advanced software plumbing for governance and finance — and it is now exporting it as a geopolitical instrument.</p>
+
+      <div class="block advantage">
+        <div class="block-tag">Asymmetric Advantage</div>
+        <div class="block-h">UPI, Aadhaar, ONDC: The Architecture the Global South Needs</div>
+        <p class="block-p">India's digital systems — UPI (payments), Aadhaar (biometric ID), ONDC (open commerce) — process billions of transactions flawlessly and cost almost nothing to run. By exporting this "DPI stack" to nations in Africa, South America, and Southeast Asia, India is binding the digital economies of the Global South to its own architecture. This creates geopolitical goodwill and soft power that China buys through expensive physical infrastructure loans — India delivers it for near zero marginal cost.</p>
+      </div>
+
+      <div class="block pillar">
+        <div class="block-tag">Emerging Strategy</div>
+        <div class="block-h">From IT Back-Office to AI Sovereignty</div>
+        <p class="block-p">India's challenge is to complete the transition from being the world's IT services and outsourcing hub to building domestic AI compute infrastructure, original deep-tech R&amp;D, and sovereign digital capabilities. Large-scale investment in semiconductor fabrication and AI research labs aims to make India indispensable in the global AI supply chain — not just as a talent source, but as the infrastructure provider for the next generation of digital systems across the developing world.</p>
+      </div>
+    </section>
+
+    <div class="tier-sep"></div>
+
+    <!-- PILLAR 5 -->
+    <section aria-labelledby="p5-h">
+      <div class="tier-lbl"><span class="tier-n">05 / 05</span> Geopolitics</div>
+      <h2 class="section-h" id="p5-h">Geopolitical Pragmatism: The Democratic Counterweight</h2>
+      <p class="section-intro">China's aggressive posturing has pushed the US, EU, Japan, and Australia to actively seek a democratic counterweight in Asia. India is the only country of sufficient scale to fill that role — if it plays its hand correctly.</p>
+
+      <div class="block advantage">
+        <div class="block-tag">Structural Advantage</div>
+        <div class="block-h">The Quad and Technology Transfers</div>
+        <p class="block-p">India must leverage groupings like the Quad — and bilateral relationships with the US, EU, Japan, and Australia — to secure technology transfers, access to critical mineral supply chains, and advanced defence capabilities. The strategic logic is clear to all parties: the West needs a large, democratic, non-aligned manufacturing partner to reduce dependence on China. India is the only country that simultaneously has the scale, the democratic credentials, and the geopolitical independence to be that partner.</p>
+      </div>
+
+      <div class="block pillar">
+        <div class="block-tag">Priority</div>
+        <div class="block-h">Finalize the EU and UK Free Trade Agreements</div>
+        <p class="block-p">India has historically been one of the world's most protected large economies. To sustain 7–8% growth, it needs guaranteed open markets for its exports. Finalising Free Trade Agreements with the <strong>EU</strong> and <strong>UK</strong> — both long in negotiation — would open markets for Indian IT services, pharmaceuticals, and manufactured goods. The cost is real: domestic industries will face competition. The gain is larger: India locks itself into a rules-based trade architecture that separates it permanently from the Chinese model.</p>
+      </div>
+    </section>
+
+    <div class="pull-quote">"India's goal by 2030 is not to equal China. It is to become the economy that the world bets on for the next 30 years — the same way the world bet on China in 2000."</div>
+
+    <!-- RELATED LINKS -->
+    <div class="related" aria-label="Related investigations">
+      <div class="related-l">Related on The Bengal Reader</div>
+      <div class="related-links">
+        <a href="/india-development" class="related-link">India's Development Story</a>
+        <a href="/demonetisation" class="related-link">Demonetisation Impact</a>
+        <a href="/bonds" class="related-link">Electoral Bonds</a>
+        <a href="/accountability" class="related-link">100-Day Pledges</a>
+        <a href="/ask" class="related-link">Ask AI</a>
+        <a href="/methodology" class="related-link">Methodology &amp; Sources</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="page-footer">
+  <p>The Bengal Reader · Non-partisan civic journalism · Data from World Bank, IMF, WEF, WID</p>
+  <p style="margin-top:0.5rem;">GDP projections are IMF baseline forecasts. All figures approximate. See <a href="/methodology">methodology</a>.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ── DATA (1990–2030, index 0 = 1990) ──────────────────────────────────────
+  const YEARS = Array.from({ length: 41 }, (_, i) => 1990 + i);
+  const PROJ_IDX = 34; // index of 2024, first projected year
+
+  // Nominal GDP, USD trillions — World Bank historical, IMF projections
+  const INDIA_GDP = [
+    0.321, 0.274, 0.295, 0.285, 0.330, 0.367, 0.392, 0.420, 0.428, 0.453,
+    0.477, 0.494, 0.524, 0.619, 0.722, 0.834, 0.940, 1.217, 1.224, 1.365,
+    1.708, 1.836, 1.827, 1.858, 2.039, 2.103, 2.294, 2.650, 2.714, 2.870,
+    2.671, 3.176, 3.385, 3.730,
+    4.110, 4.510, 4.960, 5.460, 6.000, 6.600, 7.260,
+  ];
+  const CHINA_GDP = [
+    0.361, 0.384, 0.492, 0.613, 0.560, 0.728, 0.856, 0.957, 1.029, 1.094,
+    1.211, 1.340, 1.471, 1.660, 1.955, 2.287, 2.753, 3.552, 4.594, 5.101,
+    6.087, 7.552, 8.561, 9.607, 10.476, 11.062, 11.234, 12.310, 13.895, 14.343,
+    14.688, 17.734, 17.963, 17.786,
+    19.400, 20.200, 21.000, 21.900, 22.800, 23.700, 24.700,
+  ];
+
+  // GDP PPP, USD trillions (current int$)
+  const INDIA_PPP = [
+    1.10, 1.07, 1.14, 1.21, 1.29, 1.39, 1.50, 1.55, 1.65, 1.80,
+    1.96, 2.06, 2.16, 2.37, 2.59, 2.86, 3.15, 3.48, 3.60, 3.90,
+    4.60, 4.89, 5.20, 5.56, 6.02, 6.66, 7.25, 7.75, 8.25, 8.76,
+    8.91, 9.95, 11.37, 13.12,
+    14.80, 16.40, 18.00, 19.70, 21.50, 23.40, 25.40,
+  ];
+  const CHINA_PPP = [
+    2.20, 2.48, 2.76, 3.04, 3.30, 3.57, 3.87, 4.14, 4.45, 4.73,
+    5.00, 5.45, 6.00, 6.78, 7.75, 9.30, 10.80, 12.60, 13.80, 15.00,
+    16.00, 17.70, 19.10, 20.50, 21.80, 22.40, 23.80, 25.40, 27.10, 27.90,
+    28.00, 30.20, 32.00, 33.00,
+    34.80, 36.40, 37.80, 39.20, 40.70, 42.20, 43.70,
+  ];
+
+  // GDP per capita, USD
+  const INDIA_PC = [
+    378, 315, 335, 320, 366, 400, 423, 449, 453, 474,
+    457, 469, 492, 574, 663, 757, 845, 1083, 1079, 1194,
+    1440, 1535, 1514, 1528, 1662, 1605, 1737, 1988, 2016, 2115,
+    1943, 2289, 2410, 2612,
+    2870, 3100, 3370, 3670, 3980, 4320, 4680,
+  ];
+  const CHINA_PC = [
+    317, 336, 429, 532, 483, 625, 730, 812, 869, 920,
+    959, 1053, 1148, 1288, 1510, 1753, 2100, 2694, 3468, 3832,
+    4524, 5619, 6330, 7078, 7683, 8033, 8117, 8827, 9977, 10262,
+    10409, 12526, 12671, 12614,
+    13700, 14200, 14800, 15300, 15900, 16400, 17000,
+  ];
+
+  // Annual GDP growth rate, %
+  const INDIA_GR = [
+    5.5, -1.4, 5.4, 4.8, 6.7, 7.3, 7.5, 4.1, 6.2, 8.5,
+    3.8, 4.8, 3.9, 8.0, 7.9, 9.3, 9.3, 9.8, 3.9, 8.5,
+    10.3, 6.6, 5.5, 6.4, 7.4, 8.0, 8.3, 6.8, 6.5, 6.5,
+    -5.8, 9.1, 7.2, 8.2,
+    7.0, 6.8, 7.0, 7.0, 7.0, 7.1, 7.1,
+  ];
+  const CHINA_GR = [
+    3.9, 9.2, 14.2, 13.9, 13.1, 10.9, 10.0, 9.3, 7.8, 7.6,
+    8.5, 8.3, 9.1, 10.0, 10.1, 11.4, 12.7, 14.2, 9.7, 9.4,
+    10.6, 9.6, 7.9, 7.8, 7.4, 7.0, 6.8, 6.9, 6.7, 6.0,
+    2.2, 8.5, 3.0, 5.2,
+    4.7, 4.5, 4.3, 4.2, 4.1, 4.0, 3.9,
+  ];
+
+  // ── METRICS CONFIG ─────────────────────────────────────────────────────────
+  const METRICS = {
+    gdp: {
+      india: INDIA_GDP, china: CHINA_GDP,
+      fmt: v => '$' + v.toFixed(1) + 'T',
+      label: 'Nominal GDP (USD Trillion)',
+    },
+    ppp: {
+      india: INDIA_PPP, china: CHINA_PPP,
+      fmt: v => '$' + v.toFixed(1) + 'T',
+      label: 'GDP PPP (USD Trillion, int\'l $)',
+    },
+    pc: {
+      india: INDIA_PC, china: CHINA_PC,
+      fmt: v => '$' + d3.format(',')(Math.round(v)),
+      label: 'GDP Per Capita (USD)',
+    },
+    gr: {
+      india: INDIA_GR, china: CHINA_GR,
+      fmt: v => v.toFixed(1) + '%',
+      label: 'Annual GDP Growth Rate (%)',
+    },
+  };
+
+  // ── STATE ──────────────────────────────────────────────────────────────────
+  let metric = 'gdp';
+
+  // ── SVG SETUP ──────────────────────────────────────────────────────────────
+  const W = 720, H = 360;
+  const M = { top: 30, right: 95, bottom: 46, left: 62 };
+  const iW = W - M.left - M.right;
+  const iH = H - M.top - M.bottom;
+
+  const svg = d3.select('#traj-chart').attr('viewBox', `0 0 ${W} ${H}`);
+  const g = svg.append('g').attr('transform', `translate(${M.left},${M.top})`);
+
+  // Projection zone background
+  const projRect = g.append('rect').attr('class', 'proj-zone')
+    .attr('fill', 'rgba(120,110,100,0.05)').attr('height', iH).attr('y', 0);
+
+  // Projection divider line
+  const projLine = g.append('line')
+    .attr('stroke', 'rgba(120,110,100,0.35)').attr('stroke-width', 1)
+    .attr('stroke-dasharray', '4,3').attr('y1', 0).attr('y2', iH);
+
+  // "PROJECTED →" label
+  const projLabel = g.append('text')
+    .attr('font-family', "'IBM Plex Mono',monospace").attr('font-size', '8')
+    .attr('fill', 'rgba(120,110,100,0.6)').attr('text-anchor', 'start')
+    .attr('y', -8).text('PROJECTED →');
+
+  // Grid + axes groups
+  const gridG = g.append('g').attr('class', 'grid');
+  const xAxisG = g.append('g').attr('transform', `translate(0,${iH})`);
+  const yAxisG = g.append('g');
+
+  // Axis labels
+  const yAxisLabel = g.append('text')
+    .attr('transform', 'rotate(-90)').attr('text-anchor', 'middle')
+    .attr('x', -iH / 2).attr('y', -46)
+    .attr('font-family', "'IBM Plex Mono',monospace").attr('font-size', '8')
+    .attr('fill', '#6b5f4e').attr('letter-spacing', '0.08em');
+
+  // Line groups
+  const indiaLineHist = g.append('path').attr('fill', 'none').attr('stroke', '#d97706').attr('stroke-width', 2.5).attr('stroke-linecap', 'round');
+  const chinaLineHist = g.append('path').attr('fill', 'none').attr('stroke', '#c0171b').attr('stroke-width', 2.5).attr('stroke-linecap', 'round');
+  const indiaLineProj = g.append('path').attr('fill', 'none').attr('stroke', '#d97706').attr('stroke-width', 2).attr('stroke-dasharray', '6,4').attr('stroke-linecap', 'round');
+  const chinaLineProj = g.append('path').attr('fill', 'none').attr('stroke', '#c0171b').attr('stroke-width', 2).attr('stroke-dasharray', '6,4').attr('stroke-linecap', 'round');
+
+  // End labels (at 2030)
+  const indiaEndLabel = g.append('text').attr('font-family', "'IBM Plex Mono',monospace").attr('font-size', '9.5').attr('fill', '#d97706').attr('font-weight', '700');
+  const chinaEndLabel = g.append('text').attr('font-family', "'IBM Plex Mono',monospace").attr('font-size', '9.5').attr('fill', '#c0171b').attr('font-weight', '700');
+
+  // Scales
+  const xScale = d3.scaleLinear().domain([1990, 2030]).range([0, iW]);
+  const yScale = d3.scaleLinear().range([iH, 0]);
+
+  // Hover overlay
+  const hoverLine = g.append('line').attr('stroke', 'rgba(120,110,100,0.4)').attr('stroke-width', 1).attr('y1', 0).attr('y2', iH).style('display', 'none');
+  const hoverDotI = g.append('circle').attr('r', 4).attr('fill', '#d97706').attr('stroke', 'white').attr('stroke-width', 1.5).style('display', 'none');
+  const hoverDotC = g.append('circle').attr('r', 4).attr('fill', '#c0171b').attr('stroke', 'white').attr('stroke-width', 1.5).style('display', 'none');
+
+  const overlay = g.append('rect').attr('width', iW).attr('height', iH).attr('fill', 'transparent').style('cursor', 'crosshair');
+
+  // ── RENDER ─────────────────────────────────────────────────────────────────
+  function render(animated) {
+    const m = METRICS[metric];
+    const allVals = [...m.india, ...m.china];
+    const minVal = d3.min(allVals);
+    const maxVal = d3.max(allVals);
+    const pad = (maxVal - minVal) * 0.08;
+    yScale.domain([Math.min(0, minVal - pad), maxVal + pad]);
+
+    // Update projection zone & line
+    const x2024 = xScale(2024);
+    projRect.attr('x', x2024).attr('width', xScale(2030) - x2024);
+    projLine.attr('x1', x2024).attr('x2', x2024);
+    projLabel.attr('x', x2024 + 4);
+
+    // Grid
+    gridG.selectAll('*').remove();
+    const yTicks = yScale.ticks(6);
+    yTicks.forEach(t => {
+      gridG.append('line')
+        .attr('x1', 0).attr('x2', iW).attr('y1', yScale(t)).attr('y2', yScale(t))
+        .attr('stroke', 'rgba(160,140,120,0.15)').attr('stroke-dasharray', '3,3');
+    });
+
+    // Axes
+    xAxisG.call(
+      d3.axisBottom(xScale).tickValues([1990, 1995, 2000, 2005, 2010, 2015, 2020, 2024, 2030])
+        .tickFormat(d3.format('d')).tickSize(4)
+    );
+    xAxisG.selectAll('text').attr('font-family', "'IBM Plex Mono',monospace").attr('font-size', '9').attr('fill', '#6b5f4e');
+    xAxisG.select('.domain').remove();
+    xAxisG.selectAll('line').attr('stroke', 'rgba(160,140,120,0.4)');
+
+    yAxisG.call(d3.axisLeft(yScale).ticks(6).tickFormat(m.fmt).tickSize(0));
+    yAxisG.selectAll('text').attr('font-family', "'IBM Plex Mono',monospace").attr('font-size', '9').attr('fill', '#6b5f4e').attr('dx', '-4');
+    yAxisG.select('.domain').remove();
+
+    yAxisLabel.text(m.label);
+
+    // Lines
+    const lineGen = d3.line().x((_, i) => xScale(YEARS[i])).y(v => yScale(v)).curve(d3.curveCatmullRom.alpha(0.5));
+    const hist = m.india.slice(0, PROJ_IDX + 1); // up to 2024 inclusive for smooth join
+    const projI = m.india.slice(PROJ_IDX);
+    const projC = m.china.slice(PROJ_IDX);
+    const projYears = YEARS.slice(PROJ_IDX);
+
+    const lineGenProj = d3.line().x((_, i) => xScale(projYears[i])).y(v => yScale(v)).curve(d3.curveCatmullRom.alpha(0.5));
+
+    if (animated) {
+      indiaLineHist.transition().duration(600).attr('d', lineGen(m.india.slice(0, PROJ_IDX + 1)));
+      chinaLineHist.transition().duration(600).attr('d', lineGen(m.china.slice(0, PROJ_IDX + 1)));
+      indiaLineProj.transition().duration(600).attr('d', lineGenProj(projI));
+      chinaLineProj.transition().duration(600).attr('d', lineGenProj(projC));
+    } else {
+      indiaLineHist.attr('d', lineGen(m.india.slice(0, PROJ_IDX + 1)));
+      chinaLineHist.attr('d', lineGen(m.china.slice(0, PROJ_IDX + 1)));
+      indiaLineProj.attr('d', lineGenProj(projI));
+      chinaLineProj.attr('d', lineGenProj(projC));
+    }
+
+    // End labels
+    const iEnd = m.india[40], cEnd = m.china[40];
+    const iY = yScale(iEnd), cY = yScale(cEnd);
+    const gap = Math.abs(iY - cY);
+    const iAdjust = gap < 14 && iY > cY ? 10 : 0;
+    const cAdjust = gap < 14 && cY > iY ? 10 : 0;
+
+    indiaEndLabel.attr('x', xScale(2030) + 5).attr('y', iY + 4 + iAdjust).text(m.fmt(iEnd));
+    chinaEndLabel.attr('x', xScale(2030) + 5).attr('y', cY + 4 - cAdjust).text(m.fmt(cEnd));
+  }
+
+  // ── TOOLTIP ────────────────────────────────────────────────────────────────
+  const bisect = d3.bisector((_, i) => YEARS[i]).left;
+  const tt = document.getElementById('chart-tt');
+
+  overlay
+    .on('mousemove', function (event) {
+      const [px] = d3.pointer(event);
+      const year = Math.round(xScale.invert(px));
+      const idx = year - 1990;
+      if (idx < 0 || idx > 40) return;
+
+      const m = METRICS[metric];
+      const xi = xScale(year);
+      const yi = yScale(m.india[idx]);
+      const yc = yScale(m.china[idx]);
+
+      hoverLine.attr('x1', xi).attr('x2', xi).style('display', null);
+      hoverDotI.attr('cx', xi).attr('cy', yi).style('display', null);
+      hoverDotC.attr('cx', xi).attr('cy', yc).style('display', null);
+
+      document.getElementById('tt-year').textContent = year + (year >= 2024 ? ' (projected)' : '');
+      document.getElementById('tt-india').textContent = 'India: ' + m.fmt(m.india[idx]);
+      document.getElementById('tt-china').textContent = 'China: ' + m.fmt(m.china[idx]);
+      document.getElementById('tt-proj').textContent = year >= 2024 ? 'IMF baseline projection' : '';
+
+      // Position tooltip
+      const wrap = document.querySelector('.chart-wrap');
+      const svgRect = document.getElementById('traj-chart').getBoundingClientRect();
+      const wrapRect = wrap.getBoundingClientRect();
+      const scale = svgRect.width / W;
+      const chartX = (xi + M.left) * scale;
+      const chartY = (Math.min(yi, yc) + M.top) * scale;
+      const ttLeft = chartX + 10 + wrapRect.left - wrapRect.left;
+      tt.style.display = 'block';
+      tt.style.left = (ttLeft > wrapRect.width - 160 ? chartX - 145 : chartX + 10) + 'px';
+      tt.style.top = Math.max(0, chartY - 10) + 'px';
+    })
+    .on('mouseleave', function () {
+      hoverLine.style('display', 'none');
+      hoverDotI.style('display', 'none');
+      hoverDotC.style('display', 'none');
+      tt.style.display = 'none';
+    });
+
+  // ── CONTROLS ───────────────────────────────────────────────────────────────
+  window.setMetric = function (m) {
+    metric = m;
+    document.querySelectorAll('[data-m]').forEach(b => b.classList.toggle('on', b.dataset.m === m));
+    render(true);
+  };
+
+  render(false);
+})();
+</script>
+
+</body>
+</html>
