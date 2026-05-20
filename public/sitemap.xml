@@ -139,6 +139,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://voting-awareness.vercel.app/india-development</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://voting-awareness.vercel.app/india-china</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
