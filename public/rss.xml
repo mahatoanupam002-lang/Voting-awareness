@@ -5,7 +5,7 @@
     <link>https://voting-awareness.vercel.app</link>
     <description>Latest headlines on Bengal corruption cases, court hearings, and political accountability — updated every 6 hours.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 21 May 2026 15:23:33 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 17:57:41 GMT</lastBuildDate>
     <atom:link href="https://voting-awareness.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://voting-awareness.vercel.app/favicon.svg</url>
@@ -21,6 +21,19 @@
       <content:encoded>
         <![CDATA[
           <p>Saradha chit fund case: CBI summons Trinamool leader Partha Chatterjee - Indiablooms</p>
+          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
+        ]]>
+      </content:encoded>
+    </item>
+    <item>
+      <title>Saradha chief Sudipta Sen set for release after nearly 13 years in jail - The Statesman</title>
+      <link>https://news.google.com/rss/articles/CBMiwAFBVV95cUxQdWgxM1hrTlJvWWxuc0VwTHY5YzBSOGxkek5kOGJOZFdsMUhWRkd4aWNGR1FOV2w4Q29mVFZiN0QtUkVmam0wSHBuQjNVMjQxNXVfWWw5X0Z6OUlwZFZWSnhwcGlkMnJEeVlTc2JkN2RBbDEydkNhY1Y1Ry1ibGFNMFVfZmN4ZFhoaFdsZTJxZWNvMjdzOGRnbXZRNS1ncXRON2Jtd3BlR1lSMlg1ZnF6eUZIR1FNMHJxWXVlbF9wR0TSAcYBQVVfeXFMTWVtaTJjWkFpWC1OOHdua1BSTlU2TUlZSTYzNXozdUdFalhDOFNnamp6VUFnQXpLaEJCMnFOVlRJeV9YSTd1MklocEotdEowelAzWk5la3lFMWxjN1BhajR5MEs2eFdpVFotM3Y5bUVPRVZ6alBHVUswYlJiZEpOQ2ppRVFNYzI5NDBnOXN4SFhqT0NHTFJvTWRyaklyLVNLVGpNd2loVk5JVUhmc1FvRGI1ZXRCb2RnR293SEpZRzZhS3FRVUNn?oc=5</link>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <source>The Statesman</source>
+      <category>saradha</category>
+      <content:encoded>
+        <![CDATA[
+          <p>Saradha chief Sudipta Sen set for release after nearly 13 years in jail - The Statesman</p>
           <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
         ]]>
       </content:encoded>
@@ -60,19 +73,6 @@
       <content:encoded>
         <![CDATA[
           <p>Sudipta Sen To Walk Out Of Jail After 13 Years Today: What Is Saradha Scam And Why Bail Now - News18</p>
-          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
-        ]]>
-      </content:encoded>
-    </item>
-    <item>
-      <title>Calcutta High Court grants conditional bail to Saradha scam accused Sudipta Sen - Mid-day</title>
-      <link>https://news.google.com/rss/articles/CBMiygFBVV95cUxNR0MycklZU184UFpuNnBNdGpheEdGQWV0by1JbTc3bHBTTkxDa3F5ZFVMWWNENEsxekswV0h6ajFsUjR1WEttaWQtekgyT0FnY1JFV0c4YTNqOVlfNkQ3bWR3SEhYd2NwZS1CeWVyc09VZHJTUVpXaEUxNTd4eVhjRlUxcWR0WjNlTkVER1B4dmpsRmJ0VVh3V2Z3T2ZRTXdtal9lOXpxTlRtckVPQ2llRzNlVTFwUmRBMnFHWDhWYXFmWXRpZzlwMDR30gHPAUFVX3lxTFBBeGxPSWV4ZEEwSWxYTWxCWnFPejNKYUlhck45WGJmUVhUS0psbnVKNUx3RWs1bzRQWWo3T1JGbkNfcE9veVI5N1A4a0huVWlTSWtCbHd3LURubUM2VFZhX2RYVndTN3V6V2Nmbl9udTBBLWNGaElsV0tSTGhFNThXTzVKTXEzNUpJaTYwbkVFclRBYlNSUlVudGhsUjVybzNCcnZzQmVkVXhDM3V2QUJUTW44eXE2Y3Q3NFZYU0ZLdkx6Rm1mOVNuS2tqUVRMSQ?oc=5</link>
-      <pubDate>Thu, 09 Apr 2026 00:00:00 GMT</pubDate>
-      <source>Mid-day</source>
-      <category>saradha</category>
-      <content:encoded>
-        <![CDATA[
-          <p>Calcutta High Court grants conditional bail to Saradha scam accused Sudipta Sen - Mid-day</p>
           <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
         ]]>
       </content:encoded>
@@ -208,19 +208,6 @@
       </content:encoded>
     </item>
     <item>
-      <title>Bengal grants CBI sanction to prosecute officials in recruitment scam cases - Dailyhunt</title>
-      <link>https://news.google.com/rss/articles/CBMihwJBVV95cUxORE5MRkxxMGV3d3hXaFZWX2Jhd1VrbHJoNGZ0RGw2azk0ZW0tQmRmd2tzVTRFQTdsM2duZGpNMktjR1N3OFVsa0lUSl9YeXFyN1FhS0hycDVvZUtmVGQ2TWtQYUJRTTNiRkRsUmxpOU5aZUZjYy1WaVY3YmZzWFJ5cFhCMEdfQWxNWUlUdHVsM2lBV0FFY2h4Nm1OVm95Zm9FS19HSDgwN1NOUGowODB6N1lwNm9VcGNNS2FQbE4xc0RKQmIwNXhjZUN0Zm1CeXpESk1LU1hDU2FfMFJuMlFsSmc3eTNaZUNvekNMa3ROYmZuMEVLV0kzOWxfMU5FdjdfNGpCZi1hRQ?oc=5</link>
-      <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
-      <source>Dailyhunt</source>
-      <category>ssc-scam</category>
-      <content:encoded>
-        <![CDATA[
-          <p>Bengal grants CBI sanction to prosecute officials in recruitment scam cases - Dailyhunt</p>
-          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
-        ]]>
-      </content:encoded>
-    </item>
-    <item>
       <title>From Sujit Bose to SSC Scam: TMC&apos;s Corruption Cases Back in Spotlight. Who is Next? - Dailyhunt</title>
       <link>https://news.google.com/rss/articles/CBMigwJBVV95cUxPYWp2cENEQzZzN0JuYlJyQUhaM3RBRThYRDlUdEVOT291QU8yNlF6UEM0SzFPQUNOQXdDdWpIWUVnZFplZmQ5czRONThhRFFieFMzRDFocTBTYk90SkxiSWxrV19hQnBvMmJlcUNaeEh1WEN4NXpfczBTOGE4UlNoUFNvYVRaWmEtbzZTaFIwcW9xa05RcmhyS2dQblFFeXNZNWNWWUp3dkZNUFY5NmxQR2lFLTBZb2FFcGFlM3Q5OFV5N3g3VDdMUU9FRjROYnY3b2daUWY3TWtaWEVVa3Y2aFlmNTY3M1EzV3dkc2JvR0JzTE5pUTQzaHNleGxxWFBoYVRF?oc=5</link>
       <pubDate>Wed, 13 May 2026 00:00:00 GMT</pubDate>
@@ -273,14 +260,14 @@
       </content:encoded>
     </item>
     <item>
-      <title>Mamata defends jailed Birbhum strongman Anubrata Mondal, talks of BJP as the &apos;bigger thief&apos; - Dailyhunt</title>
-      <link>https://news.google.com/rss/articles/CBMiigJBVV95cUxQX3RFWXp2VHM4UDRXUktVLWVRdEhjNVBZY2MzenpfOTlMOFlYUkZ3bnVqejhXX2s2dFhBclNjeklHd09Qa1dRNzlNU3UwQ0dPS1BvTjViUTZSQnBnT3RYODVCYVlnRFllWF9ZbXFtejFSMGEwY1pSMmJiZjlLbWdKa1lXWlZTcE9JN1p1YlFKRnZpRG1CS1J0MzNsa055SXc3eFNmVGllZkhxYWF4OGFOeHdyeTA1R0VJQ0tianRRSE9vckFwemN0cDhLSUVMWGp2UF93LVctRzlxREZZWmFKN3FJa3ctUkN3aHp5TTNhdUMzaGJuOUhlQ285U2I0ZlNrRGtjMzZBN3Rwdw?oc=5</link>
-      <pubDate>Sun, 03 May 2026 00:00:00 GMT</pubDate>
-      <source>Dailyhunt</source>
-      <category>cattle-trafficking</category>
+      <title>Bengal teacher recruitment scam: ED raids former education minister Partha Chatterjee’s Kolkata residence - The Indian Express</title>
+      <link>https://news.google.com/rss/articles/CBMi9AFBVV95cUxNdDJmNkxQYWRFMTVNSEJmY1ZQSDNKaF90MTU2bkxpVG5LZ3ZoTXNCdnZqaTVmdGNZS2I0dnNwVWtla3RaWG03YTY2ZUxKVXVfYnlKaG1jZ2lqSmdKZlhIdVBObXFsUTYzemMtNzdxZVVGMjhGTU5aXzlpZUsycy1aOVRUblVINXZLYlpCUWtKSFB3RjNLQi11UENhLXd6c1RKZHlQZ1ZWWUJMYVR5TWx0TUF6OEJhZEZ6a1hJSXJBSFBaOW9jbGM3OUZ2VFBiQlNEV3ZOVFdhdjJENjJ6RTNuYmgwWGlFZUpXdzd6b0ZwZ3F6Z2Uz0gH7AUFVX3lxTE40YkxMbVBMS0NXcy0yNk9uVzlIbFJWRl9BVjFuUk9MWG1oYy1yeHFOMnRsdWw0X2V2bGpCaTNNWUxPS2VRcUhManQ4QXBHMVNXS0U3WWl5eU1VQmFLOWlEUG5Qc2FKU1BZME5McDEyWlpyX3R0ZmJ6ajBSdkRhUUNqNktySDhCREJRYmZza05RaW1RRDNPMElpZlJrVmQzQUtsTUpXaHlfLTZBYmctSkRLTVBHTW1FeWtkQlJteTFTQ2lScnR3dTlUOW9rTUpldUNQSzFxUDRnQ3FPUmxsY2kwNkxERXByRlJLcTdLbDY0dFdqOVdrcmttUk53?oc=5</link>
+      <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
+      <source>The Indian Express</source>
+      <category>ssc-scam</category>
       <content:encoded>
         <![CDATA[
-          <p>Mamata defends jailed Birbhum strongman Anubrata Mondal, talks of BJP as the &apos;bigger thief&apos; - Dailyhunt</p>
+          <p>Bengal teacher recruitment scam: ED raids former education minister Partha Chatterjee’s Kolkata residence - The Indian Express</p>
           <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
         ]]>
       </content:encoded>
@@ -333,6 +320,19 @@
       <content:encoded>
         <![CDATA[
           <p>TMC strongman Anubrata Mondal gets bail in attempt to murder case - Indiablooms</p>
+          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
+        ]]>
+      </content:encoded>
+    </item>
+    <item>
+      <title>Calcutta HC grants permission to Birbhum SP to challenge summons in Anubrata Mondal case - Telegraph India</title>
+      <link>https://news.google.com/rss/articles/CBMi5gFBVV95cUxQTHdtX1dNazNhWFJEb1g4YzFwdFYxWHNhdXFMZnJSVk5nYUZyN29RVkY2b1BaWGFCa2dmeXphajRjSkxhcGNudUlMbEZZQnJldjAwbUdIZzFwbmtsU3VLTWZBNURFVWxYako0UGlqQjUxc0hNdjRFanJKS2RfcW52cF84V1psZ3lGV3czeWU0V3lRbGsxbGpZeEpEcmpHVVc3WFdzUF9nRGEtVmNJUk9wMENuNEZmOFUtZ3J6UTdrRl9yWUlNOGpYRFM5Q29wMjNEdXlKLU9UdDlFbHdhc0twSzBmSVM1UdIB6wFBVV95cUxQTVJPbks1eUlkcGZTcjRHX1FzTDN6UXhjRGlEU2Y3UzA0QldIclhnUEFtRWdYZUFEUl9EOF9WSHFhYUQzYVFVRFlxbVVQc2RsYncxRHFlWHdZSEJXQjBvVVozSC04NWhBcVBoeTdBZDVqN3FRSlRyMjlfd0xUYWNrczlWY2lmMGtoSU1MbVpFeklRT21kYXJCcjVhbXpQYlpZczg0MDF6d3hHUXlXOTZfWnBBS21RY0NoTlBZWFhoQTFLUGVUQ1BBakxIZjk1VmhuZ3NIMDFyNGlKTWlJUmZ3NUdla2h2Z3VnVmZN?oc=5</link>
+      <pubDate>Tue, 08 Jul 2025 00:00:00 GMT</pubDate>
+      <source>Telegraph India</source>
+      <category>cattle-trafficking</category>
+      <content:encoded>
+        <![CDATA[
+          <p>Calcutta HC grants permission to Birbhum SP to challenge summons in Anubrata Mondal case - Telegraph India</p>
           <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
         ]]>
       </content:encoded>
@@ -416,6 +416,19 @@
       </content:encoded>
     </item>
     <item>
+      <title>ED summons rice trader in Bengal ration corruption case - thehawk.in</title>
+      <link>https://news.google.com/rss/articles/CBMikwFBVV95cUxOcThldUZIQ3NFRmtEbWJrM19RRWx0Q0ZxUWlFczNDcnotR01SLWlaTDlMaWdnSW8tTU5kaHJ5OXhVYVRBaDhBS3h4a1NORE1OODhLSWJGUmgxT3R2X1lTcVNuMXRfN2ItQWwwajJCc3Ric1poSlBXelBuR2ZMSGhqWEd3SnJfbWNpQnBZLThPcmlHVXc?oc=5</link>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 GMT</pubDate>
+      <source>thehawk.in</source>
+      <category>ration-scam</category>
+      <content:encoded>
+        <![CDATA[
+          <p>ED summons rice trader in Bengal ration corruption case - thehawk.in</p>
+          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
+        ]]>
+      </content:encoded>
+    </item>
+    <item>
       <title>ED moves Calcutta HC seeking cancellation of ex-Bengal minister Jyoti Priya Mallick’s bail - The Statesman</title>
       <link>https://news.google.com/rss/articles/CBMi2AFBVV95cUxNOXg4cjB5c1BQa2xSNHNOYnJOeVVFSEdvZDRzZmhWZGZlSDVkVXFtMjd6aGFDY1JFSnJTaWNWcGRwZU9vNU1SakNWaHBCQzJVdjhWSWIzX3VnOXk1OHo3Q1RTNm5KSVFpY2s0QllKY1N3eXpZbmFyVmFHX0pabGN4dEc2eTF1QU4yMU1PWE56MVd5WHp1V0NqM2lLSWlvZFg3ekNzZ0wydUZ6WWlhNFRZSWpfc2NXUFBUVm95WXMtTVFXN0JoZFZxZUlBRUU4YjYzSHhuWWtpa27SAd4BQVVfeXFMUElrLVhQdkNpdzJmalA2VXhtYWFvSUxLamJwTXZqLUxjcDY3UTZHMFBWS2JWelF2VnVfNUFja20xby1vN3JlOGVmN0R6TTRsSTY1MjdERDN2bTBzOG9uYnMtZFNhRGxhRXFRMTlsNkVRdHktVDJWVXBNWWNsRGhZRlJBSmhlOHFNWU5oSi1PelRJS0YwYVZmUlNDb3p1YXZWV0JjSmNueUc1ajB1LXVQeGV0Q3FPeXhHY3lLdXN2THpXOC1vaVFKS0tJYjVvczBYYVhtcEtWNC1wOVZrRXRR?oc=5</link>
       <pubDate>Thu, 11 Sep 2025 00:00:00 GMT</pubDate>
@@ -455,32 +468,6 @@
       </content:encoded>
     </item>
     <item>
-      <title>Former Bengal minister Jyotipriya Mallick granted bail by PMLA court in ration distribution case - Telegraph India</title>
-      <link>https://news.google.com/rss/articles/CBMixwFBVV95cUxOcFowRnl0UVFuRllsR21lai1YaDBxVXRBc3RjNEJ0Q2k4RHZBTGphaWRRWV9JTWJNR0ZNMVNHSzBjeW5DTUtkWmhjTC12UUt2UEg0TFI4R3JjSkJmeGxnVnlocmthTndFd1hqa2N4aDRCTTU5Y29SdVVpSUZtbjJ5VlEyZm9iWEtsejBjemc0Z0xrbHZyMXZoX1dmUEs1UF93cVNkdTRDa21XZWdBeW5FSXdnVTlhVXVVbVhYWnh6Tjc4MmNvNFk00gHMAUFVX3lxTFBHZmN0WmUzOHQ3QjJHdjRfWTY3R2tlRmRvNTZtY1BBX1pSTUhVRVBDQnN1cGJWdEFaU3Exa2xtXzBVa2RBd0JOUzZwRXdEdDlxelpnZ0dzeS1HMjYxRW9tOUpFSnZaSkhFcmJVS3htVXcyT0l3eW1CaEZaSURvOE01ZTZRWXZHLURsNkZvUTh4VUxRNklmMXN3ZWdXbFNTdzl0dFJCczFKcFVxTGVMQzJmQVBoTnhTVjV3V0M2RnNCU0RjOF9IajFfTXZ6ag?oc=5</link>
-      <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
-      <source>Telegraph India</source>
-      <category>ration-scam</category>
-      <content:encoded>
-        <![CDATA[
-          <p>Former Bengal minister Jyotipriya Mallick granted bail by PMLA court in ration distribution case - Telegraph India</p>
-          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
-        ]]>
-      </content:encoded>
-    </item>
-    <item>
-      <title>CID reopens 2021 post-poll violence cases, files 181 fresh FIRs - MillenniumPost</title>
-      <link>https://news.google.com/rss/articles/CBMiqgFBVV95cUxNQmtSaVloYzFnNUhnVlMwRlRoWUZNRnNpSDhwc0RYUFdKbG00elc0a3NwWEhNY2ZoN1FmMjNlRjZlZVd0WktRdUpyQ2NrNFlMY19Cck1xUVp2Mk9TaGlWTWJ1bV9oUFF2Tlp2ang4cmxoUlRjLU9aY3lRYVpOS3J1QVpxdGc3WkdaRzZaOVlXeVN4bzZid0tfQjQteFJCZ2ptN3RIYVZONFZyd9IBrwFBVV95cUxQNWZ5RzFlSkQ4TTNQem5LYlFQV1gtLTZoQ2puWGNqZ1A2NDh5QjVHdmtUcDk4MkdUMGJEeGFhSVBWakdpUUFoQ0JIX01rV2tSc1hQTnRTUE5kdVo5V3V1MXdDcnF6cWVNQ0F3Q0Q3d3RrLXdURTZ6OGpGSVZkeWUwQVJKYnpMLWhTQ2dVRlUzeGhJazZKUTQtd3docmo3Mm9mR096X085MWZ6bXZXVUQw?oc=5</link>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <source>MillenniumPost</source>
-      <category>post-poll-violence-2021</category>
-      <content:encoded>
-        <![CDATA[
-          <p>CID reopens 2021 post-poll violence cases, files 181 fresh FIRs - MillenniumPost</p>
-          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
-        ]]>
-      </content:encoded>
-    </item>
-    <item>
       <title>Post-poll violence in Bengal leaves 4 dead, dozens injured - The Times of India</title>
       <link>https://news.google.com/rss/articles/CBMiwwFBVV95cUxQNDREQnhRNS13Vkw4aHFlc0l5d0tJWmEySDlIUnRGR2dfQXBjSFRBUnB0RU9qdENKZF82RnpUSlNxUFY1TUV0SFZzd0d0emFfa3NoLUNHdWlOb2Y4alFRYzBNUXNuMnNKMldLY2pFNnhfRTQzNkxrcU15YXBBY0xZLWNoNENtVUFpYkJHMHBfaGRwYTFjazRhLUx4bnd1RFVwMzUtSkFWS2VmWVpBZWdBVUdtM1FOemZMc2hJVlBUOG1qUTTSAcgBQVVfeXFMUHdXbHM3Sm5GS3dLNmV6SWdNelJ5X2tVUl9vZmZTaEQ3WU5xX0ppVGZiRmVrdHYtVkhWNk95SW9SQ1Qycm8tVWNSUV9lb1hUZG1SeEdDa3MyeFBvQXZzSmgyVmJDLVpTWGdoQnNKNFVaUUx0czF1T2JGcHB2VkoteGZIZDlDaU5DQkNVbUdKY3lDVkM1TzVUSDA4MTR1UTFUS1JoZGdnWDFxMHpId3dob3lmV01LLXVDR1FWSk5aeHMzWXkzbE5rbFo?oc=5</link>
       <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
@@ -507,19 +494,6 @@
       </content:encoded>
     </item>
     <item>
-      <title>&apos;My Brother Gave Life For This&apos;: Family Of BJP Activist Lynched In 2021 Calls Bengal Results &apos;Personal Victory&apos; - The Daily Jagran</title>
-      <link>https://news.google.com/rss/articles/CBMijgJBVV95cUxPLVlQODVGOWctdUtZUDNra0xLSmZSNHdtUmpiMldnVTkwaWppMVg1VlpWaWF3OFljWjE1elQ1eEU4YWNvTll2TTVxZTlHWWJRb0VvYmFHZVpWaVlOVHVvY29tMEpDbE1ycVMwbllia3hFU1hNX1M0bkhsVVA5VjhwZE9SSmhBS1ZUaWlwMlh6TVdjVGNxRmxHY3IzdGxKM1ZHa1FBNWp4TmJScjJOXzJLc0kyUjdlclFfdHJ1Ylh1NUpkX2NERWlXSXVidk54UGw4Uzl5N1BkdXFlM0xqUmp0YzVhMGczWjJGM2FlVmllYmd1OUFVTW1BMEx2bV8zRGNvM2ltdGtBUG9mQk9YNGc?oc=5</link>
-      <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
-      <source>The Daily Jagran</source>
-      <category>post-poll-violence-2021</category>
-      <content:encoded>
-        <![CDATA[
-          <p>&apos;My Brother Gave Life For This&apos;: Family Of BJP Activist Lynched In 2021 Calls Bengal Results &apos;Personal Victory&apos; - The Daily Jagran</p>
-          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
-        ]]>
-      </content:encoded>
-    </item>
-    <item>
       <title>&quot;How Can You Say...&quot;: Top Court Scolds CBI Over Bengal Post-Poll Violence Plea - Cobrapost</title>
       <link>https://news.google.com/rss/articles/CBMiqAFBVV95cUxPRnJabnhSNVpYWjZDcHJ0cHhhRTZkMWZKQklpM1daaTRaYlhMTFd3YUs5RnFLRlJRVFluQVI5SS1tcy1nSHgySkcteG5IRXl6RzM2Q3lDRXA1WGxaaUh1b2tUVm1JQjZfMWUzOVNSVmhXTExqd3VvSFVleXBzZ20tUGo2VmduaGg3ZWRCVG9pb3pOOHFSSWJ0RFNTSnVuNFJ4VmZFMzJJdXc?oc=5</link>
       <pubDate>Mon, 13 Apr 2026 00:00:00 GMT</pubDate>
@@ -528,6 +502,32 @@
       <content:encoded>
         <![CDATA[
           <p>&quot;How Can You Say...&quot;: Top Court Scolds CBI Over Bengal Post-Poll Violence Plea - Cobrapost</p>
+          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
+        ]]>
+      </content:encoded>
+    </item>
+    <item>
+      <title>Top court agrees to consider plea linked to 2021 post-poll violence - The Indian Express</title>
+      <link>https://news.google.com/rss/articles/CBMivwFBVV95cUxOUlZGZl9YSURoS3ZUbWl3ckM4RnM0N3owWFVoWFloVll4aDYtaFFoS3BtUGl1b1Q1Zk5Eb2lrRGxmV0xyNms0WXlSMTZ0enZEa2RPUVVKWGFKQXN0VHJiTzJzOHV1NXBHbUFMXzVjbXlNaUg5Uld6bnNMVjN0aEtuQ3NiWjFmdzhrT2RVOW9HZXRGQ1RFZlJHQXYydkZYVGF3bnlVaDJzbnI5QXlmMWN4cHpyR3dNaEpvOVl2U2xkQdIBxgFBVV95cUxPTDBPYnRQcWZ2dUU4VEFJMFVjNkFQaFJiZ3JTR1ExS18yalh0b0ZIejdvWTEtSlI2MkQ0ZmtwR1JWQjIwdFlKM3JvamhaUWF6cmhvNXRuZTFjZUpjNmdoX1RqQzF3bFIwYzE4MVRleTlDdmxUZ3hTYkpMS3kzQ1AzOUpmVUJoS2NOeTN6VjhLTlNvbUtGZ3E1ZVlFaWFXRkVRa3BfV2lrbThqck9ya0ZuaUZaNDcyaUJrV2pNWGdZZHRLYVFQSnc?oc=5</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 GMT</pubDate>
+      <source>The Indian Express</source>
+      <category>post-poll-violence-2021</category>
+      <content:encoded>
+        <![CDATA[
+          <p>Top court agrees to consider plea linked to 2021 post-poll violence - The Indian Express</p>
+          <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
+        ]]>
+      </content:encoded>
+    </item>
+    <item>
+      <title>CBI arrests key accused in 2021 post-poll murder case - The Statesman</title>
+      <link>https://news.google.com/rss/articles/CBMiqAFBVV95cUxQbmM3RGE4SVY2QVJ6Y2dhWkpXZUdEeUI1MmlqSmQyYnVZOG9oNHVTbS1SYjAwQmFnRzkyNzFWZW8wZ0FMNXR6VktCVVFRcm1rNzNYdHRWMDNacjlYXzRLT3BFSHN2RHg0d2NzM1ZGSkR0VlQ5eVJYcHVVaVdycVdUNUliNFFObUNQM1RpT0FBbWxEcUpaVWJQNjdjZmVXdkI5N3kyNWk5TzjSAa4BQVVfeXFMUDRVZWNtc0cxWDJNd00wMk1hekhPZWRBQ0tMcTZIMWpFUFBiUjJpN3JpeC05dTd2cnEyS0VGV0h6V05JWU5OQlRmb25MVTBpcFZteDJiVmxtSHQzN2VNSXp3bWFJODQxTXprRnM5ZDYtLUh5ZmJ4RFhVUFIxdV93bEkxUklDamdFRkI1OXhzUVRBZmp2TTRuZ185S19LV0xzUXFGTnlXdDF6MXVwOUtB?oc=5</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 GMT</pubDate>
+      <source>The Statesman</source>
+      <category>post-poll-violence-2021</category>
+      <content:encoded>
+        <![CDATA[
+          <p>CBI arrests key accused in 2021 post-poll murder case - The Statesman</p>
           <p>Read more at <a href="https://voting-awareness.vercel.app/corruption">Bengal Corruption Dossier</a>.</p>
         ]]>
       </content:encoded>
