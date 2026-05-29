@@ -119,22 +119,52 @@ window.shareDataPoint = function (label, value, url) {
   window.shareWhatsApp('⁠' + label + ': ' + value + ' — The Bengal Reader', url || location.href);
 };
 
-/* ── 7. Active nav link + hamburger menu ────────────────────────────────── */
+/* ── 7. Nav renderer — canonical link list, active state, hamburger ─────── */
 (function () {
-  document.addEventListener('DOMContentLoaded', function () {
-    var path = location.pathname.replace(/\/$/, '') || '/';
-    document.querySelectorAll('.site-nav-link').forEach(function (a) {
-      var href = a.getAttribute('href') || '';
-      if (href === path || (path !== '/' && href !== '/' && path.startsWith(href))) {
-        a.classList.add('active');
-      }
-    });
+  var NAV_LINKS = [
+    { href: '/', label: 'Voter Guide' },
+    { href: '/parties', label: 'Party Compass' },
+    { href: '/constituencies', label: '2026 Results' },
+    { href: '/accountability', label: '100 Days' },
+    { href: '/corruption', label: 'Dossier' },
+    { href: '/bonds', label: 'Money Trail' },
+    { href: '/mlas', label: 'MLA Records' },
+    { href: '/assets', label: 'Wealth' },
+    { href: '/nota', label: 'NOTA Reform' },
+    { href: '/clean-candidates', label: 'Clean Slate' },
+    { href: '/india-development', label: "India's Story" },
+    { href: '/india-china', label: 'India vs China' },
+    { href: '/india-governance', label: 'Performance OS' },
+    { href: '/india-disadvantage-index', label: 'Disadvantage' },
+    { href: '/demonetisation', label: 'Demonetisation' },
+    { href: '/education', label: 'Education Gap' },
+    { href: '/friction-engine', label: 'Friction Engine' },
+    { href: '/cjp', label: 'CJP' },
+    { href: '/cjp-projects', label: 'Swarm Projects' },
+    { href: '/ask', label: 'Ask AI' },
+    { href: '/map', label: 'Map' },
+    { href: '/search', label: 'Search' },
+    { href: '/methodology', label: 'Methodology' },
+  ];
 
-    // Inject hamburger button
-    var inner = document.querySelector('.site-nav-inner');
-    var links = document.querySelector('.site-nav-links');
-    if (!inner || !links) return;
-    links.id = 'site-nav-links';
+  document.addEventListener('DOMContentLoaded', function () {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
+
+    var path = location.pathname.replace(/\/$/, '') || '/';
+    var linksHtml = NAV_LINKS.map(function (l) {
+      var active = (l.href === path || (path !== '/' && l.href !== '/' && path.startsWith(l.href))) ? ' active' : '';
+      return '<a href="' + l.href + '" class="site-nav-link' + active + '">' + l.label + '</a>';
+    }).join('');
+
+    nav.innerHTML =
+      '<div class="site-nav-inner">' +
+      '<a href="/" class="site-nav-brand">The Bengal Reader</a>' +
+      '<div class="site-nav-links" id="site-nav-links">' + linksHtml + '</div>' +
+      '</div>';
+
+    var inner = nav.querySelector('.site-nav-inner');
+    var links = nav.querySelector('.site-nav-links');
 
     var btn = document.createElement('button');
     btn.className = 'nav-hamburger';
