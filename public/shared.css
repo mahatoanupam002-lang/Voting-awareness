@@ -681,3 +681,416 @@ cite[data-cite] {
 #bengal-install-dismiss:hover {
   color: rgb(245 240 232 / 80%);
 }
+
+/* ── GLOBAL RESETS (shared baseline so pages don't repeat it) ─────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── PAGE NOISE TEXTURE ─────────────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* ── LAYOUT CONTAINER ───────────────────────────────────────────────────────── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── MASTHEAD (page header block used across editorial pages) ────────────────── */
+.masthead {
+  border-bottom: 4px double var(--ink);
+  padding: 1.5rem 2rem 1rem;
+  text-align: center;
+  background: var(--paper);
+}
+
+.masthead-overline {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.3rem 0;
+  margin-bottom: 1rem;
+}
+
+.masthead h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.masthead h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.masthead-sub {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.masthead-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-top: 1rem;
+  border-top: 1px solid var(--aged);
+  padding-top: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ── STATS HERO (full-bleed dark stats bar) ──────────────────────────────────── */
+.stats-hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stat-cell {
+  padding: 1.2rem 2rem;
+  border-right: 1px solid rgb(255 255 255 / 10%);
+}
+
+.stat-cell:last-child {
+  border-right: none;
+}
+
+.stat-big {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8070;
+  margin-top: 0.3rem;
+}
+
+.stats-disclaimer {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: #6a6050;
+  margin-top: 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── FILTER BAR (sticky section navigation bar) ──────────────────────────────── */
+.filter-bar {
+  border-bottom: 1px solid var(--aged);
+  background: var(--paper);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.filter-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  overflow-x: auto;
+}
+
+.filter-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.filter-btn:hover {
+  color: var(--ink);
+}
+
+.filter-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 500;
+}
+
+/* ── CONTROLS BAR (sticky search + filter row used in data tables) ───────────── */
+.controls-bar {
+  background: var(--paper);
+  border-bottom: 1px solid var(--aged);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.controls-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-input {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--aged);
+  background: var(--paper);
+  color: var(--ink);
+  flex: 1;
+  min-width: 180px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--ink);
+}
+
+.filter-select {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--aged);
+  background: var(--paper);
+  color: var(--muted);
+  outline: none;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  border-color: var(--ink);
+}
+
+.result-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* ── SECTION HEADER (divider with label + title for content sections) ────────── */
+.section-header {
+  border-top: 4px solid var(--ink);
+  padding-top: 0.5rem;
+  margin: 3rem 0 1.5rem;
+}
+
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+/* ── CALLOUT BOX ────────────────────────────────────────────────────────────── */
+.callout {
+  border-left: 5px solid var(--muted);
+  background: var(--aged);
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.callout-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+/* ── TABLE WRAPPER ──────────────────────────────────────────────────────────── */
+.table-wrap {
+  overflow-x: auto;
+}
+
+.table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-wrap thead th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid var(--ink);
+  text-align: left;
+  background: var(--paper);
+  white-space: nowrap;
+}
+
+.table-wrap tbody tr {
+  border-bottom: 1px solid var(--aged);
+  transition: background 0.15s;
+}
+
+.table-wrap tbody tr:hover {
+  background: #fdfaf4;
+}
+
+.table-wrap td {
+  padding: 0.6rem 0.8rem;
+  vertical-align: middle;
+}
+
+/* ── DARK MODE ADDITIONS FOR SHARED COMPONENTS ────────────────────────────── */
+[data-theme='dark'] .stats-hero {
+  background: #080605;
+}
+
+[data-theme='dark'] .filter-bar,
+[data-theme='dark'] .controls-bar {
+  background: #141210 !important;
+  border-color: rgb(255 255 255 / 10%) !important;
+}
+
+[data-theme='dark'] .callout {
+  background: #1e1b18 !important;
+  border-color: rgb(255 255 255 / 15%) !important;
+}
+
+[data-theme='dark'] .table-wrap tbody tr:hover {
+  background: #1e1b18 !important;
+}
+
+[data-theme='dark'] .search-input,
+[data-theme='dark'] .filter-select {
+  background: #1e1b18 !important;
+  color: #f0ece3 !important;
+  border-color: rgb(255 255 255 / 15%) !important;
+}
+
+/* ── STATUS BADGE SYSTEM ────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.badge-watching {
+  background: rgb(138 122 106 / 12%);
+  color: var(--watching);
+  border: 1px solid rgb(138 122 106 / 25%);
+}
+
+.badge-announced,
+.badge-in-progress {
+  background: rgb(217 119 6 / 10%);
+  color: var(--in-progress);
+  border: 1px solid rgb(217 119 6 / 25%);
+}
+
+.badge-delivered {
+  background: rgb(22 101 52 / 10%);
+  color: var(--delivered);
+  border: 1px solid rgb(22 101 52 / 25%);
+}
+
+.badge-delayed {
+  background: rgb(180 83 9 / 10%);
+  color: var(--delayed);
+  border: 1px solid rgb(180 83 9 / 25%);
+}
+
+.badge-broken {
+  background: rgb(192 23 27 / 10%);
+  color: var(--broken);
+  border: 1px solid rgb(192 23 27 / 25%);
+}
+
+.badge-evaded {
+  background: rgb(123 63 110 / 10%);
+  color: var(--evaded);
+  border: 1px solid rgb(123 63 110 / 25%);
+}
+
+/* ── PARTY COLOUR DOTS ──────────────────────────────────────────────────────── */
+.party-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.party-dot.bjp { background: var(--bjp); }
+.party-dot.tmc { background: var(--tmc); }
+.party-dot.cpim { background: #e53935; }
+.party-dot.inc { background: #1976d2; }
+.party-dot.isf { background: #00897b; }
+.party-dot.ajup { background: #7b1fa2; }
+.party-dot.none { background: var(--muted); }
