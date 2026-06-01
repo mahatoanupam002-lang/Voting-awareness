@@ -2898,5 +2898,9 @@
       "lf": 0,
       "oth": 0
     }
-  ]
+  ],
+  "meta": {
+    "generatedAt": "2026-06-01T09:15:38.466Z",
+    "source": "ECI scraper + manual verification"
+  }
 }
