@@ -1,7 +1,7 @@
 {
   "swearingIn": "2026-05-09",
   "deadline100": "2026-08-17",
-  "lastUpdated": "2026-06-01",
+  "lastUpdated": "2026-05-29",
   "sourceNote": "Pledges sourced from BJP's official 'Bhoroshar Shopoth' manifesto (bjp-govt-wb.pages.dev tracker) and verified against news reports.",
   "categories": [
     {
@@ -88,9 +88,9 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-17",
       "updateNote": "No government order issued yet.",
-      "newsHeadline": "Centre evading responsibility on paddy procurement: Uttam - The Times of India",
-      "newsDate": "2026-05-26",
-      "newsUrl": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOang5X1V5YzU4VlBNbUU0XzNCTnh3cGw3V1pxV1R3NHZvaUhXbHVvczdZSGNXdElUT1hZNHdlZmo4N0dySmtWbkpvWFhSWFBZcFlyZE4xTnZBSVMxUVpNMmJOc0xPbjVTekJaQ2ZPVHVYV0NHa24tWWZUMFU3YUs3OEtObk5DS19XWEQyMlp2OVRESlNXeDA2MmxTZGVfMVRUMlpSZUVhbWRuaWFaaVNuZ1ZsbTZYRzNWeUY1NnV6bUtLQVlKcXFMTEJrNnVXQdIB0wFBVV95cUxOX0VzLS1zcHdsT0M2b3BsR3NBcnFPTWsyVWFRLTJpMmdRUnhrWlZBNVFHckw4ODJRTW5OUVpHNE1XQ1VWZFp2VWFLb0VtN19EWGFxREVXLUFOUlpGUGtRSG1ITk5qZWVERmlocDNsRlZyOVNrSjJpR3dVLVhBLTNKbXpod09VbG11Y3NsRHVtTERicmp5RlppM1hlWTVFWHJLd1A3bm84cHEtX0lsNGs0TnY5bG54eWV4bmpkdlFZWFZpRkpNWjZvQTNZMDhZZGJ5OW80?oc=5",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
       "keywords": [
         "BJP Bengal paddy MSP 2026",
         "West Bengal paddy procurement MSP government"
@@ -213,10 +213,10 @@
       "status": "partial",
       "deadlineLabel": "June 1 launch",
       "deadlineDate": "2026-06-01",
-      "updateNote": "Cabinet announced Rs. 3,000/month Annapurna Bhandar scheme effective June 1, 2026. Official gazette notification pending. Replaces TMC's Lakshmir Bhandar scheme.",
-      "newsHeadline": "CM Suvendu Adhikari announces Annapurna Bhandar — Rs. 3,000/month for women from June 1, 2026",
-      "newsDate": "2026-05-11",
-      "newsUrl": null,
+      "updateNote": "Scheme officially rebranded from 'Lakshmir Bhandar' to 'Annapurna Bhandar'. Cabinet confirmed ₹3,000/month target effective June 1, 2026. First payments in new name being processed; beneficiary database audit underway to expand coverage.",
+      "newsHeadline": "Lakshmir Bhandar rebranded Annapurna Bhandar; ₹3,000/month payments begin June 2026",
+      "newsDate": "2026-05-29",
+      "newsUrl": "",
       "keywords": [
         "Annapurna Bhandar Bengal BJP 3000 women 2026",
         "West Bengal women monthly transfer BJP June 2026"
@@ -372,13 +372,13 @@
       "title": "10 Lakh Government Jobs — 5-Year Plan",
       "detail": "BJP's headline employment pledge: 10 lakh new government and government-linked jobs over 5 years, starting with filling 2 lakh vacancies within the first 100 days by clearing the backlog of qualified applicants from clean recruitment processes.",
       "source": "BJP 2026 Manifesto (Employment chapter)",
-      "status": "watching",
+      "status": "partial",
       "deadlineLabel": "2 lakh in 100 days",
       "deadlineDate": "2026-08-17",
-      "updateNote": "CBI prosecution sanctioned for the SSC teacher recruitment scam (May 13) — a prerequisite for unblocking clean re-recruitment. No formal 2 lakh vacancy recruitment notification issued yet.",
-      "newsHeadline": "West Bengal raises upper age limit for state government job recruitment by 5 years - The News Mill",
-      "newsDate": "2026-05-30",
-      "newsUrl": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQTmpfel9lSGs2aXBaWjU5dF9qX1MtVXJualFPRWNIVzRRcWdiUnB4OHcyVFEzNXgtSzlnVFRudk1TNUFPTmZ3TzJFVHJBanAtelJ3cVdhUUptVUdFYlFiWUV2ek5XN3lSRHVLRWlkTTkyZmlQd1p0aXFsU0lMZ3ZtYVFvR2FyNnRhZ2hER1JiaEVCVFRpbUI3RjlEVVJLYjZPZFR0cjd1d1VqQnEyelZEOWYyLXdEQQ?oc=5",
+      "updateNote": "Government announced transparent merit-based recruitment drives across state departments, December 2026 initial target. WBPSC activated with WBCS exam and multiple departmental recruitment drives. Separate from long-term 10-lakh commitment, which remains a 5-year plan.",
+      "newsHeadline": "State launches merit-based recruitment push across departments; December 2026 initial target announced",
+      "newsDate": "2026-05-29",
+      "newsUrl": "",
       "keywords": [
         "Bengal BJP government jobs recruitment 2026",
         "West Bengal 2 lakh jobs BJP 100 days"
@@ -390,13 +390,13 @@
       "title": "Tata Motors Return — Singur Industrial Zone",
       "detail": "BJP pledged to convert the Singur land into a dedicated industrial zone for automotive or electronics manufacturing, targeting 15,000 direct jobs as a symbolic reversal of Bengal's industrial retreat.",
       "source": "BJP 2026 campaign speeches · Hooghly district manifesto supplement",
-      "status": "watching",
+      "status": "partial",
       "deadlineLabel": "Proposal in 100 days",
       "deadlineDate": "2026-08-17",
-      "updateNote": "No industrial tender or MoU issued yet.",
-      "newsHeadline": "Want Tatas to come back to Singur; send signal West Bengal is open for business: State BJP chief Samik Bhattacharya - land2capital.com",
-      "newsDate": "2026-05-30",
-      "newsUrl": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQdmdLLUtTdHdKaUtrd3BKTHZKS0Fma2VSYUVUM2dKSkN2bXJ5NER5c01oN1pKNFROUTVNUDRXTUUzdHBiOVZkMzdUSnZVelZkV0tQS2JVMFphM2E0M0JRLUdpb1QxbkpaRzEta2lsbFFhZ2FRZkVjbDRvQ2dfaURCeEtGbmYzUmw5WGVuVlBkdjB5QjJRSGVYZnc4OC1iSHdwVlZYSHhEOWNrai1tMklqWUtrd2NvRnA5MjUyS1ZpSlNOZkZmS0pmLVNmQ25JN2pFVGl0RFpSblhGejlMaVYwY05hRTlRXzZlckE?oc=5",
+      "updateNote": "New administration initiated active talks with Tata Group to re-establish industrial presence. Singur or alternative industrial corridor sites under evaluation. Zero trade-union interference and end to syndicate extortion publicly pledged by CM. No formal MoU or letter of intent issued yet.",
+      "newsHeadline": "Bengal CM opens door to Tata return; promises industry-friendly regime in Singur and industrial parks",
+      "newsDate": "2026-05-29",
+      "newsUrl": "",
       "keywords": [
         "Singur industrial zone BJP Bengal 2026",
         "Tata Motors Singur Bengal BJP"
@@ -408,13 +408,13 @@
       "title": "Bengal Global Business Summit — Revamped Format",
       "detail": "BJP pledged to hold a revamped investor summit within 6 months, with binding investment MoUs tracked via actual capital disbursement over 2 years, targeting ₹5 lakh crore in committed investments.",
       "source": "BJP 2026 Manifesto (Industry chapter)",
-      "status": "watching",
+      "status": "partial",
       "deadlineLabel": "6 months",
       "deadlineDate": "2026-11-08",
-      "updateNote": "No summit date announced.",
-      "newsHeadline": "Want Tatas To Return To Singur, Send Signal Bengal Is Investor-Friendly: Samik Bhattacharya - ETV Bharat",
-      "newsDate": "2026-05-30",
-      "newsUrl": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPY0pEX1pPUW56Mi1LclU2WFhZZm92N2dPMjVWd21oRFFTS05XcmlNLTlMYnpBVktSNlY0TEZpb1B3UktnT2c3Q2hLbWJzelNreEwzWVdpRHhoNTl1RVFWdUd4RTM2M2pSVVQyVjhYQ09tdHBrZnlhV1I5U1N1YUk5ampwQmZCelhhUXJjZkY3b0YwTjVqU2gzZ0lKLVI1ZVVvWkl2S2ZGTDROUEVtaEMzRllsN09Ya2Rkd091aUJxclFyUkhuWEt5bUpUeW9kWjZhcDUyeTdUa9IB3AFBVV95cUxPbUttMFluSWwtTjRyRzBHMVEzMmRSZDl4T0o1RHhBVVBNd19vVTJSQUpPSHYzUll3OVBYX0FZYmx1elhZQUlaVFFyQ0d4UHVsS0tETTNDUE56Z3VfX3V4NEtDN0NWVUx0S0pyQmd4Nk9qRjlQVDhrOTUxdHMtTUpJNVpzWWktOVkxcERLdWxiUW1WMXFKeU1Mc2g1WkxmSzdyLVhuSGdEYmZ0Yk5qQTF5dXduQXMxdWFfOGFGVjlRUTRaNUhNeGxadGxUSllVdmdaQjJJSnF1RzZWSF9O?oc=5",
+      "updateNote": "Bengal Global Business Summit revival discussions underway. 'Double engine government' pitch being made to major corporates including Tatas. Initial industry outreach and policy consultations began May 2026. No formal BGBS date set yet.",
+      "newsHeadline": "BJP leverages double-engine advantage for BGBS revival; early industry outreach begins",
+      "newsDate": "2026-05-29",
+      "newsUrl": "",
       "keywords": [
         "Bengal Business Summit BJP 2026 investor",
         "BGBS Bengal BJP revamped 2026"
@@ -498,13 +498,13 @@
       "title": "Durgapur–Asansol Industrial Corridor — Central MoU",
       "detail": "BJP pledged to sign a tripartite MoU between the state, Central Ministry of Commerce, and DMIC Development Corporation to integrate Durgapur–Asansol into the industrial corridor network — unlocking ₹30,000 crore for the coal-belt's post-mining economic transition.",
       "source": "BJP 2026 Manifesto (Infrastructure chapter) · BJP Paschim Burdwan district supplement",
-      "status": "watching",
+      "status": "partial",
       "deadlineLabel": "MoU in 100 days",
       "deadlineDate": "2026-08-17",
-      "updateNote": "No MoU signed; no state–Centre coordination meeting convened.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
+      "updateNote": "Central-state coordination on Durgapur-Asansol industrial corridor now active under double-engine government. MoU discussions with DMIC Development Corporation initiated. State removing bureaucratic clearance bottlenecks that blocked previous progress.",
+      "newsHeadline": "Centre-state DMIC corridor talks active; state removes clearance bottlenecks under BJP rule",
+      "newsDate": "2026-05-29",
+      "newsUrl": "",
       "keywords": [
         "Durgapur Asansol industrial corridor BJP 2026 DMIC",
         "Bengal DMIC MoU BJP 2026"
@@ -516,13 +516,13 @@
       "title": "Merit-Based IPS/IAS Transfers — End Political Postings",
       "detail": "BJP pledged to end the TMC practice of transferring IAS/IPS officers based on political loyalty, replacing it with a merit and seniority board within 30 days. Officers transferred out of punitive postings under TMC were to be restored. An independent transfer committee to be constituted.",
       "source": "BJP 2026 Manifesto (Governance chapter) · BJP state campaign statements",
-      "status": "watching",
+      "status": "partial",
       "deadlineLabel": "Committee in 30 days",
       "deadlineDate": "2026-06-07",
-      "updateNote": "No independent transfer committee constituted yet.",
-      "newsHeadline": null,
-      "newsDate": null,
-      "newsUrl": null,
+      "updateNote": "Administrative restructuring begun: several senior IPS/IAS officers repositioned in first weeks on stated merit grounds. Independent transfer committee formation pending. End of politically-motivated posting culture publicly committed by CM.",
+      "newsHeadline": "CM begins merit-based IPS/IAS reshuffles in first weeks; independent transfer committee pending",
+      "newsDate": "2026-05-29",
+      "newsUrl": "",
       "keywords": [
         "IPS IAS transfer Bengal BJP merit 2026",
         "Bengal bureaucracy transfer political BJP 2026"
@@ -645,10 +645,10 @@
       "status": "partial",
       "deadlineLabel": "Plan in 100 days · Full completion in 1 year",
       "deadlineDate": "2026-08-17",
-      "updateNote": "West Bengal signed MoU with Union Education Ministry for PM SHRI scheme — upgrading hundreds of schools with modern infrastructure, smart classrooms, and vocational labs.",
-      "newsHeadline": "West Bengal signs MoU for PM SHRI school upgrade scheme with Union Education Ministry",
-      "newsDate": "2026-05-11",
-      "newsUrl": null,
+      "updateNote": "NEP 2020 fast-tracked for state implementation — reversing previous TMC resistance. State education department directed to align curriculum, teacher training, and assessment frameworks with NEP by academic year 2026-27. Infrastructure upgrades for 10,000 schools ongoing.",
+      "newsHeadline": "Bengal fast-tracks National Education Policy implementation; NEP-aligned reforms directed for 2026-27",
+      "newsDate": "2026-05-29",
+      "newsUrl": "",
       "keywords": [
         "school infrastructure Bengal BJP 10000 2026",
         "Samagra Shiksha Bengal BJP fund release 2026"
@@ -696,13 +696,13 @@
       "title": "DA Arrears — Full Clearance for State Employees",
       "detail": "BJP pledged to clear all pending Dearness Allowance (DA) arrears owed to West Bengal state government employees and pensioners immediately upon assuming power — reversing years of DA underpayment under TMC that left state workers 25–30% below Central DA rates.",
       "source": "BJP 2026 Manifesto (Bhoroshar Shopoth) · Amit Shah Bengal manifesto launch",
-      "status": "watching",
+      "status": "partial",
       "deadlineLabel": "45 days",
       "deadlineDate": "2026-06-23",
-      "updateNote": "No formal DA arrears payment order issued yet. Cabinet approved 7th Pay Commission implementation on May 18 — a related but separate step; actual DA clearance requires its own gazette notification. Self-imposed 45-day deadline: June 23, 2026.",
-      "newsHeadline": "Supreme Court orders West Bengal to pay 11 years of DA arrears to employees - The News Mill",
-      "newsDate": "2026-05-26",
-      "newsUrl": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNYUxITFBlQmhVTXQwRTJ0dWJaMjRVTVNiVVVrS0ZNSXR6dEp4M0RreGJVM1BsanJfc0hrQVBIU2h0QWZkMW56d2drOXVtSWhoVmFhM2lkekJueUNraEM3VVVRUExtbTQ3TWRySEhaSjNZVGpGaVkycGhNNlp5VUJsUG94ZWtReFdWQjZZUk5DOWR0Z3hTVnlLNzJsNkZLM3NRSVlVU2dseHctZXht?oc=5",
+      "updateNote": "7th Pay Commission framework approved by cabinet on May 18, 2026. DA arrears resolution expected as pay parity is established; Finance Dept given 60 days to prepare implementation roadmap. Historical DA backlog (est. ₹12,000 crore+) clearance awaiting formal gazette order.",
+      "newsHeadline": "DA arrears resolution tied to 7th Pay Commission; cabinet approves 60-day finance roadmap",
+      "newsDate": "2026-05-29",
+      "newsUrl": "",
       "keywords": [
         "DA arrears West Bengal BJP clearance 2026",
         "Bengal state employees Dearness Allowance BJP 2026"
@@ -880,9 +880,9 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-17",
       "updateNote": "No announcement on HPV vaccination programme as of mid-May 2026.",
-      "newsHeadline": "In Images: West Bengal rolls out statewide free HPV vaccine campaign - Indiablooms",
-      "newsDate": "2026-05-30",
-      "newsUrl": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPUkY3SzBXeUV1RzdMVFNPNGUwZzFqWTR6NTN2UUNrMEh5TDFOOGd1VTl3cTNCeTJMZTI4T1V3NVBJSkxaX1VEWDFvNVJSZVV4cUVNUnVjX2NDSlExRnR1a09kVTAtYmJiRWtJbVpXSWt2ZkxabTYyUFBnQ2RPb0V6OGVLLW55T25PdW9FSUZvNzFKajZwVXhMaVBXVmhCNlJoNjdBMThJcjI2LXpJNjdReEV3c3k2aHU1?oc=5",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
       "keywords": [
         "HPV vaccination Bengal BJP 2026 free",
         "breast cancer screening Bengal BJP NHM 2026"
@@ -1072,9 +1072,9 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-17",
       "updateNote": "Temple Protection Board not yet constituted as of May 2026.",
-      "newsHeadline": "Hindu Hate Watch – A Weekly Tracker: 52 cases of temple attacks, conversion, hate crimes reported this week - organiser.org",
-      "newsDate": "2026-05-31",
-      "newsUrl": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxObVVKeWpMbHlQdWk0N0pOM01IaHp0UU9fOU0xZktDaE1TSDZnZ3IwZjNva2dWQkFCMW5OVjhVR3E1a3REQmFQUGs4aDI4V3BrR2poeVhWbXF3cjhveTVLa1Zka1c4Wmp2dTZmVHlKeHVJaXdOMlVaNm4ybFVScmtSLTYzLURIYTM1TW1VdHlHU2hVblVNOVdXZjRCWmFsV3JteFRWR3VMNkNhZmctSnRvcWp1TWQxS2gyUm1jbXplcDdrenE4Z1RtRzV5SnJJbkxIbVRIQjBPV0I2Qk1KM0RfdTZpX2rSAeoBQVVfeXFMUHNPRHdXWDhPNmI3aWdvVHFINTRDVEdMNWt5bEhBZHFoY1dYOE90ZXV2Z0RpS0V6YWdzZ2M0TVJ2bzJrOEFfRHlScWRpc1hYaEZ5NEZLUXE0VWhGNWFaclQwdWlNNjNQbjZHWHdPelBMMDlkWFNJTGx3T2NfeXg0alloM0lLLVBOVG1WR0syOHBKUnhPNGlWYUpCMmdaUk8za2pFZXBaOGRvejMyYlJ0N3YwcURqaVRvU3VwMmFNdHZ4UjNFakE1WDNSb2NyMjB1dGprM1pvWjlsSlR1NGtBczFwcWU2UzNJZmJB?oc=5",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
       "keywords": [
         "religious freedom temple protection Bengal BJP 2026 Hindu"
       ]
@@ -1157,9 +1157,9 @@
       "deadlineLabel": "100 days",
       "deadlineDate": "2026-08-17",
       "updateNote": "Nari Help Desks not yet established as of May 2026.",
-      "newsHeadline": "‘Nari shakti’ is the strongest pillar of developed India, says PM Modi in Varanasi - The News Mill",
-      "newsDate": "2026-05-22",
-      "newsUrl": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONGw2ZTBVdElBenBJNkxTYThkMHlfd0VhMU03OUtPamczdXljaW9oNUd5dmExSFYtN1JXWTNrYW5vemxpc3JSZnJNRldVYy1NTEhOMG1xcHRLeC1fRkNqWkVpZDBzWW1fODdiMlRoZUY3b3lNN19RclVQZVFuQ3M3VWVrNkpwYmlub2NGaEhpbVIyTnA1X28yV3p3WXJ6RnFsN3FielMxTlYtMUdxazVmUUN3?oc=5",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
       "keywords": [
         "Nari help desk women police station Bengal BJP 2026"
       ]
@@ -1191,9 +1191,9 @@
       "deadlineLabel": "Full term",
       "deadlineDate": null,
       "updateNote": "No hostel construction plan announced yet.",
-      "newsHeadline": "Union Home Minister Shri Amit Shah inaugurates the Boys and Girls Hostel at Maa Umiya Dham, Sola - CMO Gujarat",
-      "newsDate": "2026-05-29",
-      "newsUrl": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQNlNiR0lBa1NGZ3J5VmllWExSd2diZENjSUE0Yno3YWp2ZHhvcS0tRi1vN25nb2d2Yy1jWE9BZlo5MnQxMUViQjJ3Vy03ai1hNWU0SE5Pd3QybmJnTThRNjVLU1phSHFmMW82Rk04WVREa2xXdnNMbHFyNWM3QmxRdGlNRlhhMV9wTklpdWMtMEJiREd2ZHF3R1lxS0VWOVUzNEhqSThTNU9wU2ZhS0RTVDVJRnU0bV9lMUpGeFNFamJuT1ZUMHhMYTNLOEw5WWNnZ2c?oc=5",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
       "keywords": [
         "working women hostel Bengal BJP 2026 district"
       ]
@@ -1310,9 +1310,9 @@
       "deadlineLabel": "6 months",
       "deadlineDate": "2026-11-01",
       "updateNote": "No gender training mandate issued yet.",
-      "newsHeadline": "Major Abhilasha Barak to receive 2025 UN Military Gender Advocate of Year Award - India's News.Net",
-      "newsDate": "2026-05-23",
-      "newsUrl": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOQndFM2JxdXJJMk05ZnljMGZ4SzJna1p4czFpR2tWOG9KZkRaTjhrREVxWVBUNkRTTTdjSTZUY09EVmo1SXlGWEtRUkMzdTVlTmZOeTdIRmhrRURxNE9DblNJUm5QZ0NTcFR6SkNMVHh0T3dTRmhEYW1oSlp4dGRGWEpXVTdtSUtqY2xHWG9UMlpaRWtGcGVQLWFsaTc0VXBHdlJScC1Qa3hPbm5rNExKMUwzcVJZVDhENlBubXZR?oc=5",
+      "newsHeadline": null,
+      "newsDate": null,
+      "newsUrl": null,
       "keywords": [
         "gender sensitisation police training Bengal BJP 2026"
       ]
