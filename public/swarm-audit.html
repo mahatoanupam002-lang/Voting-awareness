@@ -591,12 +591,11 @@
         <div class="reports-list" id="reports-list"></div>
       </section>
 
-      <p class="data-note">
-        SwarmAudit is a proposed civic-tech platform under the CJP open-source framework. All reports on this demo page
-        are mock data for illustrative purposes. No real reports have been submitted. In production, each report would
-        require GPS metadata, a photograph hash, and voluntary identity verification. Data is shared monthly with
-        relevant municipal authorities under the provisions of the Right to Information Act, 2005. This page does not
-        constitute legal advice.
+      <p class="data-note" id="data-note">
+        SwarmAudit runs on a live backend under the CJP open-source framework. Until a database is connected the
+        reports shown are sample data for illustration; once connected, real citizen submissions are stored and shown
+        alongside them. Each production report carries GPS metadata and is shared monthly with relevant municipal
+        authorities under the provisions of the Right to Information Act, 2005. This page does not constitute legal advice.
       </p>
     </main>
 
@@ -816,9 +815,30 @@
         // Reset form
         document.getElementById('report-form').reset();
         document.getElementById('loc-display').textContent = 'No location detected yet';
+
+        // Persist to the live backend (fire-and-forget; demo UX above already
+        // gave instant feedback, so a missing/unconfigured backend never breaks it).
+        fetch('/api/civic?kind=report', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            kind: 'report',
+            category: API_CAT[cat] || 'other',
+            description: desc,
+            ward,
+            city: '',
+            lat: parseFloat(userLat) || null,
+            lng: parseFloat(userLng) || null,
+          }),
+        }).catch(() => {/* offline / not configured — demo entry already shown */});
+
         userLat = null;
         userLng = null;
       });
+
+      // Map between the page's display categories and the backend enum.
+      const API_CAT = { 'Roads': 'roads', 'Sanitation': 'sanitation', 'Public Health': 'health', 'Education': 'education', 'Utilities': 'utilities' };
+      const DISPLAY_CAT = { roads: 'Roads', sanitation: 'Sanitation', health: 'Public Health', education: 'Education', utilities: 'Utilities', other: 'Utilities' };
 
       // ── CFI TABLE ─────────────────────────────────────────────────────────
       const tbody = document.getElementById('cfi-tbody');
@@ -855,6 +875,61 @@
           <span class="status-chip ${CHIP_CLASS[r.status] || ''}">${r.status}</span>`;
         reportsList.appendChild(card);
       });
+
+      // ── LIVE BACKEND: load real submissions if the database is connected ─────
+      const STATUS_DISPLAY = { pending: 'Pending', escalated: 'Escalated', resolved: 'Resolved' };
+      (async function loadLiveReports() {
+        let items;
+        try {
+          const res = await fetch('/api/civic?kind=report');
+          if (!res.ok) return; // 503 = backend not configured → stay on demo data
+          ({ items } = await res.json());
+        } catch { return; } // offline → demo data
+        if (!Array.isArray(items) || items.length === 0) return;
+
+        // Backend is live with real data — make the disclaimer honest.
+        const note = document.getElementById('data-note');
+        if (note) {
+          note.innerHTML =
+            '<strong>Live:</strong> showing ' + items.length + ' real citizen ' +
+            (items.length === 1 ? 'submission' : 'submissions') + ' alongside sample data. ' +
+            'Reports are shared monthly with relevant municipal authorities under the Right to Information Act, 2005. ' +
+            'This page does not constitute legal advice.';
+        }
+        const totalEl = document.getElementById('stat-total');
+        if (totalEl) totalEl.textContent = parseInt(totalEl.textContent, 10) + items.length;
+
+        items.forEach((r) => {
+          const display = DISPLAY_CAT[r.category] || 'Utilities';
+          const colour = CAT_COLOUR[display] || '#555';
+          const date = (r.created_at || '').slice(0, 10);
+          if (Number.isFinite(r.lat) && Number.isFinite(r.lng)) {
+            const c = L.circleMarker([r.lat, r.lng], { radius: 9, fillColor: colour, color: '#fff', weight: 2, opacity: 1, fillOpacity: 0.88 });
+            c.bindPopup(
+              `<div style="font-family:'Courier New',monospace;font-size:0.7rem;line-height:1.6;min-width:200px">
+                <strong style="font-size:0.78rem;font-family:Georgia,serif;color:#111">${r.ward}</strong><br>
+                <span style="color:${colour}">${display}</span><br>
+                <em style="color:#777;font-style:normal">${date}</em><br><br>
+                <span style="color:#333;font-family:Georgia,serif;font-size:0.82rem">${r.description}</span><br><br>
+                <span style="color:#b35a00;letter-spacing:0.08em;text-transform:uppercase;font-size:0.65rem">● ${STATUS_DISPLAY[r.status] || 'Pending'}</span>
+              </div>`
+            );
+            c._category = display;
+            c.addTo(map);
+            markers.push(c);
+          }
+          const card = document.createElement('div');
+          card.className = 'report-card';
+          card.innerHTML =
+            `<span class="cat-badge ${CAT_CLASS[display] || ''}">${display}</span>
+            <div class="report-body">
+              <p class="report-meta">${r.ward}${r.city ? ', ' + r.city : ''} · ${date} · <span style="color:var(--cjp)">live</span></p>
+              <p class="report-desc">${r.description}</p>
+            </div>
+            <span class="status-chip ${CHIP_CLASS[STATUS_DISPLAY[r.status]] || 'chip-pending'}">${STATUS_DISPLAY[r.status] || 'Pending'}</span>`;
+          reportsList.prepend(card);
+        });
+      })();
     </script>
   </body>
 </html>

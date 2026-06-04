@@ -1925,8 +1925,29 @@
           const track = btn.dataset.track;
           const start = btn.dataset.start;
           const form = btn.closest('.waitlist-form');
-          const nameInput = form.querySelector('input[type="text"]');
-          const name = nameInput && nameInput.value.trim() ? nameInput.value.trim().split(' ')[0] : 'You';
+          const textInputs = form.querySelectorAll('input[type="text"]');
+          const nameInput = textInputs[0];
+          const fullName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : '';
+          const name = fullName ? fullName.split(' ')[0] : 'You';
+
+          // Persist to the live backend (fire-and-forget; the success message
+          // below shows regardless, so an unconfigured backend never blocks signup).
+          if (fullName) {
+            const sel = form.querySelector('select');
+            const ta = form.querySelector('textarea');
+            fetch('/api/civic?kind=waitlist', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                kind: 'waitlist',
+                track,
+                name: fullName,
+                github: textInputs[1] ? textInputs[1].value.trim() : '',
+                skill_level: sel ? sel.value : '',
+                note: ta ? ta.value.trim() : '',
+              }),
+            }).catch(() => {/* offline / not configured */});
+          }
           // Find success element in same panel footer
           const footer = form.closest('.track-panel-footer');
           const allSuccess = footer.querySelectorAll('.waitlist-success');
