@@ -1448,7 +1448,7 @@ Yours faithfully,
       /* ══════════════════════════════════════════════
          RTI CASE DATA
       ══════════════════════════════════════════════ */
-      const RTI_CASES = [
+      let RTI_CASES = [
         {
           id: 'CJP-RTI-2025-0001',
           subject: 'Teacher Attendance vs. Salary — Murshidabad Dist.',
@@ -1840,11 +1840,98 @@ Yours faithfully,
         openDetailId = null;
       });
 
-      document.getElementById('btn-file-new').addEventListener('click', () => {
-        document.getElementById('template-library').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // ── Record-a-filing form (injected; toggled by "+ File New RTI") ─────────
+      function addDays(iso, n) {
+        const d = new Date(iso + 'T00:00:00Z');
+        d.setUTCDate(d.getUTCDate() + n);
+        return d.toISOString().slice(0, 10);
+      }
+
+      function liveToCase(item) {
+        const filed = (item.filed_on || item.created_at || '').slice(0, 10);
+        return {
+          id: 'CJP-RTI-LIVE-' + String(item.id).padStart(4, '0'),
+          subject: item.subject,
+          filed,
+          due: filed ? addDays(filed, 30) : '',
+          status: item.status || 'filed',
+          dept: item.department,
+          asked: '—',
+          received: item.finding || 'Awaiting response from the department.',
+          discrepancy: false,
+          _live: true,
+        };
+      }
+
+      const fileBtn = document.getElementById('btn-file-new');
+      const fileForm = document.createElement('div');
+      fileForm.className = 'rti-detail';
+      fileForm.style.marginBottom = '1.25rem';
+      fileForm.innerHTML = `
+        <div class="rti-detail-hd"><strong>Record an RTI you've filed</strong>
+          <button class="btn-close-detail" type="button" id="rti-form-cancel">Cancel</button></div>
+        <div class="rti-detail-body" style="display:block;">
+          <p style="font-size:0.8rem;color:var(--ink2);margin-bottom:0.75rem;">
+            Already filed an RTI? Log it here so the swarm can track its deadline and outcome. Stored on the live backend.</p>
+          <div style="display:grid;gap:0.6rem;max-width:520px;">
+            <input id="rti-f-subject" type="text" placeholder="Subject — what did you ask for?" maxlength="240"
+              style="padding:0.5rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font-family:inherit;" />
+            <input id="rti-f-dept" type="text" placeholder="Department / PIO filed with" maxlength="200"
+              style="padding:0.5rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font-family:inherit;" />
+            <input id="rti-f-city" type="text" placeholder="City / district (optional)" maxlength="120"
+              style="padding:0.5rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font-family:inherit;" />
+            <button id="rti-f-submit" class="btn-file" type="button" style="justify-self:start;">Add to Tracker</button>
+            <p id="rti-f-msg" style="font-size:0.8rem;color:var(--cjp);display:none;"></p>
+          </div>
+        </div>`;
+      document.getElementById('rti-tracker').insertBefore(fileForm, document.querySelector('.rti-table-wrap'));
+      fileForm.classList.remove('open');
+
+      fileBtn.addEventListener('click', () => fileForm.classList.toggle('open'));
+      document.getElementById('rti-form-cancel').addEventListener('click', () => fileForm.classList.remove('open'));
+
+      document.getElementById('rti-f-submit').addEventListener('click', async () => {
+        const subject = document.getElementById('rti-f-subject').value.trim();
+        const department = document.getElementById('rti-f-dept').value.trim();
+        const city = document.getElementById('rti-f-city').value.trim();
+        const msg = document.getElementById('rti-f-msg');
+        if (subject.length < 3 || department.length < 2) {
+          msg.style.display = 'block'; msg.style.color = 'var(--danger)';
+          msg.textContent = 'Please enter a subject and the department.';
+          return;
+        }
+        // Optimistic local insert so it works even if the backend is unconfigured.
+        const today = new Date().toISOString().slice(0, 10);
+        RTI_CASES.unshift(liveToCase({ id: Date.now() % 100000, subject, department, city, status: 'filed', filed_on: today }));
+        renderTracker();
+        msg.style.display = 'block'; msg.style.color = 'var(--cjp)';
+        msg.textContent = 'Added to tracker. Deadline set to 30 days from today.';
+        ['rti-f-subject', 'rti-f-dept', 'rti-f-city'].forEach((id) => (document.getElementById(id).value = ''));
+
+        try {
+          await fetch('/api/civic?kind=rti', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ kind: 'rti', subject, department, city }),
+          });
+        } catch { /* offline / not configured — local entry already shown */ }
       });
 
       renderTracker();
+
+      // ── LIVE BACKEND: merge real filings if the database is connected ────────
+      (async function loadLiveRti() {
+        let items;
+        try {
+          const res = await fetch('/api/civic?kind=rti');
+          if (!res.ok) return;
+          ({ items } = await res.json());
+        } catch { return; }
+        if (!Array.isArray(items) || items.length === 0) return;
+        const existing = new Set(RTI_CASES.map((c) => c.id));
+        items.map(liveToCase).forEach((c) => { if (!existing.has(c.id)) RTI_CASES.unshift(c); });
+        renderTracker();
+      })();
 
       /* ══════════════════════════════════════════════
          TRANSPARENCY SCORES RENDER
